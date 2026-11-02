@@ -2,15 +2,15 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
-<title>Vườn số IaKo 1</title>
-<meta name="description" content="Trải nghiệm vườn cà phê FarmBlock IaKo 1 từ xa: sa bàn 3D tương tác – tưới thử, đo cảm biến đất và nước, đổi thời tiết, xem camera, mô phỏng sự cố khói.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vườn số Ia Ko</title>
+<meta name="description" content="Trải nghiệm vườn cà phê Farmblock Ia Ko từ xa: sa bàn 3D tương tác – tưới thử, đo cảm biến đất và nước, đổi thời tiết, xem camera, mô phỏng sự cố khói.">
 <meta name="theme-color" content="#0B160D">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="FarmBlock">
+<meta property="og:site_name" content="Farmblock">
 <meta property="og:locale" content="vi_VN">
-<meta property="og:title" content="Vườn số IaKo 1 – Trải nghiệm vườn cà phê từ xa">
-<meta property="og:description" content="Sa bàn 3D tương tác của vườn cà phê FarmBlock IaKo 1: tưới thử, đo cảm biến, đổi thời tiết, xem camera.">
+<meta property="og:title" content="Vườn số Ia Ko – Trải nghiệm vườn cà phê từ xa">
+<meta property="og:description" content="Sa bàn 3D tương tác của vườn cà phê Farmblock Ia Ko: tưới thử, đo cảm biến, đổi thời tiết, xem camera.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 360'%3E%3Cpath d='M141 20c22-22 57-22 78 0l121 121c22 22 22 57 0 78L219 340c-21 22-56 22-78 0L20 219c-22-21-22-56 0-78z' fill='%233A8047'/%3E%3Cg fill='%23F1F7E8'%3E%3Cpath d='M64 180l56-30 50 30-50 30zM296 180l-56-30-50 30 50 30zM118 73l56 31v58l-56-29zM242 73l-56 31v58l56-29zM118 287l56-31v-58l-56 29zM242 287l-56-31v-58l56 29z'/%3E%3C/g%3E%3C/svg%3E" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -221,7 +221,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 @keyframes fx{0%{opacity:0;translate:0 10px}15%{opacity:1;translate:0 0}75%{opacity:1}100%{opacity:0;translate:0 -36px}}
 
 /* ---------- thẻ thiết bị ---------- */
-.insp{position:fixed;z-index:12;left:calc(var(--pw) + 28px);top:calc(var(--top) + 76px);width:390px;max-height:calc(100svh - var(--top) - 76px - 220px);display:none;flex-direction:column;border-color:var(--line-2)}
+.insp{position:fixed;z-index:12;left:calc(var(--pw) + 28px);top:calc(var(--top) + 76px);width:390px;max-height:calc(100svh - var(--top) - 76px - 290px);display:none;flex-direction:column;border-color:var(--line-2)}
 .insp.open{display:flex;animation:pop .45s var(--ease)}
 .insp.cam{background-color:transparent}
 .insp.cam .ih{background:var(--pn);border-radius:21px 21px 0 0}
@@ -293,11 +293,31 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 
 /* ---------- tab di động ---------- */
 .tabs{display:none}
+.simtag{display:none}
+.devbar{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:8px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.dc{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:50px;min-width:0;padding:4px 2px;border-radius:12px;border:1px solid color-mix(in srgb,var(--c) 55%,transparent);background:color-mix(in srgb,var(--c) 16%,transparent);font-size:12.5px;font-weight:600;line-height:1.1;color:#fff;transition:background-color .2s,border-color .2s,color .2s,opacity .2s}
+.dc span{display:flex;align-items:center;gap:5px}
+.dc svg{width:18px;height:18px;color:var(--c)}
+.dc b{font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--c)}
+.dc:hover{background:color-mix(in srgb,var(--c) 28%,transparent)}
+.dc[aria-pressed="false"]{background:transparent;border-color:rgba(255,255,255,.12);color:var(--txt-2)}
+.dc[aria-pressed="false"] svg,.dc[aria-pressed="false"] b{color:var(--txt-2);opacity:.55}
+.dp.off{display:none!important}
+.rot{display:none;position:fixed;inset:0;z-index:70;place-items:center;padding:28px;background:#0B160D;text-align:center;touch-action:none}
+.rot-in{display:flex;flex-direction:column;align-items:center;gap:14px;max-width:320px}
+.rot b{font-size:24px;font-weight:600;color:#fff;font-stretch:108%}
+.rot p{font-size:16px;color:var(--txt-2)}
+.rot-ph{position:relative;width:64px;height:112px;margin-bottom:14px;border:3px solid var(--lime);border-radius:14px;animation:rotph 2.6s var(--ease) infinite}
+.rot-ph i{position:absolute;left:50%;bottom:6px;width:18px;height:3px;margin-left:-9px;border-radius:2px;background:var(--lime)}
+@keyframes rotph{0%,20%{transform:rotate(0)}60%,100%{transform:rotate(-90deg)}}
+.rot button{min-height:52px;padding:0 24px;margin-top:6px;border-radius:999px;background:var(--lime);color:var(--g800);font-weight:600}
+.rot button[hidden]{display:none}
+@media (orientation:portrait) and (max-width:767px) and (pointer:coarse){.rot{display:grid}}
 .mstrip{display:none}
 .pt{display:none}
 
 /* màn vừa: thu panel */
-@media (max-width:1440px){:root{--pw:300px}.cluster{width:min(540px,calc(100vw - 2*var(--pw) - 64px))}.links .lk.hide-md{display:none}}
+@media (max-width:1440px){:root{--pw:300px}.cluster{left:calc(50% - 38px);width:min(540px,calc(100vw - 2*var(--pw) - 140px))}.links .lk.hide-md{display:none}}
 @media (max-width:1280px){.links .lk:not(.vm){display:none}.crumb span{display:none}}
 
 /* ---------- di động & máy tính bảng dọc ---------- */
@@ -317,7 +337,12 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   .mstrip b{font-size:18px;font-weight:600;color:#fff;font-variant-numeric:tabular-nums}
   .mstrip span{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--txt-2);text-transform:uppercase}
   .mstrip div.c b{color:var(--lime)}
-  .cluster{display:none}
+  .simtag{display:inline-flex;align-items:center;gap:5px;margin-top:1px;font-style:normal;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--lime)}
+  .simtag i{width:6px;height:6px;border-radius:50%;background:var(--lime);animation:pulse 1.8s ease-out infinite}
+  .cluster{left:10px;right:70px;bottom:calc(env(safe-area-inset-bottom,0px) + 74px);width:auto;transform:none;padding:0;background:none;border:0;box-shadow:none;pointer-events:none}
+  .cl-row,.cl-foot{display:none}
+  .devbar{margin:0;padding:4px;border:1px solid var(--line);border-radius:16px;background:var(--pn);pointer-events:auto}
+  body[data-tab]:not([data-tab=""]) .cluster,.cluster:has(~.insp.open){display:none}
   .left,.right,.log{left:10px;right:10px;width:auto;top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 10px + 64px);max-height:min(46svh,430px);height:auto;border-radius:22px 22px 18px 18px;display:none}
   .log{height:min(40svh,320px)}
   body[data-tab="zone"] .left,body[data-tab="env"] .right,body[data-tab="log"] .log{display:flex}
@@ -338,12 +363,49 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   .insp.cam .ib{background:linear-gradient(var(--pn),var(--pn)) left top/16px 200px no-repeat,linear-gradient(var(--pn),var(--pn)) right top/16px 200px no-repeat,linear-gradient(var(--pn),var(--pn)) left 0 top 200px/100% calc(100% - 200px) no-repeat}
   .alert{top:calc(var(--top) + 132px);bottom:auto}
   .insp.open~.alert{left:50%;top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 84px)}
-  .hint{top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 86px);font-size:14px;white-space:normal;width:max-content;max-width:calc(100vw - 32px);text-align:center}
+  .hint{top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 146px);font-size:14px;white-space:normal;width:max-content;max-width:calc(100vw - 32px);text-align:center}
   .zt{padding:4px 8px 5px}.zt b{font-size:16px}.zt span{display:none}
   .dp .gem{width:24px;height:24px}.dp .gem svg{width:14px;height:14px}
   .dp .vl{font-size:11px;padding:2px 5px}
-  .dp.cam{display:none}
-  .dp.cam.on,.dp.cam.alarm{display:flex}
+}
+@media (min-width:1024px) and (max-width:1200px){.devbar{grid-template-columns:repeat(3,1fr)}.crumb b{white-space:nowrap}.links .lk.vm .l{display:none}.g .gv b,.g.c .gv b{font-size:20px}.g.c .gv b{font-size:26px}.g .gv small{display:none}.g .gl{font-size:11.5px;margin-top:4px}}
+/* ---------- điện thoại xoay ngang ---------- */
+@media (max-width:1023px) and (orientation:landscape){
+  :root{--top:calc(env(safe-area-inset-top,0px) + 8px);--sl:max(10px,env(safe-area-inset-left,0px));--sr:max(10px,env(safe-area-inset-right,0px));--sb:calc(env(safe-area-inset-bottom,0px) + 8px);--ty:calc(var(--top) + 52px)}
+  .top{left:var(--sl);right:var(--sr)}
+  .bar{min-height:44px;padding:3px 14px 3px 5px;gap:8px}
+  .brand svg.mk{width:34px;height:34px}
+  .crumb{padding-left:8px}.crumb b{font-size:14px}
+  .links .lk.vm{width:44px;min-height:44px;padding:0;justify-content:center}
+  .mstrip{left:auto;right:calc(var(--sr) + 52px);top:var(--top);height:44px;display:flex;align-items:center;gap:14px;padding:3px 12px;border-radius:14px}
+  .mstrip div{padding:0}.mstrip b{font-size:15px}.mstrip span{font-size:9.5px}
+  .tabs{left:var(--sl);right:auto;top:var(--ty);bottom:var(--sb);width:60px;grid-template-columns:1fr;grid-auto-rows:1fr;padding:4px;border-radius:18px}
+  .tabs button{min-height:0;border-radius:13px;font-size:10.5px;line-height:1.1}
+  .tabs button svg{width:20px;height:20px}
+  .left,.right,.log{left:calc(var(--sl) + 68px);right:auto;top:var(--ty);bottom:var(--sb);width:min(340px,calc(100vw - var(--sl) - 136px));max-height:none;height:auto;border-radius:18px}
+  .left>.scroll,.right>.scroll{flex:1;min-height:0}
+  .zoom{right:var(--sr);top:var(--ty);bottom:auto;padding:3px;gap:4px;border-radius:16px}
+  .zoom button{width:42px;height:42px;border-radius:12px}
+  body[data-tab]:not([data-tab=""]) .zoom{display:flex}
+  .insp{left:auto;right:calc(var(--sr) + 56px);top:var(--ty);width:min(340px,46vw);max-height:calc(100svh - var(--ty) - 8px);border-radius:18px}
+  .ih{padding:8px 8px 8px 12px;gap:10px}.ih .gem{width:30px;height:30px;border-radius:8px}.ih .gem svg{width:17px;height:17px}.ih h3{font-size:16px}.ih .x{width:44px;height:44px}
+  .ib{padding:0 10px 10px}
+  .feed{height:110px}
+  .insp.cam .imeta{display:none}
+  .pan{margin-top:0}.feed+.pan{padding-top:6px}
+  .iacts{margin-top:6px}.iacts .ab{min-height:46px}
+  .insp.cam .ih{border-radius:17px 17px 0 0}
+  .insp.cam .ib{background:linear-gradient(var(--pn),var(--pn)) left top/10px 110px no-repeat,linear-gradient(var(--pn),var(--pn)) right top/10px 110px no-repeat,linear-gradient(var(--pn),var(--pn)) left 0 top 110px/100% calc(100% - 110px) no-repeat;border-radius:0 0 17px 17px}
+  .cluster{left:calc(var(--sl) + 68px);right:calc(var(--sr) + 56px);bottom:var(--sb)}
+  .devbar{max-width:520px;margin:0 auto}
+  .dc{min-height:44px;font-size:11.5px}
+  .dp .gem{width:22px;height:22px;border-radius:6px}.dp .gem svg{width:13px;height:13px}
+  .zt{padding:2px 6px 3px}.zt b{font-size:14px}
+  .hint{bottom:calc(var(--sb) + 60px);font-size:13px;padding:6px 14px}
+  .alert{top:var(--ty);max-width:calc(100vw - 150px);padding:6px 6px 6px 10px;gap:10px}
+  .alert .ic{width:32px;height:32px}.alert b{font-size:15px}.alert span{font-size:12.5px}
+  .alert button{min-height:44px;padding:0 12px}.alert .alx{width:44px}
+  .insp.open~.alert{left:calc(50% - 170px);top:var(--ty);bottom:auto}
 }
 @media (min-width:1024px) and (max-height:900px){.log{height:150px}.left{max-height:calc(100svh - var(--top) - 76px - 16px - 166px)}.cluster .cl-foot{display:none}.g.c .gv b{font-size:38px}}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
@@ -379,25 +441,25 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 <symbol id="u-back" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M11 6l-6 6 6 6"/></symbol>
 </defs></svg>
 
-<canvas id="gl" tabindex="0" aria-label="Sa bàn 3D vườn cà phê IaKo 1. Kéo để xoay, cuộn hoặc chụm hai ngón để phóng to thu nhỏ."></canvas>
+<canvas id="gl" tabindex="0" aria-label="Sa bàn 3D vườn cà phê Ia Ko. Kéo để xoay, cuộn hoặc chụm hai ngón để phóng to thu nhỏ."></canvas>
 <div class="vig" aria-hidden="true"></div>
 <div id="labels" aria-hidden="false"></div>
 
 <header class="top">
   <div class="bar">
-    <a class="brand" href="https://trungcien0120.github.io/farmblock-landing/" data-nav="home" aria-label="FarmBlock – về trang chủ" translate="no"><svg class="mk" aria-hidden="true"><use href="#logo"/></svg><svg class="wm" viewBox="0 0 603 70" aria-hidden="true" focusable="false"><path d="M0 68.2207V1.17285H48.1721V12.0217H12.7026V30.0054H44.6545V40.8542H12.7026V68.2207H0Z"/><path d="M47.2622 68.2207L73.3514 1.17285H89.3762L115.563 68.2207H101.786L96.4114 53.951H65.7298L60.3556 68.2207H47.2622ZM69.736 43.1999H92.3075L85.5654 25.0208C85.3048 24.3692 84.9791 23.5547 84.5883 22.5773C84.2626 21.5348 83.9043 20.4271 83.5134 19.2543C83.1226 18.0163 82.7317 16.7782 82.3409 15.5402C81.95 14.3022 81.5917 13.1945 81.266 12.2172H80.7775C80.3866 13.5203 79.8981 15.019 79.3118 16.7131C78.7907 18.4072 78.2695 20.0036 77.7484 21.5022C77.2273 23.0009 76.8039 24.1737 76.4781 25.0208L69.736 43.1999Z"/><path d="M123.476 68.2207V1.17285H158.75C163.701 1.17285 167.805 2.0199 171.062 3.71402C174.319 5.40814 176.762 7.81899 178.39 10.9466C180.019 14.0742 180.833 17.7556 180.833 21.9909C180.833 26.3565 179.856 30.2334 177.902 33.6217C175.948 36.9447 173.081 39.4533 169.303 41.1474L183.178 68.2207H169.303L156.991 43.2977H136.179V68.2207H123.476ZM136.179 32.6443H157.773C161.03 32.6443 163.538 31.6995 165.297 29.8099C167.056 27.9203 167.935 25.314 167.935 21.9909C167.935 19.8407 167.544 18.0488 166.763 16.6154C165.981 15.1167 164.841 13.9764 163.343 13.1945C161.845 12.4126 159.988 12.0217 157.773 12.0217H136.179V32.6443Z"/><path d="M193.516 68.2207V1.17285H213.547L224.1 38.5085C224.491 39.8117 224.882 41.2778 225.272 42.9067C225.663 44.5357 226.022 46.0995 226.347 47.5981C226.738 49.0967 227.031 50.3999 227.227 51.5076H228.008C228.139 50.5302 228.334 49.3248 228.595 47.8913C228.855 46.4578 229.148 44.9266 229.474 43.2977C229.865 41.6035 230.288 39.9746 230.744 38.4108L241.297 1.17285H261.133V68.2207H248.43V34.3058C248.43 31.3085 248.463 28.3113 248.528 25.314C248.593 22.3167 248.658 19.743 248.723 17.5927C248.854 15.4425 248.919 14.1719 248.919 13.781H248.137C248.007 14.3674 247.681 15.638 247.16 17.5927C246.639 19.5475 246.085 21.6651 245.499 23.9457C244.913 26.2262 244.392 28.1809 243.936 29.8099L232.894 68.2207H221.169L210.127 29.9076C209.736 28.5393 209.28 26.9104 208.759 25.0208C208.303 23.066 207.815 21.0787 207.293 19.0588C206.837 17.0389 206.414 15.2796 206.023 13.781H205.241C205.307 15.5402 205.372 17.6579 205.437 20.1339C205.502 22.5448 205.567 25.0208 205.632 27.5619C205.697 30.038 205.73 32.2859 205.73 34.3058V68.2207H193.516Z"/><path d="M275.961 68.2207V1.17285H312.505C316.088 1.17285 319.28 1.85701 322.081 3.22533C324.947 4.59365 327.195 6.51582 328.823 8.99184C330.452 11.4679 331.266 14.3674 331.266 17.6905C331.266 20.2316 330.777 22.5448 329.8 24.6298C328.823 26.7149 327.488 28.4742 325.794 29.9076C324.165 31.276 322.309 32.3185 320.224 33.0352V33.4262C322.7 33.9475 324.915 34.9574 326.869 36.456C328.823 37.8895 330.354 39.7465 331.461 42.0271C332.569 44.2425 333.122 46.8162 333.122 49.7483C333.122 53.9185 332.178 57.3718 330.289 60.1085C328.465 62.8451 325.989 64.8976 322.863 66.2659C319.801 67.5691 316.348 68.2207 312.505 68.2207H275.961ZM288.663 57.3718H310.844C313.515 57.3718 315.697 56.6551 317.391 55.2216C319.15 53.723 320.029 51.4099 320.029 48.2823C320.029 46.4578 319.671 44.8615 318.954 43.4931C318.238 42.1248 317.13 41.0823 315.632 40.3655C314.199 39.5836 312.342 39.1927 310.062 39.1927H288.663V57.3718ZM288.663 28.5393H309.183C311.137 28.5393 312.766 28.1809 314.068 27.4642C315.436 26.7475 316.446 25.7701 317.098 24.5321C317.814 23.2941 318.172 21.9258 318.172 20.4271C318.172 17.5601 317.391 15.4425 315.827 14.0742C314.329 12.7059 312.342 12.0217 309.867 12.0217H288.663V28.5393Z"/><path d="M344.951 68.2207V1.17285H357.653V57.1764H391.267V68.2207H344.951Z"/><path d="M428.499 69.3935C421.529 69.3935 415.503 68.1555 410.422 65.6795C405.341 63.1383 401.432 59.294 398.696 54.1465C396.026 48.999 394.69 42.5158 394.69 34.6968C394.69 26.8126 396.026 20.3294 398.696 15.247C401.432 10.0995 405.341 6.28777 410.422 3.81176C415.503 1.27059 421.529 0 428.499 0C435.534 0 441.56 1.27059 446.575 3.81176C451.656 6.28777 455.532 10.0995 458.203 15.247C460.939 20.3294 462.307 26.8126 462.307 34.6968C462.307 42.5158 460.939 48.999 458.203 54.1465C455.532 59.294 451.656 63.1383 446.575 65.6795C441.56 68.1555 435.534 69.3935 428.499 69.3935ZM428.499 58.6424C431.886 58.6424 434.85 58.1537 437.391 57.1764C439.996 56.199 442.178 54.7655 443.937 52.8759C445.696 50.9212 447.031 48.5429 447.943 45.7411C448.855 42.8741 449.311 39.5836 449.311 35.8696V33.7194C449.311 29.9402 448.855 26.6171 447.943 23.7502C447.031 20.8832 445.696 18.5049 443.937 16.6154C442.178 14.6606 439.996 13.1945 437.391 12.2172C434.85 11.2398 431.886 10.7511 428.499 10.7511C425.111 10.7511 422.115 11.2398 419.509 12.2172C416.969 13.1945 414.819 14.6606 413.06 16.6154C411.301 18.5049 409.966 20.8832 409.054 23.7502C408.207 26.6171 407.784 29.9402 407.784 33.7194V35.8696C407.784 39.5836 408.207 42.8741 409.054 45.7411C409.966 48.5429 411.301 50.9212 413.06 52.8759C414.819 54.7655 416.969 56.199 419.509 57.1764C422.115 58.1537 425.111 58.6424 428.499 58.6424Z"/><path d="M503.662 69.3935C496.822 69.3935 490.959 68.1881 486.073 65.7773C481.253 63.3664 477.54 59.6198 474.934 54.5375C472.394 49.39 471.123 42.7764 471.123 34.6968C471.123 22.9031 473.99 14.1719 479.722 8.50315C485.454 2.83438 493.434 0 503.662 0C509.199 0 514.182 0.944794 518.612 2.83438C523.106 4.72397 526.657 7.59093 529.262 11.4353C531.933 15.2145 533.268 20.0362 533.268 25.9004H520.273C520.273 22.6425 519.556 19.9058 518.123 17.6905C516.755 15.4099 514.833 13.6832 512.358 12.5104C509.883 11.3375 507.049 10.7511 503.857 10.7511C499.427 10.7511 495.747 11.6307 492.815 13.39C489.884 15.0841 487.702 17.6253 486.269 21.0135C484.901 24.4018 484.217 28.6045 484.217 33.6217V35.7719C484.217 40.8542 484.901 45.0895 486.269 48.4777C487.702 51.866 489.852 54.4071 492.718 56.1013C495.649 57.7954 499.362 58.6424 503.857 58.6424C507.244 58.6424 510.208 58.0886 512.749 56.9809C515.289 55.808 517.244 54.1139 518.612 51.8985C520.045 49.618 520.761 46.8488 520.761 43.5909H533.268C533.268 49.4551 531.966 54.3094 529.36 58.1537C526.754 61.9329 523.204 64.7673 518.709 66.6569C514.28 68.4813 509.264 69.3935 503.662 69.3935Z"/><path d="M544.574 68.2207V1.17285H557.277V32.2533L586.981 1.17285H602.517L576.526 28.3438L603.006 68.2207H587.958L567.927 37.2379L557.277 46.6207V68.2207H544.574Z"/></svg></a>
-    <div class="crumb"><b>Vườn số IaKo 1</b><span>Playground · Sa bàn tương tác</span></div>
+    <a class="brand" href="https://farmblockadmin.github.io/farmblock-website/" data-nav="home" aria-label="Farmblock – về trang chủ" translate="no"><svg class="mk" aria-hidden="true"><use href="#logo"/></svg><svg class="wm" viewBox="0 0 603 70" aria-hidden="true" focusable="false"><path d="M0 68.2207V1.17285H48.1721V12.0217H12.7026V30.0054H44.6545V40.8542H12.7026V68.2207H0Z"/><path d="M47.2622 68.2207L73.3514 1.17285H89.3762L115.563 68.2207H101.786L96.4114 53.951H65.7298L60.3556 68.2207H47.2622ZM69.736 43.1999H92.3075L85.5654 25.0208C85.3048 24.3692 84.9791 23.5547 84.5883 22.5773C84.2626 21.5348 83.9043 20.4271 83.5134 19.2543C83.1226 18.0163 82.7317 16.7782 82.3409 15.5402C81.95 14.3022 81.5917 13.1945 81.266 12.2172H80.7775C80.3866 13.5203 79.8981 15.019 79.3118 16.7131C78.7907 18.4072 78.2695 20.0036 77.7484 21.5022C77.2273 23.0009 76.8039 24.1737 76.4781 25.0208L69.736 43.1999Z"/><path d="M123.476 68.2207V1.17285H158.75C163.701 1.17285 167.805 2.0199 171.062 3.71402C174.319 5.40814 176.762 7.81899 178.39 10.9466C180.019 14.0742 180.833 17.7556 180.833 21.9909C180.833 26.3565 179.856 30.2334 177.902 33.6217C175.948 36.9447 173.081 39.4533 169.303 41.1474L183.178 68.2207H169.303L156.991 43.2977H136.179V68.2207H123.476ZM136.179 32.6443H157.773C161.03 32.6443 163.538 31.6995 165.297 29.8099C167.056 27.9203 167.935 25.314 167.935 21.9909C167.935 19.8407 167.544 18.0488 166.763 16.6154C165.981 15.1167 164.841 13.9764 163.343 13.1945C161.845 12.4126 159.988 12.0217 157.773 12.0217H136.179V32.6443Z"/><path d="M193.516 68.2207V1.17285H213.547L224.1 38.5085C224.491 39.8117 224.882 41.2778 225.272 42.9067C225.663 44.5357 226.022 46.0995 226.347 47.5981C226.738 49.0967 227.031 50.3999 227.227 51.5076H228.008C228.139 50.5302 228.334 49.3248 228.595 47.8913C228.855 46.4578 229.148 44.9266 229.474 43.2977C229.865 41.6035 230.288 39.9746 230.744 38.4108L241.297 1.17285H261.133V68.2207H248.43V34.3058C248.43 31.3085 248.463 28.3113 248.528 25.314C248.593 22.3167 248.658 19.743 248.723 17.5927C248.854 15.4425 248.919 14.1719 248.919 13.781H248.137C248.007 14.3674 247.681 15.638 247.16 17.5927C246.639 19.5475 246.085 21.6651 245.499 23.9457C244.913 26.2262 244.392 28.1809 243.936 29.8099L232.894 68.2207H221.169L210.127 29.9076C209.736 28.5393 209.28 26.9104 208.759 25.0208C208.303 23.066 207.815 21.0787 207.293 19.0588C206.837 17.0389 206.414 15.2796 206.023 13.781H205.241C205.307 15.5402 205.372 17.6579 205.437 20.1339C205.502 22.5448 205.567 25.0208 205.632 27.5619C205.697 30.038 205.73 32.2859 205.73 34.3058V68.2207H193.516Z"/><path d="M275.961 68.2207V1.17285H312.505C316.088 1.17285 319.28 1.85701 322.081 3.22533C324.947 4.59365 327.195 6.51582 328.823 8.99184C330.452 11.4679 331.266 14.3674 331.266 17.6905C331.266 20.2316 330.777 22.5448 329.8 24.6298C328.823 26.7149 327.488 28.4742 325.794 29.9076C324.165 31.276 322.309 32.3185 320.224 33.0352V33.4262C322.7 33.9475 324.915 34.9574 326.869 36.456C328.823 37.8895 330.354 39.7465 331.461 42.0271C332.569 44.2425 333.122 46.8162 333.122 49.7483C333.122 53.9185 332.178 57.3718 330.289 60.1085C328.465 62.8451 325.989 64.8976 322.863 66.2659C319.801 67.5691 316.348 68.2207 312.505 68.2207H275.961ZM288.663 57.3718H310.844C313.515 57.3718 315.697 56.6551 317.391 55.2216C319.15 53.723 320.029 51.4099 320.029 48.2823C320.029 46.4578 319.671 44.8615 318.954 43.4931C318.238 42.1248 317.13 41.0823 315.632 40.3655C314.199 39.5836 312.342 39.1927 310.062 39.1927H288.663V57.3718ZM288.663 28.5393H309.183C311.137 28.5393 312.766 28.1809 314.068 27.4642C315.436 26.7475 316.446 25.7701 317.098 24.5321C317.814 23.2941 318.172 21.9258 318.172 20.4271C318.172 17.5601 317.391 15.4425 315.827 14.0742C314.329 12.7059 312.342 12.0217 309.867 12.0217H288.663V28.5393Z"/><path d="M344.951 68.2207V1.17285H357.653V57.1764H391.267V68.2207H344.951Z"/><path d="M428.499 69.3935C421.529 69.3935 415.503 68.1555 410.422 65.6795C405.341 63.1383 401.432 59.294 398.696 54.1465C396.026 48.999 394.69 42.5158 394.69 34.6968C394.69 26.8126 396.026 20.3294 398.696 15.247C401.432 10.0995 405.341 6.28777 410.422 3.81176C415.503 1.27059 421.529 0 428.499 0C435.534 0 441.56 1.27059 446.575 3.81176C451.656 6.28777 455.532 10.0995 458.203 15.247C460.939 20.3294 462.307 26.8126 462.307 34.6968C462.307 42.5158 460.939 48.999 458.203 54.1465C455.532 59.294 451.656 63.1383 446.575 65.6795C441.56 68.1555 435.534 69.3935 428.499 69.3935ZM428.499 58.6424C431.886 58.6424 434.85 58.1537 437.391 57.1764C439.996 56.199 442.178 54.7655 443.937 52.8759C445.696 50.9212 447.031 48.5429 447.943 45.7411C448.855 42.8741 449.311 39.5836 449.311 35.8696V33.7194C449.311 29.9402 448.855 26.6171 447.943 23.7502C447.031 20.8832 445.696 18.5049 443.937 16.6154C442.178 14.6606 439.996 13.1945 437.391 12.2172C434.85 11.2398 431.886 10.7511 428.499 10.7511C425.111 10.7511 422.115 11.2398 419.509 12.2172C416.969 13.1945 414.819 14.6606 413.06 16.6154C411.301 18.5049 409.966 20.8832 409.054 23.7502C408.207 26.6171 407.784 29.9402 407.784 33.7194V35.8696C407.784 39.5836 408.207 42.8741 409.054 45.7411C409.966 48.5429 411.301 50.9212 413.06 52.8759C414.819 54.7655 416.969 56.199 419.509 57.1764C422.115 58.1537 425.111 58.6424 428.499 58.6424Z"/><path d="M503.662 69.3935C496.822 69.3935 490.959 68.1881 486.073 65.7773C481.253 63.3664 477.54 59.6198 474.934 54.5375C472.394 49.39 471.123 42.7764 471.123 34.6968C471.123 22.9031 473.99 14.1719 479.722 8.50315C485.454 2.83438 493.434 0 503.662 0C509.199 0 514.182 0.944794 518.612 2.83438C523.106 4.72397 526.657 7.59093 529.262 11.4353C531.933 15.2145 533.268 20.0362 533.268 25.9004H520.273C520.273 22.6425 519.556 19.9058 518.123 17.6905C516.755 15.4099 514.833 13.6832 512.358 12.5104C509.883 11.3375 507.049 10.7511 503.857 10.7511C499.427 10.7511 495.747 11.6307 492.815 13.39C489.884 15.0841 487.702 17.6253 486.269 21.0135C484.901 24.4018 484.217 28.6045 484.217 33.6217V35.7719C484.217 40.8542 484.901 45.0895 486.269 48.4777C487.702 51.866 489.852 54.4071 492.718 56.1013C495.649 57.7954 499.362 58.6424 503.857 58.6424C507.244 58.6424 510.208 58.0886 512.749 56.9809C515.289 55.808 517.244 54.1139 518.612 51.8985C520.045 49.618 520.761 46.8488 520.761 43.5909H533.268C533.268 49.4551 531.966 54.3094 529.36 58.1537C526.754 61.9329 523.204 64.7673 518.709 66.6569C514.28 68.4813 509.264 69.3935 503.662 69.3935Z"/><path d="M544.574 68.2207V1.17285H557.277V32.2533L586.981 1.17285H602.517L576.526 28.3438L603.006 68.2207H587.958L567.927 37.2379L557.277 46.6207V68.2207H544.574Z"/></svg></a>
+    <div class="crumb"><b>Vườn số Ia Ko</b><span>Sa bàn tương tác</span><em class="simtag"><i></i>Mô phỏng</em></div>
   </div>
   <nav class="links" aria-label="Trang khác">
-    <a class="lk" href="https://trungcien0120.github.io/farmblock-landing/cong-nghe.html" data-nav="tech"><svg aria-hidden="true"><use href="#u-back"/></svg>Công nghệ</a>
-    <a class="lk hide-md" href="https://trungcien0120.github.io/farmblock-landing/bang-gia.html" data-nav="price">Bảng giá</a>
-    <a class="lk vm" href="https://vuonmau.farmblock.vn/ca-phe-mang-yang-1" target="_blank" rel="noopener"><span class="l">Vườn mẫu thật</span><svg aria-hidden="true"><use href="#u-ext"/></svg></a>
+    <a class="lk" href="https://farmblockadmin.github.io/farmblock-website/cong-nghe.html" data-nav="tech"><svg aria-hidden="true"><use href="#u-back"/></svg>Công nghệ</a>
+    <a class="lk hide-md" href="https://farmblockadmin.github.io/farmblock-website/bang-gia.html" data-nav="price">Bảng giá</a>
+    <a class="lk vm" aria-label="Xem vườn Mang Yang trực tuyến" href="https://vuonmau.farmblock.vn/ca-phe-mang-yang-1" target="_blank" rel="noopener"><span class="l">Xem vườn Mang Yang</span><svg aria-hidden="true"><use href="#u-ext"/></svg></a>
   </nav>
   <div class="stat" role="status">
     <span class="live"><i></i>MÔ PHỎNG</span><span class="sp"></span>
     <span><b id="clock" class="num">07:30</b></span><span class="sp"></span>
     <span><b id="online">35</b>/35 thiết bị</span><span class="sp"></span>
-    <span>LoRa <b id="pk" class="num">0</b> gói</span>
+    <span>Dữ liệu <b id="pk" class="num">0</b> gói</span>
   </div>
 </header>
 
@@ -474,12 +536,11 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
     <div class="sec">
       <span class="k s">06 · Hiển thị</span>
       <div class="togs">
-        <label class="chk"><input type="checkbox" id="tPins" checked>Thiết bị</label>
+        <label class="chk"><input type="checkbox" id="tPins" checked>Biểu tượng thiết bị</label>
         <label class="chk"><input type="checkbox" id="tZt" checked>Tên khu</label>
         <label class="chk"><input type="checkbox" id="tCov">Vùng camera</label>
-        <label class="chk"><input type="checkbox" id="tTilt" checked>Tilt-shift</label>
+        <label class="chk"><input type="checkbox" id="tTilt" checked>Hiệu ứng sa bàn</label>
         <label class="chk"><input type="checkbox" id="tSound">Âm thanh</label>
-        <label class="chk"><input type="checkbox" id="tLora" checked>Sóng LoRa</label>
       </div>
       <p class="sim" style="margin-top:10px">⚠ Số liệu là mô phỏng minh hoạ, không phải dữ liệu đo thật</p>
     </div>
@@ -488,13 +549,21 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 
 <!-- CỤM ĐỒNG HỒ -->
 <div class="cluster pl hud" aria-label="Chỉ số môi trường">
+  <div class="devbar" role="group" aria-label="Bật tắt từng loại thiết bị">
+    <button class="dc" data-k="soil" style="--c:#D9A15B"><span><svg aria-hidden="true"><use href="#i-soil"/></svg><b>9</b></span>Đo đất</button>
+    <button class="dc" data-k="water" style="--c:#51ADCA"><span><svg aria-hidden="true"><use href="#i-water"/></svg><b>2</b></span>Đo nước</button>
+    <button class="dc" data-k="weather" style="--c:#F2D35B"><span><svg aria-hidden="true"><use href="#i-weather"/></svg><b>1</b></span>Thời tiết</button>
+    <button class="dc" data-k="iot" style="--c:#7ED8C8"><span><svg aria-hidden="true"><use href="#i-iot"/></svg><b>1</b></span>Trạm IoT</button>
+    <button class="dc" data-k="cam" style="--c:#B5E383"><span><svg aria-hidden="true"><use href="#i-cam"/></svg><b>22</b></span>Camera</button>
+    <button class="dc lo" id="tLora" style="--c:#fff" aria-pressed="true" title="Đường truyền không dây từ cảm biến về trạm IoT"><span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/><path d="M8.2 8.2a5.4 5.4 0 0 0 0 7.6M15.8 8.2a5.4 5.4 0 0 1 0 7.6M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14"/></svg></span>Sóng LoRa</button>
+  </div>
   <div class="cl-row">
     <div class="g" id="gT"></div>
     <div class="g c" id="gS"></div>
     <div class="g" id="gW"></div>
   </div>
   <div class="cl-foot">
-    <div><b id="f-rh">–</b><span>Ẩm KK %</span></div>
+    <div><b id="f-rh">–</b><span>Ẩm không khí %</span></div>
     <div><b id="f-rain">–</b><span>Mưa mm/h</span></div>
     <div><b id="f-lux">–</b><span>Ánh sáng</span></div>
     <div><b id="f-p">–</b><span>Áp suất hPa</span></div>
@@ -535,7 +604,8 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   <button id="mSmoke" aria-label="Mô phỏng khói"><svg aria-hidden="true"><use href="#a-fire"/></svg>Khói</button>
 </nav>
 
-<div class="loader" id="loader"><div class="in"><svg aria-hidden="true"><use href="#logo"/></svg><span id="ldt">Đang dựng vườn IaKo 1…</span><div class="bar2"><i id="ldb"></i></div></div></div>
+<div class="loader" id="loader"><div class="in"><svg aria-hidden="true"><use href="#logo"/></svg><span id="ldt">Đang dựng vườn Ia Ko…</span><div class="bar2"><i id="ldb"></i></div></div></div>
+<div class="rot" id="rot" role="alertdialog" aria-label="Xoay ngang điện thoại"><div class="rot-in"><div class="rot-ph" aria-hidden="true"><i></i></div><b>Xoay ngang điện thoại</b><p>Sa bàn 3D chỉ dùng ở màn hình ngang. Nếu máy không tự xoay, hãy tắt khoá xoay màn hình.</p><button id="rotB" hidden>Xoay giúp tôi</button></div></div>
 <div class="nogl" id="nogl"><p>Trình duyệt này chưa hỗ trợ WebGL nên không hiển thị được sa bàn 3D.<br>Hãy thử Chrome, Safari hoặc Edge bản mới.</p></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -550,8 +620,8 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/GammaCorrectionShader.js"></script>
 <script>(function(){
 /* ==========================================================
-   FarmBlock · Vườn số IaKo 1 — sa bàn 3D tương tác
-   Toạ độ sơ đồ: khung 1000 × 750 (theo "Sơ đồ vùng canh tác FarmBlock Iako 1", 8/2026)
+   Farmblock · Vườn số Ia Ko — sa bàn 3D tương tác
+   Toạ độ sơ đồ: khung 1000 × 750 (theo "Sơ đồ vùng canh tác Farmblock Ia Ko", 8/2026)
    ========================================================== */
 'use strict';
 const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
@@ -1023,7 +1093,7 @@ function mkCam(d){
   // hướng nhìn ban đầu: về tâm khu
   let tx=0,tz=0;if(d.zone>=0&&d.zone<NZ){const c=centroid(ZP[d.zone]);tx=c[0];tz=c[1]}
   d.pan0=Math.atan2(tx-d.x,tz-d.z)+(rnd()-.5)*.8;head.rotation.y=d.pan0;d.pan=d.pan0;
-  const disc=new THREE.Mesh(new THREE.CircleGeometry(3.4,48),discMat);disc.rotation.x=-Math.PI/2;disc.position.set(d.x,d.y+.9,d.z);disc.renderOrder=3;disc.visible=false;scene.add(disc);covDiscs.push(disc);
+  const disc=new THREE.Mesh(new THREE.CircleGeometry(3.4,48),discMat);disc.rotation.x=-Math.PI/2;disc.position.set(d.x,d.y+.9,d.z);disc.renderOrder=3;disc.visible=false;scene.add(disc);covDiscs.push(disc);d.disc=disc;
   return g;
 }
 function mkSoil(d){
@@ -1119,18 +1189,44 @@ function buildDevices(){
 /* ================= HIỆU ỨNG ================= */
 const FX=[];
 const RING_G=new THREE.RingGeometry(.86,1,56);
-function ripple(x,y,z,color,r,dur,vertical){
-  const m=new THREE.Mesh(RING_G,new THREE.MeshBasicMaterial({color,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,side:THREE.DoubleSide}));
-  if(!vertical)m.rotation.x=-Math.PI/2;m.position.set(x,y,z);m.renderOrder=4;scene.add(m);let t=0;
-  FX.push(dt=>{t+=dt/dur;const e=1-Math.pow(1-Math.min(t,1),3);m.scale.setScalar(.15+e*r);m.material.opacity=(1-t)*.95;if(t>=1){scene.remove(m);m.material.dispose();return false}return true});
+const WAVE_G=new THREE.RingGeometry(.97,1,96);
+const LORA_G=new THREE.Group();
+function ripple(x,y,z,color,r,dur,vertical,wave){
+  const m=new THREE.Mesh(wave?WAVE_G:RING_G,new THREE.MeshBasicMaterial(wave?{color,transparent:true,depthWrite:false,depthTest:false,side:THREE.DoubleSide}:{color,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,side:THREE.DoubleSide}));
+  const par=wave?LORA_G:scene;if(!vertical)m.rotation.x=-Math.PI/2;m.position.set(x,y,z);m.renderOrder=4;par.add(m);let t=0;
+  FX.push(dt=>{t+=dt/dur;const e=wave?Math.min(t,1):1-Math.pow(1-Math.min(t,1),3);m.scale.setScalar(.15+e*r);m.material.opacity=(1-t)*.95;if(t>=1){par.remove(m);m.material.dispose();return false}return true});
 }
+/* đường sóng LoRa: mỗi cảm biến một cung nối về trạm IoT, vạch sáng chạy về trạm */
+const LINKS=[];let hubWave=0,hubBase=null;
+function buildLinks(){
+  scene.add(LORA_G);
+  const vs=`uniform float uW;varying float vX;void main(){vX=uv.x;vec4 c=modelViewMatrix*vec4(position,1.);gl_Position=projectionMatrix*modelViewMatrix*vec4(position+normal*uW*-c.z,1.);}`;
+  const W0=MOB?.0032:.0016,W1=MOB?.0052:.0026;
+  const fs=`uniform float uTime,uHot,uN;uniform vec3 uC;varying float vX;
+    void main(){float d=fract(vX*uN-uTime*.8);float a=smoothstep(0.,.15,d)*smoothstep(.65,.45,d);
+      gl_FragColor=vec4(mix(uC,vec3(1.),uHot*.65),.62+.38*max(a,uHot));}`;
+  DEV.forEach(d=>{if(d.k!=='soil'&&d.k!=='water'&&d.k!=='weather')return;
+    const from=d.top,c=new THREE.Vector3().addVectors(from,hubTop).multiplyScalar(.5);const len=from.distanceTo(hubTop);c.y=Math.max(from.y,hubTop.y)+2.2+len*.12;
+    const cv=new THREE.QuadraticBezierCurve3(from.clone(),c,hubTop.clone());
+    const u={uW:{value:W0},uTime:U.uTime,uHot:{value:0},uN:{value:Math.max(2,Math.round(len/2.2))},uC:{value:new THREE.Color(KCOL[d.k])}};
+    const g=new THREE.Group();
+    const tb=new THREE.TubeGeometry(cv,48,.001,6,false);
+    const cs=new THREE.Mesh(tb,new THREE.ShaderMaterial({uniforms:{uW:{value:W1}},vertexShader:vs,fragmentShader:`void main(){gl_FragColor=vec4(.03,.07,.04,.5);}`,transparent:true,depthTest:false,depthWrite:false}));cs.renderOrder=3;cs.frustumCulled=false;g.add(cs);
+    const ln=new THREE.Mesh(tb,new THREE.ShaderMaterial({uniforms:u,vertexShader:vs,fragmentShader:fs,transparent:true,depthTest:false,depthWrite:false}));ln.renderOrder=4;ln.frustumCulled=false;g.add(ln);
+    LORA_G.add(g);LINKS.push({d,g,u,hot:0})});
+  const h=DEV.find(d=>d.k==='iot');hubBase=new THREE.Vector3(h.x,h.y+.4,h.z);
+}
+function updLinks(dt){if(!UI.lora||!SHOW.iot)return;
+  LINKS.forEach(l=>{if(l.hot>0){l.hot=Math.max(0,l.hot-dt/1.5);l.u.uHot.value=l.hot}});
+  hubWave-=dt;if(hubWave<=0){hubWave=2.2;ripple(hubBase.x,hubBase.y,hubBase.z,'#F2FFF9',34,3.4,false,true)}}
 const pkPool=[];
 function packet(from,to,color,dur,done){
-  const sp=glowSprite(color,.9),tr=[glowSprite(color,.6),glowSprite(color,.4)];scene.add(sp);tr.forEach(s=>scene.add(s));
+  const lg=(c,z)=>{const x=glowSprite(c,z);x.material.blending=THREE.NormalBlending;x.material.depthTest=false;x.renderOrder=6;return x};
+  const sp=lg(color,2.2),tr=[lg('#ffffff',1),lg(color,1.4),lg(color,.9)];scene.add(sp);tr.forEach(s=>scene.add(s));
   const c=new THREE.Vector3().addVectors(from,to).multiplyScalar(.5);c.y=Math.max(from.y,to.y)+2.2+from.distanceTo(to)*.12;
   const P=t=>{const u=1-t;return new THREE.Vector3(u*u*from.x+2*u*t*c.x+t*t*to.x,u*u*from.y+2*u*t*c.y+t*t*to.y,u*u*from.z+2*u*t*c.z+t*t*to.z)};
   let t=0;
-  FX.push(dt=>{t+=dt/dur;const k=Math.min(t,1);sp.position.copy(P(k));tr[0].position.copy(P(Math.max(0,k-.05)));tr[1].position.copy(P(Math.max(0,k-.1)));
+  FX.push(dt=>{t+=dt/dur;const k=Math.min(t,1);sp.position.copy(P(k));tr[0].position.copy(P(k));tr[1].position.copy(P(Math.max(0,k-.05)));tr[2].position.copy(P(Math.max(0,k-.1)));
     if(t>=1){[sp,...tr].forEach(s=>{scene.remove(s);s.material.dispose()});done&&done();return false}return true});
 }
 function beam(p,color){
@@ -1291,16 +1387,16 @@ function pinVal(d){
 }
 function sendPacket(d,cb){
   const from=d.top.clone();
-  if(UI.lora){ripple(from.x,from.y,from.z,KCOL[d.k],1.4,1,true);
-    packet(from,hubTop,KCOL[d.k],1.05+from.distanceTo(hubTop)*.02,()=>{ripple(hubTop.x,hubTop.y,hubTop.z,'#7ED8C8',1.8,.9,true);arrived(cb)})}
+  if(UI.lora&&SHOW.iot&&devOn(d)){ripple(d.x,d.y+.3,d.z,KCOL[d.k],5,1.1,false,true);const l=LINKS.find(l=>l.d===d);if(l)l.hot=1;
+    packet(from,hubTop,KCOL[d.k],1.05+from.distanceTo(hubTop)*.02,()=>{ripple(hubBase.x,hubBase.y,hubBase.z,'#7ED8C8',6,1.1,false,true);arrived(cb)})}
   else setTimeout(()=>arrived(cb),700);
 }
 function arrived(cb){ENV.pk++;ENV.sync++;$('#pk').textContent=fmtI(ENV.pk);cb&&cb();
-  if(ENV.sync>=9){ENV.sync=0;beam(hubTop,'#B5E383');log('s','<b>IOT-HUB</b> → FarmBlock Cloud: đồng bộ 9 bản ghi')}}
+  if(ENV.sync>=9){ENV.sync=0;if(SHOW.iot)beam(hubTop,'#B5E383');log('s','<b>IOT-HUB</b> → Farmblock Cloud: đồng bộ 9 bản ghi')}}
 function measure(d,manual){
   if(d.busy)return;d.busy=true;setPin(d);
-  ripple(d.x,d.y+.08,d.z,KCOL[d.k],2.6,1.2);
-  if(manual)setTimeout(()=>ripple(d.x,d.y+.08,d.z,KCOL[d.k],2.6,1.2),350);
+  if(devOn(d)){ripple(d.x,d.y+.08,d.z,KCOL[d.k],2.6,1.2);
+  if(manual)setTimeout(()=>ripple(d.x,d.y+.08,d.z,KCOL[d.k],2.6,1.2),350)}
   sound.blip();
   setTimeout(()=>sendPacket(d,()=>{
     const prev=d.r;d.r=readDev(d);d.at=clockStr(ENV.min);d.busy=false;
@@ -1354,7 +1450,7 @@ function smokeOn(on){
     let best=-1,bd=1e9;DEV.forEach((d,i)=>{if(d.k!=='cam')return;const dd=Math.hypot(d.x-SMK.src.x,d.z-SMK.src.z);if(dd<bd){bd=dd;best=i}});
     setTimeout(()=>{if(!SMK.on)return;SMK.det=best;const d=DEV[best];d.alarm=true;setPin(d);
       $('#alT').textContent=d.id+' phát hiện khói';$('#alS').textContent='Khu đất chưa trồng · cách camera '+fmt(bd,0)+' m (theo tỉ lệ sa bàn)';const al=$('#alert');al.classList.remove('mini');al.classList.add('on');clearTimeout(SMK.at);SMK.at=setTimeout(()=>al.classList.add('mini'),7000);
-      log('b',`<b>${d.id}</b> phát hiện khói · gửi cảnh báo về Dashboard & Sổ rẫy`);sound.alarm(1.2)},2600);
+      log('b',`<b>${d.id}</b> phát hiện khói · gửi cảnh báo về Dashboard & Sổ Rẫy`);sound.alarm(1.2)},2600);
   }else{
     clearTimeout(SMK.at);$('#alert').classList.remove('on','mini');DEV.forEach(d=>{if(d.alarm){d.alarm=false;setPin(d)}});
     log('','Đã xử lý điểm cháy · khói tan dần, chỉ số trở lại bình thường');
@@ -1428,6 +1524,12 @@ const sound=(()=>{
 
 /* ================= GIAO DIỆN ================= */
 const UI={pins:true,zt:true,cov:false,tilt:!LOW,sound:false,lora:true};
+// bật tắt theo loại thiết bị; điện thoại mặc định ẩn camera cho đỡ rối
+const SHOW={soil:true,water:true,weather:true,iot:true,cam:!MOB};
+const devOn=d=>SHOW[d.k]!==false||!!d.alarm;
+function applyDev(d){const on=devOn(d);if(d.obj)d.obj.visible=on;if(d.pin)d.pin.classList.toggle('off',!on);if(d.disc)d.disc.visible=UI.cov&&on}
+function syncLinks(){LINKS.forEach(l=>{l.g.visible=UI.lora&&SHOW.iot&&devOn(l.d)})}
+function setShow(k,v){SHOW[k]=v;const b=$(`.dc[data-k="${k}"]`);if(b)b.setAttribute('aria-pressed',String(v));DEV.forEach(d=>{if(d.k===k)applyDev(d)});syncLinks();if(!v&&INS.d&&INS.d.k===k&&!INS.d.alarm)closeInsp()}
 const SEL={z:-1,d:-1};
 const INS={d:null,patrol:true,pan:0};
 
@@ -1447,11 +1549,11 @@ function buildLabels(){
     el.addEventListener('click',()=>selectZone(i));root.appendChild(el);
     const w=toW(z.lab);LB.push({el,p:new THREE.Vector3(w[0],H(w[0],w[1])+(i===8?1.6:1.9),w[1]),z:i,ox:0})});
   DEV.forEach((d,i)=>{const el=document.createElement('button');el.className='dp '+d.k;el.style.setProperty('--c',KCOL[d.k]);
-    el.innerHTML=`<span class="gem"><svg aria-hidden="true"><use href="#${KICON[d.k]}"/></svg></span>${d.k==='soil'||d.k==='water'||d.k==='weather'?'<span class="vl">…</span>':''}`;
+    el.innerHTML=`<span class="gem"><svg aria-hidden="true"><use href="#${KICON[d.k]}"/></svg></span>${d.k==='soil'||d.k==='water'||d.k==='weather'?'<span class="vl" hidden>…</span>':''}`;
     el.setAttribute('aria-label',KNAME[d.k]+' '+d.id);el.addEventListener('click',e=>{e.stopPropagation();openInsp(i)});
     root.appendChild(el);d.pin=el;LB.push({el,p:d.top.clone().add(new THREE.Vector3(0,.35,0)),d:i})});
 }
-function setPin(d){if(!d.pin)return;d.pin.classList.toggle('busy',!!d.busy);d.pin.classList.toggle('alarm',!!d.alarm);d.pin.classList.toggle('on',INS.d===d);const v=d.pin.querySelector('.vl');if(v)v.textContent=pinVal(d)}
+function setPin(d){if(!d.pin)return;d.pin.classList.toggle('busy',!!d.busy);d.pin.classList.toggle('alarm',!!d.alarm);d.pin.classList.toggle('on',INS.d===d);const v=d.pin.querySelector('.vl');if(v){v.textContent=pinVal(d);v.hidden=!d.r}applyDev(d)}
 const _v=new THREE.Vector3();
 function updLabels(){
   const w=innerWidth,h=innerHeight;let fr=null;if(INS.d&&INS.d.k==='cam'){const f=$('#feed');if(f){fr=f.getBoundingClientRect()}}
@@ -1490,7 +1592,7 @@ function zoneDevs(zi){const c={soil:0,water:0,weather:0,cam:0,iot:0};DEV.forEach
 function renderZone(){
   const zi=SEL.z,el=$('#zinfo');let html;
   const devs=zoneDevs(zi);const dl=Object.keys(devs).filter(k=>devs[k]).map(k=>`<span><svg aria-hidden="true"><use href="#${KICON[k]}"/></svg>${devs[k]} ${({soil:'đất',water:'nước',weather:'thời tiết',cam:'camera',iot:'trạm IoT'})[k]}</span>`).join('');
-  if(zi<0){html=`<h3>Vườn cà phê IaKo 1</h3><p>Thôn Cây Xoài, xã Iako, Gia Lai · 22 ha · 8 khu · cà phê xen cau, 2.200 gốc/ha</p><div class="devs">${dl}</div>`}
+  if(zi<0){html=`<h3>Vườn cà phê Ia Ko</h3><p>Thôn Cây Xoài, xã Ia Ko, Chư Pưh, Gia Lai · 22 ha · 8 khu · cà phê xen cau, 2.200 gốc/ha</p><div class="devs">${dl}</div>`}
   else if(zi<NZ){html=`<h3>${ZNAME[zi]}</h3><p>Cà phê xen cau · giống Thiện Trường</p>
       <dl class="kv"><dt>Diện tích ước tính</dt><dd>≈ ${fmt(ZHA[zi])} ha</dd><dt>Số gốc ước tính</dt><dd>≈ ${fmtI(Math.round(ZHA[zi]*2200/50)*50)}</dd><dt>Lần tưới gần nhất</dt><dd id="zL">${ZS[zi].lastIrr||'Chưa tưới'}</dd></dl><div class="devs">${dl}</div>`}
   else if(zi===8){html=`<h3>Khu đất chưa trồng</h3><p>Đất đã cày, chưa xuống giống. Dải cây rừng chạy chéo giữa khu.</p><dl class="kv"><dt>Diện tích (ước tính theo sơ đồ)</dt><dd>≈ ${fmt(ZHA[8])} ha</dd></dl>`}
@@ -1536,6 +1638,7 @@ function openInsp(i){
   const zn=d.zone>=0?ZNAME[d.zone]:'';$('#iId').textContent=d.id+(zn?' · '+zn.toUpperCase():'');
   INS.pan=d.pan||0;
   renderInsp(false);$('#insp').classList.add('open');$('#insp').classList.toggle('cam',d.k==='cam');
+  if(!devOn(d))setShow(d.k,true);
   if(MOB)setTab('');
   focusDev(d);
   if((d.k==='soil'||d.k==='water'||d.k==='weather')&&!d.r)measure(d,true);
@@ -1546,23 +1649,23 @@ function renderInsp(live){
   if(live&&d.k==='cam'){updCamInsp();return}
   let h='';
   if(d.k==='soil'){
-    h=r?`<div class="rd">${rdCell('Độ ẩm đất (VWC)',fmt(r.vwc),'%','up')}${rdCell('Nhiệt độ đất',fmt(r.t),'°C')}${rdCell('pH đất',fmt(r.ph,2),'')}${rdCell('EC',fmtI(r.ec),'µS/cm')}${rdCell('N',fmtI(r.n),'mg/kg')}${rdCell('P · K',fmtI(r.p)+' · '+fmtI(r.k),'mg/kg')}</div>${spark(d.hist,'#B5E383')}`:'<p class="note">Đang đo…</p>';
+    h=r?`<div class="rd">${rdCell('Độ ẩm đất',fmt(r.vwc),'%','up')}${rdCell('Nhiệt độ đất',fmt(r.t),'°C')}${rdCell('pH đất',fmt(r.ph,2),'')}${rdCell('EC',fmtI(r.ec),'µS/cm')}${rdCell('N',fmtI(r.n),'mg/kg')}${rdCell('P · K',fmtI(r.p)+' · '+fmtI(r.k),'mg/kg')}</div>${spark(d.hist,'#B5E383')}`:'<p class="note">Đang đo…</p>';
     h+=`<div class="imeta"><span>Đo lúc <b>${d.at||'–'}</b></span><span>Pin <b>${88-d.idx%7}%</b></span><span>LoRa <b>−${86+d.idx%9} dBm</b></span></div>
       <div class="iacts"><button class="ab" data-a="measure"><svg aria-hidden="true"><use href="#a-probe"/></svg>Đo ngay</button><button class="ab" data-a="irr"><svg aria-hidden="true"><use href="#a-drop"/></svg>${irrigating([d.zone])?'Dừng tưới':'Tưới khu này'}</button></div>`;
   }else if(d.k==='water'){
     h=r?`<div class="rd">${rdCell('Nhiệt độ nước',fmt(r.t),'°C')}${rdCell('pH nước',fmt(r.ph,2),'')}${rdCell('EC nước',fmt(r.ec),'µS/cm','',true)}</div>${spark(d.hist,'#51ADCA')}`:'<p class="note">Đang đo…</p>';
     h+=`<div class="imeta"><span>Đo lúc <b>${d.at||'–'}</b></span><span>Mực hồ <b>${fmt(WSt.lvl*100,0)}%</b></span></div><div class="iacts"><button class="ab" data-a="measure" style="grid-column:1/-1"><svg aria-hidden="true"><use href="#a-probe"/></svg>Đo ngay</button></div>`;
   }else if(d.k==='weather'){
-    h=r?`<div class="rd">${rdCell('Nhiệt độ',fmt(r.T),'°C')}${rdCell('Độ ẩm',fmt(r.RH,0),'%RH')}${rdCell('Gió',fmt(r.ws),'m/s')}${rdCell('Hướng gió',fmtI(r.wd),'°')}${rdCell('Lượng mưa',fmt(r.rain),'mm/h')}${rdCell('Áp suất',fmt(r.P),'hPa')}${rdCell('Cường độ sáng',fmtI(r.lux),'lux','',true)}</div>${spark(d.hist,'#F2D35B')}`:'<p class="note">Đang đo…</p>';
+    h=r?`<div class="rd">${rdCell('Nhiệt độ',fmt(r.T),'°C')}${rdCell('Độ ẩm',fmt(r.RH,0),'%')}${rdCell('Gió',fmt(r.ws),'m/s')}${rdCell('Hướng gió',fmtI(r.wd),'°')}${rdCell('Lượng mưa',fmt(r.rain),'mm/h')}${rdCell('Áp suất',fmt(r.P),'hPa')}${rdCell('Cường độ sáng',fmtI(r.lux),'lux','',true)}</div>${spark(d.hist,'#F2D35B')}`:'<p class="note">Đang đo…</p>';
     h+=`<div class="imeta"><span>Đo lúc <b>${d.at||'–'}</b></span><span>Đặt tại khu nhà điều hành</span></div><div class="iacts"><button class="ab" data-a="measure" style="grid-column:1/-1"><svg aria-hidden="true"><use href="#a-probe"/></svg>Đo ngay</button></div>`;
   }else if(d.k==='cam'){
-    h=`<div class="feed" id="feed"><span class="tl">${d.id} · LIVE</span><span class="tr"><i></i>REC</span><span class="bl" id="fT">${clockStr(ENV.min)}</span><span class="br" id="fP">PAN 0°</span><span class="cross"></span><span class="ai">PHÁT HIỆN KHÓI</span></div>
+    h=`<div class="feed" id="feed"><span class="tl">${d.id} · LIVE</span><span class="tr"><i></i>REC</span><span class="bl" id="fT">${clockStr(ENV.min)}</span><span class="br" id="fP">Xoay 0°</span><span class="cross"></span><span class="ai">PHÁT HIỆN KHÓI</span></div>
       <div class="pan"><button class="tplay" id="patrol" aria-pressed="${INS.patrol}">Tự quét</button><input type="range" id="panR" min="-180" max="180" value="${Math.round((INS.pan*180/Math.PI+540)%360-180)}" aria-label="Xoay camera"></div>
       <div class="imeta"><span>Nguồn <b>pin mặt trời</b></span><span>Chế độ <b>24/7</b></span><span>Xoay <b>360°</b></span></div>
       <div class="iacts"><button class="ab" data-a="speaker"><svg aria-hidden="true"><use href="#a-spk"/></svg>Phát loa</button><button class="ab" data-a="look"><svg aria-hidden="true"><use href="#u-top"/></svg>Bay tới cột</button></div>`;
   }else if(d.k==='iot'){
-    h=`<div class="rd">${rdCell('Gói LoRa đã nhận',fmtI(ENV.pk),'')}${rdCell('Thiết bị trực tuyến','35','/35')}${rdCell('Kết nối Cloud','Ổn định','','up',true)}</div>
-      <p class="note">Gom dữ liệu từ cảm biến đất, nước và trạm thời tiết qua LoRa, rồi đẩy lên FarmBlock Cloud → Dashboard và Sổ rẫy.</p>
+    h=`<div class="rd">${rdCell('Gói dữ liệu đã nhận',fmtI(ENV.pk),'')}${rdCell('Thiết bị trực tuyến','35','/35')}${rdCell('Kết nối Cloud','Ổn định','','up',true)}</div>
+      <p class="note">Gom dữ liệu từ cảm biến đất, nước và trạm thời tiết qua LoRa, rồi đẩy lên Farmblock Cloud → Dashboard và Sổ Rẫy.</p>
       <div class="iacts"><button class="ab" data-a="sync" style="grid-column:1/-1"><svg aria-hidden="true"><use href="#i-cloud"/></svg>Đồng bộ lên Cloud</button></div>`;
   }else{
     h=`<p class="note" style="margin-top:0">Nơi đội vận hành tại chỗ làm việc: 01 quản lý và 02 kỹ sư thường trực. Bên cạnh là trạm IoT, trạm thời tiết, dàn pin mặt trời và hồ chứa nước tưới.</p>`;
@@ -1572,13 +1675,13 @@ function renderInsp(live){
   if(d.k==='cam'){$('#patrol').addEventListener('click',e=>{INS.patrol=!INS.patrol;e.currentTarget.setAttribute('aria-pressed',String(INS.patrol))});
     $('#panR').addEventListener('input',e=>{INS.patrol=false;$('#patrol').setAttribute('aria-pressed','false');INS.pan=d.pan0+(+e.target.value)*Math.PI/180})}
 }
-function updCamInsp(){const d=INS.d;const f=$('#fT');if(f)f.textContent=clockStr(ENV.min);const p=$('#fP');if(p)p.textContent='PAN '+Math.round(((d.head.rotation.y-d.pan0)*180/Math.PI+540)%360-180)+'°';const fd=$('#feed');if(fd)fd.classList.toggle('smk',!!d.alarm)}
+function updCamInsp(){const d=INS.d;const f=$('#fT');if(f)f.textContent=clockStr(ENV.min);const p=$('#fP');if(p)p.textContent='Xoay '+Math.round(((d.head.rotation.y-d.pan0)*180/Math.PI+540)%360-180)+'°';const fd=$('#feed');if(fd)fd.classList.toggle('smk',!!d.alarm)}
 function insAct(a){const d=INS.d;if(!d)return;
   if(a==='measure')measure(d,true);
   else if(a==='irr'){const zs=[d.zone];irrigating(zs)?stopIrr(zs):startIrr(zs);setTimeout(()=>renderInsp(false),50)}
   else if(a==='speaker'){sound.alarm(1.5);ripple(d.top.x,d.top.y-.6,d.top.z,'#FFB547',2.2,1,true);setTimeout(()=>ripple(d.top.x,d.top.y-.6,d.top.z,'#FFB547',2.2,1,true),400);log('w',`<b>${d.id}</b> phát loa cảnh báo tại hiện trường`)}
   else if(a==='look')focusDev(d,true);
-  else if(a==='sync'){beam(hubTop,'#B5E383');log('s','<b>IOT-HUB</b> → FarmBlock Cloud: đồng bộ thủ công');ENV.sync=0}
+  else if(a==='sync'){beam(hubTop,'#B5E383');log('s','<b>IOT-HUB</b> → Farmblock Cloud: đồng bộ thủ công');ENV.sync=0}
 }
 
 /* ---------- camera điều hướng ---------- */
@@ -1589,7 +1692,8 @@ function flyTo(target,r,phi,th,dur){const s=curSph();if(th==null)th=s.th;let dth
 function updFly(dt){if(!FLY)return;FLY.t+=dt/FLY.dur;const k=ease(Math.min(1,FLY.t));
   controls.target.lerpVectors(FLY.t0,FLY.t1,k);SPH.set(lerp(FLY.r0,FLY.r1,k),lerp(FLY.p0,FLY.p1,k),lerp(FLY.h0,FLY.h1,k));
   camera.position.setFromSpherical(SPH).add(controls.target);if(FLY.t>=1)FLY=null}
-const HOME=()=>({t:new THREE.Vector3(MOB?-2.5:-.5,0,MOB?4:6.5),r:MOB?(innerWidth/innerHeight<.6?170:130):(innerWidth/innerHeight<1.6?112:100),phi:MOB?.5:.68,th:0});
+const LAND=()=>MOB&&innerWidth>innerHeight;
+const HOME=()=>LAND()?{t:new THREE.Vector3(-.5,0,3),r:innerWidth/innerHeight>1.9?60:66,phi:.6,th:0}:({t:new THREE.Vector3(MOB?-2.5:-.5,0,MOB?4:6.5),r:MOB?(innerWidth/innerHeight<.6?170:130):(innerWidth/innerHeight<1.6?112:100),phi:MOB?.5:.68,th:0});
 function goHome(){const h=HOME();flyTo(h.t,h.r,h.phi,h.th,1.6);setTop(false)}
 function frameZone(i){const P=ZP[i],c=centroid(P);let r=0;P.forEach(p=>r=Math.max(r,Math.hypot(p[0]-c[0],p[1]-c[1])));
   flyTo(new THREE.Vector3(c[0],H(c[0],c[1]),c[1]+(MOB?0:1.5)),clamp(r*(MOB?6.5:4.6),24,80),MOB?.74:.78,null,1.4);setTop(false)}
@@ -1599,7 +1703,7 @@ function setTop(v){topOn=v;$('#zTop').setAttribute('aria-pressed',String(v))}
 
 /* ---------- chọn bằng chuột / chạm ---------- */
 const ray=new THREE.Raycaster(),mp=new THREE.Vector2();
-const PICKS=()=>DEV.map(d=>d.pick);
+const PICKS=()=>DEV.filter(devOn).map(d=>d.pick);
 function pick(cx,cy,groundToo){mp.set(cx/innerWidth*2-1,-cy/innerHeight*2+1);ray.setFromCamera(mp,camera);
   const h=ray.intersectObjects(PICKS(),false);if(h.length)return{dev:h[0].object.userData.dev};
   if(groundToo){const g=ray.intersectObject(ground,false);if(g.length){const p=g[0].point;return{zone:zoneAt(p.x,p.z)}}}return null}
@@ -1650,21 +1754,24 @@ function bindUI(){
   $('#tTilt').checked=UI.tilt;
   tg('#tPins',v=>{UI.pins=v;$('#labels').classList.toggle('hide-pins',!v)});
   tg('#tZt',v=>{UI.zt=v;$('#labels').classList.toggle('hide-zt',!v)});
-  tg('#tCov',v=>{UI.cov=v;covDiscs.forEach(c=>c.visible=v)});
+  tg('#tCov',v=>{UI.cov=v;DEV.forEach(applyDev)});
   tg('#tTilt',v=>{UI.tilt=v});
   tg('#tSound',v=>{UI.sound=v;sound.set(v)});
-  tg('#tLora',v=>{UI.lora=v});
+  $$('.dc[data-k]').forEach(b=>{b.setAttribute('aria-pressed',String(SHOW[b.dataset.k]));b.addEventListener('click',()=>setShow(b.dataset.k,!SHOW[b.dataset.k]))});
+  const lo=$('#tLora');lo.addEventListener('click',()=>{UI.lora=!UI.lora;lo.setAttribute('aria-pressed',String(UI.lora));syncLinks()});
+  DEV.forEach(applyDev);syncLinks();
+  if(MOB)$('#hint .hd').textContent='Kéo để xoay · Chụm hai ngón để phóng to · Chạm vào khu hoặc thiết bị để xem';
   $('#zIn').addEventListener('click',()=>{const s=curSph();flyTo(controls.target,Math.max(controls.minDistance,s.r*.68),s.phi,s.th,.6)});
   $('#zOut').addEventListener('click',()=>{const s=curSph();flyTo(controls.target,Math.min(controls.maxDistance,s.r*1.45),s.phi,s.th,.6)});
   $('#zHome').addEventListener('click',()=>{selectZone(-1,true);goHome()});
-  $('#zTop').addEventListener('click',()=>{if(topOn){goHome()}else{const t=new THREE.Vector3(-.5,0,0);flyTo(t,MOB?(innerWidth/innerHeight<.6?175:130):92,.001,0,1.5);setTop(true)}});
+  $('#zTop').addEventListener('click',()=>{if(topOn){goHome()}else{const t=new THREE.Vector3(-.5,0,0);flyTo(t,LAND()?66:MOB?(innerWidth/innerHeight<.6?175:130):92,.001,0,1.5);setTop(true)}});
   $('#zRot').addEventListener('click',e=>{controls.autoRotate=!controls.autoRotate;e.currentTarget.setAttribute('aria-pressed',String(controls.autoRotate))});
   $('#iX').addEventListener('click',closeInsp);
   $$('.tabs [data-tab]').forEach(b=>b.addEventListener('click',()=>{const t=b.dataset.tab;setTab(document.body.dataset.tab===t?'':t);if(document.body.dataset.tab)closeInsp()}));
   $$('[data-closetab]').forEach(b=>b.addEventListener('click',()=>setTab('')));
   addEventListener('keydown',e=>{if(e.target.matches('input,textarea'))return;if(e.key==='Escape'){closeInsp();if(MOB)setTab('')}if(e.key==='+'||e.key==='=')$('#zIn').click();if(e.key==='-')$('#zOut').click()});
   gauge('#gT',{min:0,max:45,label:'Nhiệt độ không khí',unit:'°C',c0:'#51ADCA',c1:'#FF8A5A'});
-  gauge('#gS',{min:0,max:60,label:'Độ ẩm đất trung bình',unit:'% VWC',c0:'#C8925A',c1:'#51ADCA',band:[25,40]});
+  gauge('#gS',{min:0,max:60,label:'Độ ẩm đất trung bình',unit:'%',c0:'#C8925A',c1:'#51ADCA',band:[25,40]});
   gauge('#gW',{min:0,max:30,label:'Gió',unit:'m/s',c0:'#B5E383',c1:'#FFB547',dir:true});
   setWindDir(ENV.wd);onWs();
 }
@@ -1734,7 +1841,7 @@ function simStep(dt){
   autoTelemetry(dt);
 }
 
-function animScene(dt){
+function animScene(dt){updLinks(dt);
   const t=U.uTime.value,bv=U.uWD.value;
   // camera tự quét
   DEV.forEach(d=>{if(d.k!=='cam')return;let tgt;
@@ -1778,17 +1885,19 @@ function renderPip(){
   pipCam.lookAt(hp.x+Math.sin(yaw)*10,hp.y-3.3,hp.z+Math.cos(yaw)*10);
   const lv=$('#labels');
   renderer.setScissorTest(true);renderer.setScissor(r.left,innerHeight-r.bottom,r.width,r.height);renderer.setViewport(r.left,innerHeight-r.bottom,r.width,r.height);
-  fovCone.visible=false;covDiscs.forEach(c=>c.visible=false);ZONE_LINES.forEach(m=>m.userData.v=m.visible);ZONE_LINES.forEach(m=>m.visible=false);
+  fovCone.visible=false;covDiscs.forEach(c=>c.visible=false);LORA_G.visible=false;ZONE_LINES.forEach(m=>m.userData.v=m.visible);ZONE_LINES.forEach(m=>m.visible=false);
   renderer.render(scene,pipCam);
   renderer.setScissorTest(false);renderer.setViewport(0,0,innerWidth,innerHeight);
-  covDiscs.forEach(c=>c.visible=UI.cov);ZONE_LINES.forEach(m=>m.visible=m.userData.v);
+  DEV.forEach(applyDev);LORA_G.visible=true;ZONE_LINES.forEach(m=>m.visible=m.userData.v);
 }
 
 /* ---------- vòng lặp chính ---------- */
 let last=performance.now(),cmpN;
+const ROT=matchMedia('(orientation:portrait) and (max-width:767px) and (pointer:coarse)');
 const STILL=/[?&]still/.test(location.search);
 function frame(now){
   if(!STILL)requestAnimationFrame(frame);
+  if(ROT.matches){last=now;return}
   const dt=Math.min(.05,(now-last)/1000);last=now;
   U.uTime.value+=dt;
   updFly(dt);controls.update();
@@ -1815,12 +1924,15 @@ async function boot(){
   P(10,'Đắp địa hình 22 ha…');await tick();buildBase();buildGround();
   P(30,'Dẫn suối, đào hồ chứa…');await tick();buildWater();
   P(45,'Trồng cà phê xen cau…');await tick();placeVeg();
-  P(70,'Lắp 35 thiết bị…');await tick();buildDevices();buildLedGlows();
+  P(70,'Lắp 35 thiết bị…');await tick();buildDevices();buildLedGlows();buildLinks();
   P(85,'Nối mạng LoRa…');await tick();buildIrrigation();buildRain();buildSmoke();buildClouds();buildBirds();buildLeaves();buildFlies();buildZoneLines();
   pipCam=new THREE.PerspectiveCamera(58,1.6,.15,300);
   buildLabels();bindUI();bindPointer();renderZone();
   cmpN=$('#cmpn');
   addEventListener('resize',onResize);
+  // điện thoại dọc: màn bắt xoay ngang; xoay xong thì căn lại góc nhìn
+  ROT.addEventListener('change',()=>{if(!ROT.matches){onResize();selectZone(-1,true);goHome()}});
+  const rb=$('#rotB');if(document.documentElement.requestFullscreen&&screen.orientation&&screen.orientation.lock){rb.hidden=false;rb.addEventListener('click',()=>{document.documentElement.requestFullscreen().then(()=>screen.orientation.lock('landscape')).catch(()=>{})})}
   // góc nhìn mở đầu: bay vào
   const hm=HOME();controls.target.copy(hm.t);SPH.set(hm.r*1.55,.45,.9);camera.position.setFromSpherical(SPH).add(controls.target);
   P(100,'Sẵn sàng');
