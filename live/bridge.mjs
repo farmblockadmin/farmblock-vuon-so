@@ -50,7 +50,13 @@ let last = null;
 try { last = JSON.parse(fs.readFileSync(CACHE, 'utf8')); } catch {}
 
 http.createServer((req, res) => {
-  const url = new URL(req.url, 'http://127.0.0.1');
+  // Chặn DNS rebinding: chỉ nhận yêu cầu gọi đúng địa chỉ máy này.
+  if (req.headers.host !== `127.0.0.1:${PORT}` && req.headers.host !== `localhost:${PORT}`) { res.writeHead(403).end(); return; }
+  let url, rel;
+  try {
+    url = new URL(req.url, 'http://127.0.0.1');
+    rel = url.pathname === '/' ? 'index.html' : decodeURIComponent(url.pathname).replace(/^\/+/, '');
+  } catch { res.writeHead(400).end(); return; }
   if (url.pathname === '/ingest') {
     if (req.headers.origin !== DASH) { res.writeHead(403).end(); return; }
     const cors = { 'Access-Control-Allow-Origin': DASH, 'Access-Control-Allow-Headers': 'content-type', 'Access-Control-Allow-Private-Network': 'true' };
@@ -73,7 +79,6 @@ http.createServer((req, res) => {
     res.end(JSON.stringify(last ? { ...last, age_s: Math.round((Date.now() - Date.parse(last.received_at)) / 1000) } : { error: 'chưa có dữ liệu' }));
     return;
   }
-  const rel = url.pathname === '/' ? 'index.html' : decodeURIComponent(url.pathname).replace(/^\/+/, '');
   const file = path.resolve(ROOT, rel);
   if (!TYPES[path.extname(file)] || path.dirname(file) !== ROOT || !fs.existsSync(file)) { res.writeHead(404).end(); return; }
   res.writeHead(200, { 'Content-Type': TYPES[path.extname(file)], 'Cache-Control': 'no-store' });
