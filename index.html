@@ -417,6 +417,66 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 }
 @media (min-width:1024px) and (max-height:900px){.log{height:150px}.left{max-height:calc(100svh - var(--top) - 76px - 16px - 166px)}.cluster .cl-foot{display:none}.g.c .gv b{font-size:38px}}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* ---------- gọn chữ: bớt mono, bớt in đậm, bớt khung trang trí ---------- */
+:root{--mono:var(--font)}
+.k{font-size:14px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--txt-2)}
+.k::before{display:none}
+.k.s,.k.w{color:var(--txt-2)}
+.hud{--c:rgba(181,227,131,.35)}
+.crumb span{letter-spacing:0;text-transform:none;font-size:13px;color:var(--txt-2)}
+.stat{letter-spacing:0;font-variant-numeric:tabular-nums}
+.stat b,.lk,.zb,.ab,.wb,.tplay,.dc,.dc b,.devs span,.kv dd,.dp .vl,.meter .row b,.sl .row b,.wind .wl b{font-weight:500}
+.zt b{font-weight:600}
+.zt span{letter-spacing:0;font-size:11.5px;font-weight:500}
+.dp .vl{font-variant-numeric:tabular-nums}
+.sim{letter-spacing:0;text-transform:none;font-size:13.5px;color:var(--txt-2)}
+
+/* ---------- chế độ Trực tiếp ---------- */
+body:not(.live) .live-only{display:none!important}
+body.live .sim-only{display:none!important}
+.modes{display:flex;gap:2px;padding:3px;margin-left:2px;border-radius:999px;background:var(--pn-2);flex:none}
+.modes[hidden]{display:none}
+.modes button{min-height:40px;padding:0 14px;border-radius:999px;font-size:14.5px;font-weight:500;color:var(--txt-2);white-space:nowrap;transition:background-color .2s,color .2s}
+.modes button:hover{color:#fff}
+.modes button[aria-pressed="true"]{background:var(--lime);color:var(--g800)}
+.live.stale{color:var(--warn)}
+.live.stale i{background:var(--warn);animation:none}
+.mbar{display:grid;grid-template-columns:repeat(4,1fr) auto;gap:4px;align-items:center;margin-bottom:8px}
+.mb{min-height:40px;border-radius:10px;background:var(--pn-2);font-size:14px;font-weight:500;color:var(--txt-2);transition:background-color .2s,color .2s}
+.mb:hover{color:#fff;background:var(--pn-3)}
+.mb[aria-pressed="true"]{background:rgba(181,227,131,.18);color:#fff;box-shadow:inset 0 0 0 1px var(--line-2)}
+.lg{display:flex;align-items:center;gap:6px;padding-left:8px;font-size:12.5px;color:var(--txt-2);white-space:nowrap}
+.lg i{width:44px;height:6px;border-radius:3px;background:linear-gradient(90deg,#D98C47,#9ED159,#40A6D9)}
+.dc:disabled{opacity:.45;cursor:default}
+body.live .g .band{display:none}
+.dp .vl.red{border-color:var(--bad);color:#FFD2CB}
+.dp .vl.yellow{border-color:var(--warn);color:#FFE3B0}
+.atl{display:grid;gap:4px}
+.at{display:flex;align-items:flex-start;gap:10px;width:100%;padding:9px 10px;border-radius:12px;background:var(--pn-2);text-align:left;transition:background-color .2s}
+.at:hover{background:var(--pn-3)}
+.at i{flex:none;width:8px;height:8px;margin-top:7px;border-radius:50%;background:var(--txt-2)}
+.at.red i{background:var(--bad)}.at.warning i,.at.yellow i{background:var(--warn)}
+.at b{display:block;font-size:14.5px;font-weight:500;color:#fff;line-height:1.3}
+.at small{display:block;font-size:13px;color:var(--txt-2);margin-top:1px}
+#iBody .rd .red b{color:#FFB3A8}#iBody .rd .yellow b{color:#FFD58A}
+#iBody .rd [data-m2]{cursor:pointer}
+.note.cap{margin-top:2px;font-size:12.5px}.note.warn{color:#FFD58A}
+@media (max-width:1023px){.modes button{min-height:36px;padding:0 10px;font-size:13px}.lg{display:none}.mbar{grid-template-columns:repeat(4,1fr)}.mb{min-height:36px;font-size:13px}}
+
+.crumb b,.lk{white-space:nowrap}
+.gv small{text-transform:none}
+body.live .crumb span{display:none}
+@media (max-width:1680px){body.live .links{display:none}body.live .stat{margin-left:auto}}
+body.live .dc{flex-direction:row;gap:5px;min-height:36px;font-size:13px}
+body.live .dc svg{display:none}
+body.live .zt{background:var(--zc,#C9CFC2)}
+body.live .zt::after{border-top-color:var(--zc,#C9CFC2)}
+body.live .zt.bare{background:rgba(245,228,161,.92)}
+body.live .zt.bare::after{border-top-color:rgba(245,228,161,.92)}
+body.live .zt.on{box-shadow:0 0 0 2px #fff,0 6px 18px -6px rgba(0,0,0,.45)}
+body.live .devbar{margin-bottom:4px;padding-bottom:8px}
+@media (max-width:1023px){body.live .dc{min-height:32px;font-size:12px}body.live .hint{display:none}.mb{background:var(--pn)}.mb[aria-pressed="true"]{background:#21402A}.mbar{margin-bottom:4px}}
 </style>
 </head>
 <body data-tab="">
@@ -456,7 +516,8 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 <header class="top">
   <div class="bar">
     <a class="brand" href="https://farmblockadmin.github.io/farmblock-website/" data-nav="home" aria-label="Farmblock – về trang chủ" translate="no"><svg class="mk" aria-hidden="true"><use href="#logo"/></svg><svg class="wm" viewBox="0 0 603 70" aria-hidden="true" focusable="false"><path d="M0 68.2207V1.17285H48.1721V12.0217H12.7026V30.0054H44.6545V40.8542H12.7026V68.2207H0Z"/><path d="M47.2622 68.2207L73.3514 1.17285H89.3762L115.563 68.2207H101.786L96.4114 53.951H65.7298L60.3556 68.2207H47.2622ZM69.736 43.1999H92.3075L85.5654 25.0208C85.3048 24.3692 84.9791 23.5547 84.5883 22.5773C84.2626 21.5348 83.9043 20.4271 83.5134 19.2543C83.1226 18.0163 82.7317 16.7782 82.3409 15.5402C81.95 14.3022 81.5917 13.1945 81.266 12.2172H80.7775C80.3866 13.5203 79.8981 15.019 79.3118 16.7131C78.7907 18.4072 78.2695 20.0036 77.7484 21.5022C77.2273 23.0009 76.8039 24.1737 76.4781 25.0208L69.736 43.1999Z"/><path d="M123.476 68.2207V1.17285H158.75C163.701 1.17285 167.805 2.0199 171.062 3.71402C174.319 5.40814 176.762 7.81899 178.39 10.9466C180.019 14.0742 180.833 17.7556 180.833 21.9909C180.833 26.3565 179.856 30.2334 177.902 33.6217C175.948 36.9447 173.081 39.4533 169.303 41.1474L183.178 68.2207H169.303L156.991 43.2977H136.179V68.2207H123.476ZM136.179 32.6443H157.773C161.03 32.6443 163.538 31.6995 165.297 29.8099C167.056 27.9203 167.935 25.314 167.935 21.9909C167.935 19.8407 167.544 18.0488 166.763 16.6154C165.981 15.1167 164.841 13.9764 163.343 13.1945C161.845 12.4126 159.988 12.0217 157.773 12.0217H136.179V32.6443Z"/><path d="M193.516 68.2207V1.17285H213.547L224.1 38.5085C224.491 39.8117 224.882 41.2778 225.272 42.9067C225.663 44.5357 226.022 46.0995 226.347 47.5981C226.738 49.0967 227.031 50.3999 227.227 51.5076H228.008C228.139 50.5302 228.334 49.3248 228.595 47.8913C228.855 46.4578 229.148 44.9266 229.474 43.2977C229.865 41.6035 230.288 39.9746 230.744 38.4108L241.297 1.17285H261.133V68.2207H248.43V34.3058C248.43 31.3085 248.463 28.3113 248.528 25.314C248.593 22.3167 248.658 19.743 248.723 17.5927C248.854 15.4425 248.919 14.1719 248.919 13.781H248.137C248.007 14.3674 247.681 15.638 247.16 17.5927C246.639 19.5475 246.085 21.6651 245.499 23.9457C244.913 26.2262 244.392 28.1809 243.936 29.8099L232.894 68.2207H221.169L210.127 29.9076C209.736 28.5393 209.28 26.9104 208.759 25.0208C208.303 23.066 207.815 21.0787 207.293 19.0588C206.837 17.0389 206.414 15.2796 206.023 13.781H205.241C205.307 15.5402 205.372 17.6579 205.437 20.1339C205.502 22.5448 205.567 25.0208 205.632 27.5619C205.697 30.038 205.73 32.2859 205.73 34.3058V68.2207H193.516Z"/><path d="M275.961 68.2207V1.17285H312.505C316.088 1.17285 319.28 1.85701 322.081 3.22533C324.947 4.59365 327.195 6.51582 328.823 8.99184C330.452 11.4679 331.266 14.3674 331.266 17.6905C331.266 20.2316 330.777 22.5448 329.8 24.6298C328.823 26.7149 327.488 28.4742 325.794 29.9076C324.165 31.276 322.309 32.3185 320.224 33.0352V33.4262C322.7 33.9475 324.915 34.9574 326.869 36.456C328.823 37.8895 330.354 39.7465 331.461 42.0271C332.569 44.2425 333.122 46.8162 333.122 49.7483C333.122 53.9185 332.178 57.3718 330.289 60.1085C328.465 62.8451 325.989 64.8976 322.863 66.2659C319.801 67.5691 316.348 68.2207 312.505 68.2207H275.961ZM288.663 57.3718H310.844C313.515 57.3718 315.697 56.6551 317.391 55.2216C319.15 53.723 320.029 51.4099 320.029 48.2823C320.029 46.4578 319.671 44.8615 318.954 43.4931C318.238 42.1248 317.13 41.0823 315.632 40.3655C314.199 39.5836 312.342 39.1927 310.062 39.1927H288.663V57.3718ZM288.663 28.5393H309.183C311.137 28.5393 312.766 28.1809 314.068 27.4642C315.436 26.7475 316.446 25.7701 317.098 24.5321C317.814 23.2941 318.172 21.9258 318.172 20.4271C318.172 17.5601 317.391 15.4425 315.827 14.0742C314.329 12.7059 312.342 12.0217 309.867 12.0217H288.663V28.5393Z"/><path d="M344.951 68.2207V1.17285H357.653V57.1764H391.267V68.2207H344.951Z"/><path d="M428.499 69.3935C421.529 69.3935 415.503 68.1555 410.422 65.6795C405.341 63.1383 401.432 59.294 398.696 54.1465C396.026 48.999 394.69 42.5158 394.69 34.6968C394.69 26.8126 396.026 20.3294 398.696 15.247C401.432 10.0995 405.341 6.28777 410.422 3.81176C415.503 1.27059 421.529 0 428.499 0C435.534 0 441.56 1.27059 446.575 3.81176C451.656 6.28777 455.532 10.0995 458.203 15.247C460.939 20.3294 462.307 26.8126 462.307 34.6968C462.307 42.5158 460.939 48.999 458.203 54.1465C455.532 59.294 451.656 63.1383 446.575 65.6795C441.56 68.1555 435.534 69.3935 428.499 69.3935ZM428.499 58.6424C431.886 58.6424 434.85 58.1537 437.391 57.1764C439.996 56.199 442.178 54.7655 443.937 52.8759C445.696 50.9212 447.031 48.5429 447.943 45.7411C448.855 42.8741 449.311 39.5836 449.311 35.8696V33.7194C449.311 29.9402 448.855 26.6171 447.943 23.7502C447.031 20.8832 445.696 18.5049 443.937 16.6154C442.178 14.6606 439.996 13.1945 437.391 12.2172C434.85 11.2398 431.886 10.7511 428.499 10.7511C425.111 10.7511 422.115 11.2398 419.509 12.2172C416.969 13.1945 414.819 14.6606 413.06 16.6154C411.301 18.5049 409.966 20.8832 409.054 23.7502C408.207 26.6171 407.784 29.9402 407.784 33.7194V35.8696C407.784 39.5836 408.207 42.8741 409.054 45.7411C409.966 48.5429 411.301 50.9212 413.06 52.8759C414.819 54.7655 416.969 56.199 419.509 57.1764C422.115 58.1537 425.111 58.6424 428.499 58.6424Z"/><path d="M503.662 69.3935C496.822 69.3935 490.959 68.1881 486.073 65.7773C481.253 63.3664 477.54 59.6198 474.934 54.5375C472.394 49.39 471.123 42.7764 471.123 34.6968C471.123 22.9031 473.99 14.1719 479.722 8.50315C485.454 2.83438 493.434 0 503.662 0C509.199 0 514.182 0.944794 518.612 2.83438C523.106 4.72397 526.657 7.59093 529.262 11.4353C531.933 15.2145 533.268 20.0362 533.268 25.9004H520.273C520.273 22.6425 519.556 19.9058 518.123 17.6905C516.755 15.4099 514.833 13.6832 512.358 12.5104C509.883 11.3375 507.049 10.7511 503.857 10.7511C499.427 10.7511 495.747 11.6307 492.815 13.39C489.884 15.0841 487.702 17.6253 486.269 21.0135C484.901 24.4018 484.217 28.6045 484.217 33.6217V35.7719C484.217 40.8542 484.901 45.0895 486.269 48.4777C487.702 51.866 489.852 54.4071 492.718 56.1013C495.649 57.7954 499.362 58.6424 503.857 58.6424C507.244 58.6424 510.208 58.0886 512.749 56.9809C515.289 55.808 517.244 54.1139 518.612 51.8985C520.045 49.618 520.761 46.8488 520.761 43.5909H533.268C533.268 49.4551 531.966 54.3094 529.36 58.1537C526.754 61.9329 523.204 64.7673 518.709 66.6569C514.28 68.4813 509.264 69.3935 503.662 69.3935Z"/><path d="M544.574 68.2207V1.17285H557.277V32.2533L586.981 1.17285H602.517L576.526 28.3438L603.006 68.2207H587.958L567.927 37.2379L557.277 46.6207V68.2207H544.574Z"/></svg></a>
-    <div class="crumb"><b>Vườn số Ia Ko</b><span>Sa bàn tương tác</span><em class="simtag"><i></i>Mô phỏng</em></div>
+    <div class="crumb"><b>Vườn số Ia Ko</b><span>Sa bàn tương tác</span><em class="simtag"><i></i><span id="mTag">Mô phỏng</span></em></div>
+    <div class="modes" id="modes" role="group" aria-label="Chế độ dữ liệu" hidden><button data-m="live" aria-pressed="false">Trực tiếp</button><button data-m="sim" aria-pressed="true">Mô phỏng</button></div>
   </div>
   <nav class="links" aria-label="Trang khác">
     <a class="lk" href="https://farmblockadmin.github.io/farmblock-website/cong-nghe.html" data-nav="tech"><svg aria-hidden="true"><use href="#u-back"/></svg>Công nghệ</a>
@@ -464,32 +525,36 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
     <a class="lk vm" aria-label="Xem vườn Mang Yang trực tuyến" href="https://vuonmau.farmblock.vn/ca-phe-mang-yang-1" target="_blank" rel="noopener"><span class="l">Xem vườn Mang Yang</span><svg aria-hidden="true"><use href="#u-ext"/></svg></a>
   </nav>
   <div class="stat" role="status">
-    <span class="live"><i></i>MÔ PHỎNG</span><span class="sp"></span>
+    <span class="live" id="stL"><i></i><span id="stM">Mô phỏng</span></span><span class="sp"></span>
     <span><b id="clock" class="num">07:30</b></span><span class="sp"></span>
-    <span><b id="online">35</b>/35 thiết bị</span><span class="sp"></span>
-    <span>Dữ liệu <b id="pk" class="num">0</b> gói</span>
+    <span class="sim-only"><b id="online">35</b>/35 thiết bị</span><span class="live-only" id="stD"></span><span class="sp"></span>
+    <span class="sim-only">Dữ liệu <b id="pk" class="num">0</b> gói</span><span class="live-only" id="stA"></span>
   </div>
 </header>
 
 <div class="mstrip pl hud" aria-hidden="true">
-  <div><b id="m-t">–</b><span>Nhiệt độ</span></div>
-  <div class="c"><b id="m-s">–</b><span>Ẩm đất</span></div>
+  <div><b id="m-t">–</b><span>Không khí</span></div>
+  <div class="c"><b id="m-s">–</b><span id="ml-s">Ẩm đất</span></div>
   <div><b id="m-w">–</b><span>Gió m/s</span></div>
-  <div><b id="m-r">–</b><span>Mưa mm/h</span></div>
+  <div><b id="m-r">–</b><span id="ml-r">Mưa mm/h</span></div>
 </div>
 
 <!-- PANEL TRÁI: phân khu + thao tác -->
 <aside class="pl left hud" aria-label="Phân khu và thao tác">
-  <div class="pt"><span class="k">Khu vực &amp; thao tác</span><button class="x" data-closetab aria-label="Đóng"><svg><use href="#u-x"/></svg></button></div>
+  <div class="pt"><span class="k" id="ltT">Khu vực &amp; thao tác</span><button class="x" data-closetab aria-label="Đóng"><svg><use href="#u-x"/></svg></button></div>
   <div class="scroll">
     <div class="sec">
-      <span class="k">01 · Phân khu</span>
+      <span class="k">Phân khu</span>
       <div class="zgrid" id="zgrid">
         <button class="zb all" data-z="-1" aria-pressed="true"><svg width="20" height="20" aria-hidden="true"><use href="#u-map"/></svg>Toàn vườn</button>
       </div>
     </div>
-    <div class="sec">
-      <span class="k s">02 · Thử điều khiển</span>
+    <div class="sec live-only">
+      <span class="k">Cần chú ý</span>
+      <div class="atl" id="atl"></div>
+    </div>
+    <div class="sec sim-only">
+      <span class="k s">Thử điều khiển</span>
       <div class="acts">
         <button class="ab pri" id="bIrr"><svg aria-hidden="true"><use href="#a-drop"/></svg><span>Tưới thử</span></button>
         <button class="ab" id="bSoil"><svg aria-hidden="true"><use href="#a-probe"/></svg>Đo đất</button>
@@ -499,7 +564,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
       <p class="note" id="ahint"></p>
     </div>
     <div class="sec">
-      <span class="k">03 · Thông tin khu</span>
+      <span class="k">Thông tin khu</span>
       <div class="zinfo" id="zinfo" style="margin-top:0"></div>
     </div>
   </div>
@@ -507,10 +572,15 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 
 <!-- PANEL PHẢI: môi trường -->
 <aside class="pl right hud" aria-label="Môi trường và hiển thị">
-  <div class="pt"><span class="k">Môi trường</span><button class="x" data-closetab aria-label="Đóng"><svg><use href="#u-x"/></svg></button></div>
+  <div class="pt"><span class="k" id="rtT">Môi trường</span><button class="x" data-closetab aria-label="Đóng"><svg><use href="#u-x"/></svg></button></div>
   <div class="scroll">
-    <div class="sec">
-      <span class="k">04 · Thời tiết</span>
+    <div class="sec live-only">
+      <span class="k">Trạm trung tâm</span>
+      <dl class="kv" id="ctr" style="margin-top:0"></dl>
+      <p class="note">Bầu trời và ánh sáng trên sa bàn được dựng từ số đo của trạm.</p>
+    </div>
+    <div class="sec sim-only">
+      <span class="k">Thời tiết</span>
       <div class="wgrid" id="wgrid">
         <button class="wb" data-w="clear" aria-pressed="true"><svg aria-hidden="true"><use href="#w-sun"/></svg>Nắng</button>
         <button class="wb" data-w="cloud"><svg aria-hidden="true"><use href="#w-cloud"/></svg>Nhiều mây</button>
@@ -536,13 +606,13 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
         <input type="range" id="ws" min="0" max="20" step="0.5" value="3" aria-label="Tốc độ gió" style="--tr:#2B3B2F;--tr2:#FFB547">
       </div>
     </div>
-    <div class="sec">
-      <span class="k w">05 · Thử tình huống</span>
+    <div class="sec sim-only">
+      <span class="k w">Thử tình huống</span>
       <button class="ab smoke" id="bSmoke" style="width:100%"><svg aria-hidden="true"><use href="#a-fire"/></svg><span>Mô phỏng khói ở khu đất trống</span></button>
       <p class="note">Khói bay theo hướng gió. Camera gần nhất báo động, trạm thời tiết ghi nhận ánh sáng giảm, nhiệt độ tăng.</p>
     </div>
     <div class="sec">
-      <span class="k s">06 · Hiển thị</span>
+      <span class="k s">Hiển thị</span>
       <div class="togs">
         <label class="chk"><input type="checkbox" id="tPins" checked>Biểu tượng thiết bị</label>
         <label class="chk"><input type="checkbox" id="tZt" checked>Tên khu</label>
@@ -550,13 +620,14 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
         <label class="chk"><input type="checkbox" id="tTilt" checked>Hiệu ứng sa bàn</label>
         <label class="chk"><input type="checkbox" id="tSound">Âm thanh</label>
       </div>
-      <p class="sim" style="margin-top:10px">⚠ Số liệu là mô phỏng minh hoạ, không phải dữ liệu đo thật</p>
+      <p class="sim sim-only" style="margin-top:10px">Số liệu ở chế độ này là giả lập.</p><p class="sim live-only" style="margin-top:10px">Chỉ đọc số liệu, không điều khiển thiết bị tại vườn.</p>
     </div>
   </div>
 </aside>
 
 <!-- CỤM ĐỒNG HỒ -->
 <div class="cluster pl hud" aria-label="Chỉ số môi trường">
+  <div class="mbar live-only" id="mbar" role="group" aria-label="Chỉ số hiển thị trên vườn"></div>
   <div class="devbar" role="group" aria-label="Bật tắt từng loại thiết bị">
     <button class="dc" data-k="soil" style="--c:#D9A15B"><span><svg aria-hidden="true"><use href="#i-soil"/></svg><b>9</b></span>Đo đất</button>
     <button class="dc" data-k="water" style="--c:#51ADCA"><span><svg aria-hidden="true"><use href="#i-water"/></svg><b>2</b></span>Đo nước</button>
@@ -572,7 +643,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   </div>
   <div class="cl-foot">
     <div><b id="f-rh">–</b><span>Ẩm không khí %</span></div>
-    <div><b id="f-rain">–</b><span>Mưa mm/h</span></div>
+    <div><b id="f-rain">–</b><span id="fl-rain">Mưa mm/h</span></div>
     <div><b id="f-lux">–</b><span>Ánh sáng</span></div>
     <div><b id="f-p">–</b><span>Áp suất hPa</span></div>
   </div>
@@ -581,7 +652,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 <!-- NHẬT KÝ -->
 <section class="pl log hud" aria-label="Nhật ký dữ liệu">
   <div class="pt" style="padding:0 0 6px 2px"><span class="k">Nhật ký</span><button class="x" data-closetab aria-label="Đóng"><svg><use href="#u-x"/></svg></button></div>
-  <span class="k hide-m" id="logk">07 · Nhật ký dữ liệu</span>
+  <span class="k hide-m" id="logk">Nhật ký dữ liệu</span>
   <ol class="scroll" id="log" aria-live="polite"></ol>
 </section>
 
@@ -606,10 +677,10 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 <div class="hint" id="hint"><svg aria-hidden="true"><use href="#u-drag"/></svg><span class="hd">Kéo để xoay · Cuộn để phóng to · Bấm vào khu hoặc thiết bị để xem</span></div>
 
 <nav class="tabs" role="tablist" aria-label="Bảng điều khiển">
-  <button role="tab" data-tab="zone" aria-selected="false"><svg aria-hidden="true"><use href="#u-map"/></svg>Khu &amp; thử</button>
-  <button role="tab" data-tab="env" aria-selected="false"><svg aria-hidden="true"><use href="#u-sliders"/></svg>Thời tiết</button>
+  <button role="tab" data-tab="zone" aria-selected="false"><svg aria-hidden="true"><use href="#u-map"/></svg><span id="tbZ">Khu &amp; thử</span></button>
+  <button role="tab" data-tab="env" aria-selected="false"><svg aria-hidden="true"><use href="#u-sliders"/></svg><span id="tbE">Thời tiết</span></button>
   <button role="tab" data-tab="log" aria-selected="false"><svg aria-hidden="true"><use href="#u-list"/></svg>Nhật ký</button>
-  <button id="mSmoke" aria-label="Mô phỏng khói"><svg aria-hidden="true"><use href="#a-fire"/></svg>Khói</button>
+  <button id="mSmoke" class="sim-only" aria-label="Mô phỏng khói"><svg aria-hidden="true"><use href="#a-fire"/></svg>Khói</button>
 </nav>
 
 <div class="loader" id="loader"><div class="in"><svg aria-hidden="true"><use href="#logo"/></svg><span id="ldt">Đang dựng vườn Ia Ko…</span><div class="bar2"><i id="ldb"></i></div></div></div>
@@ -649,12 +720,12 @@ const SC=14;
 const toW=p=>[(p[0]-500)/SC,(p[1]-370)/SC];
 const OUT_UV=[[272,20],[300,28],[392,126],[505,116],[612,126],[708,140],[875,142],[902,140],[930,205],[882,207],[717,236],[694,252],[690,300],[700,432],[762,426],[735,564],[545,562],[455,562],[424,596],[305,616],[182,648],[84,716],[60,600],[50,470],[58,362],[185,316],[205,305],[100,130],[240,122],[262,80]];
 const ZD=[
-  {id:'A', poly:[[95,372],[185,324],[338,307],[342,378],[285,380],[285,606],[180,640],[95,700],[82,600],[78,470]],lab:[200,470],ang:0},
-  {id:'B1',poly:[[330,462],[455,470],[455,556],[420,590],[305,610]],lab:[384,520],ang:.12},
-  {id:'B2',poly:[[458,425],[545,428],[547,556],[458,556]],lab:[500,488],ang:0},
-  {id:'C1',poly:[[105,135],[240,130],[255,150],[272,215],[335,240],[345,300],[200,304]],lab:[262,246],ang:-.25},
+  {id:'A', poly:[[95,372],[185,324],[338,307],[342,378],[285,380],[285,606],[180,640],[95,700],[82,600],[78,470]],lab:[240,470],ang:0},
+  {id:'B1',poly:[[330,462],[455,470],[455,556],[420,590],[305,610]],lab:[420,505],ang:.12},
+  {id:'B2',poly:[[458,425],[545,428],[547,556],[458,556]],lab:[515,515],ang:0},
+  {id:'C1',poly:[[105,135],[240,130],[255,150],[272,215],[335,240],[345,300],[200,304]],lab:[292,278],ang:-.25},
   {id:'C2',poly:[[547,432],[758,428],[730,560],[549,557]],lab:[620,484],ang:0},
-  {id:'C3',poly:[[525,335],[688,305],[695,430],[545,430]],lab:[600,380],ang:.05},
+  {id:'C3',poly:[[525,335],[688,305],[695,430],[545,430]],lab:[600,395],ang:.05},
   {id:'C4',poly:[[510,120],[705,140],[712,175],[690,250],[685,300],[525,333],[515,240]],lab:[600,215],ang:.05},
   {id:'C5',poly:[[708,150],[874,146],[900,150],[915,200],[880,200],[715,230]],lab:[815,186],ang:Math.PI/2-.1},
   {id:'BARE',poly:[[282,42],[388,130],[505,120],[515,240],[530,420],[458,422],[350,384],[342,240],[300,172]],lab:[420,250],ang:.32},
@@ -669,7 +740,7 @@ const FOREST=[[466,240],[528,418]];
 const GATES=[[244,116,-.4],[880,222,2.4],[760,424,.6],[734,572,3.1],[330,632,3.5],[92,722,3.8]];
 const DEV=[];
 [[205,190],[293,272],[222,345],[135,422],[160,515],[222,582],[355,497],[332,572],[436,562],[485,455],[578,460],[690,460],[608,523],[578,357],[565,405],[652,413],[553,177],[660,175],[638,268],[548,302],[772,182],[893,172]].forEach((p,i)=>DEV.push({k:'cam',uv:p,id:'CAM-'+String(i+1).padStart(2,'0')}));
-[[237,270],[232,410],[238,492],[380,562],[527,522],[687,516],[640,358],[572,255],[686,218]].forEach((p,i)=>DEV.push({k:'soil',uv:p,id:'SOIL-'+String(i+1).padStart(2,'0')}));
+[[240,230],[211,403],[170,498],[359,538],[490,451],[539,267],[687,516],[668,345],[686,218]].forEach((p,i)=>DEV.push({k:'soil',uv:p,id:'SOIL-'+String(i+1).padStart(2,'0')}));
 [[350,436],[372,446]].forEach((p,i)=>DEV.push({k:'water',uv:p,id:'WTR-0'+(i+1)}));
 DEV.push({k:'iot',uv:[300,436],id:'IOT-HUB'});
 DEV.push({k:'weather',uv:[300,462],id:'WS-01'});
@@ -842,9 +913,9 @@ function buildGround(){
     Object.assign(sh.uniforms,U);
     sh.uniforms.uZm={value:zoneTex};sh.uniforms.uWt={value:wetTex};
     sh.uniforms.uBox={value:new THREE.Vector4(BOX.x0-step/2,BOX.z0-step/2,(nx+1)*step,(nz+1)*step)};
-    sh.uniforms.uRoadWet=U.uRainV;sh.uniforms.uDry=GU.uDry;sh.uniforms.uSel=GU.uSel;
+    sh.uniforms.uRoadWet=U.uRainV;sh.uniforms.uDry=GU.uDry;sh.uniforms.uSel=GU.uSel;sh.uniforms.uTint=GU.uTint;
     sh.vertexShader='attribute vec4 aK;attribute float aIn;varying vec4 vK;varying float vIn;varying vec3 vW;\n'+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvK=aK;vIn=aIn;vW=(modelMatrix*vec4(transformed,1.)).xyz;');
-    sh.fragmentShader='uniform sampler2D uZm,uWt;uniform vec4 uBox;uniform float uTime,uRoadWet,uDry,uSel;varying vec4 vK;varying float vIn;varying vec3 vW;\n'+NOISE_GLSL+sh.fragmentShader.replace('vec4 diffuseColor = vec4( diffuse, opacity );',`
+    sh.fragmentShader='uniform sampler2D uZm,uWt;uniform vec4 uBox;uniform float uTime,uRoadWet,uDry,uSel,uTint;varying vec4 vK;varying float vIn;varying vec3 vW;\n'+NOISE_GLSL+sh.fragmentShader.replace('vec4 diffuseColor = vec4( diffuse, opacity );',`
       if(vIn<.5)discard;
       vec2 zuv=(vW.xz-uBox.xy)/uBox.zw;
       float zid=floor(texture2D(uZm,zuv).r*255.+.5);
@@ -870,13 +941,15 @@ function buildGround(){
       if(abs(zid-9.)<.5)col=mix(col,vec3(.70,.68,.62)*(.88+.18*n2),vK.x);
       col+=vec3(.55,.85,.30)*wt.b*(.07+.05*sin(uTime*3.))*(vK.x+vK.w);
       col=mix(col,col*vec3(.62,.82,1.08)+vec3(0.,.02,.05),wt.g*(.45+.15*sin(uTime*4.+vW.x*2.))*vK.x);
+      float ta=wt.a;vec3 tc=ta<.5?mix(vec3(.85,.55,.28),vec3(.62,.82,.35),ta*2.):mix(vec3(.62,.82,.35),vec3(.25,.65,.85),ta*2.-1.);
+      col=mix(col,tc,uTint*.62*step(.01,ta)*(vK.x+vK.w));
       float gRough=.96-.4*wet*(vK.x+vK.w)-.6*pud*vK.y-.12*uRoadWet;
       vec4 diffuseColor=vec4(pow(col,vec3(2.2)),1.);`).replace('float roughnessFactor = roughness;','float roughnessFactor = clamp(gRough,.25,1.);');
   };
   ground=new THREE.Mesh(g,m);ground.receiveShadow=true;ground.name='ground';
   scene.add(ground);
 }
-const GU={uDry:{value:0},uSel:{value:-1}};
+const GU={uDry:{value:0},uSel:{value:-1},uTint:{value:0}};
 
 /* ---------- khối đế (lát cắt đất) + mặt bàn ---------- */
 function buildBase(){
@@ -1388,6 +1461,7 @@ function readDev(d){
 }
 function pinVal(d){
   const r=d.r;if(!r)return'…';
+  if(LM.on&&d.k==='soil'){const m=METRIC[LM.metric],v=d.node&&d.node[LM.metric];return v==null?'–':fmt(v,m.d)+m.u}
   if(d.k==='soil')return fmt(r.vwc)+'%';
   if(d.k==='water')return'pH '+fmt(r.ph,1);
   if(d.k==='weather')return fmt(r.T)+'°C';
@@ -1400,7 +1474,7 @@ function sendPacket(d,cb){
   else setTimeout(()=>arrived(cb),700);
 }
 function arrived(cb){ENV.pk++;ENV.sync++;$('#pk').textContent=fmtI(ENV.pk);cb&&cb();
-  if(ENV.sync>=9){ENV.sync=0;if(SHOW.iot)beam(hubTop,'#B5E383');log('s','<b>IOT-HUB</b> → Farmblock Cloud: đồng bộ 9 bản ghi')}}
+  if(ENV.sync>=9&&!LM.on){ENV.sync=0;if(SHOW.iot)beam(hubTop,'#B5E383');log('s','<b>IOT-HUB</b> → Farmblock Cloud: đồng bộ 9 bản ghi')}}
 function measure(d,manual){
   if(d.busy)return;d.busy=true;setPin(d);
   if(devOn(d)){ripple(d.x,d.y+.08,d.z,KCOL[d.k],2.6,1.2);
@@ -1534,7 +1608,7 @@ const sound=(()=>{
 const UI={pins:true,zt:true,cov:false,tilt:!LOW,sound:false,lora:true};
 // bật tắt theo loại thiết bị; điện thoại mặc định ẩn camera cho đỡ rối
 const SHOW={soil:true,water:true,weather:true,iot:true,cam:!MOB};
-const devOn=d=>SHOW[d.k]!==false||!!d.alarm;
+const devOn=d=>(SHOW[d.k]!==false&&!(LM.on&&d.id==='WTR-02'))||!!d.alarm;
 function applyDev(d){const on=devOn(d);if(d.obj)d.obj.visible=on;if(d.pin)d.pin.classList.toggle('off',!on);if(d.disc)d.disc.visible=UI.cov&&on}
 function syncLinks(){LINKS.forEach(l=>{l.g.visible=UI.lora&&SHOW.iot&&devOn(l.d)})}
 function setShow(k,v){SHOW[k]=v;const b=$(`.dc[data-k="${k}"]`);if(b)b.setAttribute('aria-pressed',String(v));DEV.forEach(d=>{if(d.k===k)applyDev(d)});syncLinks();if(!v&&INS.d&&INS.d.k===k&&!INS.d.alarm)closeInsp()}
@@ -1553,7 +1627,7 @@ const LB=[];
 function buildLabels(){
   const root=$('#labels');
   ZD.forEach((z,i)=>{if(i===9)return;const el=document.createElement('button');el.className='zt'+(i===8?' bare':'');
-    el.innerHTML=i===8?'<b style="font-size:13px">Đất trống</b>':`<b>${z.id}</b><span>KHU ${z.id}</span>`;el.setAttribute('aria-label',ZNAME[i]);
+    el.innerHTML=i===8?'<b style="font-size:13px">Đất trống</b>':`<b>${z.id}</b><span>Khu ${z.id}</span>`;el.setAttribute('aria-label',ZNAME[i]);
     el.addEventListener('click',()=>selectZone(i));root.appendChild(el);
     const w=toW(z.lab);LB.push({el,p:new THREE.Vector3(w[0],H(w[0],w[1])+(i===8?1.6:1.9),w[1]),z:i,ox:0})});
   DEV.forEach((d,i)=>{const el=document.createElement('button');el.className='dp '+d.k;el.style.setProperty('--c',KCOL[d.k]);
@@ -1561,7 +1635,7 @@ function buildLabels(){
     el.setAttribute('aria-label',KNAME[d.k]+' '+d.id);el.addEventListener('click',e=>{e.stopPropagation();openInsp(i)});
     root.appendChild(el);d.pin=el;LB.push({el,p:d.top.clone().add(new THREE.Vector3(0,.35,0)),d:i})});
 }
-function setPin(d){if(!d.pin)return;d.pin.classList.toggle('busy',!!d.busy);d.pin.classList.toggle('alarm',!!d.alarm);d.pin.classList.toggle('on',INS.d===d);const v=d.pin.querySelector('.vl');if(v){v.textContent=pinVal(d);v.hidden=!d.r}applyDev(d)}
+function setPin(d){if(!d.pin)return;d.pin.classList.toggle('busy',!!d.busy);d.pin.classList.toggle('alarm',!!d.alarm);d.pin.classList.toggle('on',INS.d===d);const v=d.pin.querySelector('.vl');if(v){v.textContent=pinVal(d);v.hidden=!d.r;const lv=LM.on&&d.node&&d.node.levels[LM.metric];v.classList.toggle('red',!!lv&&lv.level==='red');v.classList.toggle('yellow',!!lv&&lv.level==='yellow')}applyDev(d)}
 const _v=new THREE.Vector3();
 function updLabels(){
   const w=innerWidth,h=innerHeight;let fr=null;if(INS.d&&INS.d.k==='cam'){const f=$('#feed');if(f){fr=f.getBoundingClientRect()}}
@@ -1589,7 +1663,7 @@ function gauge(id,o){
     <path class="arc" d="${arcD(100,100,r,A0,A1)}" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" stroke="url(#gg${id.slice(1)})"/>
     <circle class="dot" r="6" fill="#fff" cx="0" cy="0"/>${o.dir?'<g class="needle"><path d="M100 50l7 14h-14z" fill="#FFB547"/></g>':''}</svg>
     <div class="gv"><b class="num">–</b><small>${o.unit}</small></div><div class="gl">${o.label}</div>`;
-  GA[id]={o,arc:el.querySelector('.arc'),dot:el.querySelector('.dot'),b:el.querySelector('.gv b'),gl:el.querySelector('.gl'),nd:el.querySelector('.needle'),A0,A1,r};
+  GA[id]={o,el,arc:el.querySelector('.arc'),dot:el.querySelector('.dot'),b:el.querySelector('.gv b'),gl:el.querySelector('.gl'),nd:el.querySelector('.needle'),A0,A1,r};
 }
 function setGauge(id,v,txt,dirDeg){const g=GA[id];if(!g)return;const k=clamp((v-g.o.min)/(g.o.max-g.o.min),0,1);g.arc.setAttribute('stroke-dashoffset',(100-k*100).toFixed(1));
   const a=(g.A0+(g.A1-g.A0)*k)*Math.PI/180;g.dot.setAttribute('cx',(100+g.r*Math.cos(a)).toFixed(1));g.dot.setAttribute('cy',(100+g.r*Math.sin(a)).toFixed(1));g.b.textContent=txt;
@@ -1599,18 +1673,19 @@ function setGauge(id,v,txt,dirDeg){const g=GA[id];if(!g)return;const k=clamp((v-
 function zoneDevs(zi){const c={soil:0,water:0,weather:0,cam:0,iot:0};DEV.forEach(d=>{if((zi<0||d.zone===zi)&&c[d.k]!=null)c[d.k]++});return c}
 function renderZone(){
   const zi=SEL.z,el=$('#zinfo');let html;
+  if(LM.on){el.innerHTML=lvZone(zi);updButtons();return}
   const devs=zoneDevs(zi);const dl=Object.keys(devs).filter(k=>devs[k]).map(k=>`<span><svg aria-hidden="true"><use href="#${KICON[k]}"/></svg>${devs[k]} ${({soil:'đất',water:'nước',weather:'thời tiết',cam:'camera',iot:'trạm IoT'})[k]}</span>`).join('');
   if(zi<0){html=`<h3>Vườn cà phê Ia Ko</h3><p>Thôn Cây Xoài, xã Ia Ko, Chư Pưh, Gia Lai · 22 ha · 8 khu · cà phê xen cau, 2.200 gốc/ha</p><div class="devs">${dl}</div>`}
   else if(zi<NZ){html=`<h3>${ZNAME[zi]}</h3><p>Cà phê xen cau · giống Thiện Trường</p>
       <dl class="kv"><dt>Diện tích ước tính</dt><dd>≈ ${fmt(ZHA[zi])} ha</dd><dt>Số gốc ước tính</dt><dd>≈ ${fmtI(Math.round(ZHA[zi]*2200/50)*50)}</dd><dt>Lần tưới gần nhất</dt><dd id="zL">${ZS[zi].lastIrr||'Chưa tưới'}</dd></dl><div class="devs">${dl}</div>`}
   else if(zi===8){html=`<h3>Khu đất chưa trồng</h3><p>Đất đã cày, chưa xuống giống. Dải cây rừng chạy chéo giữa khu.</p><dl class="kv"><dt>Diện tích (ước tính theo sơ đồ)</dt><dd>≈ ${fmt(ZHA[8])} ha</dd></dl>`}
   else{html=`<h3>Khu nhà điều hành</h3><p>Nhà điều hành, trạm IoT trung tâm, trạm thời tiết và hồ chứa nước tưới.</p><div class="devs">${dl}</div>`}
-  if(zi<NZ)html+=`<div class="meter"><div class="row"><span>Độ ẩm đất ${zi<0?'trung bình':''}</span><b id="zV">–</b></div><div class="tr"><i class="ok" style="left:${25/60*100}%;width:${15/60*100}%"></i><i class="v" id="zBar"></i></div><small>Vạch xanh: vùng ẩm phù hợp 25–40% (minh hoạ)</small></div>`;
+  if(zi<NZ)html+=`<div class="meter"><div class="row"><span>Độ ẩm đất ${zi<0?'trung bình':''}</span><b id="zV">–</b></div><div class="tr"><i class="ok" style="left:${25/60*100}%;width:${15/60*100}%"></i><i class="v" id="zBar"></i></div><small>Vạch xanh: vùng ẩm phù hợp 25–40%</small></div>`;
   el.innerHTML=html;updButtons();updZoneLive();
 }
 function avgVwc(zs){return zs.reduce((s,i)=>s+ZS[i].vwc,0)/zs.length}
 function updZoneLive(){
-  const zi=SEL.z;if(zi>=NZ)return;const zs=selZones();const v=avgVwc(zs);
+  const zi=SEL.z;if(zi>=NZ||LM.on)return;const zs=selZones();const v=avgVwc(zs);
   const zv=$('#zV');if(zv)zv.textContent=fmt(v)+'%';const zb=$('#zBar');if(zb)zb.style.width=clamp(v/60*100,0,100)+'%';
   const zt=$('#zT');if(zt&&zi>=0)zt.textContent=fmt(ZS[zi].tS)+'°C';const zl=$('#zL');if(zl&&zi>=0)zl.textContent=ZS[zi].lastIrr||'Chưa tưới';
 }
@@ -1642,18 +1717,19 @@ function spark(arr,col){if(arr.length<2)return'';const mn=Math.min(...arr),mx=Ma
 function openInsp(i){
   const d=DEV[i];const prev=INS.d;INS.d=d;SEL.d=i;if(prev)setPin(prev);setPin(d);
   $('#iGem').style.setProperty('--c',KCOL[d.k]);$('#iGem use').setAttribute('href','#'+KICON[d.k]);
-  $('#iName').textContent=KNAME[d.k];
-  const zn=d.zone>=0?ZNAME[d.zone]:'';$('#iId').textContent=d.id+(zn?' · '+zn.toUpperCase():'');
+  $('#iName').textContent=LM.on&&d.node?'Điểm đo '+d.node.id.slice(-1):KNAME[d.k];
+  const zn=d.zone>=0?ZNAME[d.zone]:'';$('#iId').textContent=LM.on&&d.node?(d.node.zone?'Khu '+d.node.zone:'Chưa xác nhận vị trí'):d.id+(zn?' · '+zn:'');
   INS.pan=d.pan||0;
   renderInsp(false);$('#insp').classList.add('open');$('#insp').classList.toggle('cam',d.k==='cam');
   if(!devOn(d))setShow(d.k,true);
   if(MOB)setTab('');
   focusDev(d);
-  if((d.k==='soil'||d.k==='water'||d.k==='weather')&&!d.r)measure(d,true);
+  if(!LM.on&&(d.k==='soil'||d.k==='water'||d.k==='weather')&&!d.r)measure(d,true);
 }
 function closeInsp(){const d=INS.d;INS.d=null;SEL.d=-1;if(d)setPin(d);$('#insp').classList.remove('open');fovCone.visible=false}
 function renderInsp(live){
   const d=INS.d;if(!d)return;const b=$('#iBody');const r=d.r;
+  if(LM.on){b.innerHTML=lvInsp(d);b.querySelectorAll('[data-m2]').forEach(x=>x.addEventListener('click',()=>lvMetric(x.dataset.m2)));return}
   if(live&&d.k==='cam'){updCamInsp();return}
   let h='';
   if(d.k==='soil'){
@@ -1784,10 +1860,159 @@ function bindUI(){
   setWindDir(ENV.wd);onWs();
 }
 
+/* ================= CHẾ ĐỘ TRỰC TIẾP: SỐ LIỆU THẬT TỪ DASHBOARD ================= */
+const LM={on:false,data:null,metric:'moisture',lastAt:null,rain0:null,fail:0};
+const METRIC={
+  moisture:{l:'Độ ẩm',full:'Độ ẩm đất',u:'%',d:1,min:0,max:100,t0:10,t1:100},
+  temperature:{l:'Nhiệt độ',full:'Nhiệt độ đất',u:'°C',d:1,min:15,max:40,t0:22,t1:36},
+  ph:{l:'pH',full:'pH đất',u:'',d:1,min:3,max:10,t0:4,t1:9},
+  ec:{l:'EC',full:'EC đất',u:' µS/cm',d:0,min:0,max:1500,t0:0,t1:1200}
+};
+const LABEL_METRIC={'Độ ẩm đất':'moisture','Nhiệt độ đất':'temperature','pH đất':'ph','EC đất':'ec'};
+const vnMin=()=>{const d=new Date(Date.now()+7*36e5);return d.getUTCHours()*60+d.getUTCMinutes()+d.getUTCSeconds()/60};
+const atMs=s=>Date.parse(String(s).replace(' ','T')+':00+07:00');
+const hm=s=>String(s).slice(11,16);
+const ago=m=>m<1?'vừa xong':m<60?Math.round(m)+' phút trước':m<1440?fmt(m/60,0)+' giờ trước':fmt(m/1440,0)+' ngày trước';
+const ptName=id=>id==='CENTER'?'Trạm trung tâm':'Điểm '+id.slice(-1);
+const soilDev=id=>DEV.find(d=>d.k==='soil'&&d.node&&d.node.id===id);
+const zoneNodes=zi=>LM.data.nodes.filter(n=>n.zone===ZD[zi].id);
+const mean=a=>{const v=a.filter(x=>x!=null);return v.length?v.reduce((s,x)=>s+x,0)/v.length:null};
+const signed=(v,d)=>v==null?'–':(v>0?'+':'')+fmt(v,d);
+
+function lvApply(data,first){
+  const prevAt=LM.lastAt;LM.data=data;LM.lastAt=data.at;
+  const c=data.center;
+  DEV.forEach(d=>{
+    if(d.k==='soil'){const n=data.nodes[+d.id.slice(-2)-1];d.node=n||null;
+      d.r=n?{vwc:n.moisture,t:n.temperature,ph:n.ph,ec:n.ec,n:n.nitrogen,p:n.phosphorus,k:n.potassium}:null;d.at=n?hm(n.at):null}
+    else if(d.k==='water'){d.r={t:c.water_temp,ph:c.water_ph,ec:c.water_ec};d.at=hm(c.at)}
+    else if(d.k==='weather'){d.r={T:c.air_temp,RH:c.air_humidity,ws:c.wind_speed,wd:c.wind_direction,P:c.pressure,lux:c.light};d.at=hm(c.at)}
+    setPin(d)});
+  if(c.wind_direction!=null)setWindDir(c.wind_direction);
+  // trời trên sa bàn dựng từ số đo: có mưa mới thì mưa, ban ngày thiếu sáng thì nhiều mây
+  const rained=LM.rain0!=null&&c.rainfall_total>LM.rain0+.05;LM.rain0=c.rainfall_total;
+  const hr=vnMin()/60,day=Math.max(0,Math.sin((hr-6)/12*Math.PI)),exp=112000*Math.pow(day,1.15);
+  setWeather(rained?'rain':exp>5000&&c.light<exp*.35?'cloud':'clear',true);
+  lvZones();lvAttention();lvCenter();renderZone();if(INS.d)renderInsp(true);
+  if(first||data.at!==prevAt)lvBatch(first);
+}
+// số mới về: sóng LoRa chạy từ từng điểm đo về trạm, ghi vào nhật ký
+function lvBatch(first){
+  const ds=DEV.filter(d=>d.k==='soil'&&d.node||d.k==='water'&&d.id==='WTR-01'||d.k==='weather');
+  ds.forEach((d,i)=>setTimeout(()=>{if(!LM.on)return;sendPacket(d,()=>{
+    const n=d.node;
+    if(n)log('',`<b>${ptName(n.id)}</b>${n.zone?' · Khu '+n.zone:''}: ẩm ${fmt(n.moisture)}% · ${fmt(n.temperature)}°C · pH ${fmt(n.ph)}`);
+    else if(d.k==='water')log('',`<b>Nước tưới</b>: pH ${fmt(d.r.ph,2)} · EC ${fmtI(d.r.ec)} µS/cm · ${fmt(d.r.t)}°C`);
+    else log('',`<b>Trạm thời tiết</b>: ${fmt(d.r.T)}°C · ẩm ${fmt(d.r.RH,0)}% · gió ${fmt(d.r.ws)} m/s`)})},first?600+i*420:i*300));
+}
+const lvRamp=t=>{const a=[217,140,71],b=[158,209,89],c=[64,166,217],[p,q,k]=t<.5?[a,b,t*2]:[b,c,t*2-1];return`rgb(${p.map((x,i)=>Math.round(x+(q[i]-x)*k)).join(',')})`};
+function lvZones(){
+  const m=METRIC[LM.metric];
+  ZS.forEach((z,i)=>{
+    if(i>=NZ){z.tint=0;return}
+    const ns=zoneNodes(i),v=mean(ns.map(n=>n[LM.metric])),vw=mean(ns.map(n=>n.moisture));
+    z.vwc=vw==null?28:vw;const t=v==null?null:clamp((v-m.t0)/(m.t1-m.t0),0,1);z.tint=t==null?0:Math.round(5+t*245);
+    z.nv=v});
+  LB.forEach(l=>{if(l.z==null||l.z>=NZ)return;const v0=ZS[l.z].nv,t0=v0==null?null:clamp((v0-m.t0)/(m.t1-m.t0),0,1);if(t0==null)l.el.style.removeProperty('--zc');else l.el.style.setProperty('--zc',lvRamp(t0));const sp=l.el.querySelector('span');if(sp){const v=ZS[l.z].nv;sp.textContent=v==null?'–':fmt(v,m.d)+m.u.replace(' µS/cm','')}});
+}
+function lvMetric(k){
+  LM.metric=k;$$('#mbar .mb').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.m===k)));
+  const g=GA['#gS'],m=METRIC[k];g.o.min=m.min;g.o.max=m.max;g.el.querySelector('.gv small').textContent=m.u.trim();
+  lvZones();DEV.forEach(d=>{if(d.k==='soil')setPin(d)});renderZone();if(INS.d)renderInsp(true);
+}
+function lvAttention(){
+  const box=$('#atl'),items=LM.data.attention;
+  box.innerHTML=items.length?items.map((a,i)=>{const st=a.stations.filter(s=>s!=='ALL');
+    return`<button class="at ${a.level}" data-i="${i}"><i></i><span><b>${a.metric}: ${a.label.toLowerCase()}</b><small>${st.length?st.map(ptName).join(', '):'Toàn bộ điểm đo'}</small></span></button>`}).join(''):'<p class="note" style="margin-top:0">Hiện không có gì cần chú ý.</p>';
+  box.querySelectorAll('.at').forEach(b=>b.addEventListener('click',()=>{const a=items[+b.dataset.i],m=LABEL_METRIC[a.metric];if(m&&m!==LM.metric)lvMetric(m);
+    const s=a.stations.find(x=>x!=='ALL');if(!s)return;const d=s==='CENTER'?DEV.find(x=>x.k===(/nước/.test(a.metric)?'water':'weather')):soilDev(s);if(d)openInsp(d.idx)}));
+}
+function lvCenter(){
+  const c=LM.data.center,k=LM.data.kpi;const pump=v=>v>0?fmt(v)+' m³/h':'Tắt';
+  $('#ctr').innerHTML=[['Nước tưới pH',fmt(c.water_ph,2)],['Nước tưới EC',fmtI(c.water_ec)+' µS/cm'],['Nhiệt độ nước',fmt(c.water_temp)+'°C'],['Bơm 1',pump(c.pump1_rate)],['Bơm 2',pump(c.pump2_rate)],['Tưới hôm nay',fmt(k.irrigation_today,0)+' m³'],['Tưới 7 ngày',fmt(k.irrigation_7d)+' m³'],['Mưa 7 ngày',fmt(k.rain_7d)+' mm'],['Hướng gió',fmtI(c.wind_direction)+'°']].map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join('');
+}
+function lvZone(zi){
+  const D=LM.data;if(!D)return'';const k=D.kpi;
+  const row=(a,b)=>`<dt>${a}</dt><dd>${b}</dd>`;
+  if(zi<0)return`<h3>Vườn cà phê Ia Ko</h3><p>22 ha · 8 khu · 9 điểm đo đất · 1 trạm trung tâm</p><dl class="kv">${row('Độ ẩm đất',fmt(k.moisture)+'%')}${row('Nhiệt độ đất',fmt(k.soil_temp)+'°C')}${row('pH đất (trung vị)',fmt(k.ph))}${row('EC đất',fmtI(k.ec)+' µS/cm')}</dl>`;
+  if(zi>=NZ)return zi===8?'<h3>Khu đất chưa trồng</h3><p>Không có điểm đo trong khu này.</p>':'<h3>Khu nhà điều hành</h3><p>Trạm trung tâm đo thời tiết và nước tưới nằm gần đây.</p>';
+  const ns=zoneNodes(zi);if(!ns.length)return`<h3>${ZNAME[zi]}</h3><p>Khu này chưa có điểm đo được gán trên sơ đồ Dashboard.</p>`;
+  return`<h3>${ZNAME[zi]}</h3><p>${ns.map(n=>ptName(n.id)).join(', ')} · đo lúc ${hm(ns[0].at)}</p><dl class="kv">${Object.keys(METRIC).map(m=>{const v=mean(ns.map(n=>n[m]));return row(METRIC[m].full,v==null?'–':fmt(v,METRIC[m].d)+METRIC[m].u)}).join('')}</dl>`;
+}
+function lvInsp(d){
+  const D=LM.data;if(!D)return'';
+  const cell=(l,v,u,lv,extra)=>`<div class="${lv?lv.level:''}${extra==='wide'?' wide':''}"${extra&&extra!=='wide'?extra:''}><span>${l}</span><b>${v}<small>${u||''}</small></b></div>`;
+  if(d.k==='soil'&&d.node){const n=d.node,m=METRIC[LM.metric],h=(n.hist[LM.metric]||[]).filter(x=>x!=null);
+    const q=D.attention.filter(a=>a.kind==='quality'&&a.stations.includes(n.id)).map(a=>`${a.metric.toLowerCase()} ${a.label.toLowerCase()}`);
+    const lb=x=>x?` title="${x.label}"`:'';
+    return`<div class="rd">${Object.keys(METRIC).map(k=>cell(METRIC[k].full,n[k]==null?'–':fmt(n[k],METRIC[k].d),METRIC[k].u,n.levels[k],` data-m2="${k}" role="button"${lb(n.levels[k])}`)).join('')}${cell('N · P · K',[n.nitrogen,n.phosphorus,n.potassium].map(v=>v==null?'–':fmtI(v)).join(' · '),' mg/kg',null,'wide')}</div>
+      ${spark(h,'#B5E383')}<p class="note cap">${m.full}, 7 ngày qua</p>
+      <div class="imeta"><span>Đo lúc <b>${hm(n.at)}</b></span><span>So với 24 giờ trước <b>${signed(n.d24[LM.metric],m.d)}${m.u}</b></span></div>
+      ${q.length?`<p class="note warn">Cần kiểm tra cảm biến: ${q.join(', ')}.</p>`:''}${n.zone?'':'<p class="note">Vị trí của điểm đo này chưa được xác nhận trên sơ đồ Dashboard, ghim chỉ đặt tạm.</p>'}`}
+  const c=D.center;
+  if(d.k==='water')return`<div class="rd">${cell('pH nước',fmt(c.water_ph,2),'',c.levels.water_ph)}${cell('Nhiệt độ nước',fmt(c.water_temp),'°C',c.levels.water_temp)}${cell('EC nước',fmtI(c.water_ec),' µS/cm',c.levels.water_ec,'wide')}</div><div class="imeta"><span>Đo lúc <b>${hm(c.at)}</b></span></div>`;
+  if(d.k==='weather')return`<div class="rd">${cell('Nhiệt độ',fmt(c.air_temp),'°C',c.levels.air_temp)}${cell('Độ ẩm',fmt(c.air_humidity,0),'%',c.levels.air_humidity)}${cell('Gió',fmt(c.wind_speed),' m/s',c.levels.wind_speed)}${cell('Hướng gió',fmtI(c.wind_direction),'°')}${cell('Mưa hôm nay',fmt(D.kpi.rain_today),' mm')}${cell('Áp suất',fmt(c.pressure),' hPa')}${cell('Cường độ sáng',fmtI(c.light),' lux',null,'wide')}</div><div class="imeta"><span>Đo lúc <b>${hm(c.at)}</b></span></div>`;
+  if(d.k==='iot')return`<div class="rd">${cell('Thiết bị báo về',lvOnline()+'','/'+(D.nodes.length+1))}${cell('Nhịp gửi',fmt(D.cadence.median_min,0),' phút')}${cell('Bản ghi đã lưu',fmtI(D.total_rows),'',null,'wide')}${cell('Đồng bộ lần cuối',hm(D.sync.last_run),'',null,'wide')}</div><p class="note">Cảm biến gửi qua LoRa về trạm, trạm đẩy lên Farmblock Cloud, rồi Dashboard và sa bàn đọc lại.</p>`;
+  return'<p class="note" style="margin-top:0">Nơi đội vận hành tại chỗ làm việc. Bên cạnh là trạm trung tâm và hồ chứa nước tưới.</p>';
+}
+function lvOnline(){const D=LM.data,now=Date.now();return D.nodes.filter(n=>now-atMs(n.at)<36e5*2).length+(now-atMs(D.center.at)<36e5*2?1:0)}
+function lvStatus(){
+  const D=LM.data;if(!D)return;const age=(Date.now()-atMs(D.at))/6e4,stale=age>30||LM.fail>2;
+  $('#stL').classList.toggle('stale',stale);
+  $('#stM').textContent=LM.fail>2?'Mất kết nối':stale?'Số liệu cũ':'Trực tiếp';$('#mTag').textContent=$('#stM').textContent;
+  $('#stD').innerHTML=`<b>${lvOnline()}</b>/${D.nodes.length+1} điểm báo về`;
+  $('#stA').innerHTML=`Đo lúc <b class="num">${hm(D.at)}</b> · ${ago(age)}`;
+}
+function lvHUD(){
+  const D=LM.data,c=D.center,k=D.kpi,m=METRIC[LM.metric];
+  const zv=SEL.z>=0&&SEL.z<NZ?ZS[SEL.z].nv:({moisture:k.moisture,temperature:k.soil_temp,ph:k.ph,ec:k.ec})[LM.metric];
+  setGauge('#gT',c.air_temp,fmt(c.air_temp));setGauge('#gS',zv==null?m.min:zv,zv==null?'–':fmt(zv,m.d));setGauge('#gW',c.wind_speed,fmt(c.wind_speed),c.wind_direction);
+  GA['#gS'].gl.textContent=m.full+(SEL.z>=0&&SEL.z<NZ?' · '+ZNAME[SEL.z]:' toàn vườn');
+  $('#f-rh').textContent=fmt(c.air_humidity,0);$('#f-rain').textContent=fmt(k.rain_today);$('#f-lux').textContent=c.light>=1000?fmt(c.light/1000,1)+'k':fmtI(c.light);$('#f-p').textContent=fmt(c.pressure,0);
+  $('#m-t').textContent=fmt(c.air_temp)+'°';$('#m-s').textContent=zv==null?'–':fmt(zv,m.d>0&&LM.metric!=='ph'?0:m.d)+m.u.trim();$('#m-w').textContent=fmt(c.wind_speed);$('#m-r').textContent=fmt(k.rain_today);
+  $('#clock').textContent=clockStr(ENV.min);lvStatus();
+}
+function setMode(on){
+  if(on===LM.on)return;
+  if(on){if(SMK.on)smokeOn(false);if(ENV.play)$('#tplay').click();ZS.forEach((z,i)=>{if(z.irr>0){z.irr=0;if(IRR[i])IRR[i].visible=false}});sound.sprinkle(false);z0=ZS.map(z=>z.v0)}
+  LM.on=on;document.body.classList.toggle('live',on);closeInsp();$('#log').innerHTML='';
+  $$('#modes button').forEach(b=>b.setAttribute('aria-pressed',String((b.dataset.m==='live')===on)));
+  $('#ltT').textContent=on?'Khu vực':'Khu vực & thao tác';$('#rtT').textContent=on?'Trạm trung tâm':'Môi trường';$('#tbZ').textContent=on?'Khu vực':'Khu & thử';$('#tbE').textContent=on?'Trạm':'Thời tiết';
+  $('#fl-rain').textContent=on?'Mưa hôm nay mm':'Mưa mm/h';$('#ml-r').textContent=on?'Mưa hôm nay':'Mưa mm/h';$('#ml-s').textContent=on?'Toàn vườn':'Ẩm đất';$('#logk').textContent=on?'Số liệu vừa về':'Nhật ký dữ liệu';
+  const camB=$('.dc[data-k="cam"]'),wB=$('.dc[data-k="water"] b');camB.disabled=on;camB.title=on?'Dashboard chưa trả về danh sách camera':'';camB.querySelector('b').textContent=on?'0':'22';wB.textContent=on?'1':'2';
+  setShow('cam',on?false:!MOB);
+  if(on){lvMetric(LM.metric);lvApply(LM.data,true)}
+  else{
+    const g=GA['#gS'];g.o.min=0;g.o.max=60;g.el.querySelector('.gv small').textContent='%';
+    DEV.forEach(d=>{d.r=null;d.at=null;d.node=null;d.hist=[];setPin(d)});
+    ZS.forEach((z,i)=>{z.vwc=z.v0=z0&&z0[i]||z.v0;z.tint=0});
+    LB.forEach(l=>{if(l.z!=null&&l.z<NZ){const sp=l.el.querySelector('span');if(sp)sp.textContent='Khu '+ZD[l.z].id}});
+    $('#stM').textContent='Mô phỏng';$('#mTag').textContent='Mô phỏng';$('#stL').classList.remove('stale');autoT=.5;setWeather('clear',true);renderZone();
+  }
+  DEV.forEach(applyDev);syncLinks();
+}
+let z0=null;
+async function lvPoll(){
+  if(document.hidden)return;
+  try{
+    const r=await fetch('live.json',{cache:'no-store'});if(!r.ok)throw 0;
+    const d=await r.json();if(!d.nodes)throw 0;LM.fail=0;
+    if(!LM.data){LM.data=d;$('#modes').hidden=false;if(!/[?&]sim/.test(location.search))setMode(true)}
+    else if(LM.on&&(d.at!==LM.lastAt||d.received_at!==LM.data.received_at))lvApply(d,false);else LM.data=d;
+  }catch(e){LM.fail++;if(!LM.data)clearInterval(LM.t)}
+}
+function lvInit(){
+  $('#mbar').innerHTML=Object.keys(METRIC).map(k=>`<button class="mb" data-m="${k}" aria-pressed="${k===LM.metric}">${METRIC[k].l}</button>`).join('')+'<span class="lg" aria-hidden="true">Thấp<i></i>Cao</span>';
+  $('#mbar').addEventListener('click',e=>{const b=e.target.closest('.mb');if(b)lvMetric(b.dataset.m)});
+  $('#modes').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setMode(b.dataset.m==='live')});
+  lvPoll();LM.t=setInterval(lvPoll,30000);
+}
+
 /* ---------- cập nhật HUD (4 lần/giây) ---------- */
 let hudT=0;
 function updHUD(dt){
   hudT-=dt;if(hudT>0)return;hudT=.25;
+  if(LM.on&&LM.data){lvHUD();return}
   const zs=SEL.z<NZ?selZones():[0,1,2,3,4,5,6,7];const v=avgVwc(zs);
   setGauge('#gT',ENV.T,fmt(ENV.T));setGauge('#gS',v,fmt(v));setGauge('#gW',ENV.wsNow,fmt(ENV.wsNow),ENV.wd);
   GA['#gS'].gl.textContent=SEL.z>=0&&SEL.z<NZ?'Độ ẩm đất · '+ZNAME[SEL.z]:'Độ ẩm đất trung bình';
@@ -1801,6 +2026,7 @@ function updHUD(dt){
 
 /* ================= VÒNG LẶP MÔ PHỎNG ================= */
 function simStep(dt){
+  const LC=LM.on&&LM.data?LM.data.center:null;if(LC)ENV.min=vnMin();
   const t=U.uTime.value,wx=WX[ENV.w],h=ENV.min/60;
   if(ENV.play){ENV.min=(ENV.min+dt*10)%1440}
   const day=Math.max(0,Math.sin((h-6)/12*Math.PI));
@@ -1808,7 +2034,7 @@ function simStep(dt){
   let RHt=clamp(96-(Tt-18)*3.1+wx.rh,20,99.5);
   let luxT=112000*Math.pow(day,1.15)*wx.cl;
   const rainT=wx.rain?wx.rain*(.8+.3*Math.sin(t*.37)+.15*Math.sin(t*1.7)):0;
-  const Pt=927.5-(wx.rain?2.6:0)-(ENV.w==='storm'?3.2:0)+.9*Math.sin(h/12*Math.PI*2);
+  let Pt=927.5-(wx.rain?2.6:0)-(ENV.w==='storm'?3.2:0)+.9*Math.sin(h/12*Math.PI*2);
   // khói ảnh hưởng trạm thời tiết theo hướng gió
   const ws=DEV.find(d=>d.k==='weather'),bv=blowV();
   let e=0;if(SMK.k>0){const dx=ws.x-SMK.src.x,dz=ws.z-SMK.src.z,dd=Math.hypot(dx,dz);const al=clamp((dx*bv.x+dz*bv.y)/dd,0,1);e=SMK.k*Math.pow(al,1.5)*Math.exp(-dd/40)*(.4+Math.min(1,ENV.ws/6)*.6)}
@@ -1816,10 +2042,11 @@ function simStep(dt){
   luxT*=1-.62*ENV.smkE;Tt+=3*ENV.smkE;RHt-=10*ENV.smkE;
   if(SMK.on&&SMK.det>=0&&!SMK.logged&&ENV.smkE>.12){SMK.logged=1;log('w','<b>WS-01</b> ghi nhận khói trôi tới: ánh sáng giảm, nhiệt độ tăng nhẹ');measure(ws,true)}
   if(SMK.on&&SMK.logged===0&&SMK.det>=0&&SMK.k>.9&&ENV.smkE<.05&&!SMK.lw){SMK.lw=1;log('','Gió đang đẩy khói ra xa trạm thời tiết · thử xoay hướng gió về phía nhà điều hành')}
+  if(LC){if(LC.air_temp!=null)Tt=LC.air_temp;if(LC.air_humidity!=null)RHt=LC.air_humidity;if(LC.light!=null)luxT=LC.light;if(LC.pressure!=null)Pt=LC.pressure}
   const k=Math.min(1,dt*.6);
   ENV.T=lerp(ENV.T,Tt,k);ENV.RH=lerp(ENV.RH,RHt,k);ENV.lux=lerp(ENV.lux,luxT,Math.min(1,dt*1.2));ENV.rain=lerp(ENV.rain,rainT,Math.min(1,dt*.8));if(ENV.rain<.05)ENV.rain=0;ENV.P=lerp(ENV.P,Pt,k*.3);
   const gust=ENV.w==='storm'?.45:.22;
-  ENV.wsNow=Math.max(0,ENV.ws*(1+gust*Math.sin(t*1.3)*Math.sin(t*.47)+.12*Math.sin(t*3.1)));
+  ENV.wsNow=LC&&LC.wind_speed!=null?LC.wind_speed:Math.max(0,ENV.ws*(1+gust*Math.sin(t*1.3)*Math.sin(t*.47)+.12*Math.sin(t*3.1)));
   U.uWind.value=lerp(U.uWind.value,.05+Math.pow(Math.min(1,ENV.wsNow/20),1.1)*.9,Math.min(1,dt*1.2));
   U.uWD.value.copy(bv);
   // đất
@@ -1828,15 +2055,15 @@ function simStep(dt){
     const et=(.02+.085*day*(ENV.T/28)+.006*ENV.wsNow)*(ENV.w==='heat'?3:1)*(i>=8?1.4:1);
     const ra=ENV.rain>0?.06*Math.pow(ENV.rain,.8):0;
     const ir=z.irr>0?(LOW?2.2:1.8):0;
-    z.vwc=clamp(z.vwc+(ra+ir-et*(z.vwc/30))*dt,7,i>=8?44:52);
+    if(!LC)z.vwc=clamp(z.vwc+(ra+ir-et*(z.vwc/30))*dt,7,i>=8?44:52);
     if(z.irr>0){any=true;z.irr-=dt;if(z.fert){z.ec=Math.min(1650,z.ec+48*dt);z.n=Math.min(260,z.n+2.6*dt);z.p=Math.min(90,z.p+.9*dt);z.k=Math.min(320,z.k+2.8*dt);z.ph=Math.max(4.7,z.ph-.004*dt)}
       WSt.lvl=Math.max(.55,WSt.lvl-.0018*dt);if(z.irr<=0){z.irr=0;IRR[i].visible=false;endIrr(i)}}
-    z.ec+=(520-z.ec)*dt*.006-(ENV.rain>0?2.5*dt:0);z.ec=Math.max(180,z.ec);
-    z.tS=lerp(z.tS,ENV.T-1.6-(z.vwc-25)*.06,dt*.05);
-    const w=clamp((z.vwc-12)/34,0,1);wetData[i*4]=w*255;wetData[i*4+1]=z.irr>0?255:0;wetData[i*4+2]=(SEL.z===i)?255:0;wetData[i*4+3]=255;
+    if(!LC){z.ec+=(520-z.ec)*dt*.006-(ENV.rain>0?2.5*dt:0);z.ec=Math.max(180,z.ec);
+    z.tS=lerp(z.tS,ENV.T-1.6-(z.vwc-25)*.06,dt*.05)}
+    const w=clamp((z.vwc-12)/34,0,1);wetData[i*4]=w*255;wetData[i*4+1]=z.irr>0?255:0;wetData[i*4+2]=(SEL.z===i)?255:0;wetData[i*4+3]=LC?(z.tint||0):255;
     if(i<NZ){const p=IRR[i];if(p.visible){const u=p.material.uniforms.uOn;u.value=clamp(Math.min(z.irrT-z.irr,z.irr)/1.2,0,1)}}
   });
-  wetTex.needsUpdate=true;
+  wetTex.needsUpdate=true;GU.uTint.value=lerp(GU.uTint.value,LC?1:0,Math.min(1,dt*1.5));
   WSt.t=lerp(WSt.t,ENV.T-2.2,dt*.05);WSt.ec=lerp(WSt.ec,ENV.rain>0?150:188,dt*.03);WSt.lvl=Math.min(1.08,WSt.lvl+(ENV.rain>0?.0012*ENV.rain*dt:0));
   pondWater.position.y=pondWater.userData.y0-(1-WSt.lvl)*.4;
   DEV.forEach(d=>{if(d.k==='water')d.obj.position.y=pondWater.position.y+.02+Math.sin(t*1.6+d.idx)*.025});
@@ -1846,7 +2073,7 @@ function simStep(dt){
   U.uRainV.value=ENV.rain>0?Math.min(1,U.uRainV.value+dt*.35):Math.max(0,U.uRainV.value-dt*(ENV.w==='heat'?.08:.025));
   // sét
   if(ENV.w==='storm'){ENV.nextFlash-=dt;if(ENV.nextFlash<0){ENV.nextFlash=4+rnd()*7;ENV.flash=1;sound.thunder()}}
-  autoTelemetry(dt);
+  if(!LC)autoTelemetry(dt);
 }
 
 function animScene(dt){updLinks(dt);
@@ -1948,6 +2175,7 @@ async function boot(){
   setTimeout(()=>{$('#loader').classList.add('done');flyTo(hm.t,hm.r,hm.phi,hm.th,RM?.1:2.6)},120);
   setTimeout(hideHint,14000);
   requestAnimationFrame(frame);
+  lvInit();
 }
 window.__fbFly=(r,ph,th)=>flyTo(controls.target.clone(),r,ph,th,.05);
 window.__fbRender=()=>{last=performance.now()-16;frame(performance.now())};
