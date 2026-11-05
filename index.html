@@ -673,6 +673,89 @@ body.live .zt{background:rgba(17,38,21,.86)}body.live .zt.on{background:#fff;box
   .insp{right:calc(var(--sr) + 48px);width:min(300px,44vw);top:var(--ty);max-height:calc(100svh - var(--ty) - 8px)}
   .dc,body.live .dc{min-height:26px}
 }
+
+/* ================= VÒNG SỬA 05/11: MÀU, POPUP, CHẾ ĐỘ TỐI, RESPONSIVE ================= */
+:root{--sel:#112615;--selt:#fff;--zone:#CFE9A9;--zone-t:#17331C;--zone-h:#DCF0C0;--bgc:#EEF3E6}
+body{background:var(--bgc)}
+.no-cl .cluster,.no-log .log{display:none!important}
+.no-log .left{max-height:calc(100svh - var(--top) - 64px - 16px)}
+.thm{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#C9DDBF;background:rgba(255,255,255,.08);transition:background-color .2s,color .2s}
+.thm:hover{color:#fff;background:rgba(255,255,255,.16)}
+.thm svg{width:17px;height:17px}
+.thm[aria-pressed="true"]{background:var(--lime);color:var(--g800)}
+/* ô khu: một màu chung, chọn thì nổi hẳn */
+.zb:not(.all){background:var(--zone);color:var(--zone-t);font-weight:500}
+.zb:not(.all):hover{background:var(--zone-h)}
+.zb.all{background:var(--pn-2)}
+.zb[aria-pressed="true"]{background:var(--sel);color:var(--selt)}
+.zb:not(.all)[aria-pressed="true"]{background:var(--sel);color:var(--selt);box-shadow:0 0 0 2px var(--pn-solid,#fff),0 0 0 4px var(--g500)}
+.wb[aria-pressed="true"],.tplay[aria-pressed="true"],.tabs button[aria-selected="true"]{background:var(--sel);color:var(--selt)}
+.zt{background:#CFE9A9;color:#17331C;box-shadow:0 2px 8px rgba(15,42,23,.28)}
+body.live .zt{background:#CFE9A9}
+.zt span{opacity:1}
+.zt.on,body.live .zt.on{background:#112615;color:#fff;box-shadow:0 0 0 2px #fff,0 0 0 4px #3A8047;z-index:2000!important}
+.zt.bare,body.live .zt.bare{background:rgba(255,255,255,.8);color:#3D5845}
+/* ghim: nền đặc theo loại thiết bị, số theo chỉ số đang xem */
+.dp .gem{width:24px;height:24px;background:var(--pc,#2F7D3F);box-shadow:0 0 0 2px #fff,0 3px 8px rgba(15,42,23,.4)}
+.dp .gem svg,.dp.water .gem svg,.dp.weather .gem svg,.dp.iot .gem svg,.dp.house .gem svg{color:#fff;width:13px;height:13px}
+.dp.soil{--pc:#2F7D3F;--vc:var(--mc,#2B7FA6)}.dp.water{--pc:#2E86C1;--vc:#2E86C1}.dp.weather{--pc:#D08A12;--vc:#D08A12}.dp.iot{--pc:#6A4FB3}.dp.house{--pc:#6E5A48}.dp.cam{--pc:#4B5A52}
+.dp .vl{background:var(--vc,#112615);color:#fff;box-shadow:0 2px 6px rgba(15,42,23,.35)}
+.dp .vl.red{color:#fff;box-shadow:0 0 0 2px #fff,0 0 0 4px #D5402B}.dp .vl.yellow{color:#fff;box-shadow:0 0 0 2px #fff,0 0 0 4px #E0A22B}
+.dp:hover .gem,.dp.on .gem{background:var(--pc,#2F7D3F);transform:scale(1.2);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--pc,#2F7D3F)}
+.dp:hover .gem svg,.dp.on .gem svg{color:#fff}
+.dp.cam .gem{width:20px;height:20px}
+/* bốn ô chỉ số: mỗi ô một màu */
+.tl[data-m="moisture"]{--h:#2B7FA6}.tl[data-m="temperature"]{--h:#BF6436}.tl[data-m="ph"]{--h:#5C8A2C}.tl[data-m="ec"]{--h:#A5812A}
+.tl{background:color-mix(in srgb,var(--h) 11%,var(--pn-solid,#fff))}
+.tl:hover{background:color-mix(in srgb,var(--h) 20%,var(--pn-solid,#fff))}
+.tn{color:var(--h);opacity:1}.tv b{color:var(--h)}.tv small{color:var(--h)}.ts{color:var(--h)}
+.tl[aria-pressed="true"],.tl[aria-pressed="true"]:hover{background:var(--h);color:#fff}
+.tl[aria-pressed="true"] .tn,.tl[aria-pressed="true"] .tv b,.tl[aria-pressed="true"] .tv small,.tl[aria-pressed="true"] .ts{color:#fff}
+.lg i{background:linear-gradient(90deg,#DB9A4D,#9A6B3D,#2179AD)}
+/* popup thiết bị bám theo ghim */
+.insp{left:0;right:auto;top:0;bottom:auto;z-index:16;width:min(288px,calc(100vw - 16px));max-height:min(440px,calc(100svh - 16px));box-shadow:0 18px 44px -14px rgba(15,42,23,.55);will-change:transform}
+.insp.open{animation:popf .22s ease}
+@keyframes popf{from{opacity:0}}
+.insp::before{content:"";position:absolute;left:-6px;top:var(--ay,40px);width:12px;height:12px;margin-top:-6px;background:var(--pn-solid,#fff);transform:rotate(45deg);border-radius:2px}
+.insp.flip::before{left:auto;right:-6px}
+.insp.cam{overflow:visible}
+.insp.open~.alert{left:50%}
+/* bố cục: hộp giữa nằm trong khoảng trống giữa hai cột */
+.cluster{left:calc(var(--pw) + 28px);right:calc(var(--pw) + 86px);width:auto;max-width:640px;margin:0 auto;transform:none}
+.subs{grid-template-columns:repeat(auto-fit,minmax(70px,1fr));justify-content:stretch;gap:6px 10px}
+.devbar{justify-content:stretch}
+@media (min-width:1024px) and (max-width:1320px){.togs{grid-template-columns:1fr}:root{--pw:244px}.cluster{left:calc(var(--pw) + 22px);right:calc(var(--pw) + 74px)}.zoom{right:calc(var(--pw) + 22px)}.tl{padding:6px 8px 4px}.tv b{font-size:19px}.tn{font-size:11.5px}.dc,body.live .dc{padding:0 6px;font-size:11.5px}.bh .cat{font-size:12px}}
+@media (min-width:1024px) and (max-width:1180px){.tv small{display:none}.subs dt{font-size:11.5px}.subs dd{font-size:12.5px}.stat .sim-only,#stD,.stat .sp:nth-of-type(n+3){display:none}.crumb{display:none}.lg{display:none}}
+@media (min-width:1024px) and (max-height:800px){.ts{display:none}}
+@media (min-width:1024px) and (max-height:700px){.subs{display:none}.devbar{border:0;padding-top:0}.log{max-height:100px}.left{max-height:calc(100svh - var(--top) - 64px - 16px - 108px)}}
+/* chế độ tối: nền nâu đất dịu mắt */
+body.dark{--pn:rgba(38,29,23,.96);--pn-solid:#261D17;--pn-2:#32271F;--pn-3:#3E3127;--line:rgba(255,238,215,.1);--line-2:rgba(255,238,215,.22);--txt:#F1E8DB;--txt-2:#BFB1A0;--hi:#F1E8DB;--sel:#B5E383;--selt:#1F1712;--bgc:#1F1712;--zone:#44522F;--zone-t:#E4F2CF;--zone-h:#50613A;--warn:#E8B04E;--bad:#F08C7A}
+body.dark .top{--pn:rgba(30,23,18,.94);--pn-2:rgba(255,255,255,.07);--line:rgba(255,238,215,.1);--txt:#F1E8DB;--txt-2:#BFB1A0;--hi:#fff}
+body.dark .tl[data-m="moisture"]{--h:#6DB6D9}body.dark .tl[data-m="temperature"]{--h:#E39A6E}body.dark .tl[data-m="ph"]{--h:#A5CE6E}body.dark .tl[data-m="ec"]{--h:#DDBC62}
+body.dark .tl{background:color-mix(in srgb,var(--h) 13%,#261D17)}body.dark .tl:hover{background:color-mix(in srgb,var(--h) 22%,#261D17)}
+body.dark .tl[aria-pressed="true"],body.dark .tl[aria-pressed="true"]:hover{background:var(--h)}
+body.dark .tl[aria-pressed="true"] .tn,body.dark .tl[aria-pressed="true"] .tv b,body.dark .tl[aria-pressed="true"] .tv small,body.dark .tl[aria-pressed="true"] .ts{color:#1F1712}
+body.dark .chk input:not(:checked){background:var(--pn-3)}
+body.dark .log li time{color:#A5CE6E}
+body.dark .note.warn{color:#E8C07A}
+body.dark #iBody .rd .red b{color:#FF9F90}body.dark #iBody .rd .yellow b{color:#E8C07A}
+body.dark .zb:not(.all)[aria-pressed="true"]{box-shadow:0 0 0 2px var(--pn-solid),0 0 0 4px #B5E383}
+body.dark .dc[aria-pressed="false"]{box-shadow:inset 0 0 0 1px var(--line)}
+body.dark .dc b{filter:brightness(1.5)}
+body.dark .loader{background:#1F1712}
+.right .devbar{border:0;padding:0}
+/* điện thoại */
+@media (max-width:1023px){
+  .cluster{left:10px;right:58px;max-width:640px;margin:0 auto}
+  .thm{width:32px;height:32px}
+  .insp{max-height:min(300px,calc(100svh - 16px))}
+  .dp .gem{width:20px;height:20px}.dp .gem svg,.dp.water .gem svg,.dp.weather .gem svg,.dp.iot .gem svg,.dp.house .gem svg{width:11px;height:11px}
+  .dp .vl{font-size:10.5px;padding:1px 5px}
+}
+@media (max-width:1023px) and (orientation:landscape){
+  .cluster{left:calc(var(--sl) + 64px);right:calc(var(--sr) + 48px)}
+  .crumb{display:none}
+}
 </style>
 </head>
 <body data-tab="">
@@ -694,6 +777,7 @@ body.live .zt{background:rgba(17,38,21,.86)}body.live .zt.on{background:#fff;box
 <symbol id="u-home" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.3-5.6"/><path d="M4 4v4.5h4.5"/></g></symbol>
 <symbol id="u-top" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M4 6.5l5-2.5 6 2.5 5-2.5v13.5l-5 2.5-6-2.5-5 2.5z"/><path d="M9 4v13.5M15 6.5V20"/></g></symbol>
 <symbol id="u-orbit" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><ellipse cx="12" cy="12" rx="9" ry="4.2"/><path d="M18 7.6l2.4.2-.6 2.3"/><circle cx="12" cy="12" r="1.8"/></g></symbol>
+<symbol id="u-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
 <symbol id="u-chev" viewBox="0 0 24 24"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 <symbol id="u-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
 <symbol id="u-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></symbol>
@@ -714,6 +798,7 @@ body.live .zt{background:rgba(17,38,21,.86)}body.live .zt.on{background:#fff;box
     <a class="brand" href="https://farmblockadmin.github.io/farmblock-website/" data-nav="home" aria-label="Farmblock – về trang chủ" translate="no"><svg class="mk" aria-hidden="true"><use href="#logo"/></svg><svg class="wm" viewBox="0 0 603 70" aria-hidden="true" focusable="false"><path d="M0 68.2207V1.17285H48.1721V12.0217H12.7026V30.0054H44.6545V40.8542H12.7026V68.2207H0Z"/><path d="M47.2622 68.2207L73.3514 1.17285H89.3762L115.563 68.2207H101.786L96.4114 53.951H65.7298L60.3556 68.2207H47.2622ZM69.736 43.1999H92.3075L85.5654 25.0208C85.3048 24.3692 84.9791 23.5547 84.5883 22.5773C84.2626 21.5348 83.9043 20.4271 83.5134 19.2543C83.1226 18.0163 82.7317 16.7782 82.3409 15.5402C81.95 14.3022 81.5917 13.1945 81.266 12.2172H80.7775C80.3866 13.5203 79.8981 15.019 79.3118 16.7131C78.7907 18.4072 78.2695 20.0036 77.7484 21.5022C77.2273 23.0009 76.8039 24.1737 76.4781 25.0208L69.736 43.1999Z"/><path d="M123.476 68.2207V1.17285H158.75C163.701 1.17285 167.805 2.0199 171.062 3.71402C174.319 5.40814 176.762 7.81899 178.39 10.9466C180.019 14.0742 180.833 17.7556 180.833 21.9909C180.833 26.3565 179.856 30.2334 177.902 33.6217C175.948 36.9447 173.081 39.4533 169.303 41.1474L183.178 68.2207H169.303L156.991 43.2977H136.179V68.2207H123.476ZM136.179 32.6443H157.773C161.03 32.6443 163.538 31.6995 165.297 29.8099C167.056 27.9203 167.935 25.314 167.935 21.9909C167.935 19.8407 167.544 18.0488 166.763 16.6154C165.981 15.1167 164.841 13.9764 163.343 13.1945C161.845 12.4126 159.988 12.0217 157.773 12.0217H136.179V32.6443Z"/><path d="M193.516 68.2207V1.17285H213.547L224.1 38.5085C224.491 39.8117 224.882 41.2778 225.272 42.9067C225.663 44.5357 226.022 46.0995 226.347 47.5981C226.738 49.0967 227.031 50.3999 227.227 51.5076H228.008C228.139 50.5302 228.334 49.3248 228.595 47.8913C228.855 46.4578 229.148 44.9266 229.474 43.2977C229.865 41.6035 230.288 39.9746 230.744 38.4108L241.297 1.17285H261.133V68.2207H248.43V34.3058C248.43 31.3085 248.463 28.3113 248.528 25.314C248.593 22.3167 248.658 19.743 248.723 17.5927C248.854 15.4425 248.919 14.1719 248.919 13.781H248.137C248.007 14.3674 247.681 15.638 247.16 17.5927C246.639 19.5475 246.085 21.6651 245.499 23.9457C244.913 26.2262 244.392 28.1809 243.936 29.8099L232.894 68.2207H221.169L210.127 29.9076C209.736 28.5393 209.28 26.9104 208.759 25.0208C208.303 23.066 207.815 21.0787 207.293 19.0588C206.837 17.0389 206.414 15.2796 206.023 13.781H205.241C205.307 15.5402 205.372 17.6579 205.437 20.1339C205.502 22.5448 205.567 25.0208 205.632 27.5619C205.697 30.038 205.73 32.2859 205.73 34.3058V68.2207H193.516Z"/><path d="M275.961 68.2207V1.17285H312.505C316.088 1.17285 319.28 1.85701 322.081 3.22533C324.947 4.59365 327.195 6.51582 328.823 8.99184C330.452 11.4679 331.266 14.3674 331.266 17.6905C331.266 20.2316 330.777 22.5448 329.8 24.6298C328.823 26.7149 327.488 28.4742 325.794 29.9076C324.165 31.276 322.309 32.3185 320.224 33.0352V33.4262C322.7 33.9475 324.915 34.9574 326.869 36.456C328.823 37.8895 330.354 39.7465 331.461 42.0271C332.569 44.2425 333.122 46.8162 333.122 49.7483C333.122 53.9185 332.178 57.3718 330.289 60.1085C328.465 62.8451 325.989 64.8976 322.863 66.2659C319.801 67.5691 316.348 68.2207 312.505 68.2207H275.961ZM288.663 57.3718H310.844C313.515 57.3718 315.697 56.6551 317.391 55.2216C319.15 53.723 320.029 51.4099 320.029 48.2823C320.029 46.4578 319.671 44.8615 318.954 43.4931C318.238 42.1248 317.13 41.0823 315.632 40.3655C314.199 39.5836 312.342 39.1927 310.062 39.1927H288.663V57.3718ZM288.663 28.5393H309.183C311.137 28.5393 312.766 28.1809 314.068 27.4642C315.436 26.7475 316.446 25.7701 317.098 24.5321C317.814 23.2941 318.172 21.9258 318.172 20.4271C318.172 17.5601 317.391 15.4425 315.827 14.0742C314.329 12.7059 312.342 12.0217 309.867 12.0217H288.663V28.5393Z"/><path d="M344.951 68.2207V1.17285H357.653V57.1764H391.267V68.2207H344.951Z"/><path d="M428.499 69.3935C421.529 69.3935 415.503 68.1555 410.422 65.6795C405.341 63.1383 401.432 59.294 398.696 54.1465C396.026 48.999 394.69 42.5158 394.69 34.6968C394.69 26.8126 396.026 20.3294 398.696 15.247C401.432 10.0995 405.341 6.28777 410.422 3.81176C415.503 1.27059 421.529 0 428.499 0C435.534 0 441.56 1.27059 446.575 3.81176C451.656 6.28777 455.532 10.0995 458.203 15.247C460.939 20.3294 462.307 26.8126 462.307 34.6968C462.307 42.5158 460.939 48.999 458.203 54.1465C455.532 59.294 451.656 63.1383 446.575 65.6795C441.56 68.1555 435.534 69.3935 428.499 69.3935ZM428.499 58.6424C431.886 58.6424 434.85 58.1537 437.391 57.1764C439.996 56.199 442.178 54.7655 443.937 52.8759C445.696 50.9212 447.031 48.5429 447.943 45.7411C448.855 42.8741 449.311 39.5836 449.311 35.8696V33.7194C449.311 29.9402 448.855 26.6171 447.943 23.7502C447.031 20.8832 445.696 18.5049 443.937 16.6154C442.178 14.6606 439.996 13.1945 437.391 12.2172C434.85 11.2398 431.886 10.7511 428.499 10.7511C425.111 10.7511 422.115 11.2398 419.509 12.2172C416.969 13.1945 414.819 14.6606 413.06 16.6154C411.301 18.5049 409.966 20.8832 409.054 23.7502C408.207 26.6171 407.784 29.9402 407.784 33.7194V35.8696C407.784 39.5836 408.207 42.8741 409.054 45.7411C409.966 48.5429 411.301 50.9212 413.06 52.8759C414.819 54.7655 416.969 56.199 419.509 57.1764C422.115 58.1537 425.111 58.6424 428.499 58.6424Z"/><path d="M503.662 69.3935C496.822 69.3935 490.959 68.1881 486.073 65.7773C481.253 63.3664 477.54 59.6198 474.934 54.5375C472.394 49.39 471.123 42.7764 471.123 34.6968C471.123 22.9031 473.99 14.1719 479.722 8.50315C485.454 2.83438 493.434 0 503.662 0C509.199 0 514.182 0.944794 518.612 2.83438C523.106 4.72397 526.657 7.59093 529.262 11.4353C531.933 15.2145 533.268 20.0362 533.268 25.9004H520.273C520.273 22.6425 519.556 19.9058 518.123 17.6905C516.755 15.4099 514.833 13.6832 512.358 12.5104C509.883 11.3375 507.049 10.7511 503.857 10.7511C499.427 10.7511 495.747 11.6307 492.815 13.39C489.884 15.0841 487.702 17.6253 486.269 21.0135C484.901 24.4018 484.217 28.6045 484.217 33.6217V35.7719C484.217 40.8542 484.901 45.0895 486.269 48.4777C487.702 51.866 489.852 54.4071 492.718 56.1013C495.649 57.7954 499.362 58.6424 503.857 58.6424C507.244 58.6424 510.208 58.0886 512.749 56.9809C515.289 55.808 517.244 54.1139 518.612 51.8985C520.045 49.618 520.761 46.8488 520.761 43.5909H533.268C533.268 49.4551 531.966 54.3094 529.36 58.1537C526.754 61.9329 523.204 64.7673 518.709 66.6569C514.28 68.4813 509.264 69.3935 503.662 69.3935Z"/><path d="M544.574 68.2207V1.17285H557.277V32.2533L586.981 1.17285H602.517L576.526 28.3438L603.006 68.2207H587.958L567.927 37.2379L557.277 46.6207V68.2207H544.574Z"/></svg></a>
     <div class="crumb"><b>Vườn số Ia Ko</b><span>Sa bàn tương tác</span><em class="simtag"><i></i><span id="mTag">Mô phỏng</span></em></div>
     <div class="modes" id="modes" role="group" aria-label="Chế độ dữ liệu" hidden><button data-m="live" aria-pressed="false">Trực tiếp</button><button data-m="sim" aria-pressed="true">Mô phỏng</button></div>
+    <button class="thm" id="themeB" aria-label="Chế độ tối" aria-pressed="false"><svg aria-hidden="true"><use href="#u-moon"/></svg></button>
   </div>
   <nav class="links" aria-label="Trang khác">
     <a class="lk" href="https://farmblockadmin.github.io/farmblock-website/cong-nghe.html" data-nav="tech"><svg aria-hidden="true"><use href="#u-back"/></svg>Công nghệ</a>
@@ -751,7 +836,7 @@ body.live .zt{background:rgba(17,38,21,.86)}body.live .zt.on{background:#fff;box
 
 <!-- PANEL PHẢI: môi trường -->
 <aside class="pl right hud" data-box="right" aria-label="Môi trường và hiển thị">
-  <div class="pt"><span class="k" id="rtT">Môi trường</span><button class="chev" aria-expanded="true" aria-label="Thu gọn"><svg aria-hidden="true"><use href="#u-chev"/></svg></button><button class="x" data-closetab aria-label="Đóng"><svg><use href="#u-x"/></svg></button></div>
+  <div class="pt"><span class="k" id="rtT">Môi trường</span><button class="x" data-closetab aria-label="Đóng"><svg><use href="#u-x"/></svg></button></div>
   <div class="scroll bb">
     <div class="sec live-only">
       <dl class="kv" id="ctr" style="margin-top:0"></dl>
@@ -795,8 +880,10 @@ body.live .zt{background:rgba(17,38,21,.86)}body.live .zt.on{background:#fff;box
         <label class="chk"><input type="checkbox" id="tPins" checked>Thiết bị</label>
         <label class="chk"><input type="checkbox" id="tZt" checked>Tên khu</label>
         <label class="chk"><input type="checkbox" id="tCov">Vùng camera</label>
-        <label class="chk"><input type="checkbox" id="tTilt">Hiệu ứng sa bàn</label>
+        <label class="chk"><input type="checkbox" id="tTilt">Hiệu ứng mờ</label>
         <label class="chk"><input type="checkbox" id="tSound">Âm thanh</label>
+        <label class="chk"><input type="checkbox" id="tCl" checked>Chỉ số chính</label>
+        <label class="chk"><input type="checkbox" id="tLog" checked>Số liệu</label>
       </div>
       <p class="sim sim-only" style="margin-top:8px">Số liệu ở chế độ này là giả lập.</p><p class="sim live-only" style="margin-top:8px">Trang này chỉ theo dõi, không điều khiển thiết bị tại vườn.</p>
     </div>
@@ -805,7 +892,7 @@ body.live .zt{background:rgba(17,38,21,.86)}body.live .zt.on{background:#fff;box
 
 <!-- HỘP GIỮA: CHỈ SỐ CHÍNH -->
 <section class="cluster pl hud" data-box="center" aria-label="Chỉ số chính">
-  <div class="bh"><span class="k">Chỉ số chính</span><span class="cat" id="clAt"></span><span class="lg live-only" aria-hidden="true">Thấp<i></i>Cao</span><button class="chev" aria-expanded="true" aria-label="Thu gọn"><svg aria-hidden="true"><use href="#u-chev"/></svg></button></div>
+  <div class="bh"><span class="k">Chỉ số chính</span><span class="cat" id="clAt"></span><span class="lg" aria-hidden="true">Thấp<i></i>Cao</span></div>
   <div class="bb">
     <div class="tiles" id="tiles" role="group" aria-label="Chọn chỉ số hiển thị trên vườn"></div>
     <dl class="subs" id="subs"></dl>
@@ -822,13 +909,12 @@ body.live .zt{background:rgba(17,38,21,.86)}body.live .zt.on{background:#fff;box
 
 <!-- NHẬT KÝ -->
 <section class="pl log hud" data-box="log" aria-label="Nhật ký dữ liệu">
-  <div class="pt"><span class="k" id="logk">Nhật ký dữ liệu</span><button class="chev" aria-expanded="true" aria-label="Thu gọn"><svg aria-hidden="true"><use href="#u-chev"/></svg></button><button class="x" data-closetab aria-label="Đóng"><svg><use href="#u-x"/></svg></button></div>
+  <div class="pt"><span class="k" id="logk">Nhật ký dữ liệu</span><button class="x" data-closetab aria-label="Đóng"><svg><use href="#u-x"/></svg></button></div>
   <ol class="scroll bb" id="log" aria-live="polite"></ol>
 </section>
 
 <!-- ĐIỀU KHIỂN GÓC NHÌN -->
-<div class="zoom pl" data-box="zoom" role="group" aria-label="Điều khiển góc nhìn">
-  <button class="chev" aria-expanded="true" aria-label="Thu gọn"><svg aria-hidden="true"><use href="#u-chev"/></svg></button>
+<div class="zoom pl" role="group" aria-label="Điều khiển góc nhìn">
   <div class="bb zb2">
   <div class="cmp" aria-hidden="true"><i></i><b>B</b><div class="nd" id="cmpn"></div></div>
   <button id="zIn" aria-label="Phóng to"><svg><use href="#u-plus"/></svg></button>
@@ -841,7 +927,7 @@ body.live .zt{background:rgba(17,38,21,.86)}body.live .zt.on{background:#fff;box
 
 <!-- THẺ THIẾT BỊ -->
 <section class="pl insp hud" data-box="insp" id="insp" aria-live="polite">
-  <div class="ih"><div class="gem" id="iGem"><svg><use href="#i-soil"/></svg></div><div><h3 id="iName">–</h3><p id="iId">–</p></div><button class="chev" aria-expanded="true" aria-label="Thu gọn"><svg aria-hidden="true"><use href="#u-chev"/></svg></button><button class="x" id="iX" aria-label="Đóng thẻ thiết bị"><svg><use href="#u-x"/></svg></button></div>
+  <div class="ih"><div class="gem" id="iGem"><svg><use href="#i-soil"/></svg></div><div><h3 id="iName">–</h3><p id="iId">–</p></div><button class="x" id="iX" aria-label="Đóng thẻ thiết bị"><svg><use href="#u-x"/></svg></button></div>
   <div class="ib scroll bb" id="iBody"></div>
 </section>
 
@@ -970,7 +1056,7 @@ function initRenderer(){
   camera.position.set(14,70,88);
   controls=new THREE.OrbitControls(camera,cv);
   controls.enableDamping=true;controls.dampingFactor=.08;
-  controls.minDistance=5;controls.maxDistance=MOB?190:130;
+  controls.minDistance=5;controls.maxDistance=280;
   controls.maxPolarAngle=1.42;controls.rotateSpeed=.6;controls.zoomSpeed=.9;controls.panSpeed=.9;
   controls.screenSpacePanning=false;
   controls.target.set(0,0,1);
@@ -1116,6 +1202,8 @@ function buildGround(){
       if(abs(zid-9.)<.5)col=mix(col,vec3(.70,.68,.62)*(.88+.18*n2),vK.x);
       col+=vec3(.55,.85,.30)*wt.b*(.07+.05*sin(uTime*3.))*(vK.x+vK.w);
       col=mix(col,col*vec3(.62,.82,1.08)+vec3(0.,.02,.05),wt.g*(.45+.15*sin(uTime*4.+vW.x*2.))*vK.x);
+      float ta=wt.a,tk=abs(ta*2.-1.);vec3 tc=ta<.5?mix(vec3(.86,.60,.30),vec3(.60,.42,.24),ta*2.):mix(vec3(.60,.42,.24),vec3(.15,.36,.50),ta*2.-1.);
+      col=mix(col,tc,uTint*(.15+.5*tk)*step(.01,ta)*(vK.x+vK.w));
       float gRough=.96-.4*wet*(vK.x+vK.w)-.6*pud*vK.y-.12*uRoadWet;
       vec4 diffuseColor=vec4(pow(col,vec3(2.2)),1.);`).replace('float roughnessFactor = roughness;','float roughnessFactor = clamp(gRough,.25,1.);');
   };
@@ -1271,21 +1359,6 @@ function placeVeg(){
         if(row%5===2&&k%6===3){const px=x+p0*sr*.5,pz=z+p1*sr*.5;if(inPoly(px,pz,P)&&dPoly(px,pz,P)>RW+.4&&!nearDev(px,pz,1))palm.push({x:px,z:pz,y:H(px,pz),s:.85+rnd()*.3,r:rnd()*6.28})}
       }}
   }
-  const okTree=(x,z,cl)=>inPoly(x,z,OUT)&&dLine(x,z,CR1)>.75&&!inPond(x,z,.9)&&!nearDev(x,z,cl||1.1)&&!(Math.abs(x-PC[0]+1.5)<3.5&&Math.abs(z-PC[1]+1.9)<3.4&&x<PC[0]-1.2);
-  const notCrop=(x,z)=>{const zi=zoneAt(x,z);return zi<0||(zi<8&&dPoly(x,z,ZP[zi])<RW-.05)};
-  // hàng cây viền
-  const st=LOW?2.4:1.7;
-  for(let i=0;i<OUT.length;i++){const a=OUT[i],b=OUT[(i+1)%OUT.length];const L=Math.hypot(b[0]-a[0],b[1]-a[1]);let nx=-(b[1]-a[1])/L,nz=(b[0]-a[0])/L;
-    const mx=(a[0]+b[0])/2,mz=(a[1]+b[1])/2;if(!inPoly(mx+nx*.5,mz+nz*.5,OUT)){nx=-nx;nz=-nz}
-    for(let t=0;t<L;t+=st*(.7+rnd()*.6)){const o=.45+rnd()*.5;const x=a[0]+(b[0]-a[0])*t/L+nx*o,z=a[1]+(b[1]-a[1])*t/L+nz*o;
-      if(okTree(x,z)&&notCrop(x,z))trees.push({x,z,y:H(x,z),s:.45+rnd()*.45,r:rnd()*6.28})}}
-  // cây rải trong khoảng cỏ
-  for(let i=0;i<(LOW?300:700);i++){const x=BOX.x0+rnd()*(BOX.x1-BOX.x0),z=BOX.z0+rnd()*(BOX.z1-BOX.z0);
-    if(zoneAt(x,z)>=0||!okTree(x,z,1.3))continue;let dm=1e9;for(const P of ZP)dm=Math.min(dm,dPoly(x,z,P));if(dm<RW+.3)continue;
-    if(rnd()<.7)trees.push({x,z,y:H(x,z),s:.5+rnd()*.55,r:rnd()*6.28})}
-  // dải rừng trong khu đất trống
-  const f0=FOR[0],f1=FOR[1],fl=Math.hypot(f1[0]-f0[0],f1[1]-f0[1]);
-  for(let t=0;t<fl;t+=.55){const s=(rnd()-.5)*1.3,x=f0[0]+(f1[0]-f0[0])*t/fl+s*.95,z=f0[1]+(f1[1]-f0[1])*t/fl-s*.3;trees.push({x,z,y:H(x,z),s:.55+rnd()*.5,r:rnd()*6.28})}
 
   const M=new THREE.Matrix4(),Q=new THREE.Quaternion(),S=new THREE.Vector3(),T=new THREE.Vector3(),E=new THREE.Euler(),C=new THREE.Color();
   const fill=(mesh,arr,colorFn)=>{arr.forEach((o,i)=>{E.set((rnd()-.5)*.08,o.r,(rnd()-.5)*.08);Q.setFromEuler(E);S.setScalar(o.s);T.set(o.x,o.y-.02,o.z);M.compose(T,Q,S);mesh.setMatrixAt(i,M);if(colorFn){colorFn(C,o);mesh.setColorAt(i,C)}});mesh.instanceMatrix.needsUpdate=true;if(mesh.instanceColor)mesh.instanceColor.needsUpdate=true;mesh.castShadow=true;mesh.receiveShadow=true;scene.add(mesh)};
@@ -1450,39 +1523,39 @@ function ripple(x,y,z,color,r,dur,vertical,wave){
   const par=wave?LORA_G:scene;if(!vertical)m.rotation.x=-Math.PI/2;m.position.set(x,y,z);m.renderOrder=4;par.add(m);let t=0;
   FX.push(dt=>{t+=dt/dur;const e=wave?Math.min(t,1):1-Math.pow(1-Math.min(t,1),3);m.scale.setScalar(.15+e*r);m.material.opacity=(1-t)*.95;if(t>=1){par.remove(m);m.material.dispose();return false}return true});
 }
-/* đường sóng LoRa: mỗi cảm biến một cung nối về trạm IoT, vạch sáng chạy về trạm */
-const LINKS=[];let hubWave=0,hubBase=null;
+/* sóng LoRa: cung mảnh về trạm, vệt sáng có đuôi chạy dọc cung, vòng phát sóng tại điểm đo */
+const LINKS=[];let hubBase=null;
 function buildLinks(){
   scene.add(LORA_G);
-  const vs=`uniform float uW;varying float vX;void main(){vX=uv.x;vec4 c=modelViewMatrix*vec4(position,1.);gl_Position=projectionMatrix*modelViewMatrix*vec4(position+normal*uW*-c.z,1.);}`;
-  const W0=MOB?.0032:.0016,W1=MOB?.0052:.0026;
-  const fs=`uniform float uTime,uHot,uN;uniform vec3 uC;varying float vX;
-    void main(){float d=fract(vX*uN-uTime*.8);float a=smoothstep(0.,.15,d)*smoothstep(.65,.45,d);
-      gl_FragColor=vec4(mix(uC,vec3(1.),uHot*.65),.62+.38*max(a,uHot));}`;
+  const SP=.26,W0=MOB?.0016:.00085;
+  const head=`float hd(){return fract(uTime*uS+uP)/.8;}`;
+  const vs=`uniform float uW,uTime,uS,uP,uHot;varying float vX;${head}
+    void main(){vX=uv.x;float d=hd()-vX;float k=(d>=0.&&d<.2)?1.-d/.2:0.;vec4 c=modelViewMatrix*vec4(position,1.);
+      float w=uW*(1.+k*k*2.4+uHot*1.4);gl_Position=projectionMatrix*modelViewMatrix*vec4(position+normal*w*-c.z,1.);}`;
+  const fs=`uniform float uTime,uS,uP,uHot,uBase;uniform vec3 uC;varying float vX;${head}
+    void main(){float d=hd()-vX;float tail=d>=0.?exp(-d*11.):0.;float core=smoothstep(.022,0.,abs(d));
+      float a=uBase*smoothstep(0.,.06,vX)+tail*.95+uHot*.3;
+      gl_FragColor=vec4(mix(uC,vec3(1.),clamp(core*.95+uHot*.25,0.,1.)),clamp(a,0.,1.));}`;
+  const rs=`uniform float uTime,uS,uP,uHub;uniform vec3 uC;varying vec2 vU;
+    void main(){float r=length(vU-.5)*2.;float p=fract(uTime*uS+uP);float a=0.;
+      for(int i=0;i<3;i++){float e=uHub>.5?fract(p*1.5+float(i)/3.):(p-float(i)*.05)/.3;if(e>0.&&e<1.)a+=smoothstep(.05,0.,abs(r-e))*(1.-e)*(1.-e);}
+      gl_FragColor=vec4(uC,clamp(a,0.,1.)*.9);}`;
+  const rv=`varying vec2 vU;void main(){vU=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`;
+  const col=new THREE.Color('#12B5C9');let i=0;
+  const disc=(x,y,z,r,u)=>{const g=new THREE.CircleGeometry(r,40);const m=new THREE.Mesh(g,new THREE.ShaderMaterial({uniforms:u,vertexShader:rv,fragmentShader:rs,transparent:true,depthTest:false,depthWrite:false,side:THREE.DoubleSide}));m.rotation.x=-Math.PI/2;m.position.set(x,y,z);m.renderOrder=3;m.frustumCulled=false;return m};
   DEV.forEach(d=>{if(d.k!=='soil'&&d.k!=='water'&&d.k!=='weather')return;
-    const from=d.top,c=new THREE.Vector3().addVectors(from,hubTop).multiplyScalar(.5);const len=from.distanceTo(hubTop);c.y=Math.max(from.y,hubTop.y)+2.2+len*.12;
-    const cv=new THREE.QuadraticBezierCurve3(from.clone(),c,hubTop.clone());
-    const u={uW:{value:W0},uTime:U.uTime,uHot:{value:0},uN:{value:Math.max(2,Math.round(len/2.2))},uC:{value:new THREE.Color(KCOL[d.k])}};
+    const from=d.top,c=new THREE.Vector3().addVectors(from,hubTop).multiplyScalar(.5),len=from.distanceTo(hubTop);c.y=Math.max(from.y,hubTop.y)+1.2+len*.2;
+    const cv=new THREE.QuadraticBezierCurve3(from.clone(),c,hubTop.clone());const P={value:(i++*.137)%1};
+    const u={uW:{value:W0},uTime:U.uTime,uS:{value:SP},uP:P,uHot:{value:0},uBase:{value:.24},uC:{value:col}};
     const g=new THREE.Group();
-    const tb=new THREE.TubeGeometry(cv,48,.001,6,false);
-    const cs=new THREE.Mesh(tb,new THREE.ShaderMaterial({uniforms:{uW:{value:W1}},vertexShader:vs,fragmentShader:`void main(){gl_FragColor=vec4(.03,.07,.04,.5);}`,transparent:true,depthTest:false,depthWrite:false}));cs.renderOrder=3;cs.frustumCulled=false;g.add(cs);
-    const ln=new THREE.Mesh(tb,new THREE.ShaderMaterial({uniforms:u,vertexShader:vs,fragmentShader:fs,transparent:true,depthTest:false,depthWrite:false}));ln.renderOrder=4;ln.frustumCulled=false;g.add(ln);
+    const ln=new THREE.Mesh(new THREE.TubeGeometry(cv,96,.001,5,false),new THREE.ShaderMaterial({uniforms:u,vertexShader:vs,fragmentShader:fs,transparent:true,depthTest:false,depthWrite:false}));ln.renderOrder=4;ln.frustumCulled=false;g.add(ln);
+    g.add(disc(d.x,d.y+.25,d.z,2.1,{uTime:U.uTime,uS:{value:SP},uP:P,uHub:{value:0},uC:{value:col}}));
     LORA_G.add(g);LINKS.push({d,g,u,hot:0})});
   const h=DEV.find(d=>d.k==='iot');hubBase=new THREE.Vector3(h.x,h.y+.4,h.z);
+  LORA_G.add(disc(h.x,h.y+.3,h.z,3.4,{uTime:U.uTime,uS:{value:.18},uP:{value:0},uHub:{value:1},uC:{value:col}}));
 }
 function updLinks(dt){if(!UI.lora||!SHOW.iot)return;
-  LINKS.forEach(l=>{if(l.hot>0){l.hot=Math.max(0,l.hot-dt/1.5);l.u.uHot.value=l.hot}});
-  hubWave-=dt;if(hubWave<=0){hubWave=2.2;ripple(hubBase.x,hubBase.y,hubBase.z,'#3A8047',18,3.4,false,true)}}
-const pkPool=[];
-function packet(from,to,color,dur,done){
-  const lg=(c,z)=>{const x=glowSprite(c,z);x.material.blending=THREE.NormalBlending;x.material.depthTest=false;x.renderOrder=6;return x};
-  const sp=lg(color,2.2),tr=[lg('#ffffff',1),lg(color,1.4),lg(color,.9)];scene.add(sp);tr.forEach(s=>scene.add(s));
-  const c=new THREE.Vector3().addVectors(from,to).multiplyScalar(.5);c.y=Math.max(from.y,to.y)+2.2+from.distanceTo(to)*.12;
-  const P=t=>{const u=1-t;return new THREE.Vector3(u*u*from.x+2*u*t*c.x+t*t*to.x,u*u*from.y+2*u*t*c.y+t*t*to.y,u*u*from.z+2*u*t*c.z+t*t*to.z)};
-  let t=0;
-  FX.push(dt=>{t+=dt/dur;const k=Math.min(t,1);sp.position.copy(P(k));tr[0].position.copy(P(k));tr[1].position.copy(P(Math.max(0,k-.05)));tr[2].position.copy(P(Math.max(0,k-.1)));
-    if(t>=1){[sp,...tr].forEach(s=>{scene.remove(s);s.material.dispose()});done&&done();return false}return true});
-}
+  LINKS.forEach(l=>{if(l.hot>0){l.hot=Math.max(0,l.hot-dt/1.6);l.u.uHot.value=l.hot}})}
 function beam(p,color){
   const m=new THREE.Mesh(new THREE.CylinderGeometry(.07,.07,1,8,1,true),new THREE.MeshBasicMaterial({color,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));
   scene.add(m);let t=0;
@@ -1641,10 +1714,8 @@ function pinVal(d){
   return'';
 }
 function sendPacket(d,cb){
-  const from=d.top.clone();
-  if(UI.lora&&SHOW.iot&&devOn(d)){ripple(d.x,d.y+.3,d.z,KCOL[d.k],5,1.1,false,true);const l=LINKS.find(l=>l.d===d);if(l)l.hot=1;
-    packet(from,hubTop,KCOL[d.k],1.05+from.distanceTo(hubTop)*.02,()=>{ripple(hubBase.x,hubBase.y,hubBase.z,'#7ED8C8',6,1.1,false,true);arrived(cb)})}
-  else setTimeout(()=>arrived(cb),700);
+  const l=LINKS.find(l=>l.d===d);if(l&&UI.lora&&SHOW.iot&&devOn(d))l.hot=1;
+  setTimeout(()=>arrived(cb),800);
 }
 function arrived(cb){ENV.pk++;ENV.sync++;$('#pk').textContent=fmtI(ENV.pk);cb&&cb();
   if(ENV.sync>=9&&!LM.on){ENV.sync=0;if(SHOW.iot)beam(hubTop,'#B5E383');log('s','<b>IOT-HUB</b> → Farmblock Cloud: đồng bộ 9 bản ghi')}}
@@ -1726,7 +1797,7 @@ function applyLight(dt){
   const wx=WX[ENV.w],k=Math.min(1,dt*1.5);
   grayK=lerp(grayK,wx.gray,k);clK=lerp(clK,wx.cl,k);fogN=lerp(fogN,wx.fog[0],k);fogF=lerp(fogF,wx.fog[1],k);
   const lum=LT.bg.r*.3+LT.bg.g*.55+LT.bg.b*.15;_c2.setRGB(lum,lum,lum*1.04);
-  const bg=_c3.set('#EEF3E6').multiplyScalar(1-.1*clamp(grayK,0,1)).lerp(_c1.set('#16241B'),LT.night*.92);
+  const bg=_c3.set(document.body.classList.contains('dark')?'#1F1712':'#EEF3E6').multiplyScalar(1-.1*clamp(grayK,0,1)).lerp(_c1.set('#16241B'),LT.night*.92);
   if(ENV.w==='fog'||fogN<40){const fk=1-sstep(20,70,fogN);bg.lerp(_c1.set(wx.fc||'#DADBD6').multiplyScalar(.35+.65*LT.day),fk*.75)}
   ENV.flash=Math.max(0,ENV.flash-dt*5);
   const fl=ENV.flash>0?(Math.sin(ENV.flash*30)>0?1:.3)*ENV.flash:0;
@@ -1775,7 +1846,7 @@ const SHOW={soil:true,water:true,weather:true,iot:true,cam:false};
 const devOn=d=>(SHOW[d.k]!==false&&!(LM.on&&(d.id==='WTR-02'||(d.k==='cam'&&!d.live))))||!!d.alarm;
 function applyDev(d){const on=devOn(d);if(d.obj)d.obj.visible=on;if(d.pin)d.pin.classList.toggle('off',!on);if(d.disc)d.disc.visible=UI.cov&&on}
 function syncLinks(){LINKS.forEach(l=>{l.g.visible=UI.lora&&SHOW.iot&&devOn(l.d)})}
-function setShow(k,v){SHOW[k]=v;const b=$(`.dc[data-k="${k}"]`);if(b)b.setAttribute('aria-pressed',String(v));DEV.forEach(d=>{if(d.k===k)applyDev(d)});syncLinks();if(!v&&INS.d&&INS.d.k===k&&!INS.d.alarm)closeInsp()}
+function setShow(k,v,quiet){SHOW[k]=v;if(!quiet){PREF.show=SHOW;savePref()}const b=$(`.dc[data-k="${k}"]`);if(b)b.setAttribute('aria-pressed',String(v));DEV.forEach(d=>{if(d.k===k)applyDev(d)});syncLinks();if(!v&&INS.d&&INS.d.k===k&&!INS.d.alarm)closeInsp()}
 const SEL={z:-1,d:-1};
 const INS={d:null,patrol:true,pan:0};
 
@@ -1811,7 +1882,18 @@ function updLabels(){
     l.el.style.transform=`translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) translate(-50%,-100%)`;
     l.el.style.zIndex=String(1000-Math.round(_v.z*1000));
   });
+  updInsp();
 }
+// thẻ thiết bị bám theo ghim vừa bấm, tự lật khi sát mép màn hình
+function updInsp(){
+  const d=INS.d;if(!d)return;const el=$('#insp'),W=innerWidth,Ht=innerHeight,w=el.offsetWidth,h=el.offsetHeight,G=20;
+  _v.copy(d.top).add(_up).project(camera);const sx=(_v.x*.5+.5)*W,sy=(-_v.y*.5+.5)*Ht;
+  let x=sx+G,flip=false;if(x+w>W-8){x=sx-G-w;flip=true}if(x<8){x=8;flip=false}
+  const y=clamp(sy-Math.min(56,h*.3),8,Math.max(8,Ht-h-8));
+  el.style.transform=`translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0)`;
+  el.classList.toggle('flip',flip);el.style.setProperty('--ay',clamp(sy-y,16,h-16).toFixed(1)+'px');
+}
+const _up=new THREE.Vector3(0,.35,0);
 function floatFx(d,txt,cls){_v.copy(d.top).project(camera);if(_v.z>1)return;const el=document.createElement('div');el.className='fx '+(cls||'');el.textContent=txt;
   el.style.left=((_v.x*.5+.5)*innerWidth)+'px';el.style.top=((-_v.y*.5+.5)*innerHeight-44)+'px';el.style.transform='translateX(-50%)';$('#labels').appendChild(el);setTimeout(()=>el.remove(),2300)}
 
@@ -1854,7 +1936,7 @@ function buildZoneLines(){
 function rdCell(lab,val,unit,cls,wide){return`<div class="${(cls||'')+(wide?' wide':'')}"><span>${lab}</span><b>${val}<small>${unit||''}</small></b></div>`}
 function spark(arr,col){if(arr.length<2)return'';const mn=Math.min(...arr),mx=Math.max(...arr),r=mx-mn||1;const pts=arr.map((v,i)=>`${(i/(arr.length-1)*300).toFixed(1)},${(42-(v-mn)/r*36).toFixed(1)}`).join(' ');
   return`<svg class="spark" viewBox="0 0 300 46" preserveAspectRatio="none" aria-hidden="true"><polyline points="${pts}" fill="none" stroke="${col}" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>`}
-function openInsp(i){
+function openInsp(i,fly){
   const d=DEV[i];const prev=INS.d;INS.d=d;SEL.d=i;if(prev)setPin(prev);setPin(d);
   $('#iGem use').setAttribute('href','#'+KICON[d.k]);
   $('#iName').textContent=LM.on&&d.node?'Điểm đo '+d.node.id.slice(-1):KNAME[d.k];
@@ -1863,7 +1945,8 @@ function openInsp(i){
   renderInsp(false);$('#insp').classList.add('open');$('#insp').classList.toggle('cam',d.k==='cam'&&!LM.on);
   if(!devOn(d))setShow(d.k,true);
   if(MOB)setTab('');
-  focusDev(d);
+  if(fly)focusDev(d);
+  updInsp();
   if(!LM.on&&(d.k==='soil'||d.k==='water'||d.k==='weather')&&!d.r)measure(d,true);
 }
 function closeInsp(){const d=INS.d;INS.d=null;SEL.d=-1;if(d)setPin(d);$('#insp').classList.remove('open');fovCone.visible=false}
@@ -1906,7 +1989,17 @@ function updFly(dt){if(!FLY)return;FLY.t+=dt/FLY.dur;const k=ease(Math.min(1,FLY
   controls.target.lerpVectors(FLY.t0,FLY.t1,k);SPH.set(lerp(FLY.r0,FLY.r1,k),lerp(FLY.p0,FLY.p1,k),lerp(FLY.h0,FLY.h1,k));
   camera.position.setFromSpherical(SPH).add(controls.target);if(FLY.t>=1)FLY=null}
 const LAND=()=>MOB&&innerWidth>innerHeight;
-const HOME=()=>LAND()?{t:new THREE.Vector3(-.5,0,7),r:innerWidth/innerHeight>1.9?64:70,phi:.6,th:0}:({t:new THREE.Vector3(MOB?-2.5:-.5,0,MOB?4:9),r:MOB?(innerWidth/innerHeight<.6?170:130):(innerWidth/innerHeight<1.6?122:110),phi:MOB?.5:.68,th:0});
+let userMoved=false;
+// khung nhìn mở đầu: tính theo chỗ trống thực tế giữa các box để sa bàn luôn vừa màn hình
+const HOME=()=>{
+  const W=innerWidth,Ht=innerHeight,desk=!MOB,land=LAND(),phi=land?.82:desk?.68:.5;
+  const cl=$('.cluster'),cb=cl&&cl.offsetHeight?cl.offsetHeight+22:0,pw=desk?parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--pw'))||272:0;
+  const L=desk?pw+22:land?70:8,Rr=desk?pw+22:land?50:8,T=desk?70:land?52:60,B=desk?cb:land?cb+2:cb+84;
+  const aw=Math.max(200,W-L-Rr),ah=Math.max(160,Ht-T-B),tv=Math.tan(camera.fov*Math.PI/360),th=tv*W/Ht;
+  const r=Math.max(28.5/(th*aw/W),(18.5*Math.cos(phi)/.78+1)/(tv*ah/Ht));
+  const dx=-((L-Rr)/2)/W*2*r*th,dz=-((T-B)/2)/Ht*2*r*tv/Math.cos(phi);
+  return{t:new THREE.Vector3(-2.7+dx,0,2.6+dz),r,phi,th:0};
+};
 function goHome(){const h=HOME();flyTo(h.t,h.r,h.phi,h.th,1.6);setTop(false)}
 function frameZone(i){const P=ZP[i],c=centroid(P);let r=0;P.forEach(p=>r=Math.max(r,Math.hypot(p[0]-c[0],p[1]-c[1])));
   flyTo(new THREE.Vector3(c[0],H(c[0],c[1]),c[1]+(MOB?0:1.5)),clamp(r*(MOB?6.5:4.6),24,80),MOB?.74:.78,null,1.4);setTop(false)}
@@ -1922,13 +2015,13 @@ function pick(cx,cy,groundToo){mp.set(cx/innerWidth*2-1,-cy/innerHeight*2+1);ray
   if(groundToo){const g=ray.intersectObject(ground,false);if(g.length){const p=g[0].point;return{zone:zoneAt(p.x,p.z)}}}return null}
 function bindPointer(){
   const cv=$('#gl');let dn=null;
-  cv.addEventListener('pointerdown',e=>{dn={x:e.clientX,y:e.clientY,t:performance.now()};cv.classList.add('drag');hideHint();FLY=null;if(controls.autoRotate&&e.isPrimary){}});
+  cv.addEventListener('pointerdown',e=>{userMoved=true;dn={x:e.clientX,y:e.clientY,t:performance.now()};cv.classList.add('drag');hideHint();FLY=null;if(controls.autoRotate&&e.isPrimary){}});
   addEventListener('pointerup',e=>{cv.classList.remove('drag');if(!dn)return;const m=Math.hypot(e.clientX-dn.x,e.clientY-dn.y),dt=performance.now()-dn.t;dn=null;
-    if(e.target!==cv||m>7||dt>600)return;const r=pick(e.clientX,e.clientY,true);if(!r)return;
-    if(r.dev!=null)openInsp(r.dev);else if(r.zone!=null&&r.zone>=0&&r.zone!==SEL.z)selectZone(r.zone)});
+    if(e.target!==cv||m>7||dt>600)return;const r=pick(e.clientX,e.clientY,true);if(!r){closeInsp();return}
+    if(r.dev!=null)openInsp(r.dev);else{closeInsp();if(r.zone!=null&&r.zone>=0&&r.zone!==SEL.z)selectZone(r.zone)}});
   let hv=0;cv.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse'||dn)return;const now=performance.now();if(now-hv<70)return;hv=now;const r=pick(e.clientX,e.clientY,false);cv.classList.toggle('hov',!!r);
     DEV.forEach(d=>d.pin&&d.pin.classList.toggle('hl',r&&r.dev===d.idx))});
-  cv.addEventListener('wheel',()=>{FLY=null;hideHint()},{passive:true});
+  cv.addEventListener('wheel',()=>{userMoved=true;FLY=null;hideHint()},{passive:true});
 }
 let hintT=0;function hideHint(){if(!hintT){hintT=1;$('#hint').classList.add('off')}}
 
@@ -1958,20 +2051,24 @@ function bindUI(){
   $('#alB').addEventListener('click',()=>{if(SMK.det>=0)openInsp(SMK.det);$('#alert').classList.add('mini')});
   $('#alX').addEventListener('click',()=>{const a=$('#alert');a.classList.contains('mini')?a.classList.remove('on'):a.classList.add('mini')});
   $('#alert').addEventListener('click',e=>{const a=$('#alert');if(a.classList.contains('mini')&&!e.target.closest('#alX'))a.classList.remove('mini')});
-  const tg=(id,f)=>{const el=$(id);el.addEventListener('change',()=>f(el.checked));f(el.checked)};
+  PREF.t=PREF.t||{};
+  const tg=(id,f)=>{const el=$(id);if(id in PREF.t)el.checked=PREF.t[id];el.addEventListener('change',()=>{PREF.t[id]=el.checked;savePref();f(el.checked)});f(el.checked)};
   $('#tTilt').checked=UI.tilt;
   tg('#tPins',v=>{UI.pins=v;$('#labels').classList.toggle('hide-pins',!v)});
   tg('#tZt',v=>{UI.zt=v;$('#labels').classList.toggle('hide-zt',!v)});
   tg('#tCov',v=>{UI.cov=v;DEV.forEach(applyDev)});
   tg('#tTilt',v=>{UI.tilt=v});
   tg('#tSound',v=>{UI.sound=v;sound.set(v)});
+  tg('#tCl',v=>{document.body.classList.toggle('no-cl',!v);if(!userMoved)goHome()});
+  tg('#tLog',v=>document.body.classList.toggle('no-log',!v));
+  if(PREF.show)Object.assign(SHOW,PREF.show);
   $$('.dc[data-k]').forEach(b=>{b.setAttribute('aria-pressed',String(SHOW[b.dataset.k]));b.addEventListener('click',()=>setShow(b.dataset.k,!SHOW[b.dataset.k]))});
-  const lo=$('#tLora');lo.addEventListener('click',()=>{UI.lora=!UI.lora;lo.setAttribute('aria-pressed',String(UI.lora));syncLinks()});
+  const lo=$('#tLora');if(PREF.lora===false){UI.lora=false;lo.setAttribute('aria-pressed','false')}lo.addEventListener('click',()=>{UI.lora=!UI.lora;PREF.lora=UI.lora;savePref();lo.setAttribute('aria-pressed',String(UI.lora));syncLinks()});
   DEV.forEach(applyDev);syncLinks();
   if(MOB)$('#hint .hd').textContent='Kéo để xoay · Chụm hai ngón để phóng to · Chạm vào khu hoặc thiết bị để xem';
   $('#zIn').addEventListener('click',()=>{const s=curSph();flyTo(controls.target,Math.max(controls.minDistance,s.r*.68),s.phi,s.th,.6)});
   $('#zOut').addEventListener('click',()=>{const s=curSph();flyTo(controls.target,Math.min(controls.maxDistance,s.r*1.45),s.phi,s.th,.6)});
-  $('#zHome').addEventListener('click',()=>{selectZone(-1,true);goHome()});
+  $('#zHome').addEventListener('click',()=>{userMoved=false;selectZone(-1,true);goHome()});
   $('#zTop').addEventListener('click',()=>{if(topOn){goHome()}else{const t=new THREE.Vector3(-.5,0,0);flyTo(t,LAND()?66:MOB?(innerWidth/innerHeight<.6?175:130):92,.001,0,1.5);setTop(true)}});
   $('#zRot').addEventListener('click',e=>{controls.autoRotate=!controls.autoRotate;e.currentTarget.setAttribute('aria-pressed',String(controls.autoRotate))});
   $('#iX').addEventListener('click',closeInsp);
@@ -1982,12 +2079,14 @@ function bindUI(){
 }
 
 /* ================= CHẾ ĐỘ TRỰC TIẾP: SỐ LIỆU THẬT TỪ DASHBOARD ================= */
-const LM={on:false,data:null,metric:'moisture',lastAt:null,rain0:null,fail:0};
+const PREF=(()=>{try{return JSON.parse(localStorage.getItem('fb-pref'))||{}}catch(e){return{}}})();
+const savePref=()=>{try{localStorage.setItem('fb-pref',JSON.stringify(PREF))}catch(e){}};
+const LM={on:false,data:null,metric:PREF.metric||'moisture',lastAt:null,rain0:null,fail:0};
 const METRIC={
-  moisture:{l:'Độ ẩm',full:'Độ ẩm đất',u:'%',d:1,min:0,max:100,t0:10,t1:100},
-  temperature:{l:'Nhiệt độ',full:'Nhiệt độ đất',u:'°C',d:1,min:15,max:40,t0:22,t1:36},
-  ph:{l:'pH',full:'pH đất',u:'',d:1,min:3,max:10,t0:4,t1:9},
-  ec:{l:'EC',full:'EC đất',u:' µS/cm',d:0,min:0,max:1500,t0:0,t1:1200}
+  moisture:{l:'Độ ẩm',full:'Độ ẩm đất',u:'%',d:1,min:0,max:100,t0:10,t1:80,c:'#2B7FA6'},
+  temperature:{l:'Nhiệt độ',full:'Nhiệt độ đất',u:'°C',d:1,min:15,max:40,t0:22,t1:36,c:'#BF6436'},
+  ph:{l:'pH',full:'pH đất',u:'',d:1,min:3,max:10,t0:4,t1:9,c:'#5C8A2C'},
+  ec:{l:'EC',full:'EC đất',u:' µS/cm',d:0,min:0,max:1500,t0:0,t1:1200,c:'#A5812A'}
 };
 const LABEL_METRIC={'Độ ẩm đất':'moisture','Nhiệt độ đất':'temperature','pH đất':'ph','EC đất':'ec'};
 const vnMin=()=>{const d=new Date(Date.now()+7*36e5);return d.getUTCHours()*60+d.getUTCMinutes()+d.getUTCSeconds()/60};
@@ -2027,6 +2126,11 @@ function lvBatch(first){
     else log('',`<b>Trạm thời tiết</b>: ${fmt(d.r.T)}°C · ẩm ${fmt(d.r.RH,0)}% · gió ${fmt(d.r.ws)} m/s`)})},first?600+i*420:i*300));
 }
 const lvRamp=t=>{const a=[217,140,71],b=[158,209,89],c=[64,166,217],[p,q,k]=t<.5?[a,b,t*2]:[b,c,t*2-1];return`rgb(${p.map((x,i)=>Math.round(x+(q[i]-x)*k)).join(',')})`};
+function zoneTint(i,lc){
+  if(i>=NZ)return 0;if(lc)return ZS[i].tint||0;
+  const m=METRIC[LM.metric],z=ZS[i],v={moisture:z.vwc,temperature:z.tS,ph:z.ph,ec:z.ec}[LM.metric];
+  return Math.round(5+clamp((v-m.t0)/(m.t1-m.t0),0,1)*245);
+}
 function lvZones(){
   const m=METRIC[LM.metric];
   ZS.forEach((z,i)=>{
@@ -2037,7 +2141,7 @@ function lvZones(){
   LB.forEach(l=>{if(l.z==null||l.z>=NZ)return;const v0=ZS[l.z].nv,t0=v0==null?null:clamp((v0-m.t0)/(m.t1-m.t0),0,1);if(t0==null)l.el.style.removeProperty('--zc');else l.el.style.setProperty('--zc',lvRamp(t0));const sp=l.el.querySelector('span');if(sp){const v=ZS[l.z].nv;sp.textContent=v==null?'':fmt(v,m.d)+m.u.replace(' µS/cm','')}});
 }
 function lvMetric(k){
-  LM.metric=k;$$('#tiles .tl').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.m===k)));
+  LM.metric=k;PREF.metric=k;savePref();$('#labels').style.setProperty('--mc',METRIC[k].c);$$('#tiles .tl').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.m===k)));
   if(LM.on&&LM.data)lvZones();
   DEV.forEach(d=>{if(d.k==='soil')setPin(d)});renderZone();if(INS.d)renderInsp(true);
 }
@@ -2065,7 +2169,7 @@ function lvAttention(){
   box.innerHTML=items.length?items.map((a,i)=>{const st=a.stations.filter(s=>s!=='ALL');
     return`<button class="at ${a.level}" data-i="${i}"><i></i><span><b>${a.metric}: ${a.label.toLowerCase()}</b><small>${st.length?st.map(ptName).join(', '):'Toàn bộ điểm đo'}</small></span></button>`}).join(''):'<p class="note" style="margin-top:0">Hiện không có gì cần chú ý.</p>';
   box.querySelectorAll('.at').forEach(b=>b.addEventListener('click',()=>{const a=items[+b.dataset.i],m=LABEL_METRIC[a.metric];if(m&&m!==LM.metric)lvMetric(m);
-    const s=a.stations.find(x=>x!=='ALL');if(!s)return;const d=s==='CENTER'?DEV.find(x=>x.k===(/nước/.test(a.metric)?'water':'weather')):soilDev(s);if(d)openInsp(d.idx)}));
+    const s=a.stations.find(x=>x!=='ALL');if(!s)return;const d=s==='CENTER'?DEV.find(x=>x.k===(/nước/.test(a.metric)?'water':'weather')):soilDev(s);if(d)openInsp(d.idx,true)}));
 }
 function lvCenter(){
   const c=LM.data.center,k=LM.data.kpi;const pump=v=>v>0?fmt(v)+' m³/h':'Tắt';
@@ -2120,7 +2224,7 @@ function setMode(on){
   $('#rtT').textContent=on?'Trạm trung tâm':'Môi trường';$('#tbE').textContent=on?'Trạm':'Thời tiết';
   $('#logk').textContent=on?'Số liệu vừa về':'Nhật ký dữ liệu';
   $('.dc[data-k="cam"] b').textContent=on?String(DEV.filter(d=>d.live).length):'22';$('.dc[data-k="water"] b').textContent=on?'1':'2';
-  setShow('cam',false);
+  setShow('cam',SHOW.cam,true);
   if(on){lvApply(LM.data,true);lvMetric(LM.metric)}
   else{
     LM.spz=null;Object.keys(METRIC).forEach(k=>{const e=$('#ts-'+k);if(e)e.innerHTML=''});
@@ -2137,7 +2241,7 @@ async function lvPoll(){
   try{
     const r=await fetch('live.json',{cache:'no-store'});if(!r.ok)throw 0;
     const d=await r.json();if(!d.nodes)throw 0;LM.fail=0;
-    if(!LM.data){LM.data=d;$('#modes').hidden=false;if(!/[?&]sim/.test(location.search))setMode(true)}
+    if(!LM.data){LM.data=d;$('#modes').hidden=false;if(!/[?&]sim/.test(location.search)&&PREF.mode!=='sim')setMode(true);if(!userMoved)goHome()}
     else if(LM.on&&(d.at!==LM.lastAt||d.received_at!==LM.data.received_at))lvApply(d,false);else LM.data=d;
   }catch(e){LM.fail++;if(!LM.data)clearInterval(LM.t)}
 }
@@ -2152,7 +2256,11 @@ function lvInit(){
   $('#tiles').innerHTML=Object.keys(METRIC).map(k=>{const m=METRIC[k];return`<button class="tl" data-m="${k}" aria-pressed="${k===LM.metric}"><span class="tn">${m.full}</span><span class="tv"><b id="tv-${k}">–</b><small>${m.u.trim()}</small></span><svg class="ts" id="ts-${k}" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true"></svg></button>`}).join('');
   $('#tiles').addEventListener('click',e=>{const b=e.target.closest('.tl');if(b)lvMetric(b.dataset.m)});
   boxInit();
-  $('#modes').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setMode(b.dataset.m==='live')});
+  if(MOB){const b=document.createElement('div');b.className='sec';b.innerHTML='<span class="k">Thiết bị trên sa bàn</span>';b.append($('.devbar'));$('.right .scroll').append(b)}
+  $('#modes').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;PREF.mode=b.dataset.m;savePref();setMode(b.dataset.m==='live')});
+  $('#labels').style.setProperty('--mc',METRIC[LM.metric].c);
+  const thm=v=>{document.body.classList.toggle('dark',v);$('#themeB').setAttribute('aria-pressed',String(v));$('#themeB').setAttribute('aria-label',v?'Chế độ sáng':'Chế độ tối')};
+  thm(PREF.theme==='dark');$('#themeB').addEventListener('click',()=>{const v=!document.body.classList.contains('dark');PREF.theme=v?'dark':'light';savePref();thm(v)});
   lvPoll();LM.t=setInterval(lvPoll,30000);
 }
 
@@ -2206,10 +2314,10 @@ function simStep(dt){
       WSt.lvl=Math.max(.55,WSt.lvl-.0018*dt);if(z.irr<=0){z.irr=0;IRR[i].visible=false;endIrr(i)}}
     if(!LC){z.ec+=(520-z.ec)*dt*.006-(ENV.rain>0?2.5*dt:0);z.ec=Math.max(180,z.ec);
     z.tS=lerp(z.tS,ENV.T-1.6-(z.vwc-25)*.06,dt*.05)}
-    const w=clamp((z.vwc-12)/34,0,1);wetData[i*4]=w*255;wetData[i*4+1]=z.irr>0?255:0;wetData[i*4+2]=(SEL.z===i)?255:0;wetData[i*4+3]=LC?(z.tint||0):255;
+    const w=clamp((z.vwc-12)/34,0,1);wetData[i*4]=w*255;wetData[i*4+1]=z.irr>0?255:0;wetData[i*4+2]=(SEL.z===i)?255:0;wetData[i*4+3]=zoneTint(i,LC);
     if(i<NZ){const p=IRR[i];if(p.visible){const u=p.material.uniforms.uOn;u.value=clamp(Math.min(z.irrT-z.irr,z.irr)/1.2,0,1)}}
   });
-  wetTex.needsUpdate=true;GU.uTint.value=lerp(GU.uTint.value,LC?1:0,Math.min(1,dt*1.5));
+  wetTex.needsUpdate=true;GU.uTint.value=lerp(GU.uTint.value,1,Math.min(1,dt*1.5));
   WSt.t=lerp(WSt.t,ENV.T-2.2,dt*.05);WSt.ec=lerp(WSt.ec,ENV.rain>0?150:188,dt*.03);WSt.lvl=Math.min(1.08,WSt.lvl+(ENV.rain>0?.0012*ENV.rain*dt:0));
   pondWater.position.y=pondWater.userData.y0-(1-WSt.lvl)*.4;
   DEV.forEach(d=>{if(d.k==='water')d.obj.position.y=pondWater.position.y+.02+Math.sin(t*1.6+d.idx)*.025});
@@ -2293,6 +2401,7 @@ function frame(now){
 }
 function onResize(){
   const w=innerWidth,h=innerHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();
+  if(!userMoved){clearTimeout(onResize.t);onResize.t=setTimeout(()=>{if(!userMoved)goHome()},150)}
   if(composer)composer.setSize(w,h);
   IRR.forEach(p=>p.material.uniforms.uPx.value=h*.13);flies.material.uniforms.uPx.value=h*.06;
 }
