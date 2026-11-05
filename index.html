@@ -37,7 +37,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;overflow:hidden;overscroll-behavior:none}
-body{background:#E9E1D2;color:var(--txt);font-family:var(--font);font-size:16px;line-height:1.45;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+body{background:#EEF3E6;color:var(--txt);font-family:var(--font);font-size:16px;line-height:1.45;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;touch-action:manipulation}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:3px solid var(--lime);outline-offset:2px;border-radius:10px}
@@ -63,20 +63,20 @@ a{color:inherit;text-decoration:none}
 .top{position:fixed;z-index:20;left:16px;right:16px;top:var(--top);display:flex;align-items:center;gap:10px;pointer-events:none}
 .top>*{pointer-events:auto}
 .bar{display:flex;align-items:center;gap:14px;min-height:62px;padding:8px 18px 8px 12px;border-radius:999px;background:var(--pn);border:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:10px;color:#fff}
+.brand{display:flex;align-items:center;gap:10px;color:var(--hi)}
 .brand svg.mk{width:40px;height:40px}
 .brand .wm{height:16px;width:auto;fill:currentColor}
 .crumb{display:flex;flex-direction:column;line-height:1.2;padding-left:14px;border-left:1px solid var(--line)}
-.crumb b{font-weight:600;font-size:17px;color:#fff;font-stretch:108%}
+.crumb b{font-weight:600;font-size:17px;color:var(--hi);font-stretch:108%}
 .crumb span{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime)}
 .links{display:flex;gap:8px;margin-left:auto}
-.lk{display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:0 18px;border-radius:999px;background:var(--pn);border:1px solid var(--line);font-weight:600;font-size:16px;color:#fff;transition:background-color .25s,border-color .25s}
+.lk{display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:0 18px;border-radius:999px;background:var(--pn);border:1px solid var(--line);font-weight:600;font-size:16px;color:var(--hi);transition:background-color .25s,border-color .25s}
 .lk:hover{background:rgba(20,44,26,.95);border-color:var(--line-2)}
 .lk svg{width:18px;height:18px}
 .lk.vm{background:var(--lime);color:var(--g800);border-color:var(--lime)}
 .lk.vm:hover{background:var(--lime-2)}
 .stat{display:flex;align-items:center;gap:14px;min-height:52px;padding:0 18px;border-radius:999px;background:var(--pn);border:1px solid var(--line);font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--txt-2);white-space:nowrap}
-.stat b{color:#fff;font-weight:600;font-size:15px}
+.stat b{color:var(--hi);font-weight:600;font-size:15px}
 .live{display:inline-flex;align-items:center;gap:7px;color:var(--lime);font-weight:600}
 .live i{width:8px;height:8px;border-radius:50%;background:var(--lime);animation:pulse 1.8s ease-out infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(181,227,131,.8)}80%,100%{box-shadow:0 0 0 8px rgba(181,227,131,0)}}
@@ -86,28 +86,28 @@ a{color:inherit;text-decoration:none}
 .left{left:16px;top:calc(var(--top) + 76px);width:var(--pw);max-height:calc(100svh - var(--top) - 76px - 16px - 176px);display:flex;flex-direction:column}
 .right{right:16px;top:calc(var(--top) + 76px);width:var(--pw);max-height:calc(100svh - var(--top) - 76px - 16px);display:flex;flex-direction:column}
 .zgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-.zb{min-height:48px;border-radius:14px;background:var(--pn-2);border:1px solid transparent;font-weight:600;font-size:16px;color:#fff;transition:background-color .2s,border-color .2s,color .2s}
+.zb{min-height:48px;border-radius:14px;background:var(--pn-2);border:1px solid transparent;font-weight:600;font-size:16px;color:var(--hi);transition:background-color .2s,border-color .2s,color .2s}
 .zb:hover{background:var(--pn-3);border-color:var(--line-2)}
 .zb.all{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:8px}
 .zb[aria-pressed="true"]{background:var(--lime);color:var(--g800)}
 .zinfo{margin-top:10px;padding:12px 14px;border-radius:16px;background:var(--pn-2)}
-.zinfo h3{font-size:20px;font-weight:600;color:#fff;font-stretch:108%;line-height:1.2}
+.zinfo h3{font-size:20px;font-weight:600;color:var(--hi);font-stretch:108%;line-height:1.2}
 .zinfo p{font-size:15px;color:var(--txt-2);margin-top:4px}
 .kv{display:grid;grid-template-columns:1fr auto;gap:6px 10px;margin-top:12px;font-size:15px}
 .kv dt{color:var(--txt-2)}
-.kv dd{color:#fff;font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
+.kv dd{color:var(--hi);font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
 .devs{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
 .devs span{display:inline-flex;align-items:center;gap:5px;padding:4px 9px 4px 6px;border-radius:999px;background:rgba(0,0,0,.25);font-size:13.5px;font-weight:600}
 .devs svg{width:18px;height:18px;color:var(--lime)}
 .meter{margin-top:12px}
 .meter .row{display:flex;justify-content:space-between;align-items:baseline;font-size:15px;color:var(--txt-2)}
-.meter .row b{font-size:22px;color:#fff;font-weight:600;font-variant-numeric:tabular-nums}
+.meter .row b{font-size:22px;color:var(--hi);font-weight:600;font-variant-numeric:tabular-nums}
 .meter .tr{position:relative;height:10px;border-radius:6px;background:rgba(0,0,0,.35);margin-top:8px;overflow:hidden}
 .meter .tr .ok{position:absolute;top:0;bottom:0;left:30%;width:30%;background:rgba(181,227,131,.18);border-left:1px dashed rgba(181,227,131,.6);border-right:1px dashed rgba(181,227,131,.6)}
 .meter .tr .v{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:linear-gradient(90deg,#C8925A,#51ADCA);transition:width .4s}
 .meter small{display:block;margin-top:6px;font-size:13px;color:var(--txt-2)}
 .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.ab{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:0 10px;border-radius:16px;font-weight:600;font-size:16px;background:var(--pn-2);border:1px solid var(--line);color:#fff;transition:background-color .2s,border-color .2s,transform .2s var(--ease)}
+.ab{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:0 10px;border-radius:16px;font-weight:600;font-size:16px;background:var(--pn-2);border:1px solid var(--line);color:var(--hi);transition:background-color .2s,border-color .2s,transform .2s var(--ease)}
 .ab:hover{background:var(--pn-3);border-color:var(--line-2)}
 .ab:active{transform:scale(.97)}
 .ab svg{width:22px;height:22px;flex:none}
@@ -116,7 +116,7 @@ a{color:inherit;text-decoration:none}
 .ab.pri.on{background:#0E3B4A;color:#BFEAF7;border-color:var(--sky)}
 .ab.on{border-color:var(--lime);background:rgba(181,227,131,.14)}
 .ab:disabled{opacity:.45;cursor:default}
-.chk{display:flex;align-items:center;gap:12px;min-height:48px;padding:6px 4px;font-size:15.5px;color:#fff;cursor:pointer}
+.chk{display:flex;align-items:center;gap:12px;min-height:48px;padding:6px 4px;font-size:15.5px;color:var(--hi);cursor:pointer}
 .chk input{appearance:none;-webkit-appearance:none;flex:none;width:44px;height:26px;border-radius:999px;background:rgba(255,255,255,.14);position:relative;cursor:pointer;transition:background-color .25s}
 .chk input::after{content:"";position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .3s var(--ease)}
 .chk input:checked{background:var(--lime)}
@@ -126,13 +126,13 @@ a{color:inherit;text-decoration:none}
 
 /* thời tiết */
 .wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.wb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:70px;border-radius:14px;background:var(--pn-2);border:1px solid transparent;font-weight:600;font-size:14.5px;color:#fff;transition:background-color .2s,border-color .2s}
+.wb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:70px;border-radius:14px;background:var(--pn-2);border:1px solid transparent;font-weight:600;font-size:14.5px;color:var(--hi);transition:background-color .2s,border-color .2s}
 .wb svg{width:26px;height:26px}
 .wb:hover{background:var(--pn-3);border-color:var(--line-2)}
 .wb[aria-pressed="true"]{background:var(--lime);color:var(--g800)}
 .sl{margin-top:16px}
 .sl .row{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:15px;color:var(--txt-2)}
-.sl .row b{color:#fff;font-weight:600;font-family:var(--mono);font-size:15px}
+.sl .row b{color:var(--hi);font-weight:600;font-family:var(--mono);font-size:15px}
 input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:36px;background:transparent;cursor:pointer;margin-top:2px}
 input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:4px;background:linear-gradient(90deg,var(--tr,#2B3B2F),var(--tr2,var(--lime)))}
 input[type=range]::-moz-range-track{height:6px;border-radius:4px;background:linear-gradient(90deg,var(--tr,#2B3B2F),var(--tr2,var(--lime)))}
@@ -141,7 +141,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 #tod{--tr:#1B2550;--tr2:#1B2550;background:none}
 #tod::-webkit-slider-runnable-track{background:linear-gradient(90deg,#1B2550 0%,#1B2550 18%,#F2A65A 26%,#BFE3F0 40%,#EAF2F4 50%,#BFE3F0 62%,#F29A4A 74%,#3B2C5A 82%,#1B2550 100%)}
 #tod::-moz-range-track{background:linear-gradient(90deg,#1B2550 0%,#1B2550 18%,#F2A65A 26%,#BFE3F0 40%,#EAF2F4 50%,#BFE3F0 62%,#F29A4A 74%,#3B2C5A 82%,#1B2550 100%)}
-.tplay{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 12px;border-radius:999px;background:var(--pn-2);border:1px solid var(--line);font-size:14px;font-weight:600;color:#fff}
+.tplay{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 12px;border-radius:999px;background:var(--pn-2);border:1px solid var(--line);font-size:14px;font-weight:600;color:var(--hi)}
 .tplay svg{width:14px;height:14px}
 .tplay[aria-pressed="true"]{background:var(--lime);color:var(--g800)}
 .wind{display:grid;grid-template-columns:84px 1fr;gap:14px;align-items:center;margin-top:12px}
@@ -150,7 +150,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .dial .ar{position:absolute;left:50%;top:50%;width:4px;height:60px;margin:-30px 0 0 -2px;transition:transform .15s}
 .dial .ar::before{content:"";position:absolute;left:-6px;top:0;border:8px solid transparent;border-bottom:14px solid var(--warn);border-top:0}
 .dial .ar::after{content:"";position:absolute;left:1px;top:12px;width:2px;height:40px;background:linear-gradient(var(--warn),transparent)}
-.wind .wl b{display:block;font-size:20px;color:#fff;font-weight:600}
+.wind .wl b{display:block;font-size:20px;color:var(--hi);font-weight:600}
 .wind .wl span{font-size:14px;color:var(--txt-2)}
 .smoke{background:linear-gradient(90deg,rgba(255,107,90,.16),rgba(255,107,90,.04));border:1px solid rgba(255,107,90,.4)}
 .smoke:hover{background:rgba(255,107,90,.24);border-color:var(--bad)}
@@ -163,7 +163,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .g{position:relative;text-align:center}
 .g svg{width:100%;height:auto;display:block;overflow:visible}
 .g .gv{position:absolute;left:0;right:0;bottom:16%;display:flex;flex-direction:column;align-items:center;line-height:1}
-.g .gv b{font-size:30px;font-weight:600;color:#fff;font-variant-numeric:tabular-nums;font-stretch:110%}
+.g .gv b{font-size:30px;font-weight:600;color:var(--hi);font-variant-numeric:tabular-nums;font-stretch:110%}
 .g.c .gv b{font-size:44px}
 .g .gv small{font-family:var(--mono);font-size:12px;color:var(--txt-2);letter-spacing:.06em;margin-top:5px;text-transform:uppercase}
 .g .gl{font-size:14px;font-weight:600;color:var(--txt-2);margin-top:-2px}
@@ -175,7 +175,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .needle{transition:transform .5s var(--ease);transform-origin:50% 50%}
 .cl-foot{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
 .cl-foot div{display:flex;flex-direction:column;align-items:center;line-height:1.15}
-.cl-foot b{font-size:18px;font-weight:600;color:#fff;font-variant-numeric:tabular-nums}
+.cl-foot b{font-size:18px;font-weight:600;color:var(--hi);font-variant-numeric:tabular-nums}
 .cl-foot span{font-size:12.5px;color:var(--txt-2);font-family:var(--mono);letter-spacing:.04em;text-transform:uppercase}
 
 /* ---------- nhật ký ---------- */
@@ -187,12 +187,12 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .log li.w time,.log li.w b{color:var(--warn)}
 .log li.b time,.log li.b b{color:var(--bad)}
 .log li.s time{color:var(--sky)}
-.log li b{color:#fff;font-weight:600}
+.log li b{color:var(--hi);font-weight:600}
 @keyframes li{from{opacity:0;transform:translateX(-8px)}}
 
 /* ---------- điều khiển góc nhìn ---------- */
 .zoom{position:fixed;z-index:9;right:calc(var(--pw) + 28px);bottom:16px;display:flex;flex-direction:column;gap:6px;padding:6px;border-radius:22px}
-.zoom button{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--pn-2);color:#fff;transition:background-color .2s}
+.zoom button{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--pn-2);color:var(--hi);transition:background-color .2s}
 .zoom button:hover{background:var(--pn-3)}
 .zoom button[aria-pressed="true"]{background:var(--lime);color:var(--g800)}
 .zoom svg{width:24px;height:24px}
@@ -207,14 +207,14 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .zt b{font-size:19px;font-weight:700;font-stretch:110%}
 .zt span{font-size:10.5px;font-weight:600;letter-spacing:.05em;opacity:.8}
 .zt::after{content:"";position:absolute;left:50%;bottom:-6px;margin-left:-6px;border:6px solid transparent;border-bottom:0;border-top-color:inherit;border-top-color:#B5E383}
-.zt.on{background:#fff}.zt.on::after{border-top-color:#fff}
+.zt.on{background:#fff}.zt.on::after{border-top-color:var(--hi)}
 .zt.bare{background:rgba(245,228,161,.92)}.zt.bare::after{border-top-color:rgba(245,228,161,.92)}
 .dp{position:absolute;left:0;top:0;display:flex;align-items:center;gap:5px;pointer-events:auto;cursor:pointer;will-change:transform;transition:opacity .3s}
 .dp .gem{width:30px;height:30px;display:grid;place-items:center;background:var(--g800);border:2px solid var(--c,var(--lime));border-radius:8px;transform:rotate(45deg);box-shadow:0 0 0 4px rgba(17,38,21,.25),0 4px 14px rgba(0,0,0,.45);transition:transform .25s var(--ease),background-color .25s}
 .dp .gem svg{width:17px;height:17px;color:var(--c,var(--lime));transform:rotate(-45deg)}
 .dp:hover .gem,.dp.on .gem{transform:rotate(45deg) scale(1.18);background:var(--c,var(--lime))}
 .dp:hover .gem svg,.dp.on .gem svg{color:var(--g800)}
-.dp .vl{font-family:var(--mono);font-size:12.5px;font-weight:600;color:#fff;background:rgba(7,17,10,.82);padding:3px 7px;border-radius:7px;white-space:nowrap;border:1px solid rgba(255,255,255,.1)}
+.dp .vl{font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--hi);background:rgba(7,17,10,.82);padding:3px 7px;border-radius:7px;white-space:nowrap;border:1px solid rgba(255,255,255,.1)}
 .dp.cam .vl{display:none}
 .dp.cam .gem{width:24px;height:24px;border-radius:6px}.dp.cam .gem svg{width:14px;height:14px}
 .dp.alarm .gem{--c:var(--bad);animation:al 1s ease-in-out infinite}
@@ -224,7 +224,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .hide-pins .dp{opacity:0;pointer-events:none}
 .hide-pins .dp.on,.hide-pins .dp.alarm,.hide-pins .dp.busy{opacity:1;pointer-events:auto}
 .hide-zt .zt{opacity:0;pointer-events:none}
-.fx{position:absolute;left:0;top:0;font-family:var(--mono);font-weight:700;font-size:15px;color:#fff;background:rgba(81,173,202,.92);padding:4px 9px;border-radius:8px;white-space:nowrap;animation:fx 2.2s var(--ease) forwards}
+.fx{position:absolute;left:0;top:0;font-family:var(--mono);font-weight:700;font-size:15px;color:var(--hi);background:rgba(81,173,202,.92);padding:4px 9px;border-radius:8px;white-space:nowrap;animation:fx 2.2s var(--ease) forwards}
 .fx.lime{background:rgba(181,227,131,.95);color:#12301A}
 @keyframes fx{0%{opacity:0;translate:0 10px}15%{opacity:1;translate:0 0}75%{opacity:1}100%{opacity:0;translate:0 -36px}}
 
@@ -238,7 +238,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .ih{display:flex;align-items:center;gap:12px;padding:14px 14px 12px 16px}
 .ih .gem{flex:none;width:40px;height:40px;display:grid;place-items:center;border-radius:10px;transform:rotate(45deg);background:var(--c,var(--lime))}
 .ih .gem svg{width:22px;height:22px;color:var(--g800);transform:rotate(-45deg)}
-.ih h3{font-size:19px;font-weight:600;color:#fff;line-height:1.2}
+.ih h3{font-size:19px;font-weight:600;color:var(--hi);line-height:1.2}
 .ih p{font-family:var(--mono);font-size:12.5px;color:var(--txt-2);letter-spacing:.05em}
 .ih .x{margin-left:auto;flex:none;width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--pn-2)}
 .ih .x:hover{background:var(--pn-3)}
@@ -247,32 +247,32 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .feed{position:relative;height:232px;border-radius:0;overflow:hidden;outline:1px solid var(--line-2);background:transparent;margin-bottom:0}
 .feed+.pan{padding-top:12px}
 .feed::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 1px,transparent 1px 3px);pointer-events:none}
-.feed .tl,.feed .tr,.feed .bl,.feed .br{position:absolute;font-family:var(--mono);font-size:12px;font-weight:600;color:#fff;text-shadow:0 1px 3px #000;letter-spacing:.05em}
+.feed .tl,.feed .tr,.feed .bl,.feed .br{position:absolute;font-family:var(--mono);font-size:12px;font-weight:600;color:var(--hi);text-shadow:0 1px 3px #000;letter-spacing:.05em}
 .feed .tl{left:10px;top:8px}.feed .tr{right:10px;top:8px;display:flex;align-items:center;gap:6px}.feed .bl{left:10px;bottom:8px}.feed .br{right:10px;bottom:8px}
 .feed .tr i{width:9px;height:9px;border-radius:50%;background:#ff3b30;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 .feed .cross{position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border:1.5px solid rgba(255,255,255,.55);border-radius:4px}
 .feed .cross::before,.feed .cross::after{content:"";position:absolute;background:rgba(255,255,255,.55)}
 .feed .cross::before{left:50%;top:-10px;bottom:-10px;width:1.5px}.feed .cross::after{top:50%;left:-10px;right:-10px;height:1.5px}
-.feed .ai{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:6px 10px;border:2px solid var(--bad);color:#fff;background:rgba(255,107,90,.25);font-family:var(--mono);font-size:12px;font-weight:700;display:none}
+.feed .ai{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:6px 10px;border:2px solid var(--bad);color:var(--hi);background:rgba(255,107,90,.25);font-family:var(--mono);font-size:12px;font-weight:700;display:none}
 .feed.smk .ai{display:block}
 .rd{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .rd div{padding:10px 12px;border-radius:12px;background:var(--pn-2);display:flex;flex-direction:column;gap:2px}
 .rd span{font-size:13.5px;color:var(--txt-2)}
-.rd b{font-size:21px;font-weight:600;color:#fff;font-variant-numeric:tabular-nums;line-height:1.15}
+.rd b{font-size:21px;font-weight:600;color:var(--hi);font-variant-numeric:tabular-nums;line-height:1.15}
 .rd b small{font-size:13px;color:var(--txt-2);font-weight:500;margin-left:3px}
 .rd div.wide{grid-column:1/-1}
 .rd div.up b{color:var(--lime)}.rd div.dn b{color:var(--warn)}
 .spark{width:100%;height:46px;display:block;margin-top:8px}
 .imeta{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-family:var(--mono);font-size:12.5px;color:var(--txt-2)}
-.imeta b{color:#fff;font-weight:600}
+.imeta b{color:var(--hi);font-weight:600}
 .iacts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
 .iacts .ab{min-height:52px;font-size:15.5px}
 .pan{display:flex;align-items:center;gap:8px;margin-top:4px}
 .pan input{flex:1}
 
 /* ---------- cảnh báo ---------- */
-.alert{position:fixed;z-index:15;left:50%;top:calc(var(--top) + 84px);transform:translate(-50%,-20px);display:flex;align-items:center;gap:14px;padding:12px 12px 12px 18px;border-radius:18px;background:rgba(58,12,8,.92);border:1px solid var(--bad);color:#fff;opacity:0;visibility:hidden;transition:opacity .35s,transform .45s var(--ease),visibility .35s;max-width:min(620px,calc(100vw - 32px))}
+.alert{position:fixed;z-index:15;left:50%;top:calc(var(--top) + 84px);transform:translate(-50%,-20px);display:flex;align-items:center;gap:14px;padding:12px 12px 12px 18px;border-radius:18px;background:rgba(58,12,8,.92);border:1px solid var(--bad);color:var(--hi);opacity:0;visibility:hidden;transition:opacity .35s,transform .45s var(--ease),visibility .35s;max-width:min(620px,calc(100vw - 32px))}
 .alert.on{opacity:1;visibility:visible;transform:translate(-50%,0)}
 .alert .ic{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--bad);color:#2A0702;animation:al2 1s ease-in-out infinite}
 @keyframes al2{50%{box-shadow:0 0 0 8px rgba(255,107,90,.25)}}
@@ -280,13 +280,13 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .alert b{display:block;font-size:16.5px}
 .alert span{font-size:14.5px;color:#FFD2CB}
 .alert button{flex:none;min-height:48px;padding:0 16px;border-radius:14px;background:#fff;color:#3A0C08;font-weight:700;font-size:15px}
-.alert .alx{width:48px;padding:0;display:grid;place-items:center;background:rgba(255,255,255,.12);color:#fff}
+.alert .alx{width:48px;padding:0;display:grid;place-items:center;background:rgba(255,255,255,.12);color:var(--hi)}
 .alert .alx svg{width:18px;height:18px}
 .insp.open~.alert{left:calc(50% + 230px)}
 .alert.mini{max-width:none;padding:8px;gap:8px}.alert.mini>div:not(.ic),.alert.mini #alB{display:none}
 
 /* ---------- gợi ý + màn tải ---------- */
-.hint{position:fixed;z-index:8;left:50%;top:calc(var(--top) + 84px);transform:translateX(-50%);display:flex;align-items:center;gap:10px;padding:10px 18px;border-radius:999px;background:rgba(7,17,10,.72);color:#fff;font-size:15px;transition:opacity .6s;pointer-events:none;white-space:nowrap}
+.hint{position:fixed;z-index:8;left:50%;top:calc(var(--top) + 84px);transform:translateX(-50%);display:flex;align-items:center;gap:10px;padding:10px 18px;border-radius:999px;background:rgba(7,17,10,.72);color:var(--hi);font-size:15px;transition:opacity .6s;pointer-events:none;white-space:nowrap}
 .hint svg{width:20px;height:20px;color:var(--lime)}
 .hint.off{opacity:0}
 .loader{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:#0B160D;color:var(--txt);transition:opacity .8s,visibility .8s}
@@ -303,7 +303,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .tabs{display:none}
 .simtag{display:none}
 .devbar{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:8px;padding-bottom:10px;border-bottom:1px solid var(--line)}
-.dc{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:50px;min-width:0;padding:4px 2px;border-radius:12px;border:1px solid color-mix(in srgb,var(--c) 55%,transparent);background:color-mix(in srgb,var(--c) 16%,transparent);font-size:12.5px;font-weight:600;line-height:1.1;color:#fff;transition:background-color .2s,border-color .2s,color .2s,opacity .2s}
+.dc{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:50px;min-width:0;padding:4px 2px;border-radius:12px;border:1px solid color-mix(in srgb,var(--c) 55%,transparent);background:color-mix(in srgb,var(--c) 16%,transparent);font-size:12.5px;font-weight:600;line-height:1.1;color:var(--hi);transition:background-color .2s,border-color .2s,color .2s,opacity .2s}
 .dc span{display:flex;align-items:center;gap:5px}
 .dc svg{width:18px;height:18px;color:var(--c)}
 .dc b{font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--c)}
@@ -313,7 +313,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .dp.off{display:none!important}
 .rot{display:none;position:fixed;inset:0;z-index:70;place-items:center;padding:28px;background:#0B160D;text-align:center;touch-action:none}
 .rot-in{display:flex;flex-direction:column;align-items:center;gap:14px;max-width:320px}
-.rot b{font-size:24px;font-weight:600;color:#fff;font-stretch:108%}
+.rot b{font-size:24px;font-weight:600;color:var(--hi);font-stretch:108%}
 .rot p{font-size:16px;color:var(--txt-2)}
 .rot-ph{position:relative;width:64px;height:112px;margin-bottom:14px;border:3px solid var(--lime);border-radius:14px;animation:rotph 2.6s var(--ease) infinite}
 .rot-ph i{position:absolute;left:50%;bottom:6px;width:18px;height:3px;margin-left:-9px;border-radius:2px;background:var(--lime)}
@@ -342,7 +342,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   .stat{display:none}
   .mstrip{position:fixed;z-index:9;left:10px;right:10px;top:calc(var(--top) + 62px);display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:8px;border-radius:18px}
   .mstrip div{display:flex;flex-direction:column;align-items:center;line-height:1.15;padding:2px 0}
-  .mstrip b{font-size:18px;font-weight:600;color:#fff;font-variant-numeric:tabular-nums}
+  .mstrip b{font-size:18px;font-weight:600;color:var(--hi);font-variant-numeric:tabular-nums}
   .mstrip span{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--txt-2);text-transform:uppercase}
   .mstrip div.c b{color:var(--lime)}
   .simtag{display:inline-flex;align-items:center;gap:5px;margin-top:1px;font-style:normal;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--lime)}
@@ -438,14 +438,14 @@ body.live .sim-only{display:none!important}
 .modes{display:flex;gap:2px;padding:3px;margin-left:2px;border-radius:999px;background:var(--pn-2);flex:none}
 .modes[hidden]{display:none}
 .modes button{min-height:40px;padding:0 14px;border-radius:999px;font-size:14.5px;font-weight:500;color:var(--txt-2);white-space:nowrap;transition:background-color .2s,color .2s}
-.modes button:hover{color:#fff}
+.modes button:hover{color:var(--hi)}
 .modes button[aria-pressed="true"]{background:var(--lime);color:var(--g800)}
 .live.stale{color:var(--warn)}
 .live.stale i{background:var(--warn);animation:none}
 .mbar{display:grid;grid-template-columns:repeat(4,1fr) auto;gap:4px;align-items:center;margin-bottom:8px}
 .mb{min-height:40px;border-radius:10px;background:var(--pn-2);font-size:14px;font-weight:500;color:var(--txt-2);transition:background-color .2s,color .2s}
-.mb:hover{color:#fff;background:var(--pn-3)}
-.mb[aria-pressed="true"]{background:rgba(181,227,131,.18);color:#fff;box-shadow:inset 0 0 0 1px var(--line-2)}
+.mb:hover{color:var(--hi);background:var(--pn-3)}
+.mb[aria-pressed="true"]{background:rgba(181,227,131,.18);color:var(--hi);box-shadow:inset 0 0 0 1px var(--line-2)}
 .lg{display:flex;align-items:center;gap:6px;padding-left:8px;font-size:12.5px;color:var(--txt-2);white-space:nowrap}
 .lg i{width:44px;height:6px;border-radius:3px;background:linear-gradient(90deg,#D98C47,#9ED159,#40A6D9)}
 .dc:disabled{opacity:.45;cursor:default}
@@ -457,7 +457,7 @@ body.live .g .band{display:none}
 .at:hover{background:var(--pn-3)}
 .at i{flex:none;width:8px;height:8px;margin-top:7px;border-radius:50%;background:var(--txt-2)}
 .at.red i{background:var(--bad)}.at.warning i,.at.yellow i{background:var(--warn)}
-.at b{display:block;font-size:14.5px;font-weight:500;color:#fff;line-height:1.3}
+.at b{display:block;font-size:14.5px;font-weight:500;color:var(--hi);line-height:1.3}
 .at small{display:block;font-size:13px;color:var(--txt-2);margin-top:1px}
 #iBody .rd .red b{color:#FFB3A8}#iBody .rd .yellow b{color:#FFD58A}
 #iBody .rd [data-m2]{cursor:pointer}
@@ -477,6 +477,202 @@ body.live .zt.bare::after{border-top-color:rgba(245,228,161,.92)}
 body.live .zt.on{box-shadow:0 0 0 2px #fff,0 6px 18px -6px rgba(0,0,0,.45)}
 body.live .devbar{margin-bottom:4px;padding-bottom:8px}
 @media (max-width:1023px){body.live .dc{min-height:32px;font-size:12px}body.live .hint{display:none}.mb{background:var(--pn)}.mb[aria-pressed="true"]{background:#21402A}.mbar{margin-bottom:4px}}
+
+/* ================= GIAO DIỆN SÁNG THEO WEBSITE FARMBLOCK ================= */
+:root{--pn:rgba(255,255,255,.96);--pn-2:#F2F8EA;--pn-3:#E4EFD6;--line:rgba(15,42,23,.09);--line-2:rgba(15,42,23,.2);--txt:#0F2A17;--txt-2:#3D5845;--hi:#0F2A17;--pw:272px;--warn:#A86A00;--bad:#BF3B28}
+b,strong{font-weight:500}
+.top{--pn:rgba(17,38,21,.93);--pn-2:rgba(255,255,255,.08);--line:rgba(255,255,255,.1);--line-2:rgba(255,255,255,.22);--txt:#EEF6E6;--txt-2:#C9DDBF;--hi:#fff}
+.alert,.feed,.hint,.loader,.rot,.nogl{--hi:#fff}
+.alert{--bad:#FF6B5A;--txt-2:#FFD2CB}
+.pl{border:0;border-radius:20px;box-shadow:0 12px 32px -18px rgba(15,42,23,.45)}
+.hud{background-image:none}
+.k{font-size:13.5px;font-weight:500;color:var(--txt)}
+.k.s,.k.w{color:var(--txt)}
+.sec{padding:10px 14px 14px;border-top:1px solid var(--line)}
+.sec>.k{margin-bottom:8px}
+/* thanh trên giống nav của website */
+.bar{min-height:52px;padding:6px 10px 6px 8px;gap:12px}
+.brand svg.mk{width:34px;height:34px}.brand .wm{height:13px}
+.crumb{padding-left:12px}.crumb b{font-size:15px;font-weight:500;font-stretch:100%}
+.crumb span{display:none}
+.lk{min-height:44px;padding:0 16px;font-size:14.5px;font-weight:500}.lk svg{width:15px;height:15px}
+.lk.vm{color:var(--g800)}
+.stat{min-height:44px;padding:0 16px;gap:12px;font-size:13px}
+.stat b{font-size:13.5px;font-weight:500}
+.live{font-weight:500}.stat .sp{height:16px}
+.modes button{min-height:36px;padding:0 13px;font-size:13.5px}
+.modes{background:rgba(255,255,255,.08)}
+.modes button{color:#C9DDBF}.modes button:hover{color:#fff}
+/* tiêu đề box + mũi tên */
+.pt{display:flex;align-items:center;gap:6px;padding:8px 8px 8px 14px;min-height:42px}
+.pt .k{flex:1}
+.pt .x{display:none}
+.chev{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;color:var(--txt-2);transition:background-color .2s,color .2s}
+.chev:hover{background:var(--pn-2);color:var(--txt)}
+.chev svg{width:16px;height:16px;transition:transform .3s var(--ease)}
+.pl.cl .chev svg{transform:rotate(180deg)}
+.pl.cl .bb{display:none!important}
+/* cột trái, phải, nhật ký */
+.left,.right{top:calc(var(--top) + 64px)}
+.left{max-height:calc(100svh - var(--top) - 64px - 16px - 150px)}
+.right{max-height:calc(100svh - var(--top) - 64px - 16px)}
+body:has(.log.cl) .left{max-height:calc(100svh - var(--top) - 64px - 16px - 58px)}
+.zgrid{gap:4px}
+.zb{min-height:34px;border-radius:999px;background:var(--pn-2);font-size:13.5px;font-weight:400}
+.zb:hover{background:var(--pn-3);border-color:transparent}
+.zb[aria-pressed="true"],.wb[aria-pressed="true"],.tplay[aria-pressed="true"]{background:var(--g800);color:#fff}
+.zb.all svg{width:15px;height:15px}
+.zinfo{margin-top:0;padding:0;background:none;border-radius:0}
+.zinfo h3{font-size:15px;font-weight:500;font-stretch:100%}
+.zinfo p{font-size:13px;margin-top:2px}
+.kv{margin-top:8px;gap:5px 10px;font-size:13px}
+.kv dd{font-weight:400}
+.devs span{font-size:12.5px;font-weight:400;background:var(--pn-2);padding:3px 8px 3px 6px}.devs svg{width:14px;height:14px;color:var(--g500)}
+.meter .row{font-size:13px}.meter .row b{font-size:15px}.meter .tr{height:6px;background:var(--pn-3)}.meter .tr .v{background:var(--g500)}.meter small{font-size:12px}
+.at{padding:7px 9px;border-radius:10px;gap:8px}
+.at i{width:7px;height:7px;margin-top:6px}
+.at b{font-size:13px;font-weight:400}.at small{font-size:12px}
+.atl{gap:3px}
+.wgrid{gap:4px}
+.wb{min-height:50px;font-size:12.5px;font-weight:400;border-radius:12px}.wb svg{width:18px;height:18px}
+.wb:hover{background:var(--pn-3);border-color:transparent}
+.sl{margin-top:10px}.sl .row{font-size:13px}.sl .row b{font-size:13px;font-weight:500}
+input[type=range]{height:26px}
+input[type=range]::-webkit-slider-runnable-track{height:4px;background:var(--pn-3)}
+input[type=range]::-moz-range-track{height:4px;background:var(--pn-3)}
+#tod::-webkit-slider-runnable-track{background:var(--pn-3)}
+#tod::-moz-range-track{background:var(--pn-3)}
+input[type=range]::-webkit-slider-thumb{width:16px;height:16px;margin-top:-6px;border:3px solid var(--g500);box-shadow:none}
+.tplay{min-height:30px;font-size:12.5px;font-weight:400;padding:0 10px;background:var(--pn-2);border:0}
+.tplay svg{width:11px;height:11px}
+.wind{grid-template-columns:56px 1fr;gap:10px;margin-top:8px}
+.dial{width:56px;height:56px;background:var(--pn-2);border-color:var(--line)}
+.dial span{font-size:9.5px}.dial .ar{height:40px;margin:-20px 0 0 -2px}
+.dial .ar::before{left:-4px;border-width:6px;border-bottom:10px solid var(--g500);border-top:0}.dial .ar::after{top:8px;height:26px;background:var(--g500);opacity:.4}
+.wind .wl b{font-size:14px}.wind .wl span{font-size:12px}
+.ab{min-height:38px;border-radius:999px;font-size:13.5px;font-weight:500;background:var(--pn-2);border:0}
+.ab:hover{background:var(--pn-3)}.ab svg{width:16px;height:16px}
+.smoke,.smoke:hover{background:var(--pn-2);border:0}.smoke:hover{background:var(--pn-3)}.smoke.on{background:var(--g800);color:#fff}
+.note{font-size:12.5px;margin-top:6px;line-height:1.4}
+.note.warn{color:#8A5A00}
+.togs{grid-template-columns:1fr 1fr;gap:0 8px}
+.chk{min-height:32px;padding:2px 0;gap:8px;font-size:13px}
+.chk input{width:30px;height:18px;background:var(--pn-3)}
+.chk input::after{left:2px;top:2px;width:14px;height:14px}
+.chk input:checked{background:var(--g500)}
+.chk input:checked::after{transform:translateX(12px);background:#fff}
+.sim{font-size:12.5px;line-height:1.4}
+.log{height:auto;max-height:142px;padding:0}
+.log ol{font-size:12.5px;padding:0 12px 10px 14px;line-height:1.4;min-height:0}
+.log li{border:0;padding:2px 0;color:var(--txt-2)}.log li b{font-weight:500}
+.log li time,.log li.s time{color:var(--g500);margin-right:5px}
+.log li.w time,.log li.w b,.log li.b time,.log li.b b{color:var(--bad)}
+/* điều khiển góc nhìn */
+.zoom{right:calc(var(--pw) + 28px);padding:4px;gap:2px;border-radius:16px;align-items:center}
+.zb2{display:flex;flex-direction:column;gap:2px}
+.zoom button:not(.chev){width:34px;height:34px;border-radius:10px;background:none}
+.zoom button:not(.chev):hover{background:var(--pn-2)}
+.zoom button[aria-pressed="true"]:not(.chev){background:var(--g800);color:#fff}
+.zoom svg{width:17px;height:17px}.zoom .chev svg{width:15px;height:15px}
+.zoom .cmp{width:34px;height:34px;background:none}.zoom .cmp i{inset:3px;border-color:var(--line)}.zoom .cmp b{font-size:9px;top:0}.zoom .cmp .nd{width:2px;height:20px;background:linear-gradient(var(--bad) 50%,var(--line-2) 50%)}
+/* ghim và nhãn khu */
+.dp{gap:3px}
+.dp .gem{width:22px;height:22px;border:0;border-radius:50%;background:#fff;transform:none;box-shadow:0 2px 8px rgba(15,42,23,.3)}
+.dp .gem svg{width:13px;height:13px;color:var(--g500);transform:none}
+.dp.water .gem svg{color:#2E86A3}.dp.weather .gem svg{color:#8A6D10}.dp.iot .gem svg{color:#2F8F83}.dp.house .gem svg{color:var(--txt-2)}
+.dp:hover .gem,.dp.on .gem{transform:scale(1.15);background:var(--g800)}
+.dp:hover .gem svg,.dp.on .gem svg{color:#fff}
+.dp.cam .gem{width:18px;height:18px;border-radius:50%}.dp.cam .gem svg{width:11px;height:11px}
+.dp .vl{font-size:12px;font-weight:500;color:var(--txt);background:#fff;padding:2px 7px;border:0;border-radius:999px;box-shadow:0 2px 8px rgba(15,42,23,.25)}
+.dp .vl.red{color:#B42318;border:0;box-shadow:0 0 0 1.5px #D9574A}.dp .vl.yellow{color:#8A5A00;border:0;box-shadow:0 0 0 1.5px #D9A441}
+.dp.alarm .gem{background:#BF3B28}.dp.alarm .gem svg{color:#fff}
+.dp.busy .gem::after{inset:-5px;border:1.5px solid var(--g500);border-radius:50%}
+.zt{flex-direction:row;align-items:center;gap:5px;padding:3px 9px 3px 8px;border-radius:999px;background:rgba(17,38,21,.86);color:#fff;box-shadow:none;line-height:1.2}
+.zt::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--zc,#B5E383)}
+.zt::after{display:none}
+.zt b{font-size:13px;font-weight:500;font-stretch:100%}
+.zt span{font-size:12px;font-weight:400;opacity:.85}.zt span:empty{display:none}
+.zt.on{background:#fff;color:var(--txt)}
+.zt.bare,body.live .zt.bare{background:rgba(255,255,255,.75);color:var(--txt-2)}.zt.bare::before{display:none}.zt.bare b{font-weight:400;font-size:12px}
+body.live .zt{background:rgba(17,38,21,.86)}body.live .zt.on{background:#fff;box-shadow:none}
+.fx{font-weight:500;font-size:13px;background:var(--g800)}.fx.lime{background:var(--g800);color:#fff}
+/* hộp giữa */
+.cluster{width:min(620px,calc(100vw - 2*var(--pw) - 120px));padding:0 0 10px;border-radius:20px;left:50%}
+.bh{display:flex;align-items:center;gap:10px;min-height:40px;padding:6px 8px 4px 14px}
+.bh .k{white-space:nowrap}
+.cat{flex:1;min-width:0;font-size:12.5px;color:var(--txt-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lg{padding:0;font-size:12px}.lg i{width:36px;height:4px;border-radius:2px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:0 10px}
+.tl{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:1px;min-width:0;padding:8px 10px 6px;border-radius:12px;background:var(--pn-2);text-align:left;color:var(--txt);transition:background-color .2s,color .2s}
+.tl:hover{background:var(--pn-3)}
+.tl[aria-pressed="true"]{background:var(--g800);color:#fff}
+.tn{font-size:12px;line-height:1.2;opacity:.8;white-space:nowrap}
+.tv{display:flex;align-items:baseline;gap:3px}
+.tv b{font-size:22px;font-weight:500;line-height:1.15;font-variant-numeric:tabular-nums;font-stretch:100%}
+.tv small{font-size:11.5px;opacity:.75}
+.ts{width:100%;height:18px;margin-top:2px;display:block;color:var(--g500);overflow:visible}
+.tl[aria-pressed="true"] .ts{color:var(--lime)}
+.ts:empty{display:none}
+.subs{display:grid;grid-template-columns:repeat(5,auto);justify-content:space-between;gap:4px 12px;padding:8px 14px 8px}
+.subs div{min-width:0}
+.subs dt{font-size:12px;color:var(--txt-2);white-space:nowrap}
+.subs dd{font-size:13.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.devbar{display:flex;flex-wrap:wrap;gap:4px;margin:0;padding:8px 10px 0;border-top:1px solid var(--line)}
+.dc,body.live .dc{flex:1 1 auto;flex-direction:row;gap:4px;min-height:26px;padding:0 8px;border:0;border-radius:999px;background:var(--pn-2);font-size:12px;font-weight:400;color:var(--txt);white-space:nowrap}
+.dc:hover{background:var(--pn-3)}
+.dc b{font-size:12px;font-weight:500;color:var(--c)}
+.dc[aria-pressed="false"]{background:none;color:var(--txt-2);box-shadow:inset 0 0 0 1px var(--line)}
+.dc[aria-pressed="false"] b{color:var(--txt-2);opacity:.6}
+/* thẻ thiết bị */
+.insp{left:calc(var(--pw) + 28px);top:calc(var(--top) + 64px);width:300px;max-height:calc(100svh - var(--top) - 64px - 260px)}
+.ih{padding:8px 8px 8px 12px;gap:8px}
+.ih .gem{width:30px;height:30px;border-radius:50%;background:var(--pn-2);transform:none}.ih .gem svg{width:16px;height:16px;color:var(--g500);transform:none}
+.ih h3{font-size:14.5px;font-weight:500}.ih>div:nth-child(2){flex:1;min-width:0}.ih p{font-size:12.5px;letter-spacing:0}
+.ih .x{margin-left:0;width:28px;height:28px;border-radius:50%;background:none}.ih .x:hover{background:var(--pn-2)}.ih .x svg{width:14px;height:14px}
+.ib{padding:0 12px 12px}
+.rd{gap:4px}.rd div{padding:7px 10px;border-radius:10px}
+.rd span{font-size:12px}.rd b{font-size:16px;font-weight:500}.rd b small{font-size:11.5px;font-weight:400}
+#iBody .rd .red b{color:#B42318}#iBody .rd .yellow b{color:#8A5A00}
+#iBody .rd [data-m2]:hover{background:var(--pn-3)}
+.spark{height:34px;margin-top:6px}
+.imeta{font-size:12px;margin-top:6px}.imeta b{font-weight:500}
+.iacts{margin-top:8px}.iacts .ab{min-height:36px;font-size:13.5px}
+.feed{height:160px;outline:0;border-radius:10px}.feed::before{display:none}
+.insp.cam .ih{border-radius:20px 20px 0 0}.insp.cam .ib{background:linear-gradient(var(--pn),var(--pn)) left top/12px 160px no-repeat,linear-gradient(var(--pn),var(--pn)) right top/12px 160px no-repeat,linear-gradient(var(--pn),var(--pn)) left 0 top 160px/100% calc(100% - 160px) no-repeat;border-radius:0 0 20px 20px}
+.feed .tl{all:unset;position:absolute;left:10px;top:8px;font-size:12px;color:#fff;text-shadow:0 1px 3px #000}
+.hint{font-size:13px;padding:7px 14px;top:calc(var(--top) + 64px);background:rgba(17,38,21,.8)}.hint svg{width:16px;height:16px}
+@media (min-width:1024px) and (max-width:1320px){:root{--pw:248px}.subs{grid-template-columns:repeat(3,auto)}.tv b{font-size:19px}.cluster{left:calc(50% - 20px)}}
+@media (max-height:760px) and (min-width:1024px){.ts,.subs{display:none}.devbar{border:0;padding-top:6px}}
+.zoom .chev{background:none}
+.modes button[aria-pressed="true"],.modes button[aria-pressed="true"]:hover{color:var(--g800)}
+.insp.open~.hint{display:none}
+/* điện thoại */
+@media (max-width:1023px){
+  .pt .chev{display:none}
+  .pt .x{display:grid;width:32px;height:32px;border-radius:50%;background:var(--pn-2)}
+  .pt{padding:6px 8px 6px 14px}
+  .cluster{left:10px;right:70px;width:auto;padding:0;background:var(--pn);box-shadow:0 8px 24px -14px rgba(15,42,23,.5);pointer-events:auto;transform:none;border-radius:16px}
+  .cluster .bh{min-height:30px;padding:2px 6px 2px 12px}
+  .lg{display:none}.cluster .bh .k{font-size:12.5px}.cat{font-size:11.5px}.simtag i{display:none}
+  .subs,.ts{display:none}
+  .tiles{padding:0 6px 6px;gap:3px}.tl{padding:4px 8px}.tv b{font-size:15px}.tn{font-size:10.5px}
+  .devbar{padding:4px 6px 6px;border-radius:0;background:none;border:0;border-top:1px solid var(--line);gap:3px}
+  .dc,body.live .dc{min-height:30px;font-size:11.5px}
+  .tabs{background:var(--pn);border:0}.tabs button{font-weight:400;color:var(--txt-2)}.tabs button[aria-selected="true"]{background:var(--g800);color:#fff}
+  .left,.right,.log{max-height:min(46svh,430px)}.log{height:min(40svh,320px)}
+  .zoom{right:10px;padding:3px}.zoom button:not(.chev){width:38px;height:38px}.zoom .cmp{display:none}
+  .insp{top:calc(var(--top) + 60px);max-height:calc(100svh - var(--top) - 60px - 90px)}
+  .bar{min-height:48px}
+}
+@media (max-width:1023px) and (orientation:landscape){
+  .left,.right,.log{max-height:none;height:auto;width:min(300px,calc(100vw - var(--sl) - 136px))}
+  .zoom{right:var(--sr)}.zoom button:not(.chev){width:34px;height:34px}.zoom .chev{width:24px;height:24px}
+  .cluster{left:calc(var(--sl) + 68px);right:calc(var(--sr) + 52px);bottom:var(--sb);max-width:600px;margin:0 auto}
+  .cluster .bh{display:flex;min-height:24px;padding:0 4px 0 10px}
+  .tabs{width:56px}.tabs button{font-size:10px}
+  .insp{right:calc(var(--sr) + 48px);width:min(300px,44vw);top:var(--ty);max-height:calc(100svh - var(--ty) - 8px)}
+  .dc,body.live .dc{min-height:26px}
+}
 </style>
 </head>
 <body data-tab="">
@@ -498,6 +694,7 @@ body.live .devbar{margin-bottom:4px;padding-bottom:8px}
 <symbol id="u-home" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.3-5.6"/><path d="M4 4v4.5h4.5"/></g></symbol>
 <symbol id="u-top" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M4 6.5l5-2.5 6 2.5 5-2.5v13.5l-5 2.5-6-2.5-5 2.5z"/><path d="M9 4v13.5M15 6.5V20"/></g></symbol>
 <symbol id="u-orbit" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><ellipse cx="12" cy="12" rx="9" ry="4.2"/><path d="M18 7.6l2.4.2-.6 2.3"/><circle cx="12" cy="12" r="1.8"/></g></symbol>
+<symbol id="u-chev" viewBox="0 0 24 24"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 <symbol id="u-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
 <symbol id="u-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></symbol>
 <symbol id="u-pause" viewBox="0 0 24 24"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z" fill="currentColor"/></symbol>
@@ -510,7 +707,6 @@ body.live .devbar{margin-bottom:4px;padding-bottom:8px}
 </defs></svg>
 
 <canvas id="gl" tabindex="0" aria-label="Sa bàn 3D vườn cà phê Ia Ko. Kéo để xoay, cuộn hoặc chụm hai ngón để phóng to thu nhỏ."></canvas>
-<div class="vig" aria-hidden="true"></div>
 <div id="labels" aria-hidden="false"></div>
 
 <header class="top">
@@ -532,17 +728,10 @@ body.live .devbar{margin-bottom:4px;padding-bottom:8px}
   </div>
 </header>
 
-<div class="mstrip pl hud" aria-hidden="true">
-  <div><b id="m-t">–</b><span>Không khí</span></div>
-  <div class="c"><b id="m-s">–</b><span id="ml-s">Ẩm đất</span></div>
-  <div><b id="m-w">–</b><span>Gió m/s</span></div>
-  <div><b id="m-r">–</b><span id="ml-r">Mưa mm/h</span></div>
-</div>
-
 <!-- PANEL TRÁI: phân khu + thao tác -->
-<aside class="pl left hud" aria-label="Phân khu và thao tác">
-  <div class="pt"><span class="k" id="ltT">Khu vực &amp; thao tác</span><button class="x" data-closetab aria-label="Đóng"><svg><use href="#u-x"/></svg></button></div>
-  <div class="scroll">
+<aside class="pl left hud" data-box="left" aria-label="Khu vực">
+  <div class="pt"><span class="k" id="ltT">Khu vực</span><button class="chev" aria-expanded="true" aria-label="Thu gọn"><svg aria-hidden="true"><use href="#u-chev"/></svg></button><button class="x" data-closetab aria-label="Đóng"><svg><use href="#u-x"/></svg></button></div>
+  <div class="scroll bb">
     <div class="sec">
       <span class="k">Phân khu</span>
       <div class="zgrid" id="zgrid">
@@ -553,16 +742,6 @@ body.live .devbar{margin-bottom:4px;padding-bottom:8px}
       <span class="k">Cần chú ý</span>
       <div class="atl" id="atl"></div>
     </div>
-    <div class="sec sim-only">
-      <span class="k s">Thử điều khiển</span>
-      <div class="acts">
-        <button class="ab pri" id="bIrr"><svg aria-hidden="true"><use href="#a-drop"/></svg><span>Tưới thử</span></button>
-        <button class="ab" id="bSoil"><svg aria-hidden="true"><use href="#a-probe"/></svg>Đo đất</button>
-        <button class="ab" id="bWater"><svg aria-hidden="true"><use href="#i-water"/></svg>Đo nước</button>
-      </div>
-      <label class="chk" style="margin-top:6px"><input type="checkbox" id="fert"><span>Châm phân khi tưới<small>Tưới kèm dinh dưỡng – EC và N, P, K tăng</small></span></label>
-      <p class="note" id="ahint"></p>
-    </div>
     <div class="sec">
       <span class="k">Thông tin khu</span>
       <div class="zinfo" id="zinfo" style="margin-top:0"></div>
@@ -571,11 +750,10 @@ body.live .devbar{margin-bottom:4px;padding-bottom:8px}
 </aside>
 
 <!-- PANEL PHẢI: môi trường -->
-<aside class="pl right hud" aria-label="Môi trường và hiển thị">
-  <div class="pt"><span class="k" id="rtT">Môi trường</span><button class="x" data-closetab aria-label="Đóng"><svg><use href="#u-x"/></svg></button></div>
-  <div class="scroll">
+<aside class="pl right hud" data-box="right" aria-label="Môi trường và hiển thị">
+  <div class="pt"><span class="k" id="rtT">Môi trường</span><button class="chev" aria-expanded="true" aria-label="Thu gọn"><svg aria-hidden="true"><use href="#u-chev"/></svg></button><button class="x" data-closetab aria-label="Đóng"><svg><use href="#u-x"/></svg></button></div>
+  <div class="scroll bb">
     <div class="sec live-only">
-      <span class="k">Trạm trung tâm</span>
       <dl class="kv" id="ctr" style="margin-top:0"></dl>
       <p class="note">Bầu trời và ánh sáng trên sa bàn được dựng từ số đo của trạm.</p>
     </div>
@@ -614,62 +792,57 @@ body.live .devbar{margin-bottom:4px;padding-bottom:8px}
     <div class="sec">
       <span class="k s">Hiển thị</span>
       <div class="togs">
-        <label class="chk"><input type="checkbox" id="tPins" checked>Biểu tượng thiết bị</label>
+        <label class="chk"><input type="checkbox" id="tPins" checked>Thiết bị</label>
         <label class="chk"><input type="checkbox" id="tZt" checked>Tên khu</label>
         <label class="chk"><input type="checkbox" id="tCov">Vùng camera</label>
-        <label class="chk"><input type="checkbox" id="tTilt" checked>Hiệu ứng sa bàn</label>
+        <label class="chk"><input type="checkbox" id="tTilt">Hiệu ứng sa bàn</label>
         <label class="chk"><input type="checkbox" id="tSound">Âm thanh</label>
       </div>
-      <p class="sim sim-only" style="margin-top:10px">Số liệu ở chế độ này là giả lập.</p><p class="sim live-only" style="margin-top:10px">Chỉ đọc số liệu, không điều khiển thiết bị tại vườn.</p>
+      <p class="sim sim-only" style="margin-top:8px">Số liệu ở chế độ này là giả lập.</p><p class="sim live-only" style="margin-top:8px">Trang này chỉ theo dõi, không điều khiển thiết bị tại vườn.</p>
     </div>
   </div>
 </aside>
 
-<!-- CỤM ĐỒNG HỒ -->
-<div class="cluster pl hud" aria-label="Chỉ số môi trường">
-  <div class="mbar live-only" id="mbar" role="group" aria-label="Chỉ số hiển thị trên vườn"></div>
-  <div class="devbar" role="group" aria-label="Bật tắt từng loại thiết bị">
-    <button class="dc" data-k="soil" style="--c:#D9A15B"><span><svg aria-hidden="true"><use href="#i-soil"/></svg><b>9</b></span>Đo đất</button>
-    <button class="dc" data-k="water" style="--c:#51ADCA"><span><svg aria-hidden="true"><use href="#i-water"/></svg><b>2</b></span>Đo nước</button>
-    <button class="dc" data-k="weather" style="--c:#F2D35B"><span><svg aria-hidden="true"><use href="#i-weather"/></svg><b>1</b></span>Thời tiết</button>
-    <button class="dc" data-k="iot" style="--c:#7ED8C8"><span><svg aria-hidden="true"><use href="#i-iot"/></svg><b>1</b></span>Trạm IoT</button>
-    <button class="dc" data-k="cam" style="--c:#B5E383"><span><svg aria-hidden="true"><use href="#i-cam"/></svg><b>22</b></span>Camera</button>
-    <button class="dc lo" id="tLora" style="--c:#fff" aria-pressed="true" title="Đường truyền không dây từ cảm biến về trạm IoT"><span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/><path d="M8.2 8.2a5.4 5.4 0 0 0 0 7.6M15.8 8.2a5.4 5.4 0 0 1 0 7.6M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14"/></svg></span>Sóng LoRa</button>
+<!-- HỘP GIỮA: CHỈ SỐ CHÍNH -->
+<section class="cluster pl hud" data-box="center" aria-label="Chỉ số chính">
+  <div class="bh"><span class="k">Chỉ số chính</span><span class="cat" id="clAt"></span><span class="lg live-only" aria-hidden="true">Thấp<i></i>Cao</span><button class="chev" aria-expanded="true" aria-label="Thu gọn"><svg aria-hidden="true"><use href="#u-chev"/></svg></button></div>
+  <div class="bb">
+    <div class="tiles" id="tiles" role="group" aria-label="Chọn chỉ số hiển thị trên vườn"></div>
+    <dl class="subs" id="subs"></dl>
+    <div class="devbar" role="group" aria-label="Hiện hoặc ẩn từng loại thiết bị">
+      <button class="dc" data-k="soil" style="--c:#3A8047"><b>9</b>Đo đất</button>
+      <button class="dc" data-k="water" style="--c:#51ADCA"><b>2</b>Đo nước</button>
+      <button class="dc" data-k="weather" style="--c:#C9A227"><b>1</b>Thời tiết</button>
+      <button class="dc" data-k="iot" style="--c:#2F8F83"><b>1</b>Trạm IoT</button>
+      <button class="dc" data-k="cam" style="--c:#61996C"><b>22</b>Camera</button>
+      <button class="dc lo" id="tLora" style="--c:#0F2A17" aria-pressed="true" title="Đường truyền không dây từ cảm biến về trạm IoT">Sóng LoRa</button>
+    </div>
   </div>
-  <div class="cl-row">
-    <div class="g" id="gT"></div>
-    <div class="g c" id="gS"></div>
-    <div class="g" id="gW"></div>
-  </div>
-  <div class="cl-foot">
-    <div><b id="f-rh">–</b><span>Ẩm không khí %</span></div>
-    <div><b id="f-rain">–</b><span id="fl-rain">Mưa mm/h</span></div>
-    <div><b id="f-lux">–</b><span>Ánh sáng</span></div>
-    <div><b id="f-p">–</b><span>Áp suất hPa</span></div>
-  </div>
-</div>
+</section>
 
 <!-- NHẬT KÝ -->
-<section class="pl log hud" aria-label="Nhật ký dữ liệu">
-  <div class="pt" style="padding:0 0 6px 2px"><span class="k">Nhật ký</span><button class="x" data-closetab aria-label="Đóng"><svg><use href="#u-x"/></svg></button></div>
-  <span class="k hide-m" id="logk">Nhật ký dữ liệu</span>
-  <ol class="scroll" id="log" aria-live="polite"></ol>
+<section class="pl log hud" data-box="log" aria-label="Nhật ký dữ liệu">
+  <div class="pt"><span class="k" id="logk">Nhật ký dữ liệu</span><button class="chev" aria-expanded="true" aria-label="Thu gọn"><svg aria-hidden="true"><use href="#u-chev"/></svg></button><button class="x" data-closetab aria-label="Đóng"><svg><use href="#u-x"/></svg></button></div>
+  <ol class="scroll bb" id="log" aria-live="polite"></ol>
 </section>
 
 <!-- ĐIỀU KHIỂN GÓC NHÌN -->
-<div class="zoom pl" role="group" aria-label="Điều khiển góc nhìn">
+<div class="zoom pl" data-box="zoom" role="group" aria-label="Điều khiển góc nhìn">
+  <button class="chev" aria-expanded="true" aria-label="Thu gọn"><svg aria-hidden="true"><use href="#u-chev"/></svg></button>
+  <div class="bb zb2">
   <div class="cmp" aria-hidden="true"><i></i><b>B</b><div class="nd" id="cmpn"></div></div>
   <button id="zIn" aria-label="Phóng to"><svg><use href="#u-plus"/></svg></button>
   <button id="zOut" aria-label="Thu nhỏ"><svg><use href="#u-minus"/></svg></button>
   <button id="zTop" aria-label="Nhìn từ trên xuống" aria-pressed="false"><svg><use href="#u-top"/></svg></button>
   <button id="zRot" aria-label="Tự xoay" aria-pressed="false"><svg><use href="#u-orbit"/></svg></button>
   <button id="zHome" aria-label="Về góc nhìn ban đầu"><svg><use href="#u-home"/></svg></button>
+  </div>
 </div>
 
 <!-- THẺ THIẾT BỊ -->
-<section class="pl insp hud" id="insp" aria-live="polite">
-  <div class="ih"><div class="gem" id="iGem"><svg><use href="#i-soil"/></svg></div><div><h3 id="iName">–</h3><p id="iId">–</p></div><button class="x" id="iX" aria-label="Đóng thẻ thiết bị"><svg><use href="#u-x"/></svg></button></div>
-  <div class="ib scroll" id="iBody"></div>
+<section class="pl insp hud" data-box="insp" id="insp" aria-live="polite">
+  <div class="ih"><div class="gem" id="iGem"><svg><use href="#i-soil"/></svg></div><div><h3 id="iName">–</h3><p id="iId">–</p></div><button class="chev" aria-expanded="true" aria-label="Thu gọn"><svg aria-hidden="true"><use href="#u-chev"/></svg></button><button class="x" id="iX" aria-label="Đóng thẻ thiết bị"><svg><use href="#u-x"/></svg></button></div>
+  <div class="ib scroll bb" id="iBody"></div>
 </section>
 
 <div class="alert" id="alert" role="alert"><div class="ic"><svg><use href="#a-fire"/></svg></div><div><b id="alT">Phát hiện khói</b><span id="alS">–</span></div><button id="alB">Xem camera</button><button class="alx" id="alX" aria-label="Ẩn cảnh báo"><svg><use href="#u-x"/></svg></button></div>
@@ -677,7 +850,7 @@ body.live .devbar{margin-bottom:4px;padding-bottom:8px}
 <div class="hint" id="hint"><svg aria-hidden="true"><use href="#u-drag"/></svg><span class="hd">Kéo để xoay · Cuộn để phóng to · Bấm vào khu hoặc thiết bị để xem</span></div>
 
 <nav class="tabs" role="tablist" aria-label="Bảng điều khiển">
-  <button role="tab" data-tab="zone" aria-selected="false"><svg aria-hidden="true"><use href="#u-map"/></svg><span id="tbZ">Khu &amp; thử</span></button>
+  <button role="tab" data-tab="zone" aria-selected="false"><svg aria-hidden="true"><use href="#u-map"/></svg><span id="tbZ">Khu vực</span></button>
   <button role="tab" data-tab="env" aria-selected="false"><svg aria-hidden="true"><use href="#u-sliders"/></svg><span id="tbE">Thời tiết</span></button>
   <button role="tab" data-tab="log" aria-selected="false"><svg aria-hidden="true"><use href="#u-list"/></svg>Nhật ký</button>
   <button id="mSmoke" class="sim-only" aria-label="Mô phỏng khói"><svg aria-hidden="true"><use href="#a-fire"/></svg>Khói</button>
@@ -718,33 +891,34 @@ let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return (seed-1)/214748364
 /* ---------- dữ liệu sơ đồ ---------- */
 const SC=14;
 const toW=p=>[(p[0]-500)/SC,(p[1]-370)/SC];
-const OUT_UV=[[272,20],[300,28],[392,126],[505,116],[612,126],[708,140],[875,142],[902,140],[930,205],[882,207],[717,236],[694,252],[690,300],[700,432],[762,426],[735,564],[545,562],[455,562],[424,596],[305,616],[182,648],[84,716],[60,600],[50,470],[58,362],[185,316],[205,305],[100,130],[240,122],[262,80]];
+const OUT_UV=[[270,26],[286,26],[296,40],[328,54],[352,80],[353,86],[358,86],[370,94],[396,120],[468,112],[542,116],[556,122],[656,136],[678,162],[720,158],[770,141],[796,137],[825,137],[830,132],[840,132],[840,139],[844,143],[859,147],[880,147],[880,184],[877,184],[880,214],[875,216],[841,216],[834,198],[826,198],[685,226],[688,249],[650,262],[642,297],[641,310],[652,428],[712,432],[712,448],[693,522],[686,536],[571,534],[490,532],[450,552],[450,558],[439,558],[363,598],[316,596],[316,602],[300,602],[294,594],[286,594],[257,618],[232,622],[214,639],[166,656],[129,678],[113,678],[110,654],[111,606],[106,594],[98,588],[98,572],[112,572],[112,562],[106,544],[98,540],[92,522],[92,506],[104,506],[104,463],[103,460],[92,460],[92,443],[106,443],[108,434],[92,432],[93,386],[98,374],[108,366],[143,358],[190,335],[227,326],[226,318],[124,147],[121,130],[236,148],[236,132],[256,128]];
 const ZD=[
-  {id:'A', poly:[[95,372],[185,324],[338,307],[342,378],[285,380],[285,606],[180,640],[95,700],[82,600],[78,470]],lab:[240,470],ang:0},
-  {id:'B1',poly:[[330,462],[455,470],[455,556],[420,590],[305,610]],lab:[420,505],ang:.12},
-  {id:'B2',poly:[[458,425],[545,428],[547,556],[458,556]],lab:[515,515],ang:0},
-  {id:'C1',poly:[[105,135],[240,130],[255,150],[272,215],[335,240],[345,300],[200,304]],lab:[292,278],ang:-.25},
-  {id:'C2',poly:[[547,432],[758,428],[730,560],[549,557]],lab:[620,484],ang:0},
-  {id:'C3',poly:[[525,335],[688,305],[695,430],[545,430]],lab:[600,395],ang:.05},
-  {id:'C4',poly:[[510,120],[705,140],[712,175],[690,250],[685,300],[525,333],[515,240]],lab:[600,215],ang:.05},
-  {id:'C5',poly:[[708,150],[874,146],[900,150],[915,200],[880,200],[715,230]],lab:[815,186],ang:Math.PI/2-.1},
-  {id:'BARE',poly:[[282,42],[388,130],[505,120],[515,240],[530,420],[458,422],[350,384],[342,240],[300,172]],lab:[420,250],ang:.32},
-  {id:'HQ',poly:[[288,382],[343,382],[346,466],[288,466]],lab:[315,400],ang:0}
+  {id:'A',poly:[[331,310],[338,326],[341,355],[334,382],[334,400],[274,398],[274,470],[322,470],[300,527],[286,584],[268,596],[254,611],[244,616],[223,617],[218,626],[196,638],[160,650],[134,664],[122,672],[120,668],[117,651],[120,624],[116,622],[116,602],[108,584],[109,580],[123,579],[128,575],[126,548],[118,540],[110,516],[108,455],[114,440],[108,399],[114,380],[123,372],[145,366],[196,340]],lab:[195,458],ang:0},
+  {id:'B1',poly:[[338,394],[384,409],[444,422],[446,424],[442,550],[358,593],[297,588],[292,576],[326,471],[376,462],[376,420],[337,401]],lab:[398,492],ang:0.12},
+  {id:'B2',poly:[[515,422],[521,424],[522,430],[527,510],[525,528],[484,528],[446,547],[451,422]],lab:[496,506],ang:0},
+  {id:'C1',poly:[[126,134],[244,158],[264,208],[276,225],[284,232],[326,237],[332,244],[332,290],[326,299],[304,310],[238,324]],lab:[268,272],ang:-0.25},
+  {id:'C2',poly:[[526,424],[587,426],[646,436],[705,438],[684,524],[682,532],[529,528],[531,512]],lab:[596,482],ang:0},
+  {id:'C3',poly:[[634,295],[646,431],[586,422],[544,420],[526,419],[524,384],[512,346],[582,332],[586,328],[586,305]],lab:[618,388],ang:0.05},
+  {id:'C4',poly:[[500,122],[536,123],[564,130],[653,142],[675,170],[725,165],[775,147],[806,142],[816,148],[833,190],[680,222],[676,229],[683,244],[646,256],[636,291],[583,302],[583,326],[512,343],[507,340],[505,345],[459,238],[504,246],[506,216]],lab:[573,190],ang:0.05},
+  {id:'C5',poly:[[835,136],[835,144],[839,148],[854,152],[875,152],[875,179],[868,183],[874,208],[868,209],[846,211],[820,152],[814,142],[828,143]],lab:[852,171],ang:0.05},
+  {id:'BARE',poly:[[282,44],[320,66],[392,130],[498,124],[498,235],[460,240],[503,345],[522,418],[452,418],[342,390],[346,300],[338,246],[274,226],[256,165],[270,100]],lab:[405,270],ang:.32},
+  {id:'HQ',poly:[[274,398],[330,398],[376,420],[376,462],[330,470],[274,470]],lab:[315,400],ang:0}
 ];
 const ZNAME=['Khu A','Khu B1','Khu B2','Khu C1','Khu C2','Khu C3','Khu C4','Khu C5','Khu đất chưa trồng','Khu nhà điều hành'];
 const NZ=8; // 8 khu trồng cà phê
-const CREEK1=[[78,348],[66,380],[60,420],[62,470],[58,520],[64,570],[60,610],[68,660],[78,708]];
-const CREEK2=[[872,150],[893,152],[906,168],[912,190],[918,204]];
-const POND={c:[360,440],w:3.5,h:2.0};
-const FOREST=[[466,240],[528,418]];
-const GATES=[[244,116,-.4],[880,222,2.4],[760,424,.6],[734,572,3.1],[330,632,3.5],[92,722,3.8]];
+const CREEK1=[[110,372],[97,395],[94,425],[96,455],[90,480],[96,520],[105,548],[117,572]];
+const POND={c:[348,442],w:2.9,h:2.2};
+const FOREST=[[450,245],[515,415]];
+// đường nội bộ trong khu, theo bản vẽ A0
+const ROADS=[[[112,383],[332,383]],[[112,442],[270,442]],[[118,528],[300,528]],[[583,135],[583,298]]];
+const GATES=[];
 const DEV=[];
-[[205,190],[293,272],[222,345],[135,422],[160,515],[222,582],[355,497],[332,572],[436,562],[485,455],[578,460],[690,460],[608,523],[578,357],[565,405],[652,413],[553,177],[660,175],[638,268],[548,302],[772,182],[893,172]].forEach((p,i)=>DEV.push({k:'cam',uv:p,id:'CAM-'+String(i+1).padStart(2,'0')}));
-[[240,230],[211,403],[170,498],[359,538],[490,451],[539,267],[687,516],[668,345],[686,218]].forEach((p,i)=>DEV.push({k:'soil',uv:p,id:'SOIL-'+String(i+1).padStart(2,'0')}));
-[[350,436],[372,446]].forEach((p,i)=>DEV.push({k:'water',uv:p,id:'WTR-0'+(i+1)}));
-DEV.push({k:'iot',uv:[300,436],id:'IOT-HUB'});
-DEV.push({k:'weather',uv:[300,462],id:'WS-01'});
-DEV.push({k:'house',uv:[312,398],id:'HQ-01'});
+[[535,175],[541,291],[645,178],[870,191],[205,213],[613,254],[243,295],[739,176],[552,355],[622,323],[307,368],[617,392],[182,421],[553,448],[652,452],[473,455],[339,477],[159,494],[568,502],[335,556],[393,547],[215,572]].forEach((p,i)=>DEV.push({k:'cam',uv:p,id:'CAM-'+String(i+1).padStart(2,'0'),live:[0,2,7,10,15,16].includes(i)}));
+[[241,230],[211,403],[170,497],[360,538],[490,452],[539,268],[643,506],[580,344],[662,213]].forEach((p,i)=>DEV.push({k:'soil',uv:p,id:'SOIL-'+String(i+1).padStart(2,'0')}));
+[[338,436],[358,449]].forEach((p,i)=>DEV.push({k:'water',uv:p,id:'WTR-0'+(i+1)}));
+DEV.push({k:'iot',uv:[296,438],id:'IOT-HUB'});
+DEV.push({k:'weather',uv:[296,460],id:'WS-01'});
+DEV.push({k:'house',uv:[290,412],id:'HQ-01'});
 const KCOL={soil:'#D9A15B',water:'#51ADCA',weather:'#F2D35B',cam:'#B5E383',iot:'#7ED8C8',house:'#F5E4A1'};
 const KNAME={soil:'Cảm biến đất',water:'Cảm biến nước',weather:'Trạm thời tiết',cam:'Camera quan sát',iot:'Trạm IoT trung tâm',house:'Nhà điều hành'};
 const KICON={soil:'i-soil',water:'i-water',weather:'i-weather',cam:'i-cam',iot:'i-iot',house:'i-team'};
@@ -760,7 +934,8 @@ function dLine(x,z,L){let m=1e9;for(let i=1;i<L.length;i++){const d=dSeg(x,z,L[i
 function area(P){let a=0;for(let i=0,j=P.length-1;i<P.length;j=i++)a+=(P[j][0]+P[i][0])*(P[j][1]-P[i][1]);return Math.abs(a/2)}
 function centroid(P){let x=0,z=0;P.forEach(p=>{x+=p[0];z+=p[1]});return[x/P.length,z/P.length]}
 function zoneAt(x,z){for(let i=0;i<ZP.length;i++)if(inPoly(x,z,ZP[i]))return i;return -1}
-const CR1=CREEK1.map(toW),CR2=CREEK2.map(toW),FOR=FOREST.map(toW);
+const CR1=CREEK1.map(toW),FOR=FOREST.map(toW),RDS=ROADS.map(L=>L.map(toW));
+const dRoad=(x,z)=>{let m=1e9;for(const L of RDS){const d=dLine(x,z,L);if(d<m)m=d}return m};
 const PC=toW(POND.c);
 function inPond(x,z,m){return Math.abs(x-PC[0])<POND.w/2+(m||0)&&Math.abs(z-PC[1])<POND.h/2+(m||0)}
 const RW=.34; // nửa bề rộng đường lô
@@ -771,7 +946,7 @@ function H(x,z){const d=dPoly(x,z,OUT);return (hill(x,z)+.62)*sstep(0,3,d)*.75+.
 
 /* ---------- diện tích ước tính ---------- */
 const OUT_A=area(OUT);
-const ZHA=ZP.map(P=>area(P)/OUT_A*22);
+const ZHA=[7.22,2.68,1.01,2.31,2.01,1.48,4.8,.3].concat(ZP.slice(8).map(P=>area(P)/OUT_A*22));
 
 /* ---------- renderer / cảnh ---------- */
 let renderer,scene,camera,controls,composer,tiltPasses=[],sun,hemi,amb,houseLamp,fireLight;
@@ -789,8 +964,8 @@ function initRenderer(){
   renderer.shadowMap.enabled=true;
   renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   scene=new THREE.Scene();
-  scene.background=new THREE.Color('#E8DCC6');
-  scene.fog=new THREE.Fog('#E8DCC6',120,260);
+  scene.background=new THREE.Color('#EEF3E6');
+  scene.fog=new THREE.Fog('#EEF3E6',120,260);
   camera=new THREE.PerspectiveCamera(MOB?42:32,innerWidth/innerHeight,.3,1400);
   camera.position.set(14,70,88);
   controls=new THREE.OrbitControls(camera,cv);
@@ -886,7 +1061,7 @@ function buildGround(){
     pos[k*3]=x;pos[k*3+1]=y;pos[k*3+2]=z;inn[k]=isIn?1:0;
     let zi=zoneAt(x,z),soil=0,road=0,grass=0,bare=0;
     if(zi>=0){
-      const d=dPoly(x,z,ZP[zi]);const w=sstep(RW-.08,RW+.08,d);
+      const d=zi<NZ?Math.min(dPoly(x,z,ZP[zi]),dRoad(x,z)):dPoly(x,z,ZP[zi]);const w=sstep(RW-.08,RW+.08,d);
       if(zi===8)bare=w;else soil=w;road=1-w;
     }else{
       let dm=1e9;for(let q=0;q<ZP.length;q++){const d=dPoly(x,z,ZP[q]);if(d<dm)dm=d}
@@ -941,8 +1116,6 @@ function buildGround(){
       if(abs(zid-9.)<.5)col=mix(col,vec3(.70,.68,.62)*(.88+.18*n2),vK.x);
       col+=vec3(.55,.85,.30)*wt.b*(.07+.05*sin(uTime*3.))*(vK.x+vK.w);
       col=mix(col,col*vec3(.62,.82,1.08)+vec3(0.,.02,.05),wt.g*(.45+.15*sin(uTime*4.+vW.x*2.))*vK.x);
-      float ta=wt.a;vec3 tc=ta<.5?mix(vec3(.85,.55,.28),vec3(.62,.82,.35),ta*2.):mix(vec3(.62,.82,.35),vec3(.25,.65,.85),ta*2.-1.);
-      col=mix(col,tc,uTint*.62*step(.01,ta)*(vK.x+vK.w));
       float gRough=.96-.4*wet*(vK.x+vK.w)-.6*pud*vK.y-.12*uRoadWet;
       vec4 diffuseColor=vec4(pow(col,vec3(2.2)),1.);`).replace('float roughnessFactor = roughness;','float roughnessFactor = clamp(gRough,.25,1.);');
   };
@@ -1008,7 +1181,7 @@ function ribbon(L,width,yOff){
 }
 function buildWater(){
   waterMat=mkWaterMat();
-  [[CR1,.42],[CR2,.32]].forEach(([L,w])=>{
+  [[CR1,.42]].forEach(([L,w])=>{
     const bank=new THREE.Mesh(ribbon(L,w+.22,.03),new THREE.MeshStandardMaterial({color:'#7C6A4E',roughness:1}));bank.receiveShadow=true;scene.add(bank);
     const m=new THREE.Mesh(ribbon(L,w,.07),waterMat);m.receiveShadow=true;scene.add(m);
   });
@@ -1092,22 +1265,22 @@ function placeVeg(){
     for(let v=vmin+sr*.5;v<vmax;v+=sr,row++){let k=0;
       for(let u=umin+((row%2)*sa*.5);u<umax;u+=sa,k++){
         const x=u*d0+v*p0+(rnd()-.5)*.06,z=u*d1+v*p1+(rnd()-.5)*.06;
-        if(!inPoly(x,z,P)||dPoly(x,z,P)<RW+.26||nearDev(x,z,.7))continue;
+        if(!inPoly(x,z,P)||dPoly(x,z,P)<RW+.26||dRoad(x,z)<RW+.2||nearDev(x,z,.7))continue;
         if(rnd()<.03)continue;
         const o={x,z,y:H(x,z),s:.82+rnd()*.36,r:rnd()*6.28,zi};coffee.push(o);coffeeByZone[zi].push(o);
         if(row%5===2&&k%6===3){const px=x+p0*sr*.5,pz=z+p1*sr*.5;if(inPoly(px,pz,P)&&dPoly(px,pz,P)>RW+.4&&!nearDev(px,pz,1))palm.push({x:px,z:pz,y:H(px,pz),s:.85+rnd()*.3,r:rnd()*6.28})}
       }}
   }
-  const okTree=(x,z,cl)=>inPoly(x,z,OUT)&&dLine(x,z,CR1)>.75&&dLine(x,z,CR2)>.6&&!inPond(x,z,.9)&&!nearDev(x,z,cl||1.1)&&!(Math.abs(x-PC[0]+1.5)<3.5&&Math.abs(z-PC[1]+1.9)<3.4&&x<PC[0]-1.2);
+  const okTree=(x,z,cl)=>inPoly(x,z,OUT)&&dLine(x,z,CR1)>.75&&!inPond(x,z,.9)&&!nearDev(x,z,cl||1.1)&&!(Math.abs(x-PC[0]+1.5)<3.5&&Math.abs(z-PC[1]+1.9)<3.4&&x<PC[0]-1.2);
   const notCrop=(x,z)=>{const zi=zoneAt(x,z);return zi<0||(zi<8&&dPoly(x,z,ZP[zi])<RW-.05)};
   // hàng cây viền
-  const st=LOW?1.25:.85;
+  const st=LOW?2.4:1.7;
   for(let i=0;i<OUT.length;i++){const a=OUT[i],b=OUT[(i+1)%OUT.length];const L=Math.hypot(b[0]-a[0],b[1]-a[1]);let nx=-(b[1]-a[1])/L,nz=(b[0]-a[0])/L;
     const mx=(a[0]+b[0])/2,mz=(a[1]+b[1])/2;if(!inPoly(mx+nx*.5,mz+nz*.5,OUT)){nx=-nx;nz=-nz}
     for(let t=0;t<L;t+=st*(.7+rnd()*.6)){const o=.45+rnd()*.5;const x=a[0]+(b[0]-a[0])*t/L+nx*o,z=a[1]+(b[1]-a[1])*t/L+nz*o;
       if(okTree(x,z)&&notCrop(x,z))trees.push({x,z,y:H(x,z),s:.45+rnd()*.45,r:rnd()*6.28})}}
   // cây rải trong khoảng cỏ
-  for(let i=0;i<(LOW?900:1800);i++){const x=BOX.x0+rnd()*(BOX.x1-BOX.x0),z=BOX.z0+rnd()*(BOX.z1-BOX.z0);
+  for(let i=0;i<(LOW?300:700);i++){const x=BOX.x0+rnd()*(BOX.x1-BOX.x0),z=BOX.z0+rnd()*(BOX.z1-BOX.z0);
     if(zoneAt(x,z)>=0||!okTree(x,z,1.3))continue;let dm=1e9;for(const P of ZP)dm=Math.min(dm,dPoly(x,z,P));if(dm<RW+.3)continue;
     if(rnd()<.7)trees.push({x,z,y:H(x,z),s:.5+rnd()*.55,r:rnd()*6.28})}
   // dải rừng trong khu đất trống
@@ -1299,7 +1472,7 @@ function buildLinks(){
 }
 function updLinks(dt){if(!UI.lora||!SHOW.iot)return;
   LINKS.forEach(l=>{if(l.hot>0){l.hot=Math.max(0,l.hot-dt/1.5);l.u.uHot.value=l.hot}});
-  hubWave-=dt;if(hubWave<=0){hubWave=2.2;ripple(hubBase.x,hubBase.y,hubBase.z,'#F2FFF9',34,3.4,false,true)}}
+  hubWave-=dt;if(hubWave<=0){hubWave=2.2;ripple(hubBase.x,hubBase.y,hubBase.z,'#3A8047',18,3.4,false,true)}}
 const pkPool=[];
 function packet(from,to,color,dur,done){
   const lg=(c,z)=>{const x=glowSprite(c,z);x.material.blending=THREE.NormalBlending;x.material.depthTest=false;x.renderOrder=6;return x};
@@ -1461,7 +1634,7 @@ function readDev(d){
 }
 function pinVal(d){
   const r=d.r;if(!r)return'…';
-  if(LM.on&&d.k==='soil'){const m=METRIC[LM.metric],v=d.node&&d.node[LM.metric];return v==null?'–':fmt(v,m.d)+m.u}
+  if(d.k==='soil'){const m=METRIC[LM.metric],v=LM.on?d.node&&d.node[LM.metric]:r[{moisture:'vwc',temperature:'t',ph:'ph',ec:'ec'}[LM.metric]];return v==null?'–':fmt(v,m.d)+m.u.replace(' µS/cm','')}
   if(d.k==='soil')return fmt(r.vwc)+'%';
   if(d.k==='water')return'pH '+fmt(r.ph,1);
   if(d.k==='weather')return fmt(r.T)+'°C';
@@ -1502,16 +1675,7 @@ function autoTelemetry(dt){
 }
 
 /* ---------- tưới ---------- */
-function irrigating(zs){return zs.some(i=>ZS[i].irr>0)}
 function selZones(){return SEL.z<0?[0,1,2,3,4,5,6,7]:SEL.z<NZ?[SEL.z]:[]}
-function startIrr(zs){
-  const fert=$('#fert').checked;
-  zs.forEach(i=>{const z=ZS[i];z.irr=LOW?12:14;z.irrT=z.irr;z.fert=fert;z.v0=z.vwc;IRR[i].visible=true;z.lastIrr=clockStr(ENV.min)});
-  log('i',`Bắt đầu tưới thử <b>${zs.length===8?'toàn vườn':ZNAME[zs[0]]}</b>${fert?' kèm châm phân':''} · van mở từ hồ chứa`);
-  ripple(PC[0],pondWater.position.y+.05,PC[1],'#51ADCA',3,1.4);
-  sound.sprinkle(true);updButtons();
-}
-function stopIrr(zs){zs.forEach(i=>{if(ZS[i].irr>0)ZS[i].irr=.01});}
 function endIrr(i){
   const z=ZS[i];
   log('i',`Kết thúc tưới <b>${ZNAME[i]}</b> · độ ẩm đất ${fmt(z.v0)}% → ${fmt(z.vwc)}%`);
@@ -1562,7 +1726,7 @@ function applyLight(dt){
   const wx=WX[ENV.w],k=Math.min(1,dt*1.5);
   grayK=lerp(grayK,wx.gray,k);clK=lerp(clK,wx.cl,k);fogN=lerp(fogN,wx.fog[0],k);fogF=lerp(fogF,wx.fog[1],k);
   const lum=LT.bg.r*.3+LT.bg.g*.55+LT.bg.b*.15;_c2.setRGB(lum,lum,lum*1.04);
-  const bg=_c3.copy(LT.bg).lerp(_c2,clamp(grayK,0,1));if(grayK<0)bg.lerp(_c1.set('#F0D9B0'),-grayK*2);
+  const bg=_c3.set('#EEF3E6').multiplyScalar(1-.1*clamp(grayK,0,1)).lerp(_c1.set('#16241B'),LT.night*.92);
   if(ENV.w==='fog'||fogN<40){const fk=1-sstep(20,70,fogN);bg.lerp(_c1.set(wx.fc||'#DADBD6').multiplyScalar(.35+.65*LT.day),fk*.75)}
   ENV.flash=Math.max(0,ENV.flash-dt*5);
   const fl=ENV.flash>0?(Math.sin(ENV.flash*30)>0?1:.3)*ENV.flash:0;
@@ -1605,10 +1769,10 @@ const sound=(()=>{
 })();
 
 /* ================= GIAO DIỆN ================= */
-const UI={pins:true,zt:true,cov:false,tilt:!LOW,sound:false,lora:true};
+const UI={pins:true,zt:true,cov:false,tilt:false,sound:false,lora:true};
 // bật tắt theo loại thiết bị; điện thoại mặc định ẩn camera cho đỡ rối
-const SHOW={soil:true,water:true,weather:true,iot:true,cam:!MOB};
-const devOn=d=>(SHOW[d.k]!==false&&!(LM.on&&d.id==='WTR-02'))||!!d.alarm;
+const SHOW={soil:true,water:true,weather:true,iot:true,cam:false};
+const devOn=d=>(SHOW[d.k]!==false&&!(LM.on&&(d.id==='WTR-02'||(d.k==='cam'&&!d.live))))||!!d.alarm;
 function applyDev(d){const on=devOn(d);if(d.obj)d.obj.visible=on;if(d.pin)d.pin.classList.toggle('off',!on);if(d.disc)d.disc.visible=UI.cov&&on}
 function syncLinks(){LINKS.forEach(l=>{l.g.visible=UI.lora&&SHOW.iot&&devOn(l.d)})}
 function setShow(k,v){SHOW[k]=v;const b=$(`.dc[data-k="${k}"]`);if(b)b.setAttribute('aria-pressed',String(v));DEV.forEach(d=>{if(d.k===k)applyDev(d)});syncLinks();if(!v&&INS.d&&INS.d.k===k&&!INS.d.alarm)closeInsp()}
@@ -1627,10 +1791,10 @@ const LB=[];
 function buildLabels(){
   const root=$('#labels');
   ZD.forEach((z,i)=>{if(i===9)return;const el=document.createElement('button');el.className='zt'+(i===8?' bare':'');
-    el.innerHTML=i===8?'<b style="font-size:13px">Đất trống</b>':`<b>${z.id}</b><span>Khu ${z.id}</span>`;el.setAttribute('aria-label',ZNAME[i]);
+    el.innerHTML=i===8?'<b>Đất trống</b>':`<b>${z.id}</b><span></span>`;el.setAttribute('aria-label',ZNAME[i]);
     el.addEventListener('click',()=>selectZone(i));root.appendChild(el);
     const w=toW(z.lab);LB.push({el,p:new THREE.Vector3(w[0],H(w[0],w[1])+(i===8?1.6:1.9),w[1]),z:i,ox:0})});
-  DEV.forEach((d,i)=>{const el=document.createElement('button');el.className='dp '+d.k;el.style.setProperty('--c',KCOL[d.k]);
+  DEV.forEach((d,i)=>{const el=document.createElement('button');el.className='dp '+d.k;
     el.innerHTML=`<span class="gem"><svg aria-hidden="true"><use href="#${KICON[d.k]}"/></svg></span>${d.k==='soil'||d.k==='water'||d.k==='weather'?'<span class="vl" hidden>…</span>':''}`;
     el.setAttribute('aria-label',KNAME[d.k]+' '+d.id);el.addEventListener('click',e=>{e.stopPropagation();openInsp(i)});
     root.appendChild(el);d.pin=el;LB.push({el,p:d.top.clone().add(new THREE.Vector3(0,.35,0)),d:i})});
@@ -1651,24 +1815,6 @@ function updLabels(){
 function floatFx(d,txt,cls){_v.copy(d.top).project(camera);if(_v.z>1)return;const el=document.createElement('div');el.className='fx '+(cls||'');el.textContent=txt;
   el.style.left=((_v.x*.5+.5)*innerWidth)+'px';el.style.top=((-_v.y*.5+.5)*innerHeight-44)+'px';el.style.transform='translateX(-50%)';$('#labels').appendChild(el);setTimeout(()=>el.remove(),2300)}
 
-/* đồng hồ */
-function arcD(cx,cy,r,a0,a1){const p=a=>[cx+r*Math.cos(a*Math.PI/180),cy+r*Math.sin(a*Math.PI/180)];const s=p(a0),e=p(a1);return`M${s[0].toFixed(2)} ${s[1].toFixed(2)}A${r} ${r} 0 ${a1-a0>180?1:0} 1 ${e[0].toFixed(2)} ${e[1].toFixed(2)}`}
-const GA={};
-function gauge(id,o){
-  const el=$(id),A0=150,A1=390,r=74;let ticks='';
-  for(let i=0;i<=8;i++){const a=(A0+(A1-A0)*i/8)*Math.PI/180;ticks+=`<line class="tick" x1="${100+(r-14)*Math.cos(a)}" y1="${100+(r-14)*Math.sin(a)}" x2="${100+(r-(i%2?18:22))*Math.cos(a)}" y2="${100+(r-(i%2?18:22))*Math.sin(a)}"/>`}
-  const band=o.band?`<path class="band" d="${arcD(100,100,r+9,A0+(A1-A0)*(o.band[0]-o.min)/(o.max-o.min),A0+(A1-A0)*(o.band[1]-o.min)/(o.max-o.min))}"/>`:'';
-  el.innerHTML=`<svg viewBox="0 0 200 150" aria-hidden="true"><defs><linearGradient id="gg${id.slice(1)}" x1="0" x2="1"><stop offset="0" stop-color="${o.c0}"/><stop offset="1" stop-color="${o.c1}"/></linearGradient></defs>
-    ${band}<path class="trk" d="${arcD(100,100,r,A0,A1)}"/>${ticks}
-    <path class="arc" d="${arcD(100,100,r,A0,A1)}" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" stroke="url(#gg${id.slice(1)})"/>
-    <circle class="dot" r="6" fill="#fff" cx="0" cy="0"/>${o.dir?'<g class="needle"><path d="M100 50l7 14h-14z" fill="#FFB547"/></g>':''}</svg>
-    <div class="gv"><b class="num">–</b><small>${o.unit}</small></div><div class="gl">${o.label}</div>`;
-  GA[id]={o,el,arc:el.querySelector('.arc'),dot:el.querySelector('.dot'),b:el.querySelector('.gv b'),gl:el.querySelector('.gl'),nd:el.querySelector('.needle'),A0,A1,r};
-}
-function setGauge(id,v,txt,dirDeg){const g=GA[id];if(!g)return;const k=clamp((v-g.o.min)/(g.o.max-g.o.min),0,1);g.arc.setAttribute('stroke-dashoffset',(100-k*100).toFixed(1));
-  const a=(g.A0+(g.A1-g.A0)*k)*Math.PI/180;g.dot.setAttribute('cx',(100+g.r*Math.cos(a)).toFixed(1));g.dot.setAttribute('cy',(100+g.r*Math.sin(a)).toFixed(1));g.b.textContent=txt;
-  if(g.nd&&dirDeg!=null)g.nd.style.transform=`rotate(${dirDeg+180}deg)`}
-
 /* bảng khu */
 function zoneDevs(zi){const c={soil:0,water:0,weather:0,cam:0,iot:0};DEV.forEach(d=>{if((zi<0||d.zone===zi)&&c[d.k]!=null)c[d.k]++});return c}
 function renderZone(){
@@ -1677,7 +1823,7 @@ function renderZone(){
   const devs=zoneDevs(zi);const dl=Object.keys(devs).filter(k=>devs[k]).map(k=>`<span><svg aria-hidden="true"><use href="#${KICON[k]}"/></svg>${devs[k]} ${({soil:'đất',water:'nước',weather:'thời tiết',cam:'camera',iot:'trạm IoT'})[k]}</span>`).join('');
   if(zi<0){html=`<h3>Vườn cà phê Ia Ko</h3><p>Thôn Cây Xoài, xã Ia Ko, Chư Pưh, Gia Lai · 22 ha · 8 khu · cà phê xen cau, 2.200 gốc/ha</p><div class="devs">${dl}</div>`}
   else if(zi<NZ){html=`<h3>${ZNAME[zi]}</h3><p>Cà phê xen cau · giống Thiện Trường</p>
-      <dl class="kv"><dt>Diện tích ước tính</dt><dd>≈ ${fmt(ZHA[zi])} ha</dd><dt>Số gốc ước tính</dt><dd>≈ ${fmtI(Math.round(ZHA[zi]*2200/50)*50)}</dd><dt>Lần tưới gần nhất</dt><dd id="zL">${ZS[zi].lastIrr||'Chưa tưới'}</dd></dl><div class="devs">${dl}</div>`}
+      <dl class="kv"><dt>Diện tích</dt><dd>${fmt(ZHA[zi],2)} ha</dd><dt>Số gốc ước tính</dt><dd>≈ ${fmtI(Math.round(ZHA[zi]*2200/50)*50)}</dd><dt>Lần tưới gần nhất</dt><dd id="zL">${ZS[zi].lastIrr||'Chưa tưới'}</dd></dl><div class="devs">${dl}</div>`}
   else if(zi===8){html=`<h3>Khu đất chưa trồng</h3><p>Đất đã cày, chưa xuống giống. Dải cây rừng chạy chéo giữa khu.</p><dl class="kv"><dt>Diện tích (ước tính theo sơ đồ)</dt><dd>≈ ${fmt(ZHA[8])} ha</dd></dl>`}
   else{html=`<h3>Khu nhà điều hành</h3><p>Nhà điều hành, trạm IoT trung tâm, trạm thời tiết và hồ chứa nước tưới.</p><div class="devs">${dl}</div>`}
   if(zi<NZ)html+=`<div class="meter"><div class="row"><span>Độ ẩm đất ${zi<0?'trung bình':''}</span><b id="zV">–</b></div><div class="tr"><i class="ok" style="left:${25/60*100}%;width:${15/60*100}%"></i><i class="v" id="zBar"></i></div><small>Vạch xanh: vùng ẩm phù hợp 25–40%</small></div>`;
@@ -1689,13 +1835,7 @@ function updZoneLive(){
   const zv=$('#zV');if(zv)zv.textContent=fmt(v)+'%';const zb=$('#zBar');if(zb)zb.style.width=clamp(v/60*100,0,100)+'%';
   const zt=$('#zT');if(zt&&zi>=0)zt.textContent=fmt(ZS[zi].tS)+'°C';const zl=$('#zL');if(zl&&zi>=0)zl.textContent=ZS[zi].lastIrr||'Chưa tưới';
 }
-function updButtons(){
-  const zs=selZones(),b=$('#bIrr');const on=zs.length&&irrigating(zs);
-  b.disabled=!zs.length;b.classList.toggle('on',!!on);
-  b.querySelector('span').textContent=!zs.length?'Chọn khu A–C5 để tưới':on?'Dừng tưới':(SEL.z<0?'Tưới thử toàn vườn':'Tưới thử '+ZNAME[SEL.z]);
-  $('#bSoil').disabled=!(SEL.z<NZ);
-  const h=$('#ahint');if(h)h.textContent=!zs.length?'Khu này không trồng cây. Bấm một khu A–C5 (hoặc Toàn vườn) để thử tưới và đo đất.':on?'Đang phun nước khoảng 14 giây: đất trong khu sẫm dần, độ ẩm trên đồng hồ giữa tăng lên. Xong sẽ tự đo lại.':'Tưới thử: nước phun khoảng 14 giây, đất sẫm lại và độ ẩm tăng. Đo đất: cảm biến trong khu đo rồi gửi số về trạm IoT.';
-}
+function updButtons(){}
 function selectZone(i,noFly){
   SEL.z=i;GU.uSel.value=i;
   $$('#zgrid .zb').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.z===i)));
@@ -1716,11 +1856,11 @@ function spark(arr,col){if(arr.length<2)return'';const mn=Math.min(...arr),mx=Ma
   return`<svg class="spark" viewBox="0 0 300 46" preserveAspectRatio="none" aria-hidden="true"><polyline points="${pts}" fill="none" stroke="${col}" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>`}
 function openInsp(i){
   const d=DEV[i];const prev=INS.d;INS.d=d;SEL.d=i;if(prev)setPin(prev);setPin(d);
-  $('#iGem').style.setProperty('--c',KCOL[d.k]);$('#iGem use').setAttribute('href','#'+KICON[d.k]);
+  $('#iGem use').setAttribute('href','#'+KICON[d.k]);
   $('#iName').textContent=LM.on&&d.node?'Điểm đo '+d.node.id.slice(-1):KNAME[d.k];
   const zn=d.zone>=0?ZNAME[d.zone]:'';$('#iId').textContent=LM.on&&d.node?(d.node.zone?'Khu '+d.node.zone:'Chưa xác nhận vị trí'):d.id+(zn?' · '+zn:'');
   INS.pan=d.pan||0;
-  renderInsp(false);$('#insp').classList.add('open');$('#insp').classList.toggle('cam',d.k==='cam');
+  renderInsp(false);$('#insp').classList.add('open');$('#insp').classList.toggle('cam',d.k==='cam'&&!LM.on);
   if(!devOn(d))setShow(d.k,true);
   if(MOB)setTab('');
   focusDev(d);
@@ -1733,40 +1873,29 @@ function renderInsp(live){
   if(live&&d.k==='cam'){updCamInsp();return}
   let h='';
   if(d.k==='soil'){
-    h=r?`<div class="rd">${rdCell('Độ ẩm đất',fmt(r.vwc),'%','up')}${rdCell('Nhiệt độ đất',fmt(r.t),'°C')}${rdCell('pH đất',fmt(r.ph,2),'')}${rdCell('EC',fmtI(r.ec),'µS/cm')}${rdCell('N',fmtI(r.n),'mg/kg')}${rdCell('P · K',fmtI(r.p)+' · '+fmtI(r.k),'mg/kg')}</div>${spark(d.hist,'#B5E383')}`:'<p class="note">Đang đo…</p>';
-    h+=`<div class="imeta"><span>Đo lúc <b>${d.at||'–'}</b></span><span>Pin <b>${88-d.idx%7}%</b></span><span>LoRa <b>−${86+d.idx%9} dBm</b></span></div>
-      <div class="iacts"><button class="ab" data-a="measure"><svg aria-hidden="true"><use href="#a-probe"/></svg>Đo ngay</button><button class="ab" data-a="irr"><svg aria-hidden="true"><use href="#a-drop"/></svg>${irrigating([d.zone])?'Dừng tưới':'Tưới khu này'}</button></div>`;
+    h=r?`<div class="rd">${rdCell('Độ ẩm đất',fmt(r.vwc),'%','up')}${rdCell('Nhiệt độ đất',fmt(r.t),'°C')}${rdCell('pH đất',fmt(r.ph,2),'')}${rdCell('EC',fmtI(r.ec),'µS/cm')}${rdCell('N',fmtI(r.n),'mg/kg')}${rdCell('P · K',fmtI(r.p)+' · '+fmtI(r.k),'mg/kg')}</div>${spark(d.hist,'#3A8047')}`:'<p class="note">Đang đo…</p>';
+    h+=`<div class="imeta"><span>Đo lúc <b>${d.at||'–'}</b></span><span>Pin <b>${88-d.idx%7}%</b></span><span>LoRa <b>−${86+d.idx%9} dBm</b></span></div>`;
   }else if(d.k==='water'){
     h=r?`<div class="rd">${rdCell('Nhiệt độ nước',fmt(r.t),'°C')}${rdCell('pH nước',fmt(r.ph,2),'')}${rdCell('EC nước',fmt(r.ec),'µS/cm','',true)}</div>${spark(d.hist,'#51ADCA')}`:'<p class="note">Đang đo…</p>';
-    h+=`<div class="imeta"><span>Đo lúc <b>${d.at||'–'}</b></span><span>Mực hồ <b>${fmt(WSt.lvl*100,0)}%</b></span></div><div class="iacts"><button class="ab" data-a="measure" style="grid-column:1/-1"><svg aria-hidden="true"><use href="#a-probe"/></svg>Đo ngay</button></div>`;
+    h+=`<div class="imeta"><span>Đo lúc <b>${d.at||'–'}</b></span><span>Mực hồ <b>${fmt(WSt.lvl*100,0)}%</b></span></div>`;
   }else if(d.k==='weather'){
-    h=r?`<div class="rd">${rdCell('Nhiệt độ',fmt(r.T),'°C')}${rdCell('Độ ẩm',fmt(r.RH,0),'%')}${rdCell('Gió',fmt(r.ws),'m/s')}${rdCell('Hướng gió',fmtI(r.wd),'°')}${rdCell('Lượng mưa',fmt(r.rain),'mm/h')}${rdCell('Áp suất',fmt(r.P),'hPa')}${rdCell('Cường độ sáng',fmtI(r.lux),'lux','',true)}</div>${spark(d.hist,'#F2D35B')}`:'<p class="note">Đang đo…</p>';
-    h+=`<div class="imeta"><span>Đo lúc <b>${d.at||'–'}</b></span><span>Đặt tại khu nhà điều hành</span></div><div class="iacts"><button class="ab" data-a="measure" style="grid-column:1/-1"><svg aria-hidden="true"><use href="#a-probe"/></svg>Đo ngay</button></div>`;
+    h=r?`<div class="rd">${rdCell('Nhiệt độ',fmt(r.T),'°C')}${rdCell('Độ ẩm',fmt(r.RH,0),'%')}${rdCell('Gió',fmt(r.ws),'m/s')}${rdCell('Hướng gió',fmtI(r.wd),'°')}${rdCell('Lượng mưa',fmt(r.rain),'mm/h')}${rdCell('Áp suất',fmt(r.P),'hPa')}${rdCell('Cường độ sáng',fmtI(r.lux),'lux','',true)}</div>${spark(d.hist,'#3A8047')}`:'<p class="note">Đang đo…</p>';
+    h+=`<div class="imeta"><span>Đo lúc <b>${d.at||'–'}</b></span><span>Đặt tại khu nhà điều hành</span></div>`;
   }else if(d.k==='cam'){
-    h=`<div class="feed" id="feed"><span class="tl">${d.id} · LIVE</span><span class="tr"><i></i>REC</span><span class="bl" id="fT">${clockStr(ENV.min)}</span><span class="br" id="fP">Xoay 0°</span><span class="cross"></span><span class="ai">PHÁT HIỆN KHÓI</span></div>
-      <div class="pan"><button class="tplay" id="patrol" aria-pressed="${INS.patrol}">Tự quét</button><input type="range" id="panR" min="-180" max="180" value="${Math.round((INS.pan*180/Math.PI+540)%360-180)}" aria-label="Xoay camera"></div>
+    h=`<div class="feed" id="feed"><span class="tl">${d.id} · LIVE</span><span class="bl" id="fT">${clockStr(ENV.min)}</span><span class="br" id="fP">Xoay 0°</span><span class="ai">PHÁT HIỆN KHÓI</span></div>
       <div class="imeta"><span>Nguồn <b>pin mặt trời</b></span><span>Chế độ <b>24/7</b></span><span>Xoay <b>360°</b></span></div>
-      <div class="iacts"><button class="ab" data-a="speaker"><svg aria-hidden="true"><use href="#a-spk"/></svg>Phát loa</button><button class="ab" data-a="look"><svg aria-hidden="true"><use href="#u-top"/></svg>Bay tới cột</button></div>`;
+      <div class="iacts"><button class="ab" data-a="look" style="grid-column:1/-1">Xem gần</button></div>`;
   }else if(d.k==='iot'){
     h=`<div class="rd">${rdCell('Gói dữ liệu đã nhận',fmtI(ENV.pk),'')}${rdCell('Thiết bị trực tuyến','35','/35')}${rdCell('Kết nối Cloud','Ổn định','','up',true)}</div>
-      <p class="note">Gom dữ liệu từ cảm biến đất, nước và trạm thời tiết qua LoRa, rồi đẩy lên Farmblock Cloud → Dashboard và Sổ Rẫy.</p>
-      <div class="iacts"><button class="ab" data-a="sync" style="grid-column:1/-1"><svg aria-hidden="true"><use href="#i-cloud"/></svg>Đồng bộ lên Cloud</button></div>`;
+      <p class="note">Gom dữ liệu từ cảm biến đất, nước và trạm thời tiết qua LoRa, rồi đẩy lên Farmblock Cloud → Dashboard và Sổ Rẫy.</p>`;
   }else{
     h=`<p class="note" style="margin-top:0">Nơi đội vận hành tại chỗ làm việc: 01 quản lý và 02 kỹ sư thường trực. Bên cạnh là trạm IoT, trạm thời tiết, dàn pin mặt trời và hồ chứa nước tưới.</p>`;
   }
   b.innerHTML=h;
   b.querySelectorAll('[data-a]').forEach(btn=>btn.addEventListener('click',()=>insAct(btn.dataset.a)));
-  if(d.k==='cam'){$('#patrol').addEventListener('click',e=>{INS.patrol=!INS.patrol;e.currentTarget.setAttribute('aria-pressed',String(INS.patrol))});
-    $('#panR').addEventListener('input',e=>{INS.patrol=false;$('#patrol').setAttribute('aria-pressed','false');INS.pan=d.pan0+(+e.target.value)*Math.PI/180})}
 }
-function updCamInsp(){const d=INS.d;const f=$('#fT');if(f)f.textContent=clockStr(ENV.min);const p=$('#fP');if(p)p.textContent='Xoay '+Math.round(((d.head.rotation.y-d.pan0)*180/Math.PI+540)%360-180)+'°';const fd=$('#feed');if(fd)fd.classList.toggle('smk',!!d.alarm)}
-function insAct(a){const d=INS.d;if(!d)return;
-  if(a==='measure')measure(d,true);
-  else if(a==='irr'){const zs=[d.zone];irrigating(zs)?stopIrr(zs):startIrr(zs);setTimeout(()=>renderInsp(false),50)}
-  else if(a==='speaker'){sound.alarm(1.5);ripple(d.top.x,d.top.y-.6,d.top.z,'#FFB547',2.2,1,true);setTimeout(()=>ripple(d.top.x,d.top.y-.6,d.top.z,'#FFB547',2.2,1,true),400);log('w',`<b>${d.id}</b> phát loa cảnh báo tại hiện trường`)}
-  else if(a==='look')focusDev(d,true);
-  else if(a==='sync'){beam(hubTop,'#B5E383');log('s','<b>IOT-HUB</b> → Farmblock Cloud: đồng bộ thủ công');ENV.sync=0}
-}
+function updCamInsp(){const d=INS.d;const f=$('#fT');if(f)f.textContent=clockStr(ENV.min);const p=$('#fP');if(p)p.textContent='Hướng '+Math.round(((d.head.rotation.y-d.pan0)*180/Math.PI+540)%360-180)+'°';const fd=$('#feed');if(fd)fd.classList.toggle('smk',!!d.alarm)}
+function insAct(a){const d=INS.d;if(d&&a==='look')focusDev(d,true)}
 
 /* ---------- camera điều hướng ---------- */
 const SPH=new THREE.Spherical();let FLY=null;
@@ -1777,7 +1906,7 @@ function updFly(dt){if(!FLY)return;FLY.t+=dt/FLY.dur;const k=ease(Math.min(1,FLY
   controls.target.lerpVectors(FLY.t0,FLY.t1,k);SPH.set(lerp(FLY.r0,FLY.r1,k),lerp(FLY.p0,FLY.p1,k),lerp(FLY.h0,FLY.h1,k));
   camera.position.setFromSpherical(SPH).add(controls.target);if(FLY.t>=1)FLY=null}
 const LAND=()=>MOB&&innerWidth>innerHeight;
-const HOME=()=>LAND()?{t:new THREE.Vector3(-.5,0,3),r:innerWidth/innerHeight>1.9?60:66,phi:.6,th:0}:({t:new THREE.Vector3(MOB?-2.5:-.5,0,MOB?4:6.5),r:MOB?(innerWidth/innerHeight<.6?170:130):(innerWidth/innerHeight<1.6?112:100),phi:MOB?.5:.68,th:0});
+const HOME=()=>LAND()?{t:new THREE.Vector3(-.5,0,7),r:innerWidth/innerHeight>1.9?64:70,phi:.6,th:0}:({t:new THREE.Vector3(MOB?-2.5:-.5,0,MOB?4:9),r:MOB?(innerWidth/innerHeight<.6?170:130):(innerWidth/innerHeight<1.6?122:110),phi:MOB?.5:.68,th:0});
 function goHome(){const h=HOME();flyTo(h.t,h.r,h.phi,h.th,1.6);setTop(false)}
 function frameZone(i){const P=ZP[i],c=centroid(P);let r=0;P.forEach(p=>r=Math.max(r,Math.hypot(p[0]-c[0],p[1]-c[1])));
   flyTo(new THREE.Vector3(c[0],H(c[0],c[1]),c[1]+(MOB?0:1.5)),clamp(r*(MOB?6.5:4.6),24,80),MOB?.74:.78,null,1.4);setTop(false)}
@@ -1817,11 +1946,6 @@ function onWs(){ENV.ws=+$('#ws').value;$('#wsv').textContent=fmt(ENV.ws)+' m/s'}
 function bindUI(){
   const zg=$('#zgrid');for(let i=0;i<NZ;i++){const b=document.createElement('button');b.className='zb';b.dataset.z=i;b.setAttribute('aria-pressed','false');b.textContent=ZD[i].id;zg.appendChild(b)}
   zg.addEventListener('click',e=>{const b=e.target.closest('.zb');if(b)selectZone(+b.dataset.z)});
-  $('#bIrr').addEventListener('click',()=>{const zs=selZones();if(!zs.length)return;irrigating(zs)?stopIrr(zs):startIrr(zs);updButtons()});
-  $('#bSoil').addEventListener('click',()=>{const zs=SEL.z<0?null:SEL.z;const ds=DEV.filter(d=>d.k==='soil'&&(zs==null||d.zone===zs));
-    if(!ds.length){log('','Khu này chưa có cảm biến đất');return}
-    log('','Lệnh đo đất: <b>'+(zs==null?'9 cảm biến':ds.map(d=>d.id).join(', '))+'</b>');ds.forEach((d,k)=>setTimeout(()=>measure(d,true),k*380));if(ds.length===1)openInsp(ds[0].idx)});
-  $('#bWater').addEventListener('click',()=>{const ds=DEV.filter(d=>d.k==='water');log('','Lệnh đo nước hồ chứa: <b>WTR-01, WTR-02</b>');ds.forEach((d,k)=>setTimeout(()=>measure(d,true),k*500));openInsp(ds[0].idx)});
   $('#wgrid').addEventListener('click',e=>{const b=e.target.closest('.wb');if(b)setWeather(b.dataset.w)});
   const tod=$('#tod');tod.addEventListener('input',()=>{ENV.min=+tod.value;setPlay(false)});
   const setPlay=v=>{ENV.play=v;const b=$('#tplay');b.setAttribute('aria-pressed',String(v));b.querySelector('use').setAttribute('href',v?'#u-pause':'#u-play');b.querySelector('span').textContent=v?'Tạm dừng':'Tua nhanh'};
@@ -1854,9 +1978,6 @@ function bindUI(){
   $$('.tabs [data-tab]').forEach(b=>b.addEventListener('click',()=>{const t=b.dataset.tab;setTab(document.body.dataset.tab===t?'':t);if(document.body.dataset.tab)closeInsp()}));
   $$('[data-closetab]').forEach(b=>b.addEventListener('click',()=>setTab('')));
   addEventListener('keydown',e=>{if(e.target.matches('input,textarea'))return;if(e.key==='Escape'){closeInsp();if(MOB)setTab('')}if(e.key==='+'||e.key==='=')$('#zIn').click();if(e.key==='-')$('#zOut').click()});
-  gauge('#gT',{min:0,max:45,label:'Nhiệt độ không khí',unit:'°C',c0:'#51ADCA',c1:'#FF8A5A'});
-  gauge('#gS',{min:0,max:60,label:'Độ ẩm đất trung bình',unit:'%',c0:'#C8925A',c1:'#51ADCA',band:[25,40]});
-  gauge('#gW',{min:0,max:30,label:'Gió',unit:'m/s',c0:'#B5E383',c1:'#FFB547',dir:true});
   setWindDir(ENV.wd);onWs();
 }
 
@@ -1913,12 +2034,31 @@ function lvZones(){
     const ns=zoneNodes(i),v=mean(ns.map(n=>n[LM.metric])),vw=mean(ns.map(n=>n.moisture));
     z.vwc=vw==null?28:vw;const t=v==null?null:clamp((v-m.t0)/(m.t1-m.t0),0,1);z.tint=t==null?0:Math.round(5+t*245);
     z.nv=v});
-  LB.forEach(l=>{if(l.z==null||l.z>=NZ)return;const v0=ZS[l.z].nv,t0=v0==null?null:clamp((v0-m.t0)/(m.t1-m.t0),0,1);if(t0==null)l.el.style.removeProperty('--zc');else l.el.style.setProperty('--zc',lvRamp(t0));const sp=l.el.querySelector('span');if(sp){const v=ZS[l.z].nv;sp.textContent=v==null?'–':fmt(v,m.d)+m.u.replace(' µS/cm','')}});
+  LB.forEach(l=>{if(l.z==null||l.z>=NZ)return;const v0=ZS[l.z].nv,t0=v0==null?null:clamp((v0-m.t0)/(m.t1-m.t0),0,1);if(t0==null)l.el.style.removeProperty('--zc');else l.el.style.setProperty('--zc',lvRamp(t0));const sp=l.el.querySelector('span');if(sp){const v=ZS[l.z].nv;sp.textContent=v==null?'':fmt(v,m.d)+m.u.replace(' µS/cm','')}});
 }
 function lvMetric(k){
-  LM.metric=k;$$('#mbar .mb').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.m===k)));
-  const g=GA['#gS'],m=METRIC[k];g.o.min=m.min;g.o.max=m.max;g.el.querySelector('.gv small').textContent=m.u.trim();
-  lvZones();DEV.forEach(d=>{if(d.k==='soil')setPin(d)});renderZone();if(INS.d)renderInsp(true);
+  LM.metric=k;$$('#tiles .tl').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.m===k)));
+  if(LM.on&&LM.data)lvZones();
+  DEV.forEach(d=>{if(d.k==='soil')setPin(d)});renderZone();if(INS.d)renderInsp(true);
+}
+const setText=(id,t)=>{const e=$(id);if(e&&e.textContent!==t)e.textContent=t};
+function tileVals(get){
+  Object.keys(METRIC).forEach(k=>{const m=METRIC[k],v=get(k);
+    setText('#tv-'+k,v==null?'–':fmt(v,m.d));});
+}
+function subVals(rows){
+  const box=$('#subs');if(box.children.length!==rows.length*2)box.innerHTML=rows.map((r,i)=>`<div><dt id="sl${i}"></dt><dd id="sv${i}"></dd></div>`).join('');
+  if(box.children.length!==rows.length)box.innerHTML=rows.map((r,i)=>`<div><dt id="sl${i}"></dt><dd id="sv${i}"></dd></div>`).join('');
+  rows.forEach((r,i)=>{setText('#sl'+i,r[0]);setText('#sv'+i,r[1])});
+}
+// đường xu hướng trong ô: trung bình các điểm đo trong khu đang chọn
+function lvSparks(){
+  const D=LM.data;Object.keys(METRIC).forEach(k=>{const el=$('#ts-'+k);if(!el)return;
+    const ns=SEL.z>=0&&SEL.z<NZ?zoneNodes(SEL.z):D.nodes;const L=ns.reduce((a,n)=>Math.max(a,(n.hist[k]||[]).length),0);
+    const pts=[];for(let i=0;i<L;i++){const v=mean(ns.map(n=>(n.hist[k]||[])[i]));if(v!=null)pts.push(v)}
+    if(pts.length<2){el.innerHTML='';return}
+    const mn=Math.min(...pts),mx=Math.max(...pts),r=mx-mn||1;
+    el.innerHTML=`<polyline points="${pts.map((v,i)=>`${(i/(pts.length-1)*100).toFixed(1)},${(22-(v-mn)/r*20).toFixed(1)}`).join(' ')}" fill="none" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke"/>`})
 }
 function lvAttention(){
   const box=$('#atl'),items=LM.data.attention;
@@ -1929,7 +2069,7 @@ function lvAttention(){
 }
 function lvCenter(){
   const c=LM.data.center,k=LM.data.kpi;const pump=v=>v>0?fmt(v)+' m³/h':'Tắt';
-  $('#ctr').innerHTML=[['Nước tưới pH',fmt(c.water_ph,2)],['Nước tưới EC',fmtI(c.water_ec)+' µS/cm'],['Nhiệt độ nước',fmt(c.water_temp)+'°C'],['Bơm 1',pump(c.pump1_rate)],['Bơm 2',pump(c.pump2_rate)],['Tưới hôm nay',fmt(k.irrigation_today,0)+' m³'],['Tưới 7 ngày',fmt(k.irrigation_7d)+' m³'],['Mưa 7 ngày',fmt(k.rain_7d)+' mm'],['Hướng gió',fmtI(c.wind_direction)+'°']].map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join('');
+  $('#ctr').innerHTML=[['EC nước tưới',fmtI(c.water_ec)+' µS/cm'],['Nhiệt độ nước',fmt(c.water_temp)+'°C'],['Bơm 1',pump(c.pump1_rate)],['Bơm 2',pump(c.pump2_rate)],['Tưới 7 ngày',fmt(k.irrigation_7d)+' m³'],['Mưa 7 ngày',fmt(k.rain_7d)+' mm'],['Hướng gió',fmtI(c.wind_direction)+'°'],['Ánh sáng',fmtI(c.light)+' lux'],['Áp suất',fmt(c.pressure,0)+' hPa']].map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join('');
 }
 function lvZone(zi){
   const D=LM.data;if(!D)return'';const k=D.kpi;
@@ -1946,13 +2086,14 @@ function lvInsp(d){
     const q=D.attention.filter(a=>a.kind==='quality'&&a.stations.includes(n.id)).map(a=>`${a.metric.toLowerCase()} ${a.label.toLowerCase()}`);
     const lb=x=>x?` title="${x.label}"`:'';
     return`<div class="rd">${Object.keys(METRIC).map(k=>cell(METRIC[k].full,n[k]==null?'–':fmt(n[k],METRIC[k].d),METRIC[k].u,n.levels[k],` data-m2="${k}" role="button"${lb(n.levels[k])}`)).join('')}${cell('N · P · K',[n.nitrogen,n.phosphorus,n.potassium].map(v=>v==null?'–':fmtI(v)).join(' · '),' mg/kg',null,'wide')}</div>
-      ${spark(h,'#B5E383')}<p class="note cap">${m.full}, 7 ngày qua</p>
+      ${spark(h,'#3A8047')}<p class="note cap">${m.full}, 7 ngày qua</p>
       <div class="imeta"><span>Đo lúc <b>${hm(n.at)}</b></span><span>So với 24 giờ trước <b>${signed(n.d24[LM.metric],m.d)}${m.u}</b></span></div>
       ${q.length?`<p class="note warn">Cần kiểm tra cảm biến: ${q.join(', ')}.</p>`:''}${n.zone?'':'<p class="note">Vị trí của điểm đo này chưa được xác nhận trên sơ đồ Dashboard, ghim chỉ đặt tạm.</p>'}`}
   const c=D.center;
   if(d.k==='water')return`<div class="rd">${cell('pH nước',fmt(c.water_ph,2),'',c.levels.water_ph)}${cell('Nhiệt độ nước',fmt(c.water_temp),'°C',c.levels.water_temp)}${cell('EC nước',fmtI(c.water_ec),' µS/cm',c.levels.water_ec,'wide')}</div><div class="imeta"><span>Đo lúc <b>${hm(c.at)}</b></span></div>`;
   if(d.k==='weather')return`<div class="rd">${cell('Nhiệt độ',fmt(c.air_temp),'°C',c.levels.air_temp)}${cell('Độ ẩm',fmt(c.air_humidity,0),'%',c.levels.air_humidity)}${cell('Gió',fmt(c.wind_speed),' m/s',c.levels.wind_speed)}${cell('Hướng gió',fmtI(c.wind_direction),'°')}${cell('Mưa hôm nay',fmt(D.kpi.rain_today),' mm')}${cell('Áp suất',fmt(c.pressure),' hPa')}${cell('Cường độ sáng',fmtI(c.light),' lux',null,'wide')}</div><div class="imeta"><span>Đo lúc <b>${hm(c.at)}</b></span></div>`;
   if(d.k==='iot')return`<div class="rd">${cell('Thiết bị báo về',lvOnline()+'','/'+(D.nodes.length+1))}${cell('Nhịp gửi',fmt(D.cadence.median_min,0),' phút')}${cell('Bản ghi đã lưu',fmtI(D.total_rows),'',null,'wide')}${cell('Đồng bộ lần cuối',hm(D.sync.last_run),'',null,'wide')}</div><p class="note">Cảm biến gửi qua LoRa về trạm, trạm đẩy lên Farmblock Cloud, rồi Dashboard và sa bàn đọc lại.</p>`;
+  if(d.k==='cam')return'<p class="note" style="margin-top:0">Camera đang chạy theo sơ đồ vườn. Hình ảnh xem trên Dashboard, sa bàn chưa nối video.</p>';
   return'<p class="note" style="margin-top:0">Nơi đội vận hành tại chỗ làm việc. Bên cạnh là trạm trung tâm và hồ chứa nước tưới.</p>';
 }
 function lvOnline(){const D=LM.data,now=Date.now();return D.nodes.filter(n=>now-atMs(n.at)<36e5*2).length+(now-atMs(D.center.at)<36e5*2?1:0)}
@@ -1964,29 +2105,28 @@ function lvStatus(){
   $('#stA').innerHTML=`Đo lúc <b class="num">${hm(D.at)}</b> · ${ago(age)}`;
 }
 function lvHUD(){
-  const D=LM.data,c=D.center,k=D.kpi,m=METRIC[LM.metric];
-  const zv=SEL.z>=0&&SEL.z<NZ?ZS[SEL.z].nv:({moisture:k.moisture,temperature:k.soil_temp,ph:k.ph,ec:k.ec})[LM.metric];
-  setGauge('#gT',c.air_temp,fmt(c.air_temp));setGauge('#gS',zv==null?m.min:zv,zv==null?'–':fmt(zv,m.d));setGauge('#gW',c.wind_speed,fmt(c.wind_speed),c.wind_direction);
-  GA['#gS'].gl.textContent=m.full+(SEL.z>=0&&SEL.z<NZ?' · '+ZNAME[SEL.z]:' toàn vườn');
-  $('#f-rh').textContent=fmt(c.air_humidity,0);$('#f-rain').textContent=fmt(k.rain_today);$('#f-lux').textContent=c.light>=1000?fmt(c.light/1000,1)+'k':fmtI(c.light);$('#f-p').textContent=fmt(c.pressure,0);
-  $('#m-t').textContent=fmt(c.air_temp)+'°';$('#m-s').textContent=zv==null?'–':fmt(zv,m.d>0&&LM.metric!=='ph'?0:m.d)+m.u.trim();$('#m-w').textContent=fmt(c.wind_speed);$('#m-r').textContent=fmt(k.rain_today);
+  const D=LM.data,c=D.center,k=D.kpi,zi=SEL.z>=0&&SEL.z<NZ?SEL.z:-1,all={moisture:k.moisture,temperature:k.soil_temp,ph:k.ph,ec:k.ec};
+  tileVals(m=>zi<0?all[m]:mean(zoneNodes(zi).map(n=>n[m])));
+  subVals([['Không khí',fmt(c.air_temp)+'°C · '+fmt(c.air_humidity,0)+'%'],['Gió',fmt(c.wind_speed)+' m/s'],['Mưa hôm nay',fmt(k.rain_today)+' mm'],['Tưới hôm nay',fmt(k.irrigation_today,0)+' m³'],['pH nước tưới',fmt(c.water_ph)]]);
+  setText('#clAt',(zi<0?'Toàn vườn':ZNAME[zi])+' · đo lúc '+hm(D.at));
   $('#clock').textContent=clockStr(ENV.min);lvStatus();
+  if(LM.spz!==zi+D.at){LM.spz=zi+D.at;lvSparks()}
 }
 function setMode(on){
   if(on===LM.on)return;
   if(on){if(SMK.on)smokeOn(false);if(ENV.play)$('#tplay').click();ZS.forEach((z,i)=>{if(z.irr>0){z.irr=0;if(IRR[i])IRR[i].visible=false}});sound.sprinkle(false);z0=ZS.map(z=>z.v0)}
   LM.on=on;document.body.classList.toggle('live',on);closeInsp();$('#log').innerHTML='';
   $$('#modes button').forEach(b=>b.setAttribute('aria-pressed',String((b.dataset.m==='live')===on)));
-  $('#ltT').textContent=on?'Khu vực':'Khu vực & thao tác';$('#rtT').textContent=on?'Trạm trung tâm':'Môi trường';$('#tbZ').textContent=on?'Khu vực':'Khu & thử';$('#tbE').textContent=on?'Trạm':'Thời tiết';
-  $('#fl-rain').textContent=on?'Mưa hôm nay mm':'Mưa mm/h';$('#ml-r').textContent=on?'Mưa hôm nay':'Mưa mm/h';$('#ml-s').textContent=on?'Toàn vườn':'Ẩm đất';$('#logk').textContent=on?'Số liệu vừa về':'Nhật ký dữ liệu';
-  const camB=$('.dc[data-k="cam"]'),wB=$('.dc[data-k="water"] b');camB.disabled=on;camB.title=on?'Dashboard chưa trả về danh sách camera':'';camB.querySelector('b').textContent=on?'0':'22';wB.textContent=on?'1':'2';
-  setShow('cam',on?false:!MOB);
-  if(on){lvMetric(LM.metric);lvApply(LM.data,true)}
+  $('#rtT').textContent=on?'Trạm trung tâm':'Môi trường';$('#tbE').textContent=on?'Trạm':'Thời tiết';
+  $('#logk').textContent=on?'Số liệu vừa về':'Nhật ký dữ liệu';
+  $('.dc[data-k="cam"] b').textContent=on?String(DEV.filter(d=>d.live).length):'22';$('.dc[data-k="water"] b').textContent=on?'1':'2';
+  setShow('cam',false);
+  if(on){lvApply(LM.data,true);lvMetric(LM.metric)}
   else{
-    const g=GA['#gS'];g.o.min=0;g.o.max=60;g.el.querySelector('.gv small').textContent='%';
+    LM.spz=null;Object.keys(METRIC).forEach(k=>{const e=$('#ts-'+k);if(e)e.innerHTML=''});
     DEV.forEach(d=>{d.r=null;d.at=null;d.node=null;d.hist=[];setPin(d)});
     ZS.forEach((z,i)=>{z.vwc=z.v0=z0&&z0[i]||z.v0;z.tint=0});
-    LB.forEach(l=>{if(l.z!=null&&l.z<NZ){const sp=l.el.querySelector('span');if(sp)sp.textContent='Khu '+ZD[l.z].id}});
+    LB.forEach(l=>{if(l.z!=null&&l.z<NZ){const sp=l.el.querySelector('span');if(sp)sp.textContent=''}});
     $('#stM').textContent='Mô phỏng';$('#mTag').textContent='Mô phỏng';$('#stL').classList.remove('stale');autoT=.5;setWeather('clear',true);renderZone();
   }
   DEV.forEach(applyDev);syncLinks();
@@ -2001,9 +2141,17 @@ async function lvPoll(){
     else if(LM.on&&(d.at!==LM.lastAt||d.received_at!==LM.data.received_at))lvApply(d,false);else LM.data=d;
   }catch(e){LM.fail++;if(!LM.data)clearInterval(LM.t)}
 }
+function boxInit(){
+  const key=b=>'fb-box-'+b.dataset.box;
+  $$('[data-box]').forEach(b=>{const c=b.querySelector('.chev');if(!c)return;
+    const set=v=>{b.classList.toggle('cl',v);c.setAttribute('aria-expanded',String(!v));c.setAttribute('aria-label',v?'Mở rộng':'Thu gọn')};
+    try{if(localStorage.getItem(key(b))==='1')set(true)}catch(e){}
+    c.addEventListener('click',()=>{const v=!b.classList.contains('cl');set(v);try{localStorage.setItem(key(b),v?'1':'0')}catch(e){}})});
+}
 function lvInit(){
-  $('#mbar').innerHTML=Object.keys(METRIC).map(k=>`<button class="mb" data-m="${k}" aria-pressed="${k===LM.metric}">${METRIC[k].l}</button>`).join('')+'<span class="lg" aria-hidden="true">Thấp<i></i>Cao</span>';
-  $('#mbar').addEventListener('click',e=>{const b=e.target.closest('.mb');if(b)lvMetric(b.dataset.m)});
+  $('#tiles').innerHTML=Object.keys(METRIC).map(k=>{const m=METRIC[k];return`<button class="tl" data-m="${k}" aria-pressed="${k===LM.metric}"><span class="tn">${m.full}</span><span class="tv"><b id="tv-${k}">–</b><small>${m.u.trim()}</small></span><svg class="ts" id="ts-${k}" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true"></svg></button>`}).join('');
+  $('#tiles').addEventListener('click',e=>{const b=e.target.closest('.tl');if(b)lvMetric(b.dataset.m)});
+  boxInit();
   $('#modes').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setMode(b.dataset.m==='live')});
   lvPoll();LM.t=setInterval(lvPoll,30000);
 }
@@ -2013,12 +2161,10 @@ let hudT=0;
 function updHUD(dt){
   hudT-=dt;if(hudT>0)return;hudT=.25;
   if(LM.on&&LM.data){lvHUD();return}
-  const zs=SEL.z<NZ?selZones():[0,1,2,3,4,5,6,7];const v=avgVwc(zs);
-  setGauge('#gT',ENV.T,fmt(ENV.T));setGauge('#gS',v,fmt(v));setGauge('#gW',ENV.wsNow,fmt(ENV.wsNow),ENV.wd);
-  GA['#gS'].gl.textContent=SEL.z>=0&&SEL.z<NZ?'Độ ẩm đất · '+ZNAME[SEL.z]:'Độ ẩm đất trung bình';
-  $('#f-rh').textContent=fmt(ENV.RH,0);$('#f-rain').textContent=fmt(ENV.rain);$('#f-lux').textContent=ENV.lux>=1000?fmt(ENV.lux/1000,0)+'k':fmtI(ENV.lux);$('#f-p').textContent=fmt(ENV.P,0);
-  $('#m-t').textContent=fmt(ENV.T)+'°';$('#m-s').textContent=fmt(v,0)+'%';$('#m-w').textContent=fmt(ENV.wsNow);$('#m-r').textContent=fmt(ENV.rain);
+  tileVals(k=>{const zs=SEL.z<NZ?selZones():[0,1,2,3,4,5,6,7],f={moisture:'vwc',temperature:'tS',ph:'ph',ec:'ec'}[k];return mean(zs.map(i=>ZS[i][f]))});
+  subVals([['Không khí',fmt(ENV.T)+'°C · '+fmt(ENV.RH,0)+'%'],['Gió',fmt(ENV.wsNow)+' m/s'],['Mưa',fmt(ENV.rain)+' mm/h'],['Ánh sáng',ENV.lux>=1000?fmt(ENV.lux/1000,0)+'k lux':fmtI(ENV.lux)+' lux'],['Áp suất',fmt(ENV.P,0)+' hPa']]);
   const cs=clockStr(ENV.min);$('#clock').textContent=cs;$('#todv').textContent=cs;if(ENV.play)$('#tod').value=Math.floor(ENV.min);
+  setText('#clAt',SEL.z>=0&&SEL.z<NZ?ZNAME[SEL.z]:'Toàn vườn');
   updZoneLive();
   if(INS.d&&INS.d.k==='cam')updCamInsp();
   if(INS.d&&INS.d.k==='iot'){const b=$('#iBody b');if(b)b.textContent=fmtI(ENV.pk)}
@@ -2160,7 +2306,7 @@ async function boot(){
   P(30,'Dẫn suối, đào hồ chứa…');await tick();buildWater();
   P(45,'Trồng cà phê xen cau…');await tick();placeVeg();
   P(70,'Lắp 35 thiết bị…');await tick();buildDevices();buildLedGlows();buildLinks();
-  P(85,'Nối mạng LoRa…');await tick();buildIrrigation();buildRain();buildSmoke();buildClouds();buildBirds();buildLeaves();buildFlies();buildZoneLines();
+  P(85,'Nối mạng LoRa…');await tick();buildIrrigation();buildRain();buildSmoke();buildClouds();buildLeaves();buildFlies();buildZoneLines();
   pipCam=new THREE.PerspectiveCamera(58,1.6,.15,300);
   buildLabels();bindUI();bindPointer();renderZone();
   cmpN=$('#cmpn');
@@ -2202,70 +2348,7 @@ function landUse(x,z,d){
 }
 let sky,stars,villageGlow,mist=[],LU;
 function buildWorld(){
-  // bản đồ sử dụng đất
-  const T=LOW?384:768,data=new Uint8Array(T*T*4),col=new Uint8Array(T*T*4);
-  const BASE=[[.20,.36,.13],[.60,.31,.18],[.46,.57,.24],[.40,.44,.19],[.12,.25,.09],[.66,.62,.32]];
-  for(let j=0;j<T;j++)for(let i=0;i<T;i++){const x=(i+.5)/T*WSZ-WSZ/2,z=(j+.5)/T*WSZ-WSZ/2;const d=(Math.abs(x)<60&&Math.abs(z)<55)?slabD(x,z):Math.hypot(x/33,z/27)*30-24;
-    const u=landUse(x,z,d),k=(j*T+i)*4;data[k]=u[0]*40;data[k+1]=u[1]*255;data[k+2]=clamp(u[2],0,1)*255;data[k+3]=255;
-    const b=BASE[u[0]],v=.9+hh(i*.37,j*.91)*.0+ (u[1]-.5)*.16;col[k]=clamp(b[0]*v,0,1)*255;col[k+1]=clamp(b[1]*v,0,1)*255;col[k+2]=clamp(b[2]*v,0,1)*255;col[k+3]=255}
-  const tN=new THREE.DataTexture(data,T,T,THREE.RGBAFormat);tN.magFilter=tN.minFilter=THREE.NearestFilter;tN.needsUpdate=true;
-  const tC=new THREE.DataTexture(col,T,T,THREE.RGBAFormat);tC.magFilter=THREE.LinearFilter;tC.minFilter=THREE.LinearFilter;tC.needsUpdate=true;
-  const tL=new THREE.DataTexture(data,T,T,THREE.RGBAFormat);tL.magFilter=tL.minFilter=THREE.LinearFilter;tL.needsUpdate=true;
-  LU={data,T};
-  // địa hình
-  const seg=LOW?150:230;const g=new THREE.PlaneGeometry(WSZ,WSZ,seg,seg);g.rotateX(-Math.PI/2);
-  const p=g.attributes.position,ad=new Float32Array(p.count);for(let i=0;i<p.count;i++){const x=p.getX(i),z=p.getZ(i),d=(Math.abs(x)<60&&Math.abs(z)<55)?slabD(x,z):Math.hypot(x/33,z/27)*30-24;ad[i]=d;p.setY(i,TH(x,z,d))}g.setAttribute('aD',new THREE.BufferAttribute(ad,1));g.computeVertexNormals();
-  const m=new THREE.MeshStandardMaterial({roughness:.97});
-  m.onBeforeCompile=sh=>{
-    Object.assign(sh.uniforms,U);sh.uniforms.uLU={value:tN};sh.uniforms.uLL={value:tL};sh.uniforms.uLC={value:tC};sh.uniforms.uDry=GU.uDry;
-    sh.vertexShader='attribute float aD;varying float vD;varying vec3 vW;\n'+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvW=(modelMatrix*vec4(transformed,1.)).xyz;vD=aD;');
-    sh.fragmentShader='uniform sampler2D uLU,uLL,uLC;uniform float uRainV,uDry;varying vec3 vW;varying float vD;\n'+NOISE_GLSL+sh.fragmentShader.replace('vec4 diffuseColor = vec4( diffuse, opacity );',`
-      vec2 uv=vW.xz/${WSZ}.+.5;vec4 t=texture2D(uLU,uv);vec4 tl=texture2D(uLL,uv);
-      float ty=floor(t.r*255./40.+.5);float ang=t.g*3.1416;vec2 dir=vec2(cos(ang),sin(ang));
-      float n=fbm(vW.xz*.09),n2=vn(vW.xz*1.1),row=sin(dot(vW.xz,dir)*3.6);
-      vec3 c=texture2D(uLC,uv).rgb*(.86+.26*n);
-      float rw=smoothstep(.55,.95,sin(dot(vW.xz,dir)*9.));
-      if(ty<.5)c=mix(c,vec3(.48,.25,.15),rw*.45);
-      else if(ty<1.5)c*=.92+.1*sin(dot(vW.xz,dir)*12.);
-      else if(ty<3.5&&ty>2.5)c=mix(c,vec3(.50,.31,.18),rw*.5);
-      else if(ty>4.5)c*=.94+.08*sin(dot(vW.xz,dir)*9.);
-      float lawn=1.-smoothstep(5.,13.,vD);
-      c=mix(c,mix(vec3(.40,.52,.21),vec3(.52,.60,.28),n),lawn);
-      c*=.86+.22*n2;
-      float road=smoothstep(.07,.035,tl.b)*(1.-lawn);
-      c=mix(c,vec3(.74,.46,.30)*(.9+.15*n2),road);
-      c=mix(c,vec3(.24,.30,.36),smoothstep(-5.2,-6.,vW.y)*.6);
-      c=mix(c,c*.72,uRainV*.45);c=mix(c,c*vec3(1.15,1.04,.68)+.03,uDry*.35);
-      vec4 diffuseColor=vec4(pow(c,vec3(2.2)),1.);`);
-  };
-  const terr=new THREE.Mesh(g,m);terr.receiveShadow=true;scene.add(terr);
-  // hồ trong thung lũng
-  const lk=new THREE.Mesh(new THREE.PlaneGeometry(WSZ,WSZ),new THREE.MeshStandardMaterial({color:'#4E8FA3',roughness:.15,metalness:.2,transparent:true,opacity:.92}));
-  lk.rotation.x=-Math.PI/2;lk.position.y=LAKE;scene.add(lk);
-  // rừng & cây bóng mát
-  const N=LOW?1400:3600,arr=[];let tries=0;
-  while(arr.length<N&&tries<N*12){tries++;const x=(rnd()-.5)*WSZ*.94,z=(rnd()-.5)*WSZ*.94;const d=Math.hypot(x/33,z/27)*30-24;if(d<14)continue;
-    const i=Math.floor((x/WSZ+.5)*LU.T),j=Math.floor((z/WSZ+.5)*LU.T),ty=LU.data[(j*LU.T+i)*4]/40,ed=LU.data[(j*LU.T+i)*4+2]/255;
-    const pr=ty===4?.95:ty===0?.03:ty===2?.05:ty===3?.02:0;if(ed<.09||rnd()>pr)continue;
-    const y=TH(x,z);if(y<LAKE+.3)continue;arr.push({x,z,y,s:1.1+rnd()*1.1+Math.max(0,d)*.004,r:rnd()*6.28})}
-  const tm=new THREE.MeshStandardMaterial({vertexColors:true,flatShading:true,roughness:.9});
-  const geos=[treeGeo(0,11),treeGeo(0,23)];
-  [0,1].forEach(h=>{const a=arr.filter((_,i)=>i%2===h);const im=new THREE.InstancedMesh(geos[h],tm,a.length);const M=new THREE.Matrix4(),Q=new THREE.Quaternion(),S=new THREE.Vector3(),P=new THREE.Vector3(),C=new THREE.Color();
-    a.forEach((o,i)=>{Q.setFromAxisAngle(new THREE.Vector3(0,1,0),o.r);S.set(o.s,o.s*(.9+rnd()*.5),o.s);P.set(o.x,o.y-.1,o.z);M.compose(P,Q,S);im.setMatrixAt(i,M);const t=rnd();C.setRGB(.7+t*.35,.75+t*.25,.6+rnd()*.25);im.setColorAt(i,C)});
-    im.instanceMatrix.needsUpdate=true;im.instanceColor.needsUpdate=true;scene.add(im)});
-  // làng
-  const walls=[],roofs=[],glow=[];const RC=['#B5452E','#C2623A','#3E7C8C','#8C4A32','#5D6E7A'];
-  for(let v=0;v<7;v++){let cx,cz,d,k=0;do{const a=rnd()*6.28,R=40+rnd()*120;cx=Math.cos(a)*R;cz=Math.sin(a)*R*.8;d=Math.hypot(cx/33,cz/27)*30-24;k++}while((d<22||TH(cx,cz)<LAKE+1)&&k<30);
-    const n=8+Math.floor(rnd()*9),ra=rnd()*3;
-    for(let i=0;i<n;i++){const a=ra+i*.55+rnd()*.3,R=2+i*1.1+rnd()*2;const x=cx+Math.cos(a)*R,z=cz+Math.sin(a)*R;const y=TH(x,z);if(y<LAKE+.3)continue;const s=.8+rnd()*.6;
-      walls.push({x,z,y,s,r:a});roofs.push({x,z,y,s,r:a,c:RC[Math.floor(rnd()*RC.length)]});glow.push(x,y+.7*s,z)}}
-  const wg=new THREE.BoxGeometry(1.6,1,1.2);wg.translate(0,.5,0);const rg=new THREE.ConeGeometry(1.25,.7,4);rg.rotateY(Math.PI/4);rg.scale(1,1,.78);rg.translate(0,1.33,0);
-  const wm=new THREE.InstancedMesh(wg,new THREE.MeshStandardMaterial({color:'#EDE6D6',roughness:.8}),walls.length),rm=new THREE.InstancedMesh(rg,new THREE.MeshStandardMaterial({roughness:.7,flatShading:true}),roofs.length);
-  const M=new THREE.Matrix4(),Q=new THREE.Quaternion(),S=new THREE.Vector3(),P=new THREE.Vector3(),C=new THREE.Color();
-  walls.forEach((o,i)=>{Q.setFromAxisAngle(new THREE.Vector3(0,1,0),o.r);S.setScalar(o.s);P.set(o.x,o.y-.05,o.z);M.compose(P,Q,S);wm.setMatrixAt(i,M);rm.setMatrixAt(i,M);rm.setColorAt(i,C.set(roofs[i].c))});
-  wm.castShadow=rm.castShadow=true;scene.add(wm,rm);
-  const gg=new THREE.BufferGeometry();gg.setAttribute('position',new THREE.Float32BufferAttribute(glow,3));
-  villageGlow=new THREE.Points(gg,new THREE.PointsMaterial({color:'#FFC870',size:2.2,map:GLOW||glowTex(),transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,opacity:0}));scene.add(villageGlow);
+  villageGlow=new THREE.Points(new THREE.BufferGeometry(),new THREE.PointsMaterial({transparent:true,opacity:0}));
   // bầu trời
   sky=new THREE.Mesh(new THREE.SphereGeometry(1100,32,16),new THREE.ShaderMaterial({side:THREE.BackSide,depthWrite:false,depthTest:false,uniforms:{uTop:{value:new THREE.Color()},uHor:{value:new THREE.Color()},uSun:{value:new THREE.Color()},uSD:{value:new THREE.Vector3(0,1,0)},uSK:{value:1}},
     vertexShader:'varying vec3 vD;void main(){vD=position;vec4 p=projectionMatrix*modelViewMatrix*vec4(position,1.);gl_Position=p.xyww;}',
@@ -2276,16 +2359,14 @@ function buildWorld(){
       #include <tonemapping_fragment>
       #include <encodings_fragment>
     }`}));
-  sky.renderOrder=-10;sky.frustumCulled=false;scene.add(sky);
+  sky.renderOrder=-10;sky.frustumCulled=false;sky.visible=false;scene.add(sky);
   const sp=[];for(let i=0;i<700;i++){const a=rnd()*6.283,e=.08+rnd()*1.4,R=1000;sp.push(Math.cos(a)*Math.cos(e)*R,Math.sin(e)*R,Math.sin(a)*Math.cos(e)*R)}
   const sg=new THREE.BufferGeometry();sg.setAttribute('position',new THREE.Float32BufferAttribute(sp,3));
-  stars=new THREE.Points(sg,new THREE.PointsMaterial({color:'#FFFFFF',size:2,sizeAttenuation:false,transparent:true,opacity:0,depthWrite:false,fog:false}));stars.renderOrder=-9;scene.add(stars);
+  stars=new THREE.Points(sg,new THREE.PointsMaterial({color:'#FFFFFF',size:2,sizeAttenuation:false,transparent:true,opacity:0,depthWrite:false,fog:false}));stars.renderOrder=-9;stars.visible=false;scene.add(stars);
   // sương mù sát mặt đất
   const mc=document.createElement('canvas');mc.width=mc.height=128;const mx=mc.getContext('2d');
   for(let i=0;i<26;i++){const x=20+Math.random()*88,y=40+Math.random()*48,r=18+Math.random()*26;const gr=mx.createRadialGradient(x,y,0,x,y,r);gr.addColorStop(0,'rgba(255,255,255,.22)');gr.addColorStop(1,'rgba(255,255,255,0)');mx.fillStyle=gr;mx.fillRect(0,0,128,128)}
   const mt=new THREE.CanvasTexture(mc);
-  for(let i=0;i<(LOW?10:18);i++){const s=new THREE.Sprite(new THREE.SpriteMaterial({map:mt,transparent:true,depthWrite:false,opacity:0,color:'#F2F3EE'}));const a=rnd()*6.28,R=8+rnd()*42;
-    s.position.set(Math.cos(a)*R,-1+rnd()*3.5,Math.sin(a)*R*.8);s.scale.set(48+rnd()*30,14+rnd()*8,1);s.userData={a,R,sp:(rnd()-.5)*.02,o:.6+rnd()*.4};s.renderOrder=8;scene.add(s);mist.push(s)}
 }
 const _t1=new THREE.Color(),_t2=new THREE.Color();
 function updWorld(bg){
