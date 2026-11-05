@@ -728,13 +728,13 @@ body.live .zt{background:#CFE9A9}
 @media (min-width:1024px) and (max-width:1180px){.tv small{display:none}.subs dt{font-size:11.5px}.subs dd{font-size:12.5px}.stat .sim-only,#stD,.stat .sp:nth-of-type(n+3){display:none}.crumb{display:none}.lg{display:none}}
 @media (min-width:1024px) and (max-height:800px){.ts{display:none}}
 @media (min-width:1024px) and (max-height:700px){.subs{display:none}.devbar{border:0;padding-top:0}.log{max-height:100px}.left{max-height:calc(100svh - var(--top) - 64px - 16px - 108px)}}
-/* chế độ tối: trung tính, hơi ngả xanh, dịu mắt */
-body.dark{--pn:rgba(27,31,29,.96);--pn-solid:#1B1F1D;--pn-2:#252A27;--pn-3:#2F3531;--line:rgba(255,255,255,.1);--line-2:rgba(255,255,255,.22);--txt:#ECEFEA;--txt-2:#A8B0A8;--hi:#ECEFEA;--sel:#B5E383;--selt:#131614;--bgc:#131614;--zone:#3A4F2C;--zone-t:#E4F2CF;--zone-h:#465E36;--warn:#E8B04E;--bad:#F08C7A}
-body.dark .top{--pn:rgba(20,23,21,.94);--pn-2:rgba(255,255,255,.07);--line:rgba(255,255,255,.1);--txt:#ECEFEA;--txt-2:#A8B0A8;--hi:#fff}
+/* chế độ tối: xám trung tính, dịu mắt */
+body.dark{--pn:rgba(42,42,42,.97);--pn-solid:#2A2A2A;--pn-2:#333333;--pn-3:#3D3D3D;--line:rgba(255,255,255,.1);--line-2:rgba(255,255,255,.22);--txt:#ECECEC;--txt-2:#A8A8A8;--hi:#ECECEC;--sel:#B5E383;--selt:#1E1E1E;--bgc:#1E1E1E;--zone:#3A4F2C;--zone-t:#E4F2CF;--zone-h:#465E36;--warn:#E8B04E;--bad:#F08C7A}
+body.dark .top{--pn:rgba(38,38,38,.96);--pn-2:rgba(255,255,255,.07);--line:rgba(255,255,255,.1);--txt:#ECECEC;--txt-2:#A8A8A8;--hi:#fff}
 body.dark .tl[data-m="moisture"]{--h:#6DB6D9}body.dark .tl[data-m="temperature"]{--h:#E39A6E}body.dark .tl[data-m="ph"]{--h:#A5CE6E}body.dark .tl[data-m="ec"]{--h:#DDBC62}
-body.dark .tl{background:color-mix(in srgb,var(--h) 13%,#1B1F1D)}body.dark .tl:hover{background:color-mix(in srgb,var(--h) 22%,#1B1F1D)}
+body.dark .tl{background:color-mix(in srgb,var(--h) 13%,#2A2A2A)}body.dark .tl:hover{background:color-mix(in srgb,var(--h) 22%,#2A2A2A)}
 body.dark .tl[aria-pressed="true"],body.dark .tl[aria-pressed="true"]:hover{background:var(--h)}
-body.dark .tl[aria-pressed="true"] .tn,body.dark .tl[aria-pressed="true"] .tv b,body.dark .tl[aria-pressed="true"] .tv small,body.dark .tl[aria-pressed="true"] .ts{color:#131614}
+body.dark .tl[aria-pressed="true"] .tn,body.dark .tl[aria-pressed="true"] .tv b,body.dark .tl[aria-pressed="true"] .tv small,body.dark .tl[aria-pressed="true"] .ts{color:#1E1E1E}
 body.dark .chk input:not(:checked){background:var(--pn-3)}
 body.dark .log li time{color:#A5CE6E}
 body.dark .note.warn{color:#E8C07A}
@@ -742,7 +742,7 @@ body.dark #iBody .rd .red b{color:#FF9F90}body.dark #iBody .rd .yellow b{color:#
 body.dark .zb:not(.all)[aria-pressed="true"]{box-shadow:0 0 0 2px var(--pn-solid),0 0 0 4px #B5E383}
 body.dark .dc[aria-pressed="false"]{box-shadow:inset 0 0 0 1px var(--line)}
 body.dark .dc b{filter:brightness(1.5)}
-body.dark .loader{background:#131614}
+body.dark .loader{background:#1E1E1E}
 .right .devbar{border:0;padding:0}
 /* điện thoại */
 @media (max-width:1023px){
@@ -1333,11 +1333,11 @@ function placeVeg(){
     const P=ZP[zi],a=ZD[zi].ang,d0=Math.cos(a),d1=Math.sin(a),p0=-d1,p1=d0;
     let umin=1e9,umax=-1e9,vmin=1e9,vmax=-1e9;
     P.forEach(q=>{const u=q[0]*d0+q[1]*d1,v=q[0]*p0+q[1]*p1;umin=Math.min(umin,u);umax=Math.max(umax,u);vmin=Math.min(vmin,v);vmax=Math.max(vmax,v)});
-    const sr=LOW?.66:.54,sa=LOW?.5:.4;let row=0;
+    const sr=LOW?.74:.62,sa=LOW?.56:.47;let row=0;
     for(let v=vmin+sr*.5;v<vmax;v+=sr,row++){let k=0;
       for(let u=umin+((row%2)*sa*.5);u<umax;u+=sa,k++){
         const x=u*d0+v*p0+(rnd()-.5)*.06,z=u*d1+v*p1+(rnd()-.5)*.06;
-        if(!inPoly(x,z,P)||dPoly(x,z,P)<RW+.06||dRoad(x,z)<RW+.06||DEV.some(d=>d.k!=='cam'&&(d.x-x)**2+(d.z-z)**2<.144))continue;
+        if(!inPoly(x,z,P)||dPoly(x,z,P)<RW+.12||dRoad(x,z)<RW+.12||DEV.some(d=>d.k!=='cam'&&(d.x-x)**2+(d.z-z)**2<.144))continue;
         const o={x,z,y:H(x,z),s:.82+rnd()*.36,r:rnd()*6.28,zi,i:coffee.length};coffee.push(o);coffeeByZone[zi].push(o);
         if(row%5===2&&k%6===3){const px=x+p0*sr*.5,pz=z+p1*sr*.5;if(inPoly(px,pz,P)&&dPoly(px,pz,P)>RW+.4&&!nearDev(px,pz,1))palm.push({x:px,z:pz,y:H(px,pz),s:.85+rnd()*.3,r:rnd()*6.28})}
       }}
@@ -1780,7 +1780,7 @@ function applyLight(dt){
   const wx=WX[ENV.w],k=Math.min(1,dt*1.5);
   grayK=lerp(grayK,wx.gray,k);clK=lerp(clK,wx.cl,k);fogN=lerp(fogN,wx.fog[0],k);fogF=lerp(fogF,wx.fog[1],k);
   const lum=LT.bg.r*.3+LT.bg.g*.55+LT.bg.b*.15;_c2.setRGB(lum,lum,lum*1.04);
-  const bg=_c3.set(document.body.classList.contains('dark')?'#131614':'#EEF3E6').multiplyScalar(1-.1*clamp(grayK,0,1)).lerp(_c1.set('#16241B'),LT.night*.92);
+  const bg=_c3.set(document.body.classList.contains('dark')?'#1E1E1E':'#EEF3E6').multiplyScalar(1-.1*clamp(grayK,0,1));if(!document.body.classList.contains('dark'))bg.lerp(_c1.set('#16241B'),LT.night*.92);
   if(ENV.w==='fog'||fogN<40){const fk=1-sstep(20,70,fogN);bg.lerp(_c1.set(wx.fc||'#DADBD6').multiplyScalar(.35+.65*LT.day),fk*.75)}
   ENV.flash=Math.max(0,ENV.flash-dt*5);
   const fl=ENV.flash>0?(Math.sin(ENV.flash*30)>0?1:.3)*ENV.flash:0;
@@ -1801,34 +1801,27 @@ function applyLight(dt){
 /* ================= ÂM THANH (tự tổng hợp, không tải file) ================= */
 const sound=(()=>{
   let ctx=null,on=false,master,wet,wind,rainG,nb;
-  const MV=.55;
+  const MV=.4;
   function noise(){const b=ctx.createBuffer(1,ctx.sampleRate*2,ctx.sampleRate),d=b.getChannelData(0);let l=0;for(let i=0;i<d.length;i++){const w=Math.random()*2-1;l=(l+.02*w)/1.02;d[i]=l*3.2}return b}
   function loop(freq){const s=ctx.createBufferSource();s.buffer=nb;s.loop=true;const f=ctx.createBiquadFilter();f.type='lowpass';f.frequency.value=freq;const g=ctx.createGain();g.gain.value=0;s.connect(f);f.connect(g);g.connect(master);s.start();return{g,f}}
-  // nền nhạc: hợp âm trầm rất khẽ, thở chậm
-  function pad(){const lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=620;const g=ctx.createGain();g.gain.value=.045;lp.connect(g);g.connect(master);g.connect(wet);
-    [[110,.5],[164.81,.32],[220,.26],[277.18,.15],[329.63,.11]].forEach(([fr,v],i)=>{[-3,3].forEach(c=>{const o=ctx.createOscillator(),a=ctx.createGain();o.type='sine';o.frequency.value=fr;o.detune.value=c;a.gain.value=v;o.connect(a);a.connect(lp);o.start();
-      const l=ctx.createOscillator(),d=ctx.createGain();l.frequency.value=.035+i*.013;d.gain.value=v*.35;l.connect(d);d.connect(a.gain);l.start()})})}
   function init(){ctx=new (window.AudioContext||window.webkitAudioContext)();master=ctx.createGain();master.gain.value=0;master.connect(ctx.destination);
     // tiếng vọng nhẹ cho không gian rộng
-    wet=ctx.createGain();wet.gain.value=.3;const dl=ctx.createDelay(2);dl.delayTime.value=.42;const fb=ctx.createGain();fb.gain.value=.34;const dp=ctx.createBiquadFilter();dp.type='lowpass';dp.frequency.value=1800;wet.connect(dl);dl.connect(dp);dp.connect(fb);fb.connect(dl);dp.connect(master);
-    nb=noise();wind=loop(320);rainG=loop(1500);pad()}
+    wet=ctx.createGain();wet.gain.value=.12;const dl=ctx.createDelay(2);dl.delayTime.value=.42;const fb=ctx.createGain();fb.gain.value=.34;const dp=ctx.createBiquadFilter();dp.type='lowpass';dp.frequency.value=1800;wet.connect(dl);dl.connect(dp);dp.connect(fb);fb.connect(dl);dp.connect(master);
+    nb=noise();wind=loop(900);rainG=loop(2600)}
   function tone(f0,f1,dur,vol,delay,atk){if(!on)return;const t=ctx.currentTime+(delay||0),a=atk||.03;const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.setValueAtTime(f0,t);o.frequency.exponentialRampToValueAtTime(f1,t+dur);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+a);g.gain.exponentialRampToValueAtTime(.0001,t+dur);o.connect(g);g.connect(master);g.connect(wet);o.start(t);o.stop(t+dur+.05)}
-  const SC=[523.25,587.33,659.25,783.99,880];
-  let birdT=5,crT=4,noteT=6;
+  let birdT=4,crT=4;
   return{
     set(v){on=v;if(v&&!ctx)init();if(ctx){if(v)ctx.resume();master.gain.setTargetAtTime(v?MV:0,ctx.currentTime,.8)}},
     upd(dt){if(!on||!ctx)return;const t=ctx.currentTime;
-      wind.g.gain.setTargetAtTime(Math.min(.09,.012+ENV.wsNow*.006),t,1.2);wind.f.frequency.setTargetAtTime(240+ENV.wsNow*22,t,1.2);
-      rainG.g.gain.setTargetAtTime(Math.min(.1,ENV.rain*.006),t,1.2);
-      // vài nốt chuông thưa như gió đưa
-      noteT-=dt;if(noteT<0){noteT=7+Math.random()*11;const f=SC[Math.floor(Math.random()*SC.length)];tone(f,f,2.6,.014,0,.02);if(Math.random()<.5)tone(f*1.5,f*1.5,2.2,.007,.32,.02)}
-      birdT-=dt;if(birdT<0){birdT=9+Math.random()*14;if(LT.day>.4&&ENV.rain<1&&ENV.wsNow<10){const f=1700+Math.random()*700;for(let i=0;i<2;i++)tone(f,f*1.12,.22,.007,i*.26,.06)}}
-      crT-=dt;if(crT<0){crT=2.2+Math.random()*2.5;if(LT.night>.5&&ENV.rain<1)tone(3400,3380,.28,.0025,0,.08)}
+      wind.g.gain.setTargetAtTime(Math.min(.03,.006+ENV.wsNow*.002),t,1.5);
+      rainG.g.gain.setTargetAtTime(Math.min(.04,ENV.rain*.003),t,1.5);
+      birdT-=dt;if(birdT<0){birdT=6+Math.random()*10;if(LT.day>.4&&ENV.rain<1&&ENV.wsNow<10){const f=2500+Math.random()*800;for(let i=0;i<2;i++)tone(f,f*1.1,.16,.006,i*.2,.04)}}
+      crT-=dt;if(crT<0){crT=2.2+Math.random()*2.5;if(LT.night>.5&&ENV.rain<1)tone(3800,3780,.2,.0015,0,.06)}
       if(SMK.k>.3&&Math.random()<dt*2)tone(500+Math.random()*300,300,.08,.004);},
-    blip(){tone(660,660,.7,.012,0,.01)},
-    thunder(){if(!on)return;const t=ctx.currentTime+.3+Math.random()*.6;const s=ctx.createBufferSource();s.buffer=nb;const f=ctx.createBiquadFilter();f.type='lowpass';f.frequency.value=110;const g=ctx.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.3,t+.5);g.gain.exponentialRampToValueAtTime(.001,t+4);s.connect(f);f.connect(g);g.connect(master);s.start(t);s.stop(t+4.2)},
+    blip(){tone(1040,1040,.3,.006,0,.01)},
+    thunder(){if(!on)return;const t=ctx.currentTime+.3+Math.random()*.6;const s=ctx.createBufferSource();s.buffer=nb;const f=ctx.createBiquadFilter();f.type='lowpass';f.frequency.value=110;const g=ctx.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.1,t+.5);g.gain.exponentialRampToValueAtTime(.001,t+4);s.connect(f);f.connect(g);g.connect(master);s.start(t);s.stop(t+4.2)},
     sprinkle(){},
-    alarm(sec){for(let i=0;i<sec;i++){tone(659.25,659.25,1,.03,i*1.1,.01);tone(523.25,523.25,1.2,.026,i*1.1+.3,.01)}}
+    alarm(sec){for(let i=0;i<sec;i++){tone(880,880,.7,.014,i*1.1,.01);tone(698.46,698.46,.8,.012,i*1.1+.28,.01)}}
   }
 })();
 
