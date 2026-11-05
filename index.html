@@ -77,8 +77,8 @@ a{color:inherit;text-decoration:none}
 .lk.vm:hover{background:var(--lime-2)}
 .stat{display:flex;align-items:center;gap:14px;min-height:52px;padding:0 18px;border-radius:999px;background:var(--pn);border:1px solid var(--line);font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--txt-2);white-space:nowrap}
 .stat b{color:var(--hi);font-weight:600;font-size:15px}
-.live{display:inline-flex;align-items:center;gap:7px;color:var(--lime);font-weight:600}
-.live i{width:8px;height:8px;border-radius:50%;background:var(--lime);animation:pulse 1.8s ease-out infinite}
+.stat .live{display:inline-flex;align-items:center;gap:7px;color:var(--lime);font-weight:600}
+.stat .live i{width:8px;height:8px;border-radius:50%;background:var(--lime);animation:pulse 1.8s ease-out infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(181,227,131,.8)}80%,100%{box-shadow:0 0 0 8px rgba(181,227,131,0)}}
 .stat .sp{width:1px;height:20px;background:var(--line)}
 
@@ -440,8 +440,8 @@ body.live .sim-only{display:none!important}
 .modes button{min-height:40px;padding:0 14px;border-radius:999px;font-size:14.5px;font-weight:500;color:var(--txt-2);white-space:nowrap;transition:background-color .2s,color .2s}
 .modes button:hover{color:var(--hi)}
 .modes button[aria-pressed="true"]{background:var(--lime);color:var(--g800)}
-.live.stale{color:var(--warn)}
-.live.stale i{background:var(--warn);animation:none}
+.stat .live.stale{color:#E8B04E}
+.stat .live.stale i{background:var(--warn);animation:none}
 .mbar{display:grid;grid-template-columns:repeat(4,1fr) auto;gap:4px;align-items:center;margin-bottom:8px}
 .mb{min-height:40px;border-radius:10px;background:var(--pn-2);font-size:14px;font-weight:500;color:var(--txt-2);transition:background-color .2s,color .2s}
 .mb:hover{color:var(--hi);background:var(--pn-3)}
@@ -499,7 +499,7 @@ b,strong{font-weight:500}
 .lk.vm{color:var(--g800)}
 .stat{min-height:44px;padding:0 16px;gap:12px;font-size:13px}
 .stat b{font-size:13.5px;font-weight:500}
-.live{font-weight:500}.stat .sp{height:16px}
+.stat .live{font-weight:500}.stat .sp{height:16px}
 .modes button{min-height:36px;padding:0 13px;font-size:13.5px}
 .modes{background:rgba(255,255,255,.08)}
 .modes button{color:#C9DDBF}.modes button:hover{color:#fff}
@@ -728,13 +728,13 @@ body.live .zt{background:#CFE9A9}
 @media (min-width:1024px) and (max-width:1180px){.tv small{display:none}.subs dt{font-size:11.5px}.subs dd{font-size:12.5px}.stat .sim-only,#stD,.stat .sp:nth-of-type(n+3){display:none}.crumb{display:none}.lg{display:none}}
 @media (min-width:1024px) and (max-height:800px){.ts{display:none}}
 @media (min-width:1024px) and (max-height:700px){.subs{display:none}.devbar{border:0;padding-top:0}.log{max-height:100px}.left{max-height:calc(100svh - var(--top) - 64px - 16px - 108px)}}
-/* chế độ tối: nền nâu đất dịu mắt */
-body.dark{--pn:rgba(38,29,23,.96);--pn-solid:#261D17;--pn-2:#32271F;--pn-3:#3E3127;--line:rgba(255,238,215,.1);--line-2:rgba(255,238,215,.22);--txt:#F1E8DB;--txt-2:#BFB1A0;--hi:#F1E8DB;--sel:#B5E383;--selt:#1F1712;--bgc:#1F1712;--zone:#44522F;--zone-t:#E4F2CF;--zone-h:#50613A;--warn:#E8B04E;--bad:#F08C7A}
-body.dark .top{--pn:rgba(30,23,18,.94);--pn-2:rgba(255,255,255,.07);--line:rgba(255,238,215,.1);--txt:#F1E8DB;--txt-2:#BFB1A0;--hi:#fff}
+/* chế độ tối: trung tính, hơi ngả xanh, dịu mắt */
+body.dark{--pn:rgba(27,31,29,.96);--pn-solid:#1B1F1D;--pn-2:#252A27;--pn-3:#2F3531;--line:rgba(255,255,255,.1);--line-2:rgba(255,255,255,.22);--txt:#ECEFEA;--txt-2:#A8B0A8;--hi:#ECEFEA;--sel:#B5E383;--selt:#131614;--bgc:#131614;--zone:#3A4F2C;--zone-t:#E4F2CF;--zone-h:#465E36;--warn:#E8B04E;--bad:#F08C7A}
+body.dark .top{--pn:rgba(20,23,21,.94);--pn-2:rgba(255,255,255,.07);--line:rgba(255,255,255,.1);--txt:#ECEFEA;--txt-2:#A8B0A8;--hi:#fff}
 body.dark .tl[data-m="moisture"]{--h:#6DB6D9}body.dark .tl[data-m="temperature"]{--h:#E39A6E}body.dark .tl[data-m="ph"]{--h:#A5CE6E}body.dark .tl[data-m="ec"]{--h:#DDBC62}
-body.dark .tl{background:color-mix(in srgb,var(--h) 13%,#261D17)}body.dark .tl:hover{background:color-mix(in srgb,var(--h) 22%,#261D17)}
+body.dark .tl{background:color-mix(in srgb,var(--h) 13%,#1B1F1D)}body.dark .tl:hover{background:color-mix(in srgb,var(--h) 22%,#1B1F1D)}
 body.dark .tl[aria-pressed="true"],body.dark .tl[aria-pressed="true"]:hover{background:var(--h)}
-body.dark .tl[aria-pressed="true"] .tn,body.dark .tl[aria-pressed="true"] .tv b,body.dark .tl[aria-pressed="true"] .tv small,body.dark .tl[aria-pressed="true"] .ts{color:#1F1712}
+body.dark .tl[aria-pressed="true"] .tn,body.dark .tl[aria-pressed="true"] .tv b,body.dark .tl[aria-pressed="true"] .tv small,body.dark .tl[aria-pressed="true"] .ts{color:#131614}
 body.dark .chk input:not(:checked){background:var(--pn-3)}
 body.dark .log li time{color:#A5CE6E}
 body.dark .note.warn{color:#E8C07A}
@@ -742,7 +742,7 @@ body.dark #iBody .rd .red b{color:#FF9F90}body.dark #iBody .rd .yellow b{color:#
 body.dark .zb:not(.all)[aria-pressed="true"]{box-shadow:0 0 0 2px var(--pn-solid),0 0 0 4px #B5E383}
 body.dark .dc[aria-pressed="false"]{box-shadow:inset 0 0 0 1px var(--line)}
 body.dark .dc b{filter:brightness(1.5)}
-body.dark .loader{background:#1F1712}
+body.dark .loader{background:#131614}
 .right .devbar{border:0;padding:0}
 /* điện thoại */
 @media (max-width:1023px){
@@ -756,6 +756,12 @@ body.dark .loader{background:#1F1712}
   .cluster{left:calc(var(--sl) + 64px);right:calc(var(--sr) + 48px)}
   .crumb{display:none}
 }
+
+/* nút về góc nhìn ban đầu nổi hơn; tên vườn, tên khu nhấn màu */
+.zoom #zHome,.zoom #zHome:hover{background:var(--lime);color:var(--g800)}
+.zoom #zHome:hover{background:var(--lime-2)}
+.zinfo h3{font-size:17px;font-weight:600;font-stretch:104%;color:#2F7D3F;line-height:1.25}
+body.dark .zinfo h3{color:#B5E383}
 </style>
 </head>
 <body data-tab="">
@@ -879,8 +885,6 @@ body.dark .loader{background:#1F1712}
       <div class="togs">
         <label class="chk"><input type="checkbox" id="tPins" checked>Thiết bị</label>
         <label class="chk"><input type="checkbox" id="tZt" checked>Tên khu</label>
-        <label class="chk"><input type="checkbox" id="tCov">Vùng camera</label>
-        <label class="chk"><input type="checkbox" id="tTilt">Hiệu ứng mờ</label>
         <label class="chk"><input type="checkbox" id="tSound">Âm thanh</label>
         <label class="chk"><input type="checkbox" id="tCl" checked>Chỉ số chính</label>
         <label class="chk"><input type="checkbox" id="tLog" checked>Số liệu</label>
@@ -921,7 +925,7 @@ body.dark .loader{background:#1F1712}
   <button id="zOut" aria-label="Thu nhỏ"><svg><use href="#u-minus"/></svg></button>
   <button id="zTop" aria-label="Nhìn từ trên xuống" aria-pressed="false"><svg><use href="#u-top"/></svg></button>
   <button id="zRot" aria-label="Tự xoay" aria-pressed="false"><svg><use href="#u-orbit"/></svg></button>
-  <button id="zHome" aria-label="Về góc nhìn ban đầu"><svg><use href="#u-home"/></svg></button>
+  <button id="zHome" aria-label="Về góc nhìn ban đầu" title="Về góc nhìn ban đầu"><svg><use href="#u-home"/></svg></button>
   </div>
 </div>
 
@@ -949,13 +953,6 @@ body.dark .loader{background:#1F1712}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/utils/BufferGeometryUtils.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/HorizontalTiltShiftShader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/VerticalTiltShiftShader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/GammaCorrectionShader.js"></script>
 <script>(function(){
 /* ==========================================================
    Farmblock · Vườn số Ia Ko — sa bàn 3D tương tác
@@ -1035,7 +1032,7 @@ const OUT_A=area(OUT);
 const ZHA=[7.22,2.68,1.01,2.31,2.01,1.48,4.8,.3].concat(ZP.slice(8).map(P=>area(P)/OUT_A*22));
 
 /* ---------- renderer / cảnh ---------- */
-let renderer,scene,camera,controls,composer,tiltPasses=[],sun,hemi,amb,houseLamp,fireLight;
+let renderer,scene,camera,controls,sun,hemi,amb,houseLamp,fireLight;
 const U={uTime:{value:0},uWind:{value:.15},uWD:{value:new THREE.Vector2(.7,.7)},uStress:{value:0},uRainV:{value:0},uNight:{value:0}};
 const BOX={x0:-34,z0:-27,x1:33,z1:27};
 
@@ -1074,19 +1071,6 @@ function initRenderer(){
   houseLamp=new THREE.PointLight('#FFC98A',0,9,2);scene.add(houseLamp);
   fireLight=new THREE.PointLight('#FF8A3D',0,14,2);scene.add(fireLight);
 
-  /* tilt-shift: dùng bộ đệm đa mẫu để giữ khử răng cưa */
-  try{
-    const w=innerWidth*renderer.getPixelRatio(),h=innerHeight*renderer.getPixelRatio();
-    let rt;
-    if(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget){rt=new THREE.WebGLMultisampleRenderTarget(w,h,{format:THREE.RGBAFormat});rt.samples=4}
-    composer=rt?new THREE.EffectComposer(renderer,rt):new THREE.EffectComposer(renderer);
-    composer.addPass(new THREE.RenderPass(scene,camera));
-    const hp=new THREE.ShaderPass(THREE.HorizontalTiltShiftShader),vp=new THREE.ShaderPass(THREE.VerticalTiltShiftShader);
-    hp.uniforms.r.value=vp.uniforms.r.value=.5;
-    tiltPasses=[hp,vp];
-    composer.addPass(hp);composer.addPass(vp);
-    composer.addPass(new THREE.ShaderPass(THREE.GammaCorrectionShader));
-  }catch(e){composer=null}
   return true;
 }
 
@@ -1349,13 +1333,12 @@ function placeVeg(){
     const P=ZP[zi],a=ZD[zi].ang,d0=Math.cos(a),d1=Math.sin(a),p0=-d1,p1=d0;
     let umin=1e9,umax=-1e9,vmin=1e9,vmax=-1e9;
     P.forEach(q=>{const u=q[0]*d0+q[1]*d1,v=q[0]*p0+q[1]*p1;umin=Math.min(umin,u);umax=Math.max(umax,u);vmin=Math.min(vmin,v);vmax=Math.max(vmax,v)});
-    const sr=LOW?.8:.62,sa=LOW?.6:.45;let row=0;
+    const sr=LOW?.66:.54,sa=LOW?.5:.4;let row=0;
     for(let v=vmin+sr*.5;v<vmax;v+=sr,row++){let k=0;
       for(let u=umin+((row%2)*sa*.5);u<umax;u+=sa,k++){
         const x=u*d0+v*p0+(rnd()-.5)*.06,z=u*d1+v*p1+(rnd()-.5)*.06;
-        if(!inPoly(x,z,P)||dPoly(x,z,P)<RW+.26||dRoad(x,z)<RW+.2||nearDev(x,z,.7))continue;
-        if(rnd()<.03)continue;
-        const o={x,z,y:H(x,z),s:.82+rnd()*.36,r:rnd()*6.28,zi};coffee.push(o);coffeeByZone[zi].push(o);
+        if(!inPoly(x,z,P)||dPoly(x,z,P)<RW+.06||dRoad(x,z)<RW+.06||DEV.some(d=>d.k!=='cam'&&(d.x-x)**2+(d.z-z)**2<.144))continue;
+        const o={x,z,y:H(x,z),s:.82+rnd()*.36,r:rnd()*6.28,zi,i:coffee.length};coffee.push(o);coffeeByZone[zi].push(o);
         if(row%5===2&&k%6===3){const px=x+p0*sr*.5,pz=z+p1*sr*.5;if(inPoly(px,pz,P)&&dPoly(px,pz,P)>RW+.4&&!nearDev(px,pz,1))palm.push({x:px,z:pz,y:H(px,pz),s:.85+rnd()*.3,r:rnd()*6.28})}
       }}
   }
@@ -1363,7 +1346,7 @@ function placeVeg(){
   const M=new THREE.Matrix4(),Q=new THREE.Quaternion(),S=new THREE.Vector3(),T=new THREE.Vector3(),E=new THREE.Euler(),C=new THREE.Color();
   const fill=(mesh,arr,colorFn)=>{arr.forEach((o,i)=>{E.set((rnd()-.5)*.08,o.r,(rnd()-.5)*.08);Q.setFromEuler(E);S.setScalar(o.s);T.set(o.x,o.y-.02,o.z);M.compose(T,Q,S);mesh.setMatrixAt(i,M);if(colorFn){colorFn(C,o);mesh.setColorAt(i,C)}});mesh.instanceMatrix.needsUpdate=true;if(mesh.instanceColor)mesh.instanceColor.needsUpdate=true;mesh.castShadow=true;mesh.receiveShadow=true;scene.add(mesh)};
   coffeeMesh=new THREE.InstancedMesh(coffeeGeo(LOW?0:1),swayMat({},1/.85,.2,1,9),coffee.length);
-  fill(coffeeMesh,coffee,(c,o)=>{const v=.82+rnd()*.3;c.setRGB(v*(.95+rnd()*.12),v,v*(.9+rnd()*.15))});
+  fill(coffeeMesh,coffee,(c,o)=>{const v=.82+rnd()*.3;o.b=[v*(.95+rnd()*.12),v,v*(.9+rnd()*.15)];c.setRGB(o.b[0],o.b[1],o.b[2])});
   palmMesh=new THREE.InstancedMesh(palmGeo(),swayMat({side:THREE.DoubleSide,roughness:.6},1/3.6,.45,.6,3),palm.length);
   fill(palmMesh,palm,(c)=>{const v=.85+rnd()*.25;c.setRGB(v,v,v*.95)});
   const tg=[treeGeo(LOW?0:1,1),treeGeo(LOW?0:1,5)];const tm=swayMat({roughness:.8},1/3,.25,.35,2.6);
@@ -1723,7 +1706,7 @@ function measure(d,manual){
   if(d.busy)return;d.busy=true;setPin(d);
   if(devOn(d)){ripple(d.x,d.y+.08,d.z,KCOL[d.k],2.6,1.2);
   if(manual)setTimeout(()=>ripple(d.x,d.y+.08,d.z,KCOL[d.k],2.6,1.2),350)}
-  sound.blip();
+  if(manual)sound.blip();
   setTimeout(()=>sendPacket(d,()=>{
     const prev=d.r;d.r=readDev(d);d.at=clockStr(ENV.min);d.busy=false;
     const hv=d.k==='soil'?d.r.vwc:d.k==='water'?d.r.ec:d.r.T;d.hist.push(hv);if(d.hist.length>40)d.hist.shift();
@@ -1797,7 +1780,7 @@ function applyLight(dt){
   const wx=WX[ENV.w],k=Math.min(1,dt*1.5);
   grayK=lerp(grayK,wx.gray,k);clK=lerp(clK,wx.cl,k);fogN=lerp(fogN,wx.fog[0],k);fogF=lerp(fogF,wx.fog[1],k);
   const lum=LT.bg.r*.3+LT.bg.g*.55+LT.bg.b*.15;_c2.setRGB(lum,lum,lum*1.04);
-  const bg=_c3.set(document.body.classList.contains('dark')?'#1F1712':'#EEF3E6').multiplyScalar(1-.1*clamp(grayK,0,1)).lerp(_c1.set('#16241B'),LT.night*.92);
+  const bg=_c3.set(document.body.classList.contains('dark')?'#131614':'#EEF3E6').multiplyScalar(1-.1*clamp(grayK,0,1)).lerp(_c1.set('#16241B'),LT.night*.92);
   if(ENV.w==='fog'||fogN<40){const fk=1-sstep(20,70,fogN);bg.lerp(_c1.set(wx.fc||'#DADBD6').multiplyScalar(.35+.65*LT.day),fk*.75)}
   ENV.flash=Math.max(0,ENV.flash-dt*5);
   const fl=ENV.flash>0?(Math.sin(ENV.flash*30)>0?1:.3)*ENV.flash:0;
@@ -1817,30 +1800,40 @@ function applyLight(dt){
 
 /* ================= ÂM THANH (tự tổng hợp, không tải file) ================= */
 const sound=(()=>{
-  let ctx=null,on=false,master,wind,rainG,spr,nb;
-  function noise(){const b=ctx.createBuffer(1,ctx.sampleRate*2,ctx.sampleRate),d=b.getChannelData(0);let l=0;for(let i=0;i<d.length;i++){const w=Math.random()*2-1;l=(l+.02*w)/1.02;d[i]=w*.5+l*3}return b}
-  function loop(filterType,freq,q){const s=ctx.createBufferSource();s.buffer=nb;s.loop=true;const f=ctx.createBiquadFilter();f.type=filterType;f.frequency.value=freq;f.Q.value=q||.7;const g=ctx.createGain();g.gain.value=0;s.connect(f);f.connect(g);g.connect(master);s.start();return{g,f}}
-  function init(){ctx=new (window.AudioContext||window.webkitAudioContext)();master=ctx.createGain();master.gain.value=.8;master.connect(ctx.destination);nb=noise();
-    wind=loop('lowpass',380,.6);rainG=loop('highpass',1400,.5);spr=loop('bandpass',3200,1.2)}
-  function tone(f0,f1,dur,type,vol,delay){if(!on)return;const t=ctx.currentTime+(delay||0);const o=ctx.createOscillator(),g=ctx.createGain();o.type=type||'sine';o.frequency.setValueAtTime(f0,t);o.frequency.exponentialRampToValueAtTime(f1,t+dur);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+dur);o.connect(g);g.connect(master);o.start(t);o.stop(t+dur+.05)}
-  let birdT=2,crT=1,sprOn=false;
+  let ctx=null,on=false,master,wet,wind,rainG,nb;
+  const MV=.55;
+  function noise(){const b=ctx.createBuffer(1,ctx.sampleRate*2,ctx.sampleRate),d=b.getChannelData(0);let l=0;for(let i=0;i<d.length;i++){const w=Math.random()*2-1;l=(l+.02*w)/1.02;d[i]=l*3.2}return b}
+  function loop(freq){const s=ctx.createBufferSource();s.buffer=nb;s.loop=true;const f=ctx.createBiquadFilter();f.type='lowpass';f.frequency.value=freq;const g=ctx.createGain();g.gain.value=0;s.connect(f);f.connect(g);g.connect(master);s.start();return{g,f}}
+  // nền nhạc: hợp âm trầm rất khẽ, thở chậm
+  function pad(){const lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=620;const g=ctx.createGain();g.gain.value=.045;lp.connect(g);g.connect(master);g.connect(wet);
+    [[110,.5],[164.81,.32],[220,.26],[277.18,.15],[329.63,.11]].forEach(([fr,v],i)=>{[-3,3].forEach(c=>{const o=ctx.createOscillator(),a=ctx.createGain();o.type='sine';o.frequency.value=fr;o.detune.value=c;a.gain.value=v;o.connect(a);a.connect(lp);o.start();
+      const l=ctx.createOscillator(),d=ctx.createGain();l.frequency.value=.035+i*.013;d.gain.value=v*.35;l.connect(d);d.connect(a.gain);l.start()})})}
+  function init(){ctx=new (window.AudioContext||window.webkitAudioContext)();master=ctx.createGain();master.gain.value=0;master.connect(ctx.destination);
+    // tiếng vọng nhẹ cho không gian rộng
+    wet=ctx.createGain();wet.gain.value=.3;const dl=ctx.createDelay(2);dl.delayTime.value=.42;const fb=ctx.createGain();fb.gain.value=.34;const dp=ctx.createBiquadFilter();dp.type='lowpass';dp.frequency.value=1800;wet.connect(dl);dl.connect(dp);dp.connect(fb);fb.connect(dl);dp.connect(master);
+    nb=noise();wind=loop(320);rainG=loop(1500);pad()}
+  function tone(f0,f1,dur,vol,delay,atk){if(!on)return;const t=ctx.currentTime+(delay||0),a=atk||.03;const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.setValueAtTime(f0,t);o.frequency.exponentialRampToValueAtTime(f1,t+dur);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+a);g.gain.exponentialRampToValueAtTime(.0001,t+dur);o.connect(g);g.connect(master);g.connect(wet);o.start(t);o.stop(t+dur+.05)}
+  const SC=[523.25,587.33,659.25,783.99,880];
+  let birdT=5,crT=4,noteT=6;
   return{
-    set(v){on=v;if(v&&!ctx)init();if(ctx){if(v)ctx.resume();master.gain.setTargetAtTime(v?.8:0,ctx.currentTime,.2)}},
+    set(v){on=v;if(v&&!ctx)init();if(ctx){if(v)ctx.resume();master.gain.setTargetAtTime(v?MV:0,ctx.currentTime,.8)}},
     upd(dt){if(!on||!ctx)return;const t=ctx.currentTime;
-      wind.g.gain.setTargetAtTime(Math.min(.5,.015+ENV.wsNow*.022),t,.3);wind.f.frequency.setTargetAtTime(260+ENV.wsNow*45,t,.3);
-      rainG.g.gain.setTargetAtTime(Math.min(.35,ENV.rain*.012),t,.4);spr.g.gain.setTargetAtTime(sprOn?.06:0,t,.3);
-      birdT-=dt;if(birdT<0){birdT=1.5+Math.random()*4;if(LT.day>.4&&ENV.rain<1&&ENV.wsNow<12){const f=2400+Math.random()*1600;for(let i=0;i<2+Math.floor(Math.random()*3);i++)tone(f,f*1.35,.09,'sine',.05,i*.13)}}
-      crT-=dt;if(crT<0){crT=.35+Math.random()*.4;if(LT.night>.5&&ENV.rain<1)for(let i=0;i<3;i++)tone(4300,4250,.035,'triangle',.018,i*.05)}
-      if(SMK.k>.3&&Math.random()<dt*14)tone(800+Math.random()*1500,200,.03,'square',.02);},
-    blip(){tone(1500,2300,.07,'sine',.04)},
-    thunder(){if(!on)return;const t=ctx.currentTime+.3+Math.random()*.6;const s=ctx.createBufferSource();s.buffer=nb;const f=ctx.createBiquadFilter();f.type='lowpass';f.frequency.value=140;const g=ctx.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(1.4,t+.08);g.gain.exponentialRampToValueAtTime(.001,t+3);s.connect(f);f.connect(g);g.connect(master);s.start(t);s.stop(t+3.2)},
-    sprinkle(v){sprOn=v},
-    alarm(sec){for(let i=0;i<sec*2;i++){tone(880,880,.24,'square',.05,i*.5);tone(660,660,.24,'square',.05,i*.5+.25)}}
+      wind.g.gain.setTargetAtTime(Math.min(.09,.012+ENV.wsNow*.006),t,1.2);wind.f.frequency.setTargetAtTime(240+ENV.wsNow*22,t,1.2);
+      rainG.g.gain.setTargetAtTime(Math.min(.1,ENV.rain*.006),t,1.2);
+      // vài nốt chuông thưa như gió đưa
+      noteT-=dt;if(noteT<0){noteT=7+Math.random()*11;const f=SC[Math.floor(Math.random()*SC.length)];tone(f,f,2.6,.014,0,.02);if(Math.random()<.5)tone(f*1.5,f*1.5,2.2,.007,.32,.02)}
+      birdT-=dt;if(birdT<0){birdT=9+Math.random()*14;if(LT.day>.4&&ENV.rain<1&&ENV.wsNow<10){const f=1700+Math.random()*700;for(let i=0;i<2;i++)tone(f,f*1.12,.22,.007,i*.26,.06)}}
+      crT-=dt;if(crT<0){crT=2.2+Math.random()*2.5;if(LT.night>.5&&ENV.rain<1)tone(3400,3380,.28,.0025,0,.08)}
+      if(SMK.k>.3&&Math.random()<dt*2)tone(500+Math.random()*300,300,.08,.004);},
+    blip(){tone(660,660,.7,.012,0,.01)},
+    thunder(){if(!on)return;const t=ctx.currentTime+.3+Math.random()*.6;const s=ctx.createBufferSource();s.buffer=nb;const f=ctx.createBiquadFilter();f.type='lowpass';f.frequency.value=110;const g=ctx.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.3,t+.5);g.gain.exponentialRampToValueAtTime(.001,t+4);s.connect(f);f.connect(g);g.connect(master);s.start(t);s.stop(t+4.2)},
+    sprinkle(){},
+    alarm(sec){for(let i=0;i<sec;i++){tone(659.25,659.25,1,.03,i*1.1,.01);tone(523.25,523.25,1.2,.026,i*1.1+.3,.01)}}
   }
 })();
 
 /* ================= GIAO DIỆN ================= */
-const UI={pins:true,zt:true,cov:false,tilt:false,sound:false,lora:true};
+const UI={pins:true,zt:true,cov:false,sound:false,lora:true};
 // bật tắt theo loại thiết bị; điện thoại mặc định ẩn camera cho đỡ rối
 const SHOW={soil:true,water:true,weather:true,iot:true,cam:false};
 const devOn=d=>(SHOW[d.k]!==false&&!(LM.on&&(d.id==='WTR-02'||(d.k==='cam'&&!d.live))))||!!d.alarm;
@@ -2053,11 +2046,8 @@ function bindUI(){
   $('#alert').addEventListener('click',e=>{const a=$('#alert');if(a.classList.contains('mini')&&!e.target.closest('#alX'))a.classList.remove('mini')});
   PREF.t=PREF.t||{};
   const tg=(id,f)=>{const el=$(id);if(id in PREF.t)el.checked=PREF.t[id];el.addEventListener('change',()=>{PREF.t[id]=el.checked;savePref();f(el.checked)});f(el.checked)};
-  $('#tTilt').checked=UI.tilt;
   tg('#tPins',v=>{UI.pins=v;$('#labels').classList.toggle('hide-pins',!v)});
   tg('#tZt',v=>{UI.zt=v;$('#labels').classList.toggle('hide-zt',!v)});
-  tg('#tCov',v=>{UI.cov=v;DEV.forEach(applyDev)});
-  tg('#tTilt',v=>{UI.tilt=v});
   tg('#tSound',v=>{UI.sound=v;sound.set(v)});
   tg('#tCl',v=>{document.body.classList.toggle('no-cl',!v);if(!userMoved)goHome()});
   tg('#tLog',v=>document.body.classList.toggle('no-log',!v));
@@ -2126,6 +2116,14 @@ function lvBatch(first){
     else log('',`<b>Trạm thời tiết</b>: ${fmt(d.r.T)}°C · ẩm ${fmt(d.r.RH,0)}% · gió ${fmt(d.r.ws)} m/s`)})},first?600+i*420:i*300));
 }
 const lvRamp=t=>{const a=[217,140,71],b=[158,209,89],c=[64,166,217],[p,q,k]=t<.5?[a,b,t*2]:[b,c,t*2-1];return`rgb(${p.map((x,i)=>Math.round(x+(q[i]-x)*k)).join(',')})`};
+const CT=[];
+function tintCoffee(lc){
+  let ch=false;
+  for(let zi=0;zi<NZ;zi++){const t=zoneTint(zi,lc);if(CT[zi]!=null&&Math.abs(t-CT[zi])<6)continue;CT[zi]=t;ch=true;
+    const k=t?(t-5)/245:.5,m=k<.5?[1.2-.4*k,.96+.08*k,.6+.8*k]:[1-(k-.5)*.76,1-(k-.5)*.28,1+(k-.5)*.1];
+    coffeeByZone[zi].forEach(o=>{_c1.setRGB(o.b[0]*m[0],o.b[1]*m[1],o.b[2]*m[2]);coffeeMesh.setColorAt(o.i,_c1)})}
+  if(ch)coffeeMesh.instanceColor.needsUpdate=true;
+}
 function zoneTint(i,lc){
   if(i>=NZ)return 0;if(lc)return ZS[i].tint||0;
   const m=METRIC[LM.metric],z=ZS[i],v={moisture:z.vwc,temperature:z.tS,ph:z.ph,ec:z.ec}[LM.metric];
@@ -2268,6 +2266,7 @@ function lvInit(){
 let hudT=0;
 function updHUD(dt){
   hudT-=dt;if(hudT>0)return;hudT=.25;
+  tintCoffee(LM.on&&LM.data);
   if(LM.on&&LM.data){lvHUD();return}
   tileVals(k=>{const zs=SEL.z<NZ?selZones():[0,1,2,3,4,5,6,7],f={moisture:'vwc',temperature:'tS',ph:'ph',ec:'ec'}[k];return mean(zs.map(i=>ZS[i][f]))});
   subVals([['Không khí',fmt(ENV.T)+'°C · '+fmt(ENV.RH,0)+'%'],['Gió',fmt(ENV.wsNow)+' m/s'],['Mưa',fmt(ENV.rain)+' mm/h'],['Ánh sáng',ENV.lux>=1000?fmt(ENV.lux/1000,0)+'k lux':fmtI(ENV.lux)+' lux'],['Áp suất',fmt(ENV.P,0)+' hPa']]);
@@ -2393,8 +2392,7 @@ function frame(now){
   // giữ tâm nhìn trong sa bàn
   controls.target.x=clamp(controls.target.x,-30,30);controls.target.z=clamp(controls.target.z,-24,24);controls.target.y=clamp(controls.target.y,-1,4);
   simStep(dt);animScene(dt);applyLight(dt);sound.upd(dt);
-  if(UI.tilt&&composer){tiltPasses[0].uniforms.h.value=1.6/innerWidth*(topOn?.6:1);tiltPasses[1].uniforms.v.value=1.6/innerHeight*(topOn?.6:1);composer.render()}
-  else renderer.render(scene,camera);
+  renderer.render(scene,camera);
   renderPip();
   updLabels();updHUD(dt);
   if(cmpN)cmpN.style.transform=`rotate(${(-controls.getAzimuthalAngle())}rad)`;
@@ -2402,7 +2400,6 @@ function frame(now){
 function onResize(){
   const w=innerWidth,h=innerHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();
   if(!userMoved){clearTimeout(onResize.t);onResize.t=setTimeout(()=>{if(!userMoved)goHome()},150)}
-  if(composer)composer.setSize(w,h);
   IRR.forEach(p=>p.material.uniforms.uPx.value=h*.13);flies.material.uniforms.uPx.value=h*.06;
 }
 
@@ -2432,7 +2429,7 @@ async function boot(){
   requestAnimationFrame(frame);
   lvInit();
 }
-window.__fbFly=(r,ph,th)=>flyTo(controls.target.clone(),r,ph,th,.05);
+window.__fbStats=STATS;window.__fbFly=(r,ph,th)=>flyTo(controls.target.clone(),r,ph,th,.05);
 window.__fbRender=()=>{last=performance.now()-16;frame(performance.now())};
 window.__fbAdv=n=>{for(let i=0;i<n;i++){const dt=.05;U.uTime.value+=dt;updFly(dt);controls.update();simStep(dt);animScene(dt);applyLight(dt)}updHUD(1)};
 boot();
