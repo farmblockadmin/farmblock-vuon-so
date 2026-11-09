@@ -771,6 +771,17 @@ body.dark .loader{background:#1E1E1E}
 .zoom #zHome:hover{background:var(--lime-2)}
 .zinfo h3{font-size:17px;font-weight:600;font-stretch:104%;color:#2F7D3F;line-height:1.25}
 body.dark .zinfo h3{color:#B5E383}
+/* máy tính: cột phải chạy hết chiều cao; nhật ký và cụm camera cao bằng, bám sát bảng Chỉ số chính */
+@media (min-width:1024px){
+  :root{--clh:142px}
+  .right{bottom:16px;max-height:none}
+  .log{height:var(--clh);max-height:none}
+  .log.cl{height:auto}
+  .left{max-height:calc(100svh - var(--top) - 68px - 16px - var(--clh) - 12px)}
+  body.clx .zoom{left:calc(var(--clx) + 12px);right:auto;min-height:var(--clh);justify-content:space-between}
+}
+@media (min-width:1024px) and (max-height:860px){.zoom .cmp{display:none}}
+@media (min-width:1024px) and (max-height:760px){.zoom{gap:0;padding:3px}.zoom button:not(.chev){width:25px;height:25px;border-radius:8px}.zoom svg{width:15px;height:15px}}
 </style>
 </head>
 <body data-tab="">
@@ -2498,5 +2509,15 @@ function updWorld(bg){
 }
 
 })();</script>
+<script>
+/* đo bảng Chỉ số chính để nhật ký và cụm camera bám theo (chiều cao, mép phải) */
+(function(){
+  const cl=document.querySelector('.cluster'),rs=document.documentElement.style,b=document.body;
+  function fit(){const r=cl.getBoundingClientRect(),on=r.height>0&&innerWidth>=1024;
+    if(on){rs.setProperty('--clh',Math.round(r.height)+'px');rs.setProperty('--clx',Math.round(r.right)+'px')}else{rs.removeProperty('--clh');rs.removeProperty('--clx')}
+    b.classList.toggle('clx',on)}
+  if(cl){new ResizeObserver(fit).observe(cl);addEventListener('resize',fit);fit()}
+})();
+</script>
 </body>
 </html>
