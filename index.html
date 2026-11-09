@@ -379,7 +379,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 @media (min-width:1024px) and (max-width:1200px){.devbar{grid-template-columns:repeat(3,1fr)}.crumb b{white-space:nowrap}.links .lk.vm .l{display:none}.g .gv{top:26px;bottom:auto}.g.c .gv{top:32px}.g .gv b{font-size:18px}.cluster .g.c .gv b{font-size:23px}.g .gv small{display:none}.g .gl{font-size:11.5px;line-height:1.15;margin-top:6px}}
 /* ---------- điện thoại xoay ngang ---------- */
 @media (max-width:1023px) and (orientation:landscape){
-  :root{--top:calc(env(safe-area-inset-top,0px) + 8px);--sl:max(10px,env(safe-area-inset-left,0px));--sr:max(10px,env(safe-area-inset-right,0px));--sb:calc(env(safe-area-inset-bottom,0px) + 8px);--ty:calc(var(--top) + 52px)}
+  :root{--top:calc(env(safe-area-inset-top,0px) + 8px);--sl:max(10px,env(safe-area-inset-left,0px));--sr:max(10px,env(safe-area-inset-right,0px));--sb:calc(env(safe-area-inset-bottom,0px) + 8px);--ty:calc(var(--top) + 68px)}
   .top{left:var(--sl);right:var(--sr)}
   .bar{min-height:44px;padding:3px 14px 3px 5px;gap:8px}
   .brand svg.mk{width:34px;height:34px}
@@ -514,10 +514,10 @@ b,strong{font-weight:500}
 .pl.cl .chev svg{transform:rotate(180deg)}
 .pl.cl .bb{display:none!important}
 /* cột trái, phải, nhật ký */
-.left,.right{top:calc(var(--top) + 64px)}
-.left{max-height:calc(100svh - var(--top) - 64px - 16px - 150px)}
-.right{max-height:calc(100svh - var(--top) - 64px - 16px)}
-body:has(.log.cl) .left{max-height:calc(100svh - var(--top) - 64px - 16px - 58px)}
+.left,.right{top:calc(var(--top) + 68px)}
+.left{max-height:calc(100svh - var(--top) - 68px - 16px - 150px)}
+.right{max-height:calc(100svh - var(--top) - 68px - 16px)}
+body:has(.log.cl) .left{max-height:calc(100svh - var(--top) - 68px - 16px - 58px)}
 .zgrid{gap:4px}
 .zb{min-height:34px;border-radius:999px;background:var(--pn-2);font-size:13.5px;font-weight:400}
 .zb:hover{background:var(--pn-3);border-color:transparent}
