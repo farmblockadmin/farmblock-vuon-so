@@ -355,7 +355,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   .log{height:min(40svh,320px)}
   body[data-tab="zone"] .left,body[data-tab="env"] .right,body[data-tab="log"] .log{display:flex}
   .hide-m{display:none!important}
-  .tabs{position:fixed;z-index:11;left:10px;right:10px;bottom:calc(env(safe-area-inset-bottom,0px) + 10px);display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:5px;border-radius:20px;background:var(--pn);border:1px solid var(--line)}
+  .tabs{position:fixed;z-index:11;left:10px;right:10px;bottom:calc(env(safe-area-inset-bottom,0px) + 10px);display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;padding:5px;border-radius:20px;background:var(--pn);border:1px solid var(--line)}
   .tabs button{min-height:52px;border-radius:15px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:13px;font-weight:600;color:var(--txt-2)}
   .tabs button svg{width:22px;height:22px}
   .tabs button[aria-selected="true"]{background:var(--lime);color:var(--g800)}
@@ -387,8 +387,9 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   .links .lk.vm{width:44px;min-height:44px;padding:0;justify-content:center}
   .mstrip{left:auto;right:calc(var(--sr) + 52px);top:var(--top);height:44px;display:flex;align-items:center;gap:14px;padding:3px 12px;border-radius:14px}
   .mstrip div{padding:0}.mstrip b{font-size:15px}.mstrip span{font-size:9.5px}
-  .tabs{left:var(--sl);right:auto;top:var(--ty);bottom:var(--sb);width:60px;grid-template-columns:1fr;grid-auto-rows:1fr;padding:4px;border-radius:18px}
-  .tabs button{min-height:0;border-radius:13px;font-size:10.5px;line-height:1.1}
+  .tabs{left:var(--sl);right:auto;top:var(--ty);bottom:auto;width:60px;grid-auto-flow:row;grid-template-columns:1fr;grid-auto-rows:auto;gap:2px;padding:4px;border-radius:18px;box-shadow:0 8px 24px -14px rgba(15,42,23,.5)}
+  .tabs button{min-height:54px;border-radius:13px;font-size:10.5px;line-height:1.1;transition:background-color .2s,color .2s}
+  .tabs button:not([aria-selected="true"]):hover{background:var(--pn-2)}
   .tabs button svg{width:20px;height:20px}
   .left,.right,.log{left:calc(var(--sl) + 68px);right:auto;top:var(--ty);bottom:var(--sb);width:min(340px,calc(100vw - var(--sl) - 136px));max-height:none;height:auto;border-radius:18px}
   .left>.scroll,.right>.scroll{flex:1;min-height:0}
@@ -669,7 +670,7 @@ body.live .zt{background:rgba(17,38,21,.86)}body.live .zt.on{background:#fff;box
   .zoom{right:var(--sr)}.zoom button:not(.chev){width:34px;height:34px}.zoom .chev{width:24px;height:24px}
   .cluster{left:calc(var(--sl) + 68px);right:calc(var(--sr) + 52px);bottom:var(--sb);max-width:600px;margin:0 auto}
   .cluster .bh{display:flex;min-height:24px;padding:0 4px 0 10px}
-  .tabs{width:56px}.tabs button{font-size:10px}
+  .tabs{width:56px}.tabs button{font-size:10px;min-height:50px}
   .insp{right:calc(var(--sr) + 48px);width:min(300px,44vw);top:var(--ty);max-height:calc(100svh - var(--ty) - 8px)}
   .dc,body.live .dc{min-height:26px}
 }
@@ -2103,7 +2104,8 @@ function lvApply(data,first){
 function lvBatch(first){
   const ds=DEV.filter(d=>d.k==='soil'&&d.node||d.k==='water'&&d.id==='WTR-01'||d.k==='weather');
   ds.forEach((d,i)=>setTimeout(()=>{if(!LM.on)return;sendPacket(d,()=>{
-    const n=d.node;
+    if(!LM.on)return;
+    const n=d.node;if(!n&&!d.r)return;
     if(n)log('',`<b>${ptName(n.id)}</b>${n.zone?' · Khu '+n.zone:''}: ẩm ${fmt(n.moisture)}% · ${fmt(n.temperature)}°C · pH ${fmt(n.ph)}`);
     else if(d.k==='water')log('',`<b>Nước tưới</b>: pH ${fmt(d.r.ph,2)} · EC ${fmtI(d.r.ec)} µS/cm · ${fmt(d.r.t)}°C`);
     else log('',`<b>Trạm thời tiết</b>: ${fmt(d.r.T)}°C · ẩm ${fmt(d.r.RH,0)}% · gió ${fmt(d.r.ws)} m/s`)})},first?600+i*420:i*300));
