@@ -757,6 +757,14 @@ body.dark .loader{background:#1E1E1E}
   .cluster{left:calc(var(--sl) + 64px);right:calc(var(--sr) + 48px)}
   .crumb{display:none}
 }
+/* điện thoại dọc hẹp: bỏ tên vườn trên thanh (đã có trong bảng Khu vực) để không cắt nút chế độ tối */
+@media (max-width:440px) and (orientation:portrait){
+  .crumb{display:none}
+  .bar{min-width:0;max-width:100%}
+}
+@media (max-width:359px) and (orientation:portrait){
+  .bar{gap:8px}.modes button{padding:0 9px;font-size:12.5px}
+}
 
 /* nút về góc nhìn ban đầu nổi hơn; tên vườn, tên khu nhấn màu */
 .zoom #zHome,.zoom #zHome:hover{background:var(--lime);color:var(--g800)}
