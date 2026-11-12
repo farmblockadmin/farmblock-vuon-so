@@ -782,6 +782,24 @@ body.dark .zinfo h3{color:#B5E383}
   body.clx .zoom{left:calc(var(--clx) + 12px);right:auto;min-height:var(--clh);justify-content:space-between}
 }
 @media (min-width:1024px) and (max-height:860px){.zoom .cmp{display:none}}
+/* 12/11: cột trái chạy hết chiều cao (Khu vực + Việc cần làm); Số liệu vừa về dời sang cột phải, dưới bảng Trạm */
+@media (min-width:1024px){
+  .left,.no-log .left,body:has(.log.cl) .left{bottom:16px;max-height:none}
+  .log{left:auto;right:16px}
+  .right{bottom:calc(16px + var(--lgh,var(--clh)) + 12px)}
+  .no-log .right{bottom:16px}
+}
+.tdsec .k small{font-weight:500;color:var(--txt-2);margin-left:4px}
+.tdl{list-style:none;display:flex;flex-direction:column;gap:6px;margin:0;padding:0}
+.tdl li{display:flex;gap:10px;align-items:flex-start;padding:9px 10px;border-radius:12px;background:var(--pn-2)}
+.tdl li.zk{cursor:pointer;transition:background-color .2s}.tdl li.zk:hover{background:var(--pn-3)}
+.tdl li>i{flex:none;width:8px;height:8px;margin-top:7px;border-radius:50%;background:#2E9A4E}
+.tdl li.yellow>i{background:#E0A100}.tdl li.red>i{background:#D92D20}.tdl li.dev>i{background:#444CE7}.tdl li.mua>i{background:#8A7A5C}
+.tdl li div{min-width:0;font-size:14px;line-height:1.4;color:var(--txt)}
+.tdl li small{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.tdl li small span{font-size:12px;line-height:1;padding:4px 7px;border-radius:999px;background:var(--zone);color:var(--zone-t)}
+.tdl li small span.td{background:#FFF3D1;color:#7A5600}
+body.dark .tdl li small span.td{background:rgba(224,161,0,.2);color:#F5D27A}
 @media (min-width:1024px) and (max-height:760px){.zoom{gap:0;padding:3px}.zoom button:not(.chev){width:25px;height:25px;border-radius:8px}.zoom svg{width:15px;height:15px}}
 </style>
 </head>
@@ -855,6 +873,11 @@ body.dark .zinfo h3{color:#B5E383}
     <div class="sec">
       <span class="k">Thông tin khu</span>
       <div class="zinfo" id="zinfo" style="margin-top:0"></div>
+    </div>
+    <div class="sec tdsec">
+      <span class="k">Việc cần làm <small id="tdn"></small></span>
+      <ol class="tdl" id="todo"></ol>
+      <p class="note" id="tdNote"></p>
     </div>
   </div>
 </aside>
@@ -2090,7 +2113,7 @@ function lvApply(data,first){
   const rained=LM.rain0!=null&&c.rainfall_total>LM.rain0+.05;LM.rain0=c.rainfall_total;
   const hr=vnMin()/60,day=Math.max(0,Math.sin((hr-6)/12*Math.PI)),exp=112000*Math.pow(day,1.15);
   setWeather(rained?'rain':exp>5000&&c.light<exp*.35?'cloud':'clear',true);
-  lvZones();lvAttention();lvCenter();renderZone();if(INS.d)renderInsp(true);
+  lvZones();lvAttention();lvTodo();lvCenter();renderZone();if(INS.d)renderInsp(true);
   if(first||data.at!==prevAt)lvBatch(first);
 }
 // số mới về: sóng LoRa chạy từ từng điểm đo về trạm, ghi vào nhật ký
@@ -2157,6 +2180,37 @@ function lvAttention(){
   box.querySelectorAll('.at').forEach(b=>b.addEventListener('click',()=>{const a=items[+b.dataset.i],m=LABEL_METRIC[a.metric];if(m&&m!==LM.metric)lvMetric(m);
     const s=a.stations.find(x=>x!=='ALL');if(!s)return;const d=s==='CENTER'?DEV.find(x=>x.k===(/nước/.test(a.metric)?'water':'weather')):soilDev(s);if(d)openInsp(d.idx,true)}));
 }
+/* Việc cần làm: lấy từ khuyến nghị của dashboard (khi chạy trên dashboard), số đo vượt ngưỡng và việc theo mùa của cây KTCB.
+   Không bịa việc đã làm; chỉ là gợi ý để chuyên gia xác minh. */
+const TD={adv:null,advAt:0};
+const esc=t=>String(t==null?'':t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
+function tdSeason(){const m=new Date().getMonth()+1,out=[];
+  if(m>=11||m<=4){out.push({t:'Tủ gốc bằng rơm, cỏ khô quanh bồn để giữ ẩm mùa khô',w:'Trong tuần'});out.push({t:'Rà cây chết, cây yếu để trồng dặm',w:'Trong tuần'})}
+  else{out.push({t:'Làm cỏ quanh bồn, khơi rãnh thoát nước mùa mưa',w:'Trong tuần'});out.push({t:'Rà cây chết, cây yếu để trồng dặm',w:'Trong tuần'})}
+  return out.map(x=>({...x,c:'mua',z:[]}))}
+function lvTodo(){
+  const box=$('#todo');if(!box)return;const items=[];
+  const D=LM.on?LM.data:null;
+  if(D){
+    const adv=TD.adv;(adv||[]).forEach(x=>items.push({t:x.text,c:x.when==='today'?'yellow':'',w:x.when==='today'?'Hôm nay':'Trong tuần',z:(x.zones||[]).map(String)}));
+    const age=(Date.now()-Date.parse(String(D.at).replace(' ','T')+'+07:00'))/6e4;
+    if(age>30)items.push({t:`Số đo đã ${Math.round(age)} phút chưa về: kiểm tra trạm IoT và đồng bộ`,c:'dev',w:'Hôm nay',z:[]});
+    for(let i=0;i<NZ;i++){const ns=zoneNodes(i);if(!ns.length)continue;const zn=ZNAME[i],zid=i;
+      const mo=mean(ns.map(n=>n.moisture)),te=mean(ns.map(n=>n.temperature)),ph=mean(ns.map(n=>n.ph));
+      if(mo!=null&&mo<20)items.push({t:`Đất khô (ẩm ${fmt(mo)}%): xem lại lịch tưới`,c:mo<15?'red':'yellow',w:'Hôm nay',z:[zn],zi:zid});
+      else if(mo!=null&&mo>45)items.push({t:`Đất ẩm cao (${fmt(mo)}%): kiểm tra đọng nước, thoát nước`,c:'yellow',w:'Trong tuần',z:[zn],zi:zid});
+      if(te!=null&&te>34)items.push({t:`Nhiệt đất cao (${fmt(te)}°C): tủ gốc, che nắng cây con`,c:te>38?'red':'yellow',w:'Hôm nay',z:[zn],zi:zid});
+      if(ph!=null&&(ph<5.5||ph>6.5))items.push({t:`pH đất ${fmt(ph)} ngoài khoảng tốt 5,5–6,5: lấy mẫu đất kiểm tra`,c:ph<5||ph>7?'red':'yellow',w:'Trong tuần',z:[zn],zi:zid});
+    }
+  }
+  const all=items.concat(tdSeason());
+  const rank={red:0,dev:1,yellow:2,'':3,mua:4};all.sort((a,b)=>rank[a.c]-rank[b.c]);
+  box.innerHTML=all.map((x,i)=>`<li class="${x.c}${x.zi!=null?' zk':''}" data-i="${i}"><i></i><div>${esc(x.t)}<small>${x.z.map(z=>`<span>${esc(z)}</span>`).join('')}<span class="td">${x.w}</span></small></div></li>`).join('');
+  box.querySelectorAll('li.zk').forEach(li=>li.addEventListener('click',()=>selectZone(all[+li.dataset.i].zi)));
+  $('#tdn').textContent=all.length?'· '+all.length:'';
+  $('#tdNote').textContent=D?(TD.adv?'Gợi ý từ lõi AI của dashboard, số đo vượt ngưỡng và mùa vụ. Chuyên gia xác minh trước khi giao việc.':'Gợi ý từ số đo vượt ngưỡng và mùa vụ của cây kiến thiết cơ bản. Chuyên gia xác minh trước khi giao việc.'):'Ở chế độ mô phỏng chỉ có việc theo mùa vụ.';
+  if(D&&window.VS&&VS.mode==='api'&&Date.now()-TD.advAt>6e5){TD.advAt=Date.now();VS.get('overview').then(ov=>{const n=ov?.advisory?.latest?.result?.ops?.next;TD.adv=Array.isArray(n)&&n.length?n:null;if(TD.adv)lvTodo()}).catch(()=>{})}
+}
 function lvCenter(){
   const c=LM.data.center,k=LM.data.kpi;const pump=v=>v>0?fmt(v)+' m³/h':'Tắt';
   $('#ctr').innerHTML=[['EC nước tưới',fmtI(c.water_ec)+' µS/cm'],['Nhiệt độ nước',fmt(c.water_temp)+'°C'],['Bơm 1',pump(c.pump1_rate)],['Bơm 2',pump(c.pump2_rate)],['Tưới 7 ngày',fmt(k.irrigation_7d)+' m³'],['Mưa 7 ngày',fmt(k.rain_7d)+' mm'],['Hướng gió',fmtI(c.wind_direction)+'°'],['Ánh sáng',fmtI(c.light)+' lux'],['Áp suất',fmt(c.pressure,0)+' hPa']].map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join('');
@@ -2208,7 +2262,7 @@ function lvHUD(){
 function setMode(on){
   if(on===LM.on)return;
   if(on){if(SMK.on)smokeOn(false);if(ENV.play)$('#tplay').click();ZS.forEach((z,i)=>{if(z.irr>0){z.irr=0;if(IRR[i])IRR[i].visible=false}});sound.sprinkle(false);z0=ZS.map(z=>z.v0)}
-  LM.on=on;document.body.classList.toggle('live',on);closeInsp();$('#log').innerHTML='';
+  LM.on=on;document.body.classList.toggle('live',on);closeInsp();$('#log').innerHTML='';lvTodo();
   $$('#modes button').forEach(b=>b.setAttribute('aria-pressed',String((b.dataset.m==='live')===on)));
   $('#rtT').textContent=on?'Trạm trung tâm':'Môi trường';$('#tbE').textContent=on?'Trạm':'Thời tiết';
   $('#logk').textContent=on?'Số liệu vừa về':'Nhật ký dữ liệu';
@@ -2416,7 +2470,7 @@ async function boot(){
   P(70,'Lắp 35 thiết bị…');await tick();buildDevices();buildLedGlows();buildLinks();
   P(85,'Nối mạng LoRa…');await tick();buildIrrigation();buildRain();buildSmoke();buildClouds();buildLeaves();buildFlies();buildZoneLines();
   pipCam=new THREE.PerspectiveCamera(58,1.6,.15,300);
-  buildLabels();bindUI();bindPointer();renderZone();
+  buildLabels();bindUI();bindPointer();renderZone();lvTodo();
   cmpN=$('#cmpn');
   addEventListener('resize',onResize);
   // điện thoại dọc: màn bắt xoay ngang; xoay xong thì căn lại góc nhìn
@@ -2582,6 +2636,7 @@ function updWorld(bg){
     if(on){rs.setProperty('--clh',Math.round(r.height)+'px');rs.setProperty('--clx',Math.round(r.right)+'px')}else{rs.removeProperty('--clh');rs.removeProperty('--clx')}
     b.classList.toggle('clx',on)}
   if(cl){new ResizeObserver(fit).observe(cl);addEventListener('resize',fit);fit()}
+  const lg=document.querySelector('.log');if(lg)new ResizeObserver(()=>{const h=lg.getBoundingClientRect().height;if(h>0)rs.setProperty('--lgh',Math.round(h)+'px')}).observe(lg);
 })();
 </script>
 <script src="app/man-hinh.js"></script>

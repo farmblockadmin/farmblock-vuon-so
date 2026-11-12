@@ -197,3 +197,5 @@ body.scr-on .top .stat,body.scr-on .top .modes,body.scr-on .left,body.scr-on .ri
 @media (max-width:1023px){.scr{padding-top:calc(var(--top) + 126px)}}
 @media (max-width:560px){.minis{grid-template-columns:1fr}}
 .mini header{flex-wrap:wrap}
+/* điện thoại xoay ngang: các bảng và thanh bên bắt đầu dưới thanh màn hình, không bị che */
+@media (max-width:1023px) and (orientation:landscape){html:root{--ty:calc(var(--top) + 110px)}.nav{top:calc(var(--top) + 52px)}html .left,html .right,html .log{top:var(--ty)}}
