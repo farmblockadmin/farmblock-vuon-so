@@ -23,6 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app/man-hinh.css">
 <style>:root{
   --g800:#112615;--g600:#234D2B;--g500:#3A8047;--lime:#B5E383;--lime-2:#D3F0AE;--sky:#51ADCA;--cream:#F5E4A1;
   --warn:#FFB547;--bad:#FF6B5A;
@@ -371,7 +372,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   .insp.cam .ib{background:linear-gradient(var(--pn),var(--pn)) left top/16px 200px no-repeat,linear-gradient(var(--pn),var(--pn)) right top/16px 200px no-repeat,linear-gradient(var(--pn),var(--pn)) left 0 top 200px/100% calc(100% - 200px) no-repeat}
   .alert{top:calc(var(--top) + 132px);bottom:auto}
   .insp.open~.alert{left:50%;top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 84px)}
-  .hint{top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 146px);font-size:14px;white-space:normal;width:max-content;max-width:calc(100vw - 32px);text-align:center}
+  .hint{top:calc(var(--top) + 60px);bottom:auto;font-size:14px;white-space:normal;width:max-content;max-width:calc(100vw - 32px);text-align:center}
   .zt{padding:4px 8px 5px}.zt b{font-size:16px}.zt span{display:none}
   .dp .gem{width:24px;height:24px}.dp .gem svg{width:14px;height:14px}
   .dp .vl{font-size:11px;padding:2px 5px}
@@ -641,7 +642,7 @@ body.live .zt{background:rgba(17,38,21,.86)}body.live .zt.on{background:#fff;box
 .feed{height:160px;outline:0;border-radius:10px}.feed::before{display:none}
 .insp.cam .ih{border-radius:20px 20px 0 0}.insp.cam .ib{background:linear-gradient(var(--pn),var(--pn)) left top/12px 160px no-repeat,linear-gradient(var(--pn),var(--pn)) right top/12px 160px no-repeat,linear-gradient(var(--pn),var(--pn)) left 0 top 160px/100% calc(100% - 160px) no-repeat;border-radius:0 0 20px 20px}
 .feed .tl{all:unset;position:absolute;left:10px;top:8px;font-size:12px;color:#fff;text-shadow:0 1px 3px #000}
-.hint{font-size:13px;padding:7px 14px;top:calc(var(--top) + 64px);background:rgba(17,38,21,.8)}.hint svg{width:16px;height:16px}
+.hint{font-size:13px;padding:7px 14px;background:rgba(17,38,21,.8)}@media (min-width:1024px){.hint{top:calc(var(--top) + 64px)}}.hint svg{width:16px;height:16px}
 @media (min-width:1024px) and (max-width:1320px){:root{--pw:248px}.subs{grid-template-columns:repeat(3,auto)}.tv b{font-size:19px}.cluster{left:calc(50% - 20px)}}
 @media (max-height:760px) and (min-width:1024px){.ts,.subs{display:none}.devbar{border:0;padding-top:6px}}
 .zoom .chev{background:none}
@@ -781,6 +782,24 @@ body.dark .zinfo h3{color:#B5E383}
   body.clx .zoom{left:calc(var(--clx) + 12px);right:auto;min-height:var(--clh);justify-content:space-between}
 }
 @media (min-width:1024px) and (max-height:860px){.zoom .cmp{display:none}}
+/* 12/11: cột trái chạy hết chiều cao (Khu vực + Việc cần làm); Số liệu vừa về dời sang cột phải, dưới bảng Trạm */
+@media (min-width:1024px){
+  .left,.no-log .left,body:has(.log.cl) .left{bottom:16px;max-height:none}
+  .log{left:auto;right:16px}
+  .right{bottom:calc(16px + var(--lgh,var(--clh)) + 12px)}
+  .no-log .right{bottom:16px}
+}
+.tdsec .k small{font-weight:500;color:var(--txt-2);margin-left:4px}
+.tdl{list-style:none;display:flex;flex-direction:column;gap:6px;margin:0;padding:0}
+.tdl li{display:flex;gap:10px;align-items:flex-start;padding:9px 10px;border-radius:12px;background:var(--pn-2)}
+.tdl li.zk{cursor:pointer;transition:background-color .2s}.tdl li.zk:hover{background:var(--pn-3)}
+.tdl li>i{flex:none;width:8px;height:8px;margin-top:7px;border-radius:50%;background:#2E9A4E}
+.tdl li.yellow>i{background:#E0A100}.tdl li.red>i{background:#D92D20}.tdl li.dev>i{background:#444CE7}.tdl li.mua>i{background:#8A7A5C}
+.tdl li div{min-width:0;font-size:14px;line-height:1.4;color:var(--txt)}
+.tdl li small{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.tdl li small span{font-size:12px;line-height:1;padding:4px 7px;border-radius:999px;background:var(--zone);color:var(--zone-t)}
+.tdl li small span.td{background:#FFF3D1;color:#7A5600}
+body.dark .tdl li small span.td{background:rgba(224,161,0,.2);color:#F5D27A}
 @media (min-width:1024px) and (max-height:760px){.zoom{gap:0;padding:3px}.zoom button:not(.chev){width:25px;height:25px;border-radius:8px}.zoom svg{width:15px;height:15px}}
 </style>
 </head>
@@ -798,6 +817,7 @@ body.dark .zinfo h3{color:#B5E383}
 <symbol id="a-probe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v6H9zM12 9v9l-1.5 3M12 18l1.5 3"/><path d="M4 15h3M17 15h3M5 18.5h2M17 18.5h2" opacity=".7"/></g></symbol>
 <symbol id="a-fire" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a6 6 0 0 0 6-6c0-3.5-2.5-5-3.5-8-1.5 1.5-2 3-2 4.5C11 10 10 8 10.5 5 7.5 7 6 10.5 6 15a6 6 0 0 0 6 6z"/><path d="M12 21a2.5 2.5 0 0 1-2.5-2.5c0-1.6 1.3-2.4 2.5-4 1.2 1.6 2.5 2.4 2.5 4A2.5 2.5 0 0 1 12 21z"/></g></symbol>
 <symbol id="a-spk" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></g></symbol>
+<symbol id="u-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/></g></symbol><symbol id="u-doc" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></g></symbol>
 <symbol id="u-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
 <symbol id="u-minus" viewBox="0 0 24 24"><path d="M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
 <symbol id="u-home" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.3-5.6"/><path d="M4 4v4.5h4.5"/></g></symbol>
@@ -826,11 +846,7 @@ body.dark .zinfo h3{color:#B5E383}
     <div class="modes" id="modes" role="group" aria-label="Chế độ dữ liệu" hidden><button data-m="live" aria-pressed="false">Trực tiếp</button><button data-m="sim" aria-pressed="true">Mô phỏng</button></div>
     <button class="thm" id="themeB" aria-label="Chế độ tối" aria-pressed="false"><svg aria-hidden="true"><use href="#u-moon"/></svg></button>
   </div>
-  <nav class="links" aria-label="Trang khác">
-    <a class="lk" href="https://farmblockadmin.github.io/farmblock-website/cong-nghe.html" data-nav="tech"><svg aria-hidden="true"><use href="#u-back"/></svg>Công nghệ</a>
-    <a class="lk hide-md" href="https://farmblockadmin.github.io/farmblock-website/bang-gia.html" data-nav="price">Bảng giá</a>
-    <a class="lk vm" aria-label="Xem vườn Mang Yang trực tuyến" href="https://vuonmau.farmblock.vn/ca-phe-mang-yang-1" target="_blank" rel="noopener"><span class="l">Xem vườn Mang Yang</span><svg aria-hidden="true"><use href="#u-ext"/></svg></a>
-  </nav>
+  <nav class="nav" id="nav" aria-label="Màn hình"></nav>
   <div class="stat" role="status">
     <span class="live" id="stL"><i></i><span id="stM">Mô phỏng</span></span><span class="sp"></span>
     <span><b id="clock" class="num">07:30</b></span><span class="sp"></span>
@@ -838,6 +854,7 @@ body.dark .zinfo h3{color:#B5E383}
     <span class="sim-only">Dữ liệu <b id="pk" class="num">0</b> gói</span><span class="live-only" id="stA"></span>
   </div>
 </header>
+<main class="scr" id="scr" hidden><div class="scrIn" id="scrIn"></div></main>
 
 <!-- PANEL TRÁI: phân khu + thao tác -->
 <aside class="pl left hud" data-box="left" aria-label="Khu vực">
@@ -856,6 +873,11 @@ body.dark .zinfo h3{color:#B5E383}
     <div class="sec">
       <span class="k">Thông tin khu</span>
       <div class="zinfo" id="zinfo" style="margin-top:0"></div>
+    </div>
+    <div class="sec tdsec">
+      <span class="k">Việc cần làm <small id="tdn"></small></span>
+      <ol class="tdl" id="todo"></ol>
+      <p class="note" id="tdNote"></p>
     </div>
   </div>
 </aside>
@@ -970,6 +992,8 @@ body.dark .zinfo h3{color:#B5E383}
 <div class="rot" id="rot" role="alertdialog" aria-label="Xoay ngang điện thoại"><div class="rot-in"><div class="rot-ph" aria-hidden="true"><i></i></div><b>Xoay ngang điện thoại</b><p>Sa bàn 3D chỉ dùng ở màn hình ngang. Nếu máy không tự xoay, hãy tắt khoá xoay màn hình.</p><button id="rotB" hidden>Xoay giúp tôi</button></div></div>
 <div class="nogl" id="nogl"><p>Trình duyệt này chưa hỗ trợ WebGL nên không hiển thị được sa bàn 3D.<br>Hãy thử Chrome, Safari hoặc Edge bản mới.</p></div>
 
+<script src="app/du-lieu.js"></script>
+<script src="app/du-lieu-mau.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/utils/BufferGeometryUtils.js"></script>
@@ -1059,7 +1083,7 @@ const BOX={x0:-34,z0:-27,x1:33,z1:27};
 function initRenderer(){
   const cv=$('#gl');
   try{renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true,powerPreference:'high-performance'})}catch(e){return false}
-  renderer.setPixelRatio(Math.min(devicePixelRatio,MOB?1.5:2));
+  PR.max=Math.min(devicePixelRatio,LOW?1:1.5);PR.v=PR.max;renderer.setPixelRatio(PR.v);
   renderer.setSize(innerWidth,innerHeight,false);
   renderer.outputEncoding=THREE.sRGBEncoding;
   renderer.toneMapping=THREE.ACESFilmicToneMapping;
@@ -1067,13 +1091,13 @@ function initRenderer(){
   renderer.shadowMap.enabled=true;
   renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   scene=new THREE.Scene();
-  scene.background=new THREE.Color('#EEF3E6');
-  scene.fog=new THREE.Fog('#EEF3E6',120,260);
+  scene.background=new THREE.Color('#E8DCC6');
+  scene.fog=new THREE.Fog('#E8DCC6',120,260);
   camera=new THREE.PerspectiveCamera(MOB?42:32,innerWidth/innerHeight,.3,1400);
   camera.position.set(14,70,88);
   controls=new THREE.OrbitControls(camera,cv);
   controls.enableDamping=true;controls.dampingFactor=.08;
-  controls.minDistance=5;controls.maxDistance=280;
+  controls.minDistance=5;controls.maxDistance=MOB?190:130;
   controls.maxPolarAngle=1.42;controls.rotateSpeed=.6;controls.zoomSpeed=.9;controls.panSpeed=.9;
   controls.screenSpacePanning=false;
   controls.target.set(0,0,1);
@@ -1187,18 +1211,18 @@ function buildGround(){
       vec4 wt=texture2D(uWt,vec2((min(zid,15.)+.5)/16.,.5));
       float wet=wt.r;
       float n=fbm(vW.xz*1.6),n2=vn(vW.xz*9.),n3=vn(vW.xz*22.);
-      vec3 soil=mix(vec3(.62,.42,.26),vec3(.30,.18,.11),wet)*(.78+.38*n)*(.9+.14*n2);
+      vec3 soil=mix(vec3(.66,.36,.23),vec3(.34,.15,.09),wet)*(.78+.38*n)*(.9+.14*n2);
       soil=mix(soil,soil*vec3(.85,.9,.7),smoothstep(.55,.8,n3)*.35);
       float dry=uDry*(1.-wet);
       float cr=smoothstep(.035,0.,abs(vn(vW.xz*3.3)-.5))+smoothstep(.03,0.,abs(vn(vW.xz*7.1+5.)-.5))*.6;
       soil=mix(soil,soil*1.22+vec3(.07,.05,.03),dry*.55);
       soil=mix(soil,soil*.42,clamp(cr,0.,1.)*dry);
-      vec3 road=mix(vec3(.82,.68,.50),vec3(.50,.37,.25),uRoadWet*.75)*(.86+.22*n)*(.94+.12*n2);
+      vec3 road=mix(vec3(.80,.58,.42),vec3(.50,.30,.20),uRoadWet*.75)*(.86+.22*n)*(.94+.12*n2);
       float pud=smoothstep(.56,.68,fbm(vW.xz*.8+3.))*uRoadWet;
       road=mix(road,vec3(.30,.26,.22),pud*.85);
       vec3 grass=mix(vec3(.44,.52,.24),vec3(.29,.44,.17),clamp(uRoadWet*.6+n*.5,0.,1.));
       grass=mix(grass,vec3(.66,.58,.34),uDry*.65)*(.82+.3*n2)*(.92+.16*n3);
-      vec3 bare=mix(vec3(.84,.70,.53),vec3(.50,.35,.23),wet)*(.88+.2*n);
+      vec3 bare=mix(vec3(.76,.50,.35),vec3(.46,.25,.16),wet)*(.88+.2*n);
       float fur=sin(dot(vW.xz,vec2(.31,.95))*26.+n*2.);
       bare*=.9+.1*fur;
       bare=mix(bare,bare*1.12+vec3(.05),uDry*.4);
@@ -1300,54 +1324,31 @@ const lin=c=>{const k=new THREE.Color(c);return[k.r,k.g,k.b]};
 const mixc=(a,b,t)=>[lerp(a[0],b[0],t),lerp(a[1],b[1],t),lerp(a[2],b[2],t)];
 function glowTex(){const c=document.createElement('canvas');c.width=c.height=64;const x=c.getContext('2d');const g=x.createRadialGradient(32,32,0,32,32,32);g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(.25,'rgba(255,255,255,.65)');g.addColorStop(1,'rgba(255,255,255,0)');x.fillStyle=g;x.fillRect(0,0,64,64);const t=new THREE.CanvasTexture(c);return t}
 function blobTex(){const c=document.createElement('canvas');c.width=c.height=64;const x=c.getContext('2d');const g=x.createRadialGradient(32,32,0,32,32,32);g.addColorStop(0,'rgba(0,0,0,.62)');g.addColorStop(.55,'rgba(0,0,0,.28)');g.addColorStop(1,'rgba(0,0,0,0)');x.fillStyle=g;x.fillRect(0,0,64,64);return new THREE.CanvasTexture(c)}
+function basinTex(){const c=document.createElement('canvas');c.width=c.height=64;const x=c.getContext('2d');const g=x.createRadialGradient(32,32,0,32,32,32);g.addColorStop(0,'rgba(58,26,14,.0)');g.addColorStop(.18,'rgba(58,26,14,.55)');g.addColorStop(.72,'rgba(70,32,18,.42)');g.addColorStop(.86,'rgba(150,80,45,.35)');g.addColorStop(1,'rgba(150,80,45,0)');x.fillStyle=g;x.fillRect(0,0,64,64);return new THREE.CanvasTexture(c)}
 function discTex(){const c=document.createElement('canvas');c.width=c.height=128;const x=c.getContext('2d');const g=x.createRadialGradient(64,64,0,64,64,64);g.addColorStop(0,'rgba(255,255,255,.28)');g.addColorStop(.86,'rgba(255,255,255,.12)');g.addColorStop(.94,'rgba(255,255,255,.55)');g.addColorStop(1,'rgba(255,255,255,0)');x.fillStyle=g;x.fillRect(0,0,128,128);return new THREE.CanvasTexture(c)}
 let GLOW;
 
-/* ---------- cây cà phê / cau / cây rừng ---------- */
+/* ---------- cà phê cây con (trồng 7/2026) ---------- */
+// Vườn mới trồng: cây con cao khoảng nửa mét, vài tầng lá đối, chưa có quả. Không vẽ cây cau hay cây đã lớn.
 function coffeeGeo(det){
-  const L0=lin('#0F2E0D'),L1=lin('#2F6A1A'),parts=[];
-  const leaf=(r,x,y,z,sy,s)=>{const g=new THREE.IcosahedronGeometry(r,det);jitter(g,r*.32,s);g.scale(1,sy,1);g.translate(x,y,z);return g};
-  [[.27,0,.38,0,1.15],[.21,.07,.66,-.03,1.05],[.19,-.12,.28,.1,1],[.17,.13,.3,.11,1]].forEach((a,i)=>parts.push(paint(leaf(a[0],a[1],a[2],a[3],a[4],i+1),(x,y)=>mixc(L0,L1,clamp(y/.85,0,1)))));
-  const tr=new THREE.CylinderGeometry(.022,.032,.18,5);tr.translate(0,.09,0);parts.push(paint(tr,()=>lin('#4A3322')));
-  const red=lin('#B3261E'),yel=lin('#C9A227');
-  [[.2,.42,.12],[-.18,.35,.16],[.05,.55,.2],[.24,.62,-.02],[-.06,.22,-.25],[-.24,.5,-.06]].forEach((p,i)=>{const g=new THREE.IcosahedronGeometry(.04,0);g.translate(p[0],p[1],p[2]);parts.push(paint(g,()=>i%3===2?yel:red))});
-  return merge(parts);
-}
-function palmGeo(){
-  const parts=[];
-  const tr=new THREE.CylinderGeometry(.035,.055,3.1,6,8);tr.translate(0,1.55,0);
-  parts.push(paint(tr,(x,y)=>{const b=(Math.sin(y*26)>.6)?.82:1;return mixc(lin('#8C8172'),lin('#B5AD9C'),y/3.1).map(v=>v*b)}));
-  const cs=new THREE.CylinderGeometry(.072,.06,.5,6);cs.translate(0,3.32,0);parts.push(paint(cs,()=>lin('#5E8A2C')));
-  const G0=lin('#1E4211'),G1=lin('#4E7A22');
-  for(let k=0;k<9;k++){
-    const a=k/9*Math.PI*2+Math.sin(k*3.1)*.25,ca=Math.cos(a),sa=Math.sin(a),px=-sa,pz=ca;
-    const len=.78+((k*37)%5)*.05,up=.42+((k*13)%4)*.06;const n=7,pos=[],col=[];
-    for(let i=0;i<=n;i++){const t=i/n,r=t*len,y=3.5+up*t-1.25*t*t,w=.15*Math.sin(Math.PI*Math.min(1,t*1.08))+.015;
-      const cx=ca*r,cz=sa*r;pos.push([cx+px*w,y-.06*t,cz+pz*w],[cx,y+.05,cz],[cx-px*w,y-.06*t,cz-pz*w]);col.push(mixc(G0,G1,t),mixc(G0,G1,t*.8),mixc(G0,G1,t))}
-    const P=[],C=[];
-    const tri=(a,b,c)=>{[a,b,c].forEach(q=>{P.push(...pos[q]);C.push(...col[q])})};
-    for(let i=0;i<n;i++){const o=i*3,q=o+3;tri(o,q,o+1);tri(o+1,q,q+1);tri(o+1,q+1,o+2);tri(o+2,q+1,q+2);
-      tri(o,o+1,q);tri(o+1,q+1,q);tri(o+1,o+2,q+1);tri(o+2,q+2,q+1)}
-    const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(P,3));g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));g.computeVertexNormals();parts.push(g);
-  }
-  return merge(parts);
-}
-function treeGeo(det,s){
-  const A=lin('#0E2A0D'),B=lin('#3A6A1E'),parts=[];
-  const c1=new THREE.IcosahedronGeometry(1,det);jitter(c1,.32,s);c1.scale(1,.86,1);c1.translate(0,1.75,0);
-  const c2=new THREE.IcosahedronGeometry(.7,det);jitter(c2,.3,s+2);c2.translate(.45,2.25,.15);
-  const c3=new THREE.IcosahedronGeometry(.62,det);jitter(c3,.3,s+4);c3.translate(-.5,1.45,-.25);
-  [c1,c2,c3].forEach(g=>parts.push(paint(g,(x,y)=>mixc(A,B,clamp((y-.9)/2.1,0,1)))));
-  const t=new THREE.CylinderGeometry(.07,.12,1.3,6);t.translate(0,.65,0);parts.push(paint(t,()=>lin('#5A4330')));
+  const L0=lin('#0B2A0C'),L1=lin('#2C6418'),parts=[];
+  const st=new THREE.CylinderGeometry(.009,.014,.30,4);st.translate(0,.15,0);parts.push(paint(st,()=>lin('#5C6B2E')));
+  // tầng lá đối, mỗi tầng xoay 90°, lá dưới to hơn và chúc xuống
+  const tiers=[[.07,.115,.0,-.28],[.13,.10,Math.PI/2,-.2],[.19,.085,0,-.08],[.25,.06,Math.PI/2,.12]];
+  tiers.forEach((t,ti)=>{[1,-1].forEach((sd,j)=>{
+    const g=new THREE.SphereGeometry(1,det?6:4,2);g.scale(t[1],.008,t[1]*.42);
+    g.translate(t[1]*.95,0,0);g.rotateZ(t[3]);g.rotateY(t[2]+(sd<0?Math.PI:0)+(ti*.35));g.translate(0,t[0],0);
+    parts.push(paint(g,(x,y,z)=>mixc(L0,L1,clamp(.35+ti*.18+Math.abs(x+z)*1.5,0,1))))})});
+  const tip=new THREE.SphereGeometry(.028,4,2);tip.scale(1,1.6,1);tip.translate(0,.31,0);parts.push(paint(tip,()=>lin('#6FA83A')));
   return merge(parts);
 }
 
 const DV=[];// thiết bị (toạ độ cảnh)
-let coffeeMesh,palmMesh,treeMeshes=[],blobMesh,coffeeByZone=[];
+let coffeeMesh,basinMesh,blobMesh,coffeeByZone=[];
 function placeVeg(){
   DEV.forEach(d=>{const w=toW(d.uv);d.x=w[0];d.z=w[1];d.y=H(d.x,d.z);d.zone=zoneAt(d.x,d.z)});
   const nearDev=(x,z,r)=>DEV.some(d=>(d.x-x)**2+(d.z-z)**2<r*r);
-  const coffee=[],palm=[],trees=[];
+  const coffee=[];
   for(let zi=0;zi<NZ;zi++){
     coffeeByZone[zi]=[];
     const P=ZP[zi],a=ZD[zi].ang,d0=Math.cos(a),d1=Math.sin(a),p0=-d1,p1=d0;
@@ -1359,26 +1360,23 @@ function placeVeg(){
         const x=u*d0+v*p0+(rnd()-.5)*.06,z=u*d1+v*p1+(rnd()-.5)*.06;
         if(!inPoly(x,z,P)||dPoly(x,z,P)<RW+.12||dRoad(x,z)<RW+.12||DEV.some(d=>d.k!=='cam'&&(d.x-x)**2+(d.z-z)**2<.144))continue;
         const o={x,z,y:H(x,z),s:.82+rnd()*.36,r:rnd()*6.28,zi,i:coffee.length};coffee.push(o);coffeeByZone[zi].push(o);
-        if(row%5===2&&k%6===3){const px=x+p0*sr*.5,pz=z+p1*sr*.5;if(inPoly(px,pz,P)&&dPoly(px,pz,P)>RW+.4&&!nearDev(px,pz,1))palm.push({x:px,z:pz,y:H(px,pz),s:.85+rnd()*.3,r:rnd()*6.28})}
       }}
   }
 
   const M=new THREE.Matrix4(),Q=new THREE.Quaternion(),S=new THREE.Vector3(),T=new THREE.Vector3(),E=new THREE.Euler(),C=new THREE.Color();
-  const fill=(mesh,arr,colorFn)=>{arr.forEach((o,i)=>{E.set((rnd()-.5)*.08,o.r,(rnd()-.5)*.08);Q.setFromEuler(E);S.setScalar(o.s);T.set(o.x,o.y-.02,o.z);M.compose(T,Q,S);mesh.setMatrixAt(i,M);if(colorFn){colorFn(C,o);mesh.setColorAt(i,C)}});mesh.instanceMatrix.needsUpdate=true;if(mesh.instanceColor)mesh.instanceColor.needsUpdate=true;mesh.castShadow=true;mesh.receiveShadow=true;scene.add(mesh)};
-  coffeeMesh=new THREE.InstancedMesh(coffeeGeo(LOW?0:1),swayMat({},1/.85,.2,1,9),coffee.length);
-  fill(coffeeMesh,coffee,(c,o)=>{const v=.82+rnd()*.3;o.b=[v*(.95+rnd()*.12),v,v*(.9+rnd()*.15)];c.setRGB(o.b[0],o.b[1],o.b[2])});
-  palmMesh=new THREE.InstancedMesh(palmGeo(),swayMat({side:THREE.DoubleSide,roughness:.6},1/3.6,.45,.6,3),palm.length);
-  fill(palmMesh,palm,(c)=>{const v=.85+rnd()*.25;c.setRGB(v,v,v*.95)});
-  const tg=[treeGeo(LOW?0:1,1),treeGeo(LOW?0:1,5)];const tm=swayMat({roughness:.8},1/3,.25,.35,2.6);
-  const halves=[trees.filter((_,i)=>i%2===0),trees.filter((_,i)=>i%2===1)];
-  halves.forEach((arr,h)=>{const m=new THREE.InstancedMesh(tg[h],tm,arr.length);fill(m,arr,(c)=>{const t=rnd();c.setRGB(.75+t*.3,.78+t*.22,.62+rnd()*.25)});treeMeshes.push(m)});
-  // bóng tiếp xúc dưới gốc
-  const all=coffee.concat(palm.map(p=>({x:p.x,z:p.z,y:p.y,s:.5}))).concat(trees.map(t=>({x:t.x,z:t.z,y:t.y,s:t.s*2.6})));
-  const bg=new THREE.PlaneGeometry(1,1);bg.rotateX(-Math.PI/2);
-  blobMesh=new THREE.InstancedMesh(bg,new THREE.MeshBasicMaterial({map:blobTex(),transparent:true,depthWrite:false,opacity:.75,polygonOffset:true,polygonOffsetFactor:-2}),all.length);
-  all.forEach((o,i)=>{T.set(o.x,o.y+.03,o.z);S.set(o.s*.95,1,o.s*.95);Q.identity();M.compose(T,Q,S);blobMesh.setMatrixAt(i,M)});
-  blobMesh.renderOrder=1;scene.add(blobMesh);
-  STATS.coffee=coffee.length;STATS.palm=palm.length;STATS.tree=trees.length;
+  const fill=(mesh,arr,colorFn)=>{arr.forEach((o,i)=>{E.set((rnd()-.5)*.08,o.r,(rnd()-.5)*.08);Q.setFromEuler(E);S.setScalar(o.s);T.set(o.x,o.y-.02,o.z);M.compose(T,Q,S);mesh.setMatrixAt(i,M);if(colorFn){colorFn(C,o);mesh.setColorAt(i,C)}});mesh.instanceMatrix.needsUpdate=true;if(mesh.instanceColor)mesh.instanceColor.needsUpdate=true;mesh.castShadow=!LOW;mesh.receiveShadow=true;scene.add(mesh)};
+  coffeeMesh=new THREE.InstancedMesh(coffeeGeo(LOW?0:1),swayMat({roughness:.5},1/.32,.12,1,14),coffee.length);
+  fill(coffeeMesh,coffee,(c,o)=>{const v=.62+rnd()*.2;o.b=[v*(.95+rnd()*.12),v,v*(.9+rnd()*.15)];c.setRGB(o.b[0],o.b[1],o.b[2])});
+  // bồn gốc: vòng đất xới sẫm màu quanh mỗi cây con
+  const bg=new THREE.CircleGeometry(.5,14);bg.rotateX(-Math.PI/2);
+  basinMesh=new THREE.InstancedMesh(bg,new THREE.MeshBasicMaterial({map:basinTex(),transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2}),coffee.length);
+  coffee.forEach((o,i)=>{T.set(o.x,o.y+.025,o.z);S.set(.34,1,.34);Q.identity();M.compose(T,Q,S);basinMesh.setMatrixAt(i,M)});
+  basinMesh.renderOrder=1;scene.add(basinMesh);
+  const sh=new THREE.PlaneGeometry(1,1);sh.rotateX(-Math.PI/2);
+  blobMesh=new THREE.InstancedMesh(sh,new THREE.MeshBasicMaterial({map:blobTex(),transparent:true,depthWrite:false,opacity:.55,polygonOffset:true,polygonOffsetFactor:-3}),coffee.length);
+  coffee.forEach((o,i)=>{T.set(o.x,o.y+.03,o.z);S.set(.3*o.s,1,.3*o.s);Q.identity();M.compose(T,Q,S);blobMesh.setMatrixAt(i,M)});
+  blobMesh.renderOrder=2;scene.add(blobMesh);
+  STATS.coffee=coffee.length;
 }
 const STATS={};
 
@@ -1688,7 +1686,7 @@ function buildLedGlows(){LEDS.forEach(l=>{const c=l.k==='rec'?'#FF4A3A':l.k==='l
 /* ================= MÔ PHỎNG DỮ LIỆU ================= */
 const ENV={min:450,play:false,w:'clear',ws:3,wd:45,wsNow:3,T:19.5,RH:92,rain:0,lux:0,P:927.6,flash:0,nextFlash:3,smkE:0,pk:0,sync:0};
 const WX={
-  clear:{cl:1,rain:0,dT:0,rh:0,gray:0,fog:[120,440],clouds:3,dry:0},
+  clear:{cl:1,rain:0,dT:0,rh:0,gray:0,fog:[120,440],clouds:0,dry:0},
   cloud:{cl:.42,rain:0,dT:-2,rh:6,gray:.22,fog:[95,380],clouds:13,dry:0},
   rain:{cl:.2,rain:9,dT:-4.5,rh:14,gray:.48,fog:[55,250],clouds:16,dry:0},
   storm:{cl:.1,rain:36,dT:-5.5,rh:16,gray:.68,fog:[45,210],clouds:16,dry:0},
@@ -1800,7 +1798,7 @@ function applyLight(dt){
   const wx=WX[ENV.w],k=Math.min(1,dt*1.5);
   grayK=lerp(grayK,wx.gray,k);clK=lerp(clK,wx.cl,k);fogN=lerp(fogN,wx.fog[0],k);fogF=lerp(fogF,wx.fog[1],k);
   const lum=LT.bg.r*.3+LT.bg.g*.55+LT.bg.b*.15;_c2.setRGB(lum,lum,lum*1.04);
-  const bg=_c3.set(document.body.classList.contains('dark')?'#1E1E1E':'#EEF3E6').multiplyScalar(1-.1*clamp(grayK,0,1));if(!document.body.classList.contains('dark'))bg.lerp(_c1.set('#16241B'),LT.night*.92);
+  const bg=_c3.copy(LT.bg).lerp(_c2,clamp(grayK,0,1));if(grayK<0)bg.lerp(_c1.set('#F0D9B0'),-grayK*2);
   if(ENV.w==='fog'||fogN<40){const fk=1-sstep(20,70,fogN);bg.lerp(_c1.set(wx.fc||'#DADBD6').multiplyScalar(.35+.65*LT.day),fk*.75)}
   ENV.flash=Math.max(0,ENV.flash-dt*5);
   const fl=ENV.flash>0?(Math.sin(ENV.flash*30)>0?1:.3)*ENV.flash:0;
@@ -1909,8 +1907,8 @@ function renderZone(){
   const zi=SEL.z,el=$('#zinfo');let html;
   if(LM.on){el.innerHTML=lvZone(zi);updButtons();return}
   const devs=zoneDevs(zi);const dl=Object.keys(devs).filter(k=>devs[k]).map(k=>`<span><svg aria-hidden="true"><use href="#${KICON[k]}"/></svg>${devs[k]} ${({soil:'đất',water:'nước',weather:'thời tiết',cam:'camera',iot:'trạm IoT'})[k]}</span>`).join('');
-  if(zi<0){html=`<h3>Vườn cà phê Ia Ko</h3><p>Thôn Cây Xoài, xã Ia Ko, Chư Pưh, Gia Lai · 22 ha · 8 khu · cà phê xen cau, 2.200 gốc/ha</p><div class="devs">${dl}</div>`}
-  else if(zi<NZ){html=`<h3>${ZNAME[zi]}</h3><p>Cà phê xen cau · giống Thiện Trường</p>
+  if(zi<0){html=`<h3>Vườn cà phê Ia Ko</h3><p>Thôn Cây Xoài, xã Ia Ko, Chư Pưh, Gia Lai · 22 ha · 8 khu · cà phê Robusta ghép trồng 7/2026, khoảng 2.200 cây/ha</p>${stageHTML()}<div class="devs">${dl}</div>`}
+  else if(zi<NZ){html=`<h3>${ZNAME[zi]}</h3><p>Cà phê Robusta ghép Thiện Trường · cây con, trồng 7/2026</p>
       <dl class="kv"><dt>Diện tích</dt><dd>${fmt(ZHA[zi],2)} ha</dd><dt>Số gốc ước tính</dt><dd>≈ ${fmtI(Math.round(ZHA[zi]*2200/50)*50)}</dd><dt>Lần tưới gần nhất</dt><dd id="zL">${ZS[zi].lastIrr||'Chưa tưới'}</dd></dl><div class="devs">${dl}</div>`}
   else if(zi===8){html=`<h3>Khu đất chưa trồng</h3><p>Đất đã cày, chưa xuống giống. Dải cây rừng chạy chéo giữa khu.</p><dl class="kv"><dt>Diện tích (ước tính theo sơ đồ)</dt><dd>≈ ${fmt(ZHA[8])} ha</dd></dl>`}
   else{html=`<h3>Khu nhà điều hành</h3><p>Nhà điều hành, trạm IoT trung tâm, trạm thời tiết và hồ chứa nước tưới.</p><div class="devs">${dl}</div>`}
@@ -2116,7 +2114,7 @@ function lvApply(data,first){
   const rained=LM.rain0!=null&&c.rainfall_total>LM.rain0+.05;LM.rain0=c.rainfall_total;
   const hr=vnMin()/60,day=Math.max(0,Math.sin((hr-6)/12*Math.PI)),exp=112000*Math.pow(day,1.15);
   setWeather(rained?'rain':exp>5000&&c.light<exp*.35?'cloud':'clear',true);
-  lvZones();lvAttention();lvCenter();renderZone();if(INS.d)renderInsp(true);
+  lvZones();lvAttention();lvTodo();lvCenter();renderZone();if(INS.d)renderInsp(true);
   if(first||data.at!==prevAt)lvBatch(first);
 }
 // số mới về: sóng LoRa chạy từ từng điểm đo về trạm, ghi vào nhật ký
@@ -2183,14 +2181,48 @@ function lvAttention(){
   box.querySelectorAll('.at').forEach(b=>b.addEventListener('click',()=>{const a=items[+b.dataset.i],m=LABEL_METRIC[a.metric];if(m&&m!==LM.metric)lvMetric(m);
     const s=a.stations.find(x=>x!=='ALL');if(!s)return;const d=s==='CENTER'?DEV.find(x=>x.k===(/nước/.test(a.metric)?'water':'weather')):soilDev(s);if(d)openInsp(d.idx,true)}));
 }
+/* Việc cần làm: lấy từ khuyến nghị của dashboard (khi chạy trên dashboard), số đo vượt ngưỡng và việc theo mùa của cây KTCB.
+   Không bịa việc đã làm; chỉ là gợi ý để chuyên gia xác minh. */
+const TD={adv:null,advAt:0};
+const esc=t=>String(t==null?'':t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
+function tdSeason(){const m=new Date().getMonth()+1,out=[];
+  if(m>=11||m<=4){out.push({t:'Tủ gốc bằng rơm, cỏ khô quanh bồn để giữ ẩm mùa khô',w:'Trong tuần'});out.push({t:'Rà cây chết, cây yếu để trồng dặm',w:'Trong tuần'})}
+  else{out.push({t:'Làm cỏ quanh bồn, khơi rãnh thoát nước mùa mưa',w:'Trong tuần'});out.push({t:'Rà cây chết, cây yếu để trồng dặm',w:'Trong tuần'})}
+  return out.map(x=>({...x,c:'mua',z:[]}))}
+function lvTodo(){
+  const box=$('#todo');if(!box)return;const items=[];
+  const D=LM.on?LM.data:null;
+  if(D){
+    const adv=TD.adv;(adv||[]).forEach(x=>items.push({t:x.text,c:x.when==='today'?'yellow':'',w:x.when==='today'?'Hôm nay':'Trong tuần',z:(x.zones||[]).map(String)}));
+    const age=(Date.now()-Date.parse(String(D.at).replace(' ','T')+'+07:00'))/6e4;
+    if(age>30)items.push({t:`Số đo đã ${Math.round(age)} phút chưa về: kiểm tra trạm IoT và đồng bộ`,c:'dev',w:'Hôm nay',z:[]});
+    for(let i=0;i<NZ;i++){const ns=zoneNodes(i);if(!ns.length)continue;const zn=ZNAME[i],zid=i;
+      const mo=mean(ns.map(n=>n.moisture)),te=mean(ns.map(n=>n.temperature)),ph=mean(ns.map(n=>n.ph));
+      if(mo!=null&&mo<20)items.push({t:`Đất khô (ẩm ${fmt(mo)}%): xem lại lịch tưới`,c:mo<15?'red':'yellow',w:'Hôm nay',z:[zn],zi:zid});
+      else if(mo!=null&&mo>45)items.push({t:`Đất ẩm cao (${fmt(mo)}%): kiểm tra đọng nước, thoát nước`,c:'yellow',w:'Trong tuần',z:[zn],zi:zid});
+      if(te!=null&&te>34)items.push({t:`Nhiệt đất cao (${fmt(te)}°C): tủ gốc, che nắng cây con`,c:te>38?'red':'yellow',w:'Hôm nay',z:[zn],zi:zid});
+      if(ph!=null&&(ph<5.5||ph>6.5))items.push({t:`pH đất ${fmt(ph)} ngoài khoảng tốt 5,5–6,5: lấy mẫu đất kiểm tra`,c:ph<5||ph>7?'red':'yellow',w:'Trong tuần',z:[zn],zi:zid});
+    }
+  }
+  const all=items.concat(tdSeason());
+  const rank={red:0,dev:1,yellow:2,'':3,mua:4};all.sort((a,b)=>rank[a.c]-rank[b.c]);
+  box.innerHTML=all.map((x,i)=>`<li class="${x.c}${x.zi!=null?' zk':''}" data-i="${i}"><i></i><div>${esc(x.t)}<small>${x.z.map(z=>`<span>${esc(z)}</span>`).join('')}<span class="td">${x.w}</span></small></div></li>`).join('');
+  box.querySelectorAll('li.zk').forEach(li=>li.addEventListener('click',()=>selectZone(all[+li.dataset.i].zi)));
+  $('#tdn').textContent=all.length?'· '+all.length:'';
+  $('#tdNote').textContent=D?(TD.adv?'Gợi ý từ lõi AI của dashboard, số đo vượt ngưỡng và mùa vụ. Chuyên gia xác minh trước khi giao việc.':'Gợi ý từ số đo vượt ngưỡng và mùa vụ của cây kiến thiết cơ bản. Chuyên gia xác minh trước khi giao việc.'):'Ở chế độ mô phỏng chỉ có việc theo mùa vụ.';
+  if(D&&window.VS&&VS.mode==='api'&&Date.now()-TD.advAt>6e5){TD.advAt=Date.now();VS.get('overview').then(ov=>{const n=ov?.advisory?.latest?.result?.ops?.next;TD.adv=Array.isArray(n)&&n.length?n:null;if(TD.adv)lvTodo()}).catch(()=>{})}
+}
 function lvCenter(){
   const c=LM.data.center,k=LM.data.kpi;const pump=v=>v>0?fmt(v)+' m³/h':'Tắt';
   $('#ctr').innerHTML=[['EC nước tưới',fmtI(c.water_ec)+' µS/cm'],['Nhiệt độ nước',fmt(c.water_temp)+'°C'],['Bơm 1',pump(c.pump1_rate)],['Bơm 2',pump(c.pump2_rate)],['Tưới 7 ngày',fmt(k.irrigation_7d)+' m³'],['Mưa 7 ngày',fmt(k.rain_7d)+' mm'],['Hướng gió',fmtI(c.wind_direction)+'°'],['Ánh sáng',fmtI(c.light)+' lux'],['Áp suất',fmt(c.pressure,0)+' hPa']].map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join('');
 }
+// giai đoạn cây: trồng 7/2026, thời kỳ kiến thiết cơ bản (KTCB) 3 năm rồi thu bói
+function stageHTML(){const p=Date.parse('2026-07-01T00:00:00+07:00'),age=Math.max(0,(Date.now()-p)/(30.44*864e5)),yr=Math.min(3,Math.floor(age/12)+1);
+  return`<div class="stg"><div class="stg-r"><span>Giai đoạn</span><b>KTCB năm ${yr} · tháng thứ ${Math.floor(age)+1}</b></div><div class="stg-b"><i style="width:${Math.min(100,age/36*100).toFixed(1)}%"></i></div><small>Cây con, chưa cho quả. Thu bói sau 3 năm kiến thiết cơ bản.</small></div>`}
 function lvZone(zi){
   const D=LM.data;if(!D)return'';const k=D.kpi;
   const row=(a,b)=>`<dt>${a}</dt><dd>${b}</dd>`;
-  if(zi<0)return`<h3>Vườn cà phê Ia Ko</h3><p>22 ha · 8 khu · 9 điểm đo đất · 1 trạm trung tâm</p><dl class="kv">${row('Độ ẩm đất',fmt(k.moisture)+'%')}${row('Nhiệt độ đất',fmt(k.soil_temp)+'°C')}${row('pH đất (trung vị)',fmt(k.ph))}${row('EC đất',fmtI(k.ec)+' µS/cm')}</dl>`;
+  if(zi<0)return`<h3>Vườn cà phê Ia Ko</h3><p>22 ha · 8 khu · 9 điểm đo đất · 1 trạm trung tâm</p>${stageHTML()}<dl class="kv">${row('Độ ẩm đất',fmt(k.moisture)+'%')}${row('Nhiệt độ đất',fmt(k.soil_temp)+'°C')}${row('pH đất (trung vị)',fmt(k.ph))}${row('EC đất',fmtI(k.ec)+' µS/cm')}</dl>`;
   if(zi>=NZ)return zi===8?'<h3>Khu đất chưa trồng</h3><p>Không có điểm đo trong khu này.</p>':'<h3>Khu nhà điều hành</h3><p>Trạm trung tâm đo thời tiết và nước tưới nằm gần đây.</p>';
   const ns=zoneNodes(zi);if(!ns.length)return`<h3>${ZNAME[zi]}</h3><p>Khu này chưa có điểm đo được gán trên sơ đồ Dashboard.</p>`;
   return`<h3>${ZNAME[zi]}</h3><p>${ns.map(n=>ptName(n.id)).join(', ')} · đo lúc ${hm(ns[0].at)}</p><dl class="kv">${Object.keys(METRIC).map(m=>{const v=mean(ns.map(n=>n[m]));return row(METRIC[m].full,v==null?'–':fmt(v,METRIC[m].d)+METRIC[m].u)}).join('')}</dl>`;
@@ -2216,7 +2248,7 @@ function lvOnline(){const D=LM.data,now=Date.now();return D.nodes.filter(n=>now-
 function lvStatus(){
   const D=LM.data;if(!D)return;const age=(Date.now()-atMs(D.at))/6e4,stale=age>30||LM.fail>2;
   $('#stL').classList.toggle('stale',stale);
-  $('#stM').textContent=LM.fail>2?'Mất kết nối':stale?'Số liệu cũ':'Trực tiếp';$('#mTag').textContent=$('#stM').textContent;
+  $('#stM').textContent=LM.demo?'Dữ liệu mẫu':LM.fail>2?'Mất kết nối':stale?'Số liệu cũ':'Trực tiếp';const lb=$('#modes [data-m="live"]');if(lb)lb.textContent=LM.demo?'Dữ liệu mẫu':'Trực tiếp';$('#mTag').textContent=$('#stM').textContent;
   $('#stD').innerHTML=`<b>${lvOnline()}</b>/${D.nodes.length+1} điểm báo về`;
   $('#stA').innerHTML=`Đo lúc <b class="num">${hm(D.at)}</b> · ${ago(age)}`;
 }
@@ -2231,13 +2263,13 @@ function lvHUD(){
 function setMode(on){
   if(on===LM.on)return;
   if(on){if(SMK.on)smokeOn(false);if(ENV.play)$('#tplay').click();ZS.forEach((z,i)=>{if(z.irr>0){z.irr=0;if(IRR[i])IRR[i].visible=false}});sound.sprinkle(false);z0=ZS.map(z=>z.v0)}
-  LM.on=on;document.body.classList.toggle('live',on);closeInsp();$('#log').innerHTML='';
+  LM.on=on;document.body.classList.toggle('live',on);closeInsp();$('#log').innerHTML='';lvTodo();
   $$('#modes button').forEach(b=>b.setAttribute('aria-pressed',String((b.dataset.m==='live')===on)));
   $('#rtT').textContent=on?'Trạm trung tâm':'Môi trường';$('#tbE').textContent=on?'Trạm':'Thời tiết';
   $('#logk').textContent=on?'Số liệu vừa về':'Nhật ký dữ liệu';
   $('.dc[data-k="cam"] b').textContent=on?String(DEV.filter(d=>d.live).length):'22';$('.dc[data-k="water"] b').textContent=on?'1':'2';
   setShow('cam',SHOW.cam,true);
-  if(on){lvApply(LM.data,true);lvMetric(LM.metric)}
+  if(on){lvApply(LM.data,true);lvMetric(LM.metric);lvStatus()}
   else{
     LM.spz=null;Object.keys(METRIC).forEach(k=>{const e=$('#ts-'+k);if(e)e.innerHTML=''});
     DEV.forEach(d=>{d.r=null;d.at=null;d.node=null;d.hist=[];setPin(d)});
@@ -2251,8 +2283,7 @@ let z0=null;
 async function lvPoll(){
   if(document.hidden)return;
   try{
-    const r=await fetch('live.json',{cache:'no-store'});if(!r.ok)throw 0;
-    const d=await r.json();if(!d.nodes)throw 0;LM.fail=0;
+    await VS.ready;const d=await VS.live();if(!d||!d.nodes)throw 0;LM.fail=0;LM.demo=!!d.demo;document.body.classList.toggle('demo',LM.demo);
     if(!LM.data){LM.data=d;$('#modes').hidden=false;if(!/[?&]sim/.test(location.search)&&PREF.mode!=='sim')setMode(true);if(!userMoved)goHome()}
     else if(LM.on&&(d.at!==LM.lastAt||d.received_at!==LM.data.received_at))lvApply(d,false);else LM.data=d;
   }catch(e){LM.fail++;if(!LM.data)clearInterval(LM.t)}
@@ -2397,10 +2428,22 @@ function renderPip(){
 let last=performance.now(),cmpN;
 const ROT=matchMedia('(orientation:portrait) and (max-width:767px) and (pointer:coarse)');
 const STILL=/[?&]still/.test(location.search);
+/* tự hạ độ phân giải khi máy không kịp 45 khung/giây, nâng lại khi dư sức */
+const PR={v:1,max:1,n:0,s:0,cool:0};
+function prGov(ms){
+  if(ms>250)return; // bỏ qua lúc chuyển tab, tải lại
+  PR.n++;PR.s+=ms;if(PR.cool>0)PR.cool--;
+  if(PR.n<60)return;
+  const avg=PR.s/PR.n;PR.n=0;PR.s=0;if(PR.cool>0)return;
+  let v=PR.v;
+  if(avg>22&&v>.75)v=Math.max(.75,v-.25);else if(avg<14&&v<PR.max)v=Math.min(PR.max,v+.25);
+  if(v!==PR.v){PR.v=v;PR.cool=120;renderer.setPixelRatio(v);renderer.setSize(innerWidth,innerHeight,false)}
+}
 function frame(now){
   if(!STILL)requestAnimationFrame(frame);
-  if(ROT.matches){last=now;return}
-  const dt=Math.min(.05,(now-last)/1000);last=now;
+  if(ROT.matches||window.__vsPause||document.hidden){last=now;PR.n=0;PR.s=0;return}
+  if(now-last<15)return; // màn 120Hz (MacBook Pro, iPad) vẫn chỉ vẽ ~60 khung/giây
+  const raw=now-last,dt=Math.min(.05,raw/1000);last=now;prGov(raw);
   U.uTime.value+=dt;
   updFly(dt);controls.update();
   // giữ tâm nhìn trong sa bàn
@@ -2424,11 +2467,11 @@ async function boot(){
   if(!window.THREE||!initRenderer()){$('#nogl').style.display='grid';$('#loader').classList.add('done');return}
   P(10,'Đắp địa hình 22 ha…');await tick();buildBase();buildGround();
   P(30,'Dẫn suối, đào hồ chứa…');await tick();buildWater();
-  P(45,'Trồng cà phê xen cau…');await tick();placeVeg();
+  P(45,'Trồng cà phê cây con…');await tick();placeVeg();
   P(70,'Lắp 35 thiết bị…');await tick();buildDevices();buildLedGlows();buildLinks();
   P(85,'Nối mạng LoRa…');await tick();buildIrrigation();buildRain();buildSmoke();buildClouds();buildLeaves();buildFlies();buildZoneLines();
   pipCam=new THREE.PerspectiveCamera(58,1.6,.15,300);
-  buildLabels();bindUI();bindPointer();renderZone();
+  buildLabels();bindUI();bindPointer();renderZone();lvTodo();
   cmpN=$('#cmpn');
   addEventListener('resize',onResize);
   // điện thoại dọc: màn bắt xoay ngang; xoay xong thì căn lại góc nhìn
@@ -2443,7 +2486,10 @@ async function boot(){
   requestAnimationFrame(frame);
   lvInit();
 }
-window.__fbStats=STATS;window.__fbFly=(r,ph,th)=>flyTo(controls.target.clone(),r,ph,th,.05);
+window.__fbStats=STATS;
+window.__vsPerf=()=>({calls:renderer.info.render.calls,tri:renderer.info.render.triangles,geo:renderer.info.memory.geometries,tex:renderer.info.memory.textures,prog:renderer.info.programs.length,pr:renderer.getPixelRatio(),low:LOW,px:[renderer.domElement.width,renderer.domElement.height]});window.__vsR=()=>renderer;window.__vsScene=()=>scene;
+Object.defineProperty(window,'__vsGeo',{get:()=>({zones:ZD.map((z,i)=>({id:z.id,poly:z.poly,lab:z.lab,ha:ZHA[i]})),cams:DEV.filter(d=>d.k==='cam').map(d=>({uv:d.uv,label:d.id.replace('CAM-','Camera '),zone:d.zone>=0&&d.zone<NZ?ZD[d.zone].id:(d.zone=zoneAt(...toW(d.uv)))>=0&&d.zone<NZ?ZD[d.zone].id:null,live:!!d.live}))})});
+window.__vsOpenDev=(k,i)=>{const d=DEV.filter(x=>x.k===k)[i];if(d)setTimeout(()=>openInsp(d.idx,true),80)};window.__fbFly=(r,ph,th)=>flyTo(controls.target.clone(),r,ph,th,.05);
 window.__fbRender=()=>{last=performance.now()-16;frame(performance.now())};
 window.__fbAdv=n=>{for(let i=0;i<n;i++){const dt=.05;U.uTime.value+=dt;updFly(dt);controls.update();simStep(dt);animScene(dt);applyLight(dt)}updHUD(1)};
 boot();
@@ -2467,8 +2513,80 @@ function landUse(x,z,d){
   return[t,r2,edge*2];
 }
 let sky,stars,villageGlow,mist=[],LU;
+function treeGeo(det,s){
+  const A=lin('#0E2A0D'),B=lin('#3A6A1E'),parts=[];
+  const c1=new THREE.IcosahedronGeometry(1,det);jitter(c1,.32,s);c1.scale(1,.86,1);c1.translate(0,1.75,0);
+  const c2=new THREE.IcosahedronGeometry(.7,det);jitter(c2,.3,s+2);c2.translate(.45,2.25,.15);
+  const c3=new THREE.IcosahedronGeometry(.62,det);jitter(c3,.3,s+4);c3.translate(-.5,1.45,-.25);
+  [c1,c2,c3].forEach(g=>parts.push(paint(g,(x,y)=>mixc(A,B,clamp((y-.9)/2.1,0,1)))));
+  const t=new THREE.CylinderGeometry(.07,.12,1.3,6);t.translate(0,.65,0);parts.push(paint(t,()=>lin('#5A4330')));
+  return merge(parts);
+}
 function buildWorld(){
-  villageGlow=new THREE.Points(new THREE.BufferGeometry(),new THREE.PointsMaterial({transparent:true,opacity:0}));
+  // bản đồ sử dụng đất
+  const T=LOW?320:512,data=new Uint8Array(T*T*4),col=new Uint8Array(T*T*4);
+  const BASE=[[.20,.36,.13],[.60,.31,.18],[.46,.57,.24],[.40,.44,.19],[.12,.25,.09],[.66,.62,.32]];
+  for(let j=0;j<T;j++)for(let i=0;i<T;i++){const x=(i+.5)/T*WSZ-WSZ/2,z=(j+.5)/T*WSZ-WSZ/2;const d=(Math.abs(x)<60&&Math.abs(z)<55)?slabD(x,z):Math.hypot(x/33,z/27)*30-24;
+    const u=landUse(x,z,d),k=(j*T+i)*4;data[k]=u[0]*40;data[k+1]=u[1]*255;data[k+2]=clamp(u[2],0,1)*255;data[k+3]=255;
+    const b=BASE[u[0]],v=.9+hh(i*.37,j*.91)*.0+ (u[1]-.5)*.16;col[k]=clamp(b[0]*v,0,1)*255;col[k+1]=clamp(b[1]*v,0,1)*255;col[k+2]=clamp(b[2]*v,0,1)*255;col[k+3]=255}
+  const tN=new THREE.DataTexture(data,T,T,THREE.RGBAFormat);tN.magFilter=tN.minFilter=THREE.NearestFilter;tN.needsUpdate=true;
+  const tC=new THREE.DataTexture(col,T,T,THREE.RGBAFormat);tC.magFilter=THREE.LinearFilter;tC.minFilter=THREE.LinearFilter;tC.needsUpdate=true;
+  const tL=new THREE.DataTexture(data,T,T,THREE.RGBAFormat);tL.magFilter=tL.minFilter=THREE.LinearFilter;tL.needsUpdate=true;
+  LU={data,T};
+  // địa hình
+  const seg=LOW?110:170;const g=new THREE.PlaneGeometry(WSZ,WSZ,seg,seg);g.rotateX(-Math.PI/2);
+  const p=g.attributes.position,ad=new Float32Array(p.count);for(let i=0;i<p.count;i++){const x=p.getX(i),z=p.getZ(i),d=(Math.abs(x)<60&&Math.abs(z)<55)?slabD(x,z):Math.hypot(x/33,z/27)*30-24;ad[i]=d;p.setY(i,TH(x,z,d))}g.setAttribute('aD',new THREE.BufferAttribute(ad,1));g.computeVertexNormals();
+  const m=new THREE.MeshStandardMaterial({roughness:.97});
+  m.onBeforeCompile=sh=>{
+    Object.assign(sh.uniforms,U);sh.uniforms.uLU={value:tN};sh.uniforms.uLL={value:tL};sh.uniforms.uLC={value:tC};sh.uniforms.uDry=GU.uDry;
+    sh.vertexShader='attribute float aD;varying float vD;varying vec3 vW;\n'+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvW=(modelMatrix*vec4(transformed,1.)).xyz;vD=aD;');
+    sh.fragmentShader='uniform sampler2D uLU,uLL,uLC;uniform float uRainV,uDry;varying vec3 vW;varying float vD;\n'+NOISE_GLSL+sh.fragmentShader.replace('vec4 diffuseColor = vec4( diffuse, opacity );',`
+      vec2 uv=vW.xz/${WSZ}.+.5;vec4 t=texture2D(uLU,uv);vec4 tl=texture2D(uLL,uv);
+      float ty=floor(t.r*255./40.+.5);float ang=t.g*3.1416;vec2 dir=vec2(cos(ang),sin(ang));
+      float n=fbm(vW.xz*.09),n2=vn(vW.xz*1.1),row=sin(dot(vW.xz,dir)*3.6);
+      vec3 c=texture2D(uLC,uv).rgb*(.86+.26*n);
+      float rw=smoothstep(.55,.95,sin(dot(vW.xz,dir)*9.));
+      if(ty<.5)c=mix(c,vec3(.48,.25,.15),rw*.45);
+      else if(ty<1.5)c*=.92+.1*sin(dot(vW.xz,dir)*12.);
+      else if(ty<3.5&&ty>2.5)c=mix(c,vec3(.50,.31,.18),rw*.5);
+      else if(ty>4.5)c*=.94+.08*sin(dot(vW.xz,dir)*9.);
+      float lawn=1.-smoothstep(5.,13.,vD);
+      c=mix(c,mix(vec3(.40,.52,.21),vec3(.52,.60,.28),n),lawn);
+      c*=.86+.22*n2;
+      float road=smoothstep(.07,.035,tl.b)*(1.-lawn);
+      c=mix(c,vec3(.74,.46,.30)*(.9+.15*n2),road);
+      c=mix(c,vec3(.24,.30,.36),smoothstep(-5.2,-6.,vW.y)*.6);
+      c=mix(c,c*.72,uRainV*.45);c=mix(c,c*vec3(1.15,1.04,.68)+.03,uDry*.35);
+      vec4 diffuseColor=vec4(pow(c,vec3(2.2)),1.);`);
+  };
+  const terr=new THREE.Mesh(g,m);terr.receiveShadow=true;scene.add(terr);
+  // hồ trong thung lũng
+  const lk=new THREE.Mesh(new THREE.PlaneGeometry(WSZ,WSZ),new THREE.MeshStandardMaterial({color:'#4E8FA3',roughness:.15,metalness:.2,transparent:true,opacity:.92}));
+  lk.rotation.x=-Math.PI/2;lk.position.y=LAKE;scene.add(lk);
+  // rừng & cây bóng mát
+  const N=LOW?1000:2400,arr=[];let tries=0;
+  while(arr.length<N&&tries<N*12){tries++;const x=(rnd()-.5)*WSZ*.94,z=(rnd()-.5)*WSZ*.94;const d=Math.hypot(x/33,z/27)*30-24;if(d<14)continue;
+    const i=Math.floor((x/WSZ+.5)*LU.T),j=Math.floor((z/WSZ+.5)*LU.T),ty=LU.data[(j*LU.T+i)*4]/40,ed=LU.data[(j*LU.T+i)*4+2]/255;
+    const pr=ty===4?.95:ty===0?.03:ty===2?.05:ty===3?.02:0;if(ed<.09||rnd()>pr)continue;
+    const y=TH(x,z);if(y<LAKE+.3)continue;arr.push({x,z,y,s:1.1+rnd()*1.1+Math.max(0,d)*.004,r:rnd()*6.28})}
+  const tm=new THREE.MeshStandardMaterial({vertexColors:true,flatShading:true,roughness:.9});
+  const geos=[treeGeo(0,11),treeGeo(0,23)];
+  [0,1].forEach(h=>{const a=arr.filter((_,i)=>i%2===h);const im=new THREE.InstancedMesh(geos[h],tm,a.length);const M=new THREE.Matrix4(),Q=new THREE.Quaternion(),S=new THREE.Vector3(),P=new THREE.Vector3(),C=new THREE.Color();
+    a.forEach((o,i)=>{Q.setFromAxisAngle(new THREE.Vector3(0,1,0),o.r);S.set(o.s,o.s*(.9+rnd()*.5),o.s);P.set(o.x,o.y-.1,o.z);M.compose(P,Q,S);im.setMatrixAt(i,M);const t=rnd();C.setRGB(.7+t*.35,.75+t*.25,.6+rnd()*.25);im.setColorAt(i,C)});
+    im.instanceMatrix.needsUpdate=true;im.instanceColor.needsUpdate=true;scene.add(im)});
+  // làng
+  const walls=[],roofs=[],glow=[];const RC=['#B5452E','#C2623A','#3E7C8C','#8C4A32','#5D6E7A'];
+  for(let v=0;v<7;v++){let cx,cz,d,k=0;do{const a=rnd()*6.28,R=40+rnd()*120;cx=Math.cos(a)*R;cz=Math.sin(a)*R*.8;d=Math.hypot(cx/33,cz/27)*30-24;k++}while((d<22||TH(cx,cz)<LAKE+1)&&k<30);
+    const n=8+Math.floor(rnd()*9),ra=rnd()*3;
+    for(let i=0;i<n;i++){const a=ra+i*.55+rnd()*.3,R=2+i*1.1+rnd()*2;const x=cx+Math.cos(a)*R,z=cz+Math.sin(a)*R;const y=TH(x,z);if(y<LAKE+.3)continue;const s=.8+rnd()*.6;
+      walls.push({x,z,y,s,r:a});roofs.push({x,z,y,s,r:a,c:RC[Math.floor(rnd()*RC.length)]});glow.push(x,y+.7*s,z)}}
+  const wg=new THREE.BoxGeometry(1.6,1,1.2);wg.translate(0,.5,0);const rg=new THREE.ConeGeometry(1.25,.7,4);rg.rotateY(Math.PI/4);rg.scale(1,1,.78);rg.translate(0,1.33,0);
+  const wm=new THREE.InstancedMesh(wg,new THREE.MeshStandardMaterial({color:'#EDE6D6',roughness:.8}),walls.length),rm=new THREE.InstancedMesh(rg,new THREE.MeshStandardMaterial({roughness:.7,flatShading:true}),roofs.length);
+  const M=new THREE.Matrix4(),Q=new THREE.Quaternion(),S=new THREE.Vector3(),P=new THREE.Vector3(),C=new THREE.Color();
+  walls.forEach((o,i)=>{Q.setFromAxisAngle(new THREE.Vector3(0,1,0),o.r);S.setScalar(o.s);P.set(o.x,o.y-.05,o.z);M.compose(P,Q,S);wm.setMatrixAt(i,M);rm.setMatrixAt(i,M);rm.setColorAt(i,C.set(roofs[i].c))});
+  wm.castShadow=rm.castShadow=true;scene.add(wm,rm);
+  const gg=new THREE.BufferGeometry();gg.setAttribute('position',new THREE.Float32BufferAttribute(glow,3));
+  villageGlow=new THREE.Points(gg,new THREE.PointsMaterial({color:'#FFC870',size:2.2,map:GLOW||glowTex(),transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,opacity:0}));scene.add(villageGlow);
   // bầu trời
   sky=new THREE.Mesh(new THREE.SphereGeometry(1100,32,16),new THREE.ShaderMaterial({side:THREE.BackSide,depthWrite:false,depthTest:false,uniforms:{uTop:{value:new THREE.Color()},uHor:{value:new THREE.Color()},uSun:{value:new THREE.Color()},uSD:{value:new THREE.Vector3(0,1,0)},uSK:{value:1}},
     vertexShader:'varying vec3 vD;void main(){vD=position;vec4 p=projectionMatrix*modelViewMatrix*vec4(position,1.);gl_Position=p.xyww;}',
@@ -2479,14 +2597,16 @@ function buildWorld(){
       #include <tonemapping_fragment>
       #include <encodings_fragment>
     }`}));
-  sky.renderOrder=-10;sky.frustumCulled=false;sky.visible=false;scene.add(sky);
+  sky.renderOrder=-10;sky.frustumCulled=false;scene.add(sky);
   const sp=[];for(let i=0;i<700;i++){const a=rnd()*6.283,e=.08+rnd()*1.4,R=1000;sp.push(Math.cos(a)*Math.cos(e)*R,Math.sin(e)*R,Math.sin(a)*Math.cos(e)*R)}
   const sg=new THREE.BufferGeometry();sg.setAttribute('position',new THREE.Float32BufferAttribute(sp,3));
-  stars=new THREE.Points(sg,new THREE.PointsMaterial({color:'#FFFFFF',size:2,sizeAttenuation:false,transparent:true,opacity:0,depthWrite:false,fog:false}));stars.renderOrder=-9;stars.visible=false;scene.add(stars);
+  stars=new THREE.Points(sg,new THREE.PointsMaterial({color:'#FFFFFF',size:2,sizeAttenuation:false,transparent:true,opacity:0,depthWrite:false,fog:false}));stars.renderOrder=-9;scene.add(stars);
   // sương mù sát mặt đất
   const mc=document.createElement('canvas');mc.width=mc.height=128;const mx=mc.getContext('2d');
   for(let i=0;i<26;i++){const x=20+Math.random()*88,y=40+Math.random()*48,r=18+Math.random()*26;const gr=mx.createRadialGradient(x,y,0,x,y,r);gr.addColorStop(0,'rgba(255,255,255,.22)');gr.addColorStop(1,'rgba(255,255,255,0)');mx.fillStyle=gr;mx.fillRect(0,0,128,128)}
   const mt=new THREE.CanvasTexture(mc);
+  for(let i=0;i<(LOW?10:18);i++){const s=new THREE.Sprite(new THREE.SpriteMaterial({map:mt,transparent:true,depthWrite:false,opacity:0,color:'#F2F3EE'}));const a=rnd()*6.28,R=8+rnd()*42;
+    s.position.set(Math.cos(a)*R,-1+rnd()*3.5,Math.sin(a)*R*.8);s.scale.set(48+rnd()*30,14+rnd()*8,1);s.userData={a,R,sp:(rnd()-.5)*.02,o:.6+rnd()*.4};s.renderOrder=8;scene.add(s);mist.push(s)}
 }
 const _t1=new THREE.Color(),_t2=new THREE.Color();
 function updWorld(bg){
@@ -2517,7 +2637,9 @@ function updWorld(bg){
     if(on){rs.setProperty('--clh',Math.round(r.height)+'px');rs.setProperty('--clx',Math.round(r.right)+'px')}else{rs.removeProperty('--clh');rs.removeProperty('--clx')}
     b.classList.toggle('clx',on)}
   if(cl){new ResizeObserver(fit).observe(cl);addEventListener('resize',fit);fit()}
+  const lg=document.querySelector('.log');if(lg)new ResizeObserver(()=>{const h=lg.getBoundingClientRect().height;if(h>0)rs.setProperty('--lgh',Math.round(h)+'px')}).observe(lg);
 })();
 </script>
+<script src="app/man-hinh.js"></script>
 </body>
 </html>
