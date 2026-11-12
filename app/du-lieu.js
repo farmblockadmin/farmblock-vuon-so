@@ -1,7 +1,7 @@
 /* Vườn số Ia Ko · lớp dữ liệu
    Chạy trên dashboard.farmblock.vn (cùng phiên đăng nhập): đọc thẳng /api/*.
    Chạy riêng (github.io): thử cầu trên máy (live.json), không có thì dùng dữ liệu mẫu
-   đúng cấu trúc API. Dữ liệu mẫu chỉ có số đo cảm biến; nhật ký, kho, hồ sơ chỉ hiện khi đăng nhập. */
+   đúng cấu trúc API. Nhật ký, kho, thuốc, hồ sơ mẫu nằm ở app/du-lieu-mau.js, luôn ghi rõ là mẫu. */
 (function () {
   'use strict';
   const METRICS = ['moisture', 'temperature', 'ph', 'ec', 'nitrogen', 'phosphorus', 'potassium'];
@@ -223,6 +223,7 @@
     canWrite() { return this.mode === 'api' && ['admin', 'expert', 'quan_tri', 'chuyen_gia'].includes(String(this.me?.user?.role || '').toLowerCase()) },
     isStaff() { return this.mode !== 'api' || !this.me || /admin|expert|quan|chuyen/i.test(String(this.me?.user?.role || '')) }
   };
+  VS.demo = DEMO; VS._h = { H, rainAt, irrigAt, vnDate, day }; // cho app/du-lieu-mau.js thêm nhật ký, kho, thuốc, hồ sơ mẫu
   VS.ready = VS.init();
   window.VS = VS;
 })();

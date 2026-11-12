@@ -56,10 +56,10 @@
     { id: 'hoso', name: 'Hồ sơ vườn', short: 'Hồ sơ', icon: 'u-doc' },
     { id: 'thietbi', name: 'Thiết bị & dữ liệu', short: 'Thiết bị', icon: 'i-iot', staff: true }
   ];
-  const ST = { scr: 'saban', range: '7d', metric: 'moisture', crange: '7d', sel: null };
+  const ST = { scr: 'saban', range: '7d', metric: 'moisture', crange: '7d', sel: null, std: 'farm' };
   function srcNote() {
     if (VS.mode === 'api') return '';
-    return `<div class="src"><b>${VS.mode === 'bridge' ? 'Số thật qua cầu trên máy' : 'Dữ liệu mẫu'}</b><span>${VS.mode === 'bridge' ? 'Chỉ số đo cảm biến. Nhật ký, kho, hồ sơ cần mở Vườn số trên dashboard.farmblock.vn.' : 'Số đo giả lập theo quy luật thời tiết Ia Ko tháng 11 để xem thử giao diện. Khi mở trên dashboard.farmblock.vn, màn này đọc số thật.'}</span></div>`;
+    return `<div class="src"><b>${VS.mode === 'bridge' ? 'Số thật qua cầu trên máy' : 'Dữ liệu mẫu'}</b><span>${VS.mode === 'bridge' ? 'Chỉ số đo cảm biến là thật. Nhật ký, kho, thuốc, hồ sơ đang là dữ liệu mẫu; số thật cần mở Vườn số trên dashboard.farmblock.vn.' : 'Số đo giả lập theo quy luật thời tiết Ia Ko tháng 11. Nhật ký, kho, thuốc, hồ sơ là ví dụ minh hoạ đúng cấu trúc dashboard, không phải việc thật ở vườn. Khi mở trên dashboard.farmblock.vn, các màn đọc số thật.'}</span></div>`;
   }
   const locked = (title, what) => `<div class="lock"><svg aria-hidden="true"><use href="#u-lock"/></svg><div><b>${esc(title)}</b><p>${esc(what)}</p><a class="btn" href="https://dashboard.farmblock.vn/" target="_blank" rel="noopener">Mở dashboard để đăng nhập</a></div></div>`;
   const card = (title, body, opts = {}) => `<section class="cd ${opts.cls || ''}"${opts.style ? ` style="${opts.style}"` : ''}>${title ? `<header><h3>${title}</h3>${opts.side || ''}</header>` : ''}${body}</section>`;
@@ -187,52 +187,73 @@
   }
 
   /* ---------- CANH TÁC ---------- */
+  const sampleTag = () => VS.mode === 'api' ? '' : '<span class="ch yellow">Dữ liệu mẫu</span>';
+  const vnd = v => v == null ? '–' : fi(v) + ' đ';
   async function scrCanhTac(el) {
-    if (VS.mode !== 'api') {
-      el.innerHTML = head('Canh tác', 'Việc hôm nay, nhật ký tại vườn, phân thuốc, kho vật tư.') + srcNote() +
-        `<div class="g2">` + card('Việc hôm nay', locked('Khuyến nghị việc trong ngày', 'Lõi AI đối chiếu ngưỡng theo mùa, nhật ký và thời tiết để gợi ý việc cho từng khu. Chuyên gia xác minh trước khi giao.')) +
-        card('Nhật ký canh tác', locked('Nhật ký tại vườn 30 ngày', 'Việc đội vườn ghi bằng giọng nói kèm ảnh, video; số công; dòng "Cần xem" do AI rà soát. Nhật ký chỉ hiện sau khi đội vận hành rà soát.')) + `</div><div class="g2">` +
-        card('Thuốc bảo vệ thực vật', locked('Đối chiếu danh mục', 'Thuốc của vườn so với Danh mục được phép, danh sách cấm tại Việt Nam và giới hạn dư lượng EU. Hoạt chất cấm không chốt được nhật ký.')) +
-        card('Kho vật tư', locked('Kho và phiếu nhập', 'Mặt hàng còn, hết, sắp hết hạn; phiếu nhập kèm ảnh hoá đơn; nguyên tắc mua đến đâu dùng đến đó.')) + `</div>` +
-        await weekGrid(true);
-      return;
-    }
-    const [ov, ops, logs, stock] = await Promise.all([VS.get('overview'), VS.get('operations').catch(() => null), VS.get('care-logs', { recent: 7 }).catch(() => null), VS.get('stock').catch(() => null)]);
+    const [ov, ops, logs, stock, rec, ppp] = await Promise.all([VS.get('overview'), VS.get('operations').catch(() => null), VS.get('care-logs', { recent: 30 }).catch(() => null), VS.get('stock').catch(() => null), VS.get('stock/receipts').catch(() => null), VS.get('ppp').catch(() => null)]);
+    const T = sampleTag();
     const adv = ov.advisory?.latest?.result, next = adv?.ops?.next || [];
-    const todo = next.length ? `<ol class="todo">${next.map(x => `<li><span>${esc(x.text)}</span>${(x.zones || []).map(z => chip('', z)).join('')}${chip(x.when === 'today' ? 'yellow' : '', x.when === 'today' ? 'Hôm nay' : 'Trong tuần')}</li>`).join('')}</ol><p class="mt">Gợi ý của AI${adv.confidence ? ', tin cậy ' + esc(adv.confidence) : ''}. Chuyên gia xác minh trước khi giao việc.</p>` : '<p class="mt">Chưa có khuyến nghị hôm nay.</p>';
-    const items = logs?.items || [];
-    const byDay = {}; items.forEach(it => { const d = String(it.at_local || it.at || '').slice(0, 10); (byDay[d] = byDay[d] || []).push(it) });
-    const logHtml = Object.keys(byDay).sort().reverse().map(d => `<div class="lday"><h4>${dow(d)} ${dm(d)} <small>${byDay[d].length} việc · ${f(byDay[d].reduce((a, x) => a + (+x.work_days || 0), 0), 1)} công</small></h4>${byDay[d].map(it => `<article><div>${(it.parts || []).map(p => chip('', p.task || p.label)).join('') || chip('', it.tasks || 'Việc')}</div><p>${esc(it.public_text || it.description || '')}</p><footer>${hm(it.at_local || it.at)} · ${f(it.work_days, 1)} công${it.media?.length ? ` · ${it.media.length} ảnh/video` : ''}</footer>${it.media?.length ? `<div class="th">${it.media.slice(0, 4).map(m => `<img loading="lazy" alt="" src="/api/media/thumb?w=160&u=${encodeURIComponent(m.url)}">`).join('')}</div>` : ''}</article>`).join('')}</div>`).join('') || '<p class="mt">Chưa có nhật ký trong 7 ngày.</p>';
+    const todo = next.length ? `<ol class="todo">${next.map(x => `<li><span>${esc(x.text)}</span>${(x.zones || []).map(z => chip('', 'Khu ' + z)).join('')}${chip(x.when === 'today' ? 'yellow' : '', x.when === 'today' ? 'Hôm nay' : 'Trong tuần')}</li>`).join('')}</ol><p class="mt">Gợi ý của AI${adv.confidence && adv.confidence !== 'mẫu' ? ', tin cậy ' + esc(adv.confidence) : ''}. Chuyên gia xác minh trước khi giao việc.</p>` : '<p class="mt">Chưa có khuyến nghị hôm nay.</p>';
+    const items = logs?.items || [], cut = (() => { const d = new Date(Date.now() + 7 * 36e5 - 6 * 864e5); return d.toISOString().slice(0, 10) })();
+    const byDay = {}; items.filter(it => String(it.at_local || it.at || '').slice(0, 10) >= cut).forEach(it => { const d = String(it.at_local || it.at || '').slice(0, 10); (byDay[d] = byDay[d] || []).push(it) });
+    const logHtml = Object.keys(byDay).sort().reverse().map(d => `<div class="lday"><h4>${dow(d)} ${dm(d)} <small>${byDay[d].reduce((a, x) => a + (x.parts?.length || 1), 0)} việc · ${f(byDay[d].reduce((a, x) => a + (+x.work_days || 0), 0), 1)} công</small></h4>${byDay[d].map(it => `<article><div>${(it.parts || []).map(p => chip('', p.task || p.label)).join('') || chip('', it.tasks || 'Việc')}</div>${(it.parts && it.parts.length > 1 ? it.parts.map(p => `<p>${esc(p.text)} <small class="mt">· ${f(p.work_days, 1)} công</small></p>`).join('') : `<p>${esc(it.public_text || it.description || '')}</p>`)}<footer>Ghi bởi ${esc(it.by_role || it.by || '')} lúc ${hm(it.created_local || it.at_local || it.at)} · ${f(it.work_days, 1)} công${it.media?.length ? ` · ${it.media.length} ảnh/video` : ' · chưa có ảnh'}</footer>${it.media?.length ? `<div class="th">${it.media.slice(0, 4).map(m => `<img loading="lazy" alt="" src="${esc(m.url)}">`).join('')}</div>` : ''}</article>`).join('')}</div>`).join('') || '<p class="mt">Chưa có nhật ký trong 7 ngày.</p>';
+    const l30 = items.length, w30 = items.reduce((a, x) => a + (+x.work_days || 0), 0);
     const cats = ops?.categories || [], mon = ops?.monthly || [];
-    const rows = stock?.rows || [];
-    el.innerHTML = head('Canh tác', `${fi(ops?.total_ops)} công việc · ${f(ops?.total_work_days, 0)} công từ ${dm(ops?.first_at)}`) +
-      `<div class="g2">` + card('Việc hôm nay', todo) + card('Công lao động theo tháng', mon.length ? barChart({ labels: mon.map(m => String(m.month).slice(5) + '/' + String(m.month).slice(2, 4)), groups: [{ name: 'Công', v: mon.map(m => m.work_days), c: 'var(--br)', unit: 'công' }], h: 140 }) + `<div class="cats">${cats.map(c => `<span>${esc(c.name)} <b>${fi(c.count)}</b></span>`).join('')}</div>` : '<p class="mt">Chưa có.</p>') + `</div>` +
-      await weekGrid(false) +
-      `<div class="g2">` + card('Nhật ký 7 ngày', `<div class="logs">${logHtml}</div>`, { side: `<a class="lnk" href="https://dashboard.farmblock.vn/#/operations" target="_blank" rel="noopener">Bổ sung phân, thuốc</a>` }) +
-      card('Kho vật tư', rows.length ? `<div class="tw"><table class="tb"><thead><tr><th>Mặt hàng</th><th>Trạng thái</th><th>Còn</th><th>Hạn gần nhất</th></tr></thead><tbody>${rows.map(r => `<tr><th>${esc(r.name)}</th><td>${chip(r.state === 'out' ? 'red' : r.expired ? 'red' : r.soon ? 'yellow' : 'ok', r.state === 'out' ? 'Hết' : 'Còn')}</td><td>${(r.qty || []).map(q => fi(q.qty) + ' ' + esc(q.unit)).join(', ')}</td><td>${dm(r.expiry)}</td></tr>`).join('')}</tbody></table></div>` : '<p class="mt">Kho trống.</p>') + `</div>`;
+    const rows = (stock?.rows || []).filter(r => !r.unnamed);
+    const kpi = (l, v, sub, cls) => `<div class="kt ${cls || ''}"><span>${l}</span><b>${v}</b><em>${sub}</em></div>`;
+    const sk = { in: rows.filter(r => r.state !== 'out').length, out: rows.filter(r => r.state === 'out').length, exp: rows.filter(r => r.expired).length, read: (stock?.rows || []).filter(r => r.read_state === 'pending').length };
+    const kinds = [...new Set(rows.map(r => r.kind || 'Khác'))];
+    const stockHtml = rows.length ? `<div class="kts four">${kpi('Đang còn', sk.in + ' loại', 'mặt hàng')}${kpi('Đã hết', sk.out + ' loại', 'cần mua thêm', sk.out ? 'yellow' : '')}${kpi('Có lô hết hạn', sk.exp + ' loại', 'không dùng nữa', sk.exp ? 'red' : '')}${kpi('Chờ đọc ảnh', sk.read + ' phiếu', 'AI đọc hoá đơn', sk.read ? 'device' : '')}</div>
+      <div class="tw"><table class="tb txt"><thead><tr><th>Mặt hàng</th><th>Trạng thái</th><th>Còn</th><th>Nhập gần nhất</th><th>Hạn dùng gần nhất</th></tr></thead><tbody>${kinds.map(k => `<tr class="grp"><th colspan="5">${esc(k)}</th></tr>` + rows.filter(r => (r.kind || 'Khác') === k).map(r => `<tr><th>${esc(r.name)}</th><td>${r.state === 'out' ? chip('red', 'Hết') : r.expired ? chip('red', 'Có lô hết hạn') : r.soon ? chip('yellow', 'Sắp hết hạn') : chip('ok', 'Còn')}</td><td>${(r.qty || []).map(q => fi(q.qty) + ' ' + esc(q.unit)).join(', ') || '–'}</td><td>${dm(r.last_in)}</td><td>${r.expiry ? dm(r.expiry) + '/' + String(r.expiry).slice(2, 4) : '–'}</td></tr>`).join('')).join('')}</tbody></table></div>` : '<p class="mt">Kho trống.</p>';
+    const recs = rec?.recent || [];
+    const recHtml = recs.length ? `<div class="tw"><table class="tb txt r4"><thead><tr><th>Ngày</th><th>Hàng</th><th>Nơi mua</th><th>Tiền</th><th>Người ghi</th></tr></thead><tbody>${recs.map(r => `<tr><th>${dm(r.work_date)}</th><td>${esc(r.items_text || '')}${r.status === 'pending' ? ' ' + chip('device', 'Chờ đọc') : ''}</td><td>${esc(r.supplier || '')}</td><td>${vnd(r.amount)}</td><td>${esc(r.author || '')}</td></tr>`).join('')}</tbody></table></div>` : '<p class="mt">Chưa có phiếu nhập.</p>';
+    const used = Array.isArray(ppp?.used) ? ppp.used : [], lists = ppp?.lists || [];
+    const LVC = { red: 'red', yellow: 'yellow' };
+    const pppHtml = ppp ? `<h4 class="h4">Thuốc của vườn (${used.length})</h4>${used.length ? `<ul class="pu">${used.map(u => `<li><b>${esc(u.name)}</b><span>${esc(u.active || '')}${u.zones?.length ? ' · khu ' + u.zones.map(esc).join(', ') : ''}${u.last ? ' · lần gần nhất ' + dm(u.last) : ''}</span>${ppp.registry?.total ? chip('ok', 'Có trong danh mục') : chip('yellow', 'Chưa đối chiếu')}</li>`).join('')}</ul>` : '<p class="mt">Chưa dùng thuốc nào.</p>'}
+      <h4 class="h4">Danh mục được phép ${ppp.registry?.total ? chip('ok', fi(ppp.registry.total) + ' tên thương phẩm') : chip('yellow', 'Chưa nạp')}</h4><p class="mt">${esc(ppp.legal_basis?.current || '')}. Khi nạp danh mục, nhật ký phun chỉ chốt được thuốc có đăng ký trên cà phê.</p>
+      <h4 class="h4">Danh sách đối chiếu</h4><div class="pl2">${lists.map(l => `<div><header>${chip(LVC[l.level] || '', l.label)}<small>${l.block ? 'chặn chốt nhật ký' : 'chỉ ghi chú'}</small></header><p>${(l.items || []).map(i => esc(i.name)).join(', ')}</p><small class="mt">${esc(l.basis || '')} · cần đối chiếu bản gốc</small></div>`).join('')}</div>` : '<p class="mt">Chưa tải được.</p>';
+    el.innerHTML = head('Canh tác', ops ? `${fi(ops.total_ops)} công việc · ${f(ops.total_work_days, 0)} công từ ${dm(ops.first_at)}` : 'Việc hôm nay, nhật ký tại vườn, phân thuốc, kho vật tư.') + srcNote() +
+      `<div class="g2">` + card('Việc hôm nay', todo, { side: T }) + card('Công lao động theo tháng', mon.length ? barChart({ labels: mon.map(m => String(m.month).slice(5) + '/' + String(m.month).slice(2, 4)), groups: [{ name: 'Công', v: mon.map(m => m.work_days), c: 'var(--br)', unit: 'công' }], h: 140 }) + `<h4 class="h4">Số lượt theo nhóm việc</h4><div class="cats">${cats.map(c => `<span>${esc(c.name)} <b>${fi(c.count)}</b></span>`).join('')}</div>` : '<p class="mt">Chưa có.</p>', { side: T }) + `</div>` +
+      await weekGrid(items) +
+      `<div class="g2">` + card('Nhật ký theo ngày · 7 ngày', `<p class="mt" style="margin:0 0 8px">30 ngày qua: ${fi(l30)} ngày có ghi, ${f(w30, 1)} công.</p><div class="logs">${logHtml}</div>`, { side: T || `<a class="lnk" href="https://dashboard.farmblock.vn/#/operations" target="_blank" rel="noopener">Bổ sung phân, thuốc</a>` }) +
+      card('Thuốc bảo vệ thực vật', pppHtml, { side: T }) + `</div>` +
+      `<div class="g2">` + card('Kho vật tư', stockHtml, { side: T }) + card('Phiếu nhập gần đây', recHtml, { side: T }) + `</div>`;
   }
-  async function weekGrid(demo) { // lưới 7 ngày: mưa, ẩm đất, việc
+  async function weekGrid(items) { // lưới 7 ngày: mưa, ẩm đất, việc
     const c = await VS.get('climate', { range: '7d' }), s = await VS.get('soil', { range: '7d' });
     const days = (c.daily || []).slice(-7), t = s.series?.t || [], ser = s.series?.series?.moisture || {};
     const mByDay = days.map(d => { const v = []; t.forEach((x, i) => { if (x.slice(0, 10) === d.date) Object.values(ser).forEach(a => a[i] != null && v.push(a[i])) }); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null });
-    return card('Mưa, độ ẩm đất và công việc · 7 ngày', `<div class="wk">${days.map((d, i) => `<div><span>${dow(d.date)}<small>${dm(d.date)}</small></span><b class="rn" style="--h:${Math.min(1, d.rain_mm / 15)}">${f(d.rain_mm)}<small>mm</small></b><b class="ms" style="--m:${mByDay[i] == null ? 0 : Math.min(1, Math.max(0, (mByDay[i] - 15) / 30))}">${f(mByDay[i])}<small>%</small></b><em>${demo ? '–' : ''}</em></div>`).join('')}</div><p class="mt">Hàng 1: mưa mỗi ngày. Hàng 2: độ ẩm đất trung bình. ${demo ? 'Hàng việc cần đăng nhập.' : ''}</p>`);
+    const work = d => { const its = (items || []).filter(it => String(it.at_local || it.at || '').slice(0, 10) === d); if (!its.length) return '–'; const ts = [...new Set(its.flatMap(it => (it.parts || []).map(p => p.task)))]; return ts.slice(0, 3).map(esc).join('<br>') };
+    return card('Mưa, độ ẩm đất và công việc · 7 ngày', `<div class="wk">${days.map((d, i) => `<div><span>${dow(d.date)}<small>${dm(d.date)}</small></span><b class="rn" style="--h:${Math.min(1, d.rain_mm / 15)}">${f(d.rain_mm)}<small>mm</small></b><b class="ms" style="--m:${mByDay[i] == null ? 0 : Math.min(1, Math.max(0, (mByDay[i] - 15) / 30))}">${f(mByDay[i])}<small>%</small></b><em>${work(d.date)}</em></div>`).join('')}</div><p class="mt">Hàng 1: mưa mỗi ngày. Hàng 2: độ ẩm đất trung bình. Hàng 3: việc đã ghi trong nhật ký.</p>`, { side: sampleTag() });
   }
 
+  const DST = { done: ['ok', 'Đã có'], doing: ['yellow', 'Đang làm'], missing: ['red', 'Chưa có'], na: ['', 'Chưa áp dụng'] };
+  function dossierHTML(stds, det) {
+    const cur = stds.find(x => x.id === ST.std) || stds[0], c = det?.counts || cur.counts || {}, tot = det?.total || cur.total || 0;
+    const bar = tot ? `<div class="pg4">${['done', 'doing', 'missing', 'na'].map(k => `<i class="${k}" style="width:${((c[k] || 0) / tot * 100).toFixed(1)}%"></i>`).join('')}</div><div class="pg4l">${['done', 'doing', 'missing', 'na'].map(k => `<span class="${k}"><i></i>${DST[k][1]} <b>${fi(c[k] || 0)}</b></span>`).join('')}<span>Tổng <b>${fi(tot)}</b> mục</span></div>` : '';
+    const groups = det?.groups || [];
+    const shown = groups.reduce((a, g) => a + (g.items || []).length, 0);
+    const list = groups.length ? groups.map(g => `<div class="dsg"><h4>${esc(g.name)}</h4><ul>${(g.items || []).map(it => { const [cl, lb] = DST[it.status] || ['', it.status]; return `<li><code>${esc(it.code)}</code><div><b>${esc(it.title)}</b>${it.basis ? `<small>${esc(it.basis)}</small>` : ''}${it.evidence ? `<small>Bằng chứng: ${esc(it.evidence)}</small>` : ''}</div>${it.auto ? chip('', 'tự động') : chip('', 'cần đối chiếu')}${chip(cl, lb)}</li>` }).join('')}</ul></div>`).join('') : '';
+    return seg('std', stds.map(x => [x.id, x.short || x.title]), cur.id) + `<p class="mt" style="margin:10px 0 6px"><b>${esc(cur.title)}</b></p>` + bar +
+      (list ? `<div class="dss">${list}</div>${VS.mode !== 'api' && shown < tot ? `<p class="mt">Mẫu hiện ${shown} mục tiêu biểu trong ${tot} mục.</p>` : ''}` : `<a class="lnk" href="https://dashboard.farmblock.vn/#/profile" target="_blank" rel="noopener">Mở checklist trên dashboard</a>`);
+  }
   /* ---------- HỒ SƠ VƯỜN ---------- */
   async function scrHoSo(el) {
     const ov = await VS.get('overview'), farm = ov.farm || {}, st = farm.stage || {}, G = window.__vsGeo;
     const steps = (st.steps || []).map(s => `<li class="${s.state}"><i></i><span>${esc(s.label)}</span></li>`).join('');
-    const zones = G.zones.filter(z => z.id.length <= 2).map(z => `<tr><th>Khu ${z.id}</th><td>${f(z.ha, 2)} ha</td><td>Cà phê Robusta ghép</td></tr>`).join('');
+    const zones = G.zones.filter(z => z.id.length <= 2 && z.id !== 'HQ').map(z => `<tr><th>Khu ${z.id}</th><td>${f(z.ha, 2)} ha</td><td>Cà phê Robusta ghép</td></tr>`).join('');
     const prof = VS.mode === 'api' ? await VS.get('profile').catch(() => null) : null;
-    const dossier = VS.mode === 'api' ? await VS.get('dossier').catch(() => null) : null;
+    const dossier = await VS.get('dossier').catch(() => null);
+    const stds = dossier?.standards || []; if (stds.length && !stds.some(x => x.id === ST.std)) ST.std = stds[0].id;
+    const det = stds.length ? await VS.get('dossier/' + ST.std).catch(() => null) : null;
     el.innerHTML = head('Hồ sơ vườn', 'Thông tin trang trại, giai đoạn cây, phân khu và hồ sơ tiêu chuẩn.') + srcNote() +
       `<div class="g2">` + card('Vườn Ia Ko', kv([['Diện tích', '22 ha'], ['Địa bàn', 'Thôn Cây Xoài, xã Ia Ko, Chư Pưh, Gia Lai'], ['Loại đất', esc(farm.soil || 'Đất đỏ bazan')], ['Phân khu', '8 khu trồng'], ['Cây trồng', 'Cà phê Robusta ghép Thiện Trường, khoảng 2.200 cây/ha'], ['Trồng', 'Tháng 7/2026'], ['Giai đoạn', esc(st.label || '')], ['Thu bói dự kiến', st.first_harvest ? esc(st.first_harvest) : 'Theo hồ sơ kỹ thuật']])) +
       card('Giai đoạn cây', `<ol class="stp">${steps}</ol><div class="pg"><i style="width:${Math.round((st.progress || 0) * 100)}%"></i></div><p class="mt">${esc(st.label || '')}${st.months_to_harvest ? ` · còn ${st.months_to_harvest} tháng đến thu bói` : ''}. KTCB là thời kỳ kiến thiết cơ bản, cây chưa cho quả.</p>`) + `</div>` +
       `<div class="g2">` + card('Phân khu canh tác', `<div class="tw"><table class="tb"><thead><tr><th>Khu</th><th>Diện tích</th><th>Cây trồng</th></tr></thead><tbody>${zones}</tbody></table></div><p class="mt">Diện tích ước theo sơ đồ vùng canh tác, quy về tổng 22 ha.</p>`) +
       card('Thiết bị và hạ tầng', kv([['Điểm đo đất', '9 điểm theo thiết kế'], ['Trạm thời tiết và nước', '1 trạm trung tâm, 2 điểm đo nước'], ['Camera', '22 vị trí, đang lắp dần'], ['Truyền dữ liệu', 'LoRa về trạm IoT, 10 phút một lần'], ['Nước', 'Hồ chứa và hệ tưới gốc'], ['Năng lượng', 'Mái pin mặt trời ở Nhà điều hành'], ['Công trình', 'Nhà điều hành cạnh hồ']])) + `</div>` +
-      card('Hồ sơ tiêu chuẩn', dossier ? `<div class="dos">${(dossier.standards || []).map(s => `<div><b>${esc(s.short || s.title)}</b><span>${esc(s.title)}</span></div>`).join('')}</div><a class="lnk" href="https://dashboard.farmblock.vn/#/profile" target="_blank" rel="noopener">Mở checklist trên dashboard</a>`
-        : locked('Trang trại · EUDR · VietGAP · GLOBALG.A.P.', 'Checklist hồ sơ trang trại (51 mục), EUDR (36), VietGAP (61), GLOBALG.A.P. (33), ranh giới vùng trồng, tải KML/GeoJSON và mã QR từng khu.')) +
+      card('Hồ sơ tiêu chuẩn', stds.length ? dossierHTML(stds, det) : locked('Trang trại · EUDR · VietGAP · GLOBALG.A.P.', 'Checklist hồ sơ trang trại (51 mục), EUDR (36), VietGAP (61), GLOBALG.A.P. (33), ranh giới vùng trồng, tải KML/GeoJSON và mã QR từng khu.'), { side: sampleTag() }) +
       `<div class="links2"><a class="btn" href="https://farmblockadmin.github.io/farmblock-website/cong-nghe.html">Công nghệ Farmblock</a><a class="btn" href="https://farmblockadmin.github.io/farmblock-website/bang-gia.html">Bảng giá</a><a class="btn" href="https://vuonmau.farmblock.vn/ca-phe-mang-yang-1" target="_blank" rel="noopener">Xem vườn Mang Yang</a></div>`;
+    const sg = el.querySelector('[data-seg="std"]'); if (sg) sg.addEventListener('click', e => { const b = e.target.closest('button'); if (b) { ST.std = b.dataset.v; render() } });
   }
 
   /* ---------- THIẾT BỊ & DỮ LIỆU ---------- */
