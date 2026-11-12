@@ -1187,18 +1187,18 @@ function buildGround(){
       vec4 wt=texture2D(uWt,vec2((min(zid,15.)+.5)/16.,.5));
       float wet=wt.r;
       float n=fbm(vW.xz*1.6),n2=vn(vW.xz*9.),n3=vn(vW.xz*22.);
-      vec3 soil=mix(vec3(.62,.42,.26),vec3(.30,.18,.11),wet)*(.78+.38*n)*(.9+.14*n2);
+      vec3 soil=mix(vec3(.66,.36,.23),vec3(.34,.15,.09),wet)*(.78+.38*n)*(.9+.14*n2);
       soil=mix(soil,soil*vec3(.85,.9,.7),smoothstep(.55,.8,n3)*.35);
       float dry=uDry*(1.-wet);
       float cr=smoothstep(.035,0.,abs(vn(vW.xz*3.3)-.5))+smoothstep(.03,0.,abs(vn(vW.xz*7.1+5.)-.5))*.6;
       soil=mix(soil,soil*1.22+vec3(.07,.05,.03),dry*.55);
       soil=mix(soil,soil*.42,clamp(cr,0.,1.)*dry);
-      vec3 road=mix(vec3(.82,.68,.50),vec3(.50,.37,.25),uRoadWet*.75)*(.86+.22*n)*(.94+.12*n2);
+      vec3 road=mix(vec3(.80,.58,.42),vec3(.50,.30,.20),uRoadWet*.75)*(.86+.22*n)*(.94+.12*n2);
       float pud=smoothstep(.56,.68,fbm(vW.xz*.8+3.))*uRoadWet;
       road=mix(road,vec3(.30,.26,.22),pud*.85);
       vec3 grass=mix(vec3(.44,.52,.24),vec3(.29,.44,.17),clamp(uRoadWet*.6+n*.5,0.,1.));
       grass=mix(grass,vec3(.66,.58,.34),uDry*.65)*(.82+.3*n2)*(.92+.16*n3);
-      vec3 bare=mix(vec3(.84,.70,.53),vec3(.50,.35,.23),wet)*(.88+.2*n);
+      vec3 bare=mix(vec3(.76,.50,.35),vec3(.46,.25,.16),wet)*(.88+.2*n);
       float fur=sin(dot(vW.xz,vec2(.31,.95))*26.+n*2.);
       bare*=.9+.1*fur;
       bare=mix(bare,bare*1.12+vec3(.05),uDry*.4);
@@ -1300,54 +1300,31 @@ const lin=c=>{const k=new THREE.Color(c);return[k.r,k.g,k.b]};
 const mixc=(a,b,t)=>[lerp(a[0],b[0],t),lerp(a[1],b[1],t),lerp(a[2],b[2],t)];
 function glowTex(){const c=document.createElement('canvas');c.width=c.height=64;const x=c.getContext('2d');const g=x.createRadialGradient(32,32,0,32,32,32);g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(.25,'rgba(255,255,255,.65)');g.addColorStop(1,'rgba(255,255,255,0)');x.fillStyle=g;x.fillRect(0,0,64,64);const t=new THREE.CanvasTexture(c);return t}
 function blobTex(){const c=document.createElement('canvas');c.width=c.height=64;const x=c.getContext('2d');const g=x.createRadialGradient(32,32,0,32,32,32);g.addColorStop(0,'rgba(0,0,0,.62)');g.addColorStop(.55,'rgba(0,0,0,.28)');g.addColorStop(1,'rgba(0,0,0,0)');x.fillStyle=g;x.fillRect(0,0,64,64);return new THREE.CanvasTexture(c)}
+function basinTex(){const c=document.createElement('canvas');c.width=c.height=64;const x=c.getContext('2d');const g=x.createRadialGradient(32,32,0,32,32,32);g.addColorStop(0,'rgba(58,26,14,.0)');g.addColorStop(.18,'rgba(58,26,14,.55)');g.addColorStop(.72,'rgba(70,32,18,.42)');g.addColorStop(.86,'rgba(150,80,45,.35)');g.addColorStop(1,'rgba(150,80,45,0)');x.fillStyle=g;x.fillRect(0,0,64,64);return new THREE.CanvasTexture(c)}
 function discTex(){const c=document.createElement('canvas');c.width=c.height=128;const x=c.getContext('2d');const g=x.createRadialGradient(64,64,0,64,64,64);g.addColorStop(0,'rgba(255,255,255,.28)');g.addColorStop(.86,'rgba(255,255,255,.12)');g.addColorStop(.94,'rgba(255,255,255,.55)');g.addColorStop(1,'rgba(255,255,255,0)');x.fillStyle=g;x.fillRect(0,0,128,128);return new THREE.CanvasTexture(c)}
 let GLOW;
 
-/* ---------- cây cà phê / cau / cây rừng ---------- */
+/* ---------- cà phê cây con (trồng 7/2026) ---------- */
+// Vườn mới trồng: cây con cao khoảng nửa mét, vài tầng lá đối, chưa có quả. Không vẽ cây cau hay cây đã lớn.
 function coffeeGeo(det){
-  const L0=lin('#0F2E0D'),L1=lin('#2F6A1A'),parts=[];
-  const leaf=(r,x,y,z,sy,s)=>{const g=new THREE.IcosahedronGeometry(r,det);jitter(g,r*.32,s);g.scale(1,sy,1);g.translate(x,y,z);return g};
-  [[.27,0,.38,0,1.15],[.21,.07,.66,-.03,1.05],[.19,-.12,.28,.1,1],[.17,.13,.3,.11,1]].forEach((a,i)=>parts.push(paint(leaf(a[0],a[1],a[2],a[3],a[4],i+1),(x,y)=>mixc(L0,L1,clamp(y/.85,0,1)))));
-  const tr=new THREE.CylinderGeometry(.022,.032,.18,5);tr.translate(0,.09,0);parts.push(paint(tr,()=>lin('#4A3322')));
-  const red=lin('#B3261E'),yel=lin('#C9A227');
-  [[.2,.42,.12],[-.18,.35,.16],[.05,.55,.2],[.24,.62,-.02],[-.06,.22,-.25],[-.24,.5,-.06]].forEach((p,i)=>{const g=new THREE.IcosahedronGeometry(.04,0);g.translate(p[0],p[1],p[2]);parts.push(paint(g,()=>i%3===2?yel:red))});
-  return merge(parts);
-}
-function palmGeo(){
-  const parts=[];
-  const tr=new THREE.CylinderGeometry(.035,.055,3.1,6,8);tr.translate(0,1.55,0);
-  parts.push(paint(tr,(x,y)=>{const b=(Math.sin(y*26)>.6)?.82:1;return mixc(lin('#8C8172'),lin('#B5AD9C'),y/3.1).map(v=>v*b)}));
-  const cs=new THREE.CylinderGeometry(.072,.06,.5,6);cs.translate(0,3.32,0);parts.push(paint(cs,()=>lin('#5E8A2C')));
-  const G0=lin('#1E4211'),G1=lin('#4E7A22');
-  for(let k=0;k<9;k++){
-    const a=k/9*Math.PI*2+Math.sin(k*3.1)*.25,ca=Math.cos(a),sa=Math.sin(a),px=-sa,pz=ca;
-    const len=.78+((k*37)%5)*.05,up=.42+((k*13)%4)*.06;const n=7,pos=[],col=[];
-    for(let i=0;i<=n;i++){const t=i/n,r=t*len,y=3.5+up*t-1.25*t*t,w=.15*Math.sin(Math.PI*Math.min(1,t*1.08))+.015;
-      const cx=ca*r,cz=sa*r;pos.push([cx+px*w,y-.06*t,cz+pz*w],[cx,y+.05,cz],[cx-px*w,y-.06*t,cz-pz*w]);col.push(mixc(G0,G1,t),mixc(G0,G1,t*.8),mixc(G0,G1,t))}
-    const P=[],C=[];
-    const tri=(a,b,c)=>{[a,b,c].forEach(q=>{P.push(...pos[q]);C.push(...col[q])})};
-    for(let i=0;i<n;i++){const o=i*3,q=o+3;tri(o,q,o+1);tri(o+1,q,q+1);tri(o+1,q+1,o+2);tri(o+2,q+1,q+2);
-      tri(o,o+1,q);tri(o+1,q+1,q);tri(o+1,o+2,q+1);tri(o+2,q+2,q+1)}
-    const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(P,3));g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));g.computeVertexNormals();parts.push(g);
-  }
-  return merge(parts);
-}
-function treeGeo(det,s){
-  const A=lin('#0E2A0D'),B=lin('#3A6A1E'),parts=[];
-  const c1=new THREE.IcosahedronGeometry(1,det);jitter(c1,.32,s);c1.scale(1,.86,1);c1.translate(0,1.75,0);
-  const c2=new THREE.IcosahedronGeometry(.7,det);jitter(c2,.3,s+2);c2.translate(.45,2.25,.15);
-  const c3=new THREE.IcosahedronGeometry(.62,det);jitter(c3,.3,s+4);c3.translate(-.5,1.45,-.25);
-  [c1,c2,c3].forEach(g=>parts.push(paint(g,(x,y)=>mixc(A,B,clamp((y-.9)/2.1,0,1)))));
-  const t=new THREE.CylinderGeometry(.07,.12,1.3,6);t.translate(0,.65,0);parts.push(paint(t,()=>lin('#5A4330')));
+  const L0=lin('#0B2A0C'),L1=lin('#2C6418'),parts=[];
+  const st=new THREE.CylinderGeometry(.009,.014,.30,4);st.translate(0,.15,0);parts.push(paint(st,()=>lin('#5C6B2E')));
+  // tầng lá đối, mỗi tầng xoay 90°, lá dưới to hơn và chúc xuống
+  const tiers=[[.07,.115,.0,-.28],[.13,.10,Math.PI/2,-.2],[.19,.085,0,-.08],[.25,.06,Math.PI/2,.12]];
+  tiers.forEach((t,ti)=>{[1,-1].forEach((sd,j)=>{
+    const g=new THREE.SphereGeometry(1,det?7:5,det?4:3);g.scale(t[1],.008,t[1]*.42);
+    g.translate(t[1]*.95,0,0);g.rotateZ(t[3]);g.rotateY(t[2]+(sd<0?Math.PI:0)+(ti*.35));g.translate(0,t[0],0);
+    parts.push(paint(g,(x,y,z)=>mixc(L0,L1,clamp(.35+ti*.18+Math.abs(x+z)*1.5,0,1))))})});
+  const tip=new THREE.SphereGeometry(.028,5,3);tip.scale(1,1.6,1);tip.translate(0,.31,0);parts.push(paint(tip,()=>lin('#6FA83A')));
   return merge(parts);
 }
 
 const DV=[];// thiết bị (toạ độ cảnh)
-let coffeeMesh,palmMesh,treeMeshes=[],blobMesh,coffeeByZone=[];
+let coffeeMesh,basinMesh,blobMesh,coffeeByZone=[];
 function placeVeg(){
   DEV.forEach(d=>{const w=toW(d.uv);d.x=w[0];d.z=w[1];d.y=H(d.x,d.z);d.zone=zoneAt(d.x,d.z)});
   const nearDev=(x,z,r)=>DEV.some(d=>(d.x-x)**2+(d.z-z)**2<r*r);
-  const coffee=[],palm=[],trees=[];
+  const coffee=[];
   for(let zi=0;zi<NZ;zi++){
     coffeeByZone[zi]=[];
     const P=ZP[zi],a=ZD[zi].ang,d0=Math.cos(a),d1=Math.sin(a),p0=-d1,p1=d0;
@@ -1359,26 +1336,23 @@ function placeVeg(){
         const x=u*d0+v*p0+(rnd()-.5)*.06,z=u*d1+v*p1+(rnd()-.5)*.06;
         if(!inPoly(x,z,P)||dPoly(x,z,P)<RW+.12||dRoad(x,z)<RW+.12||DEV.some(d=>d.k!=='cam'&&(d.x-x)**2+(d.z-z)**2<.144))continue;
         const o={x,z,y:H(x,z),s:.82+rnd()*.36,r:rnd()*6.28,zi,i:coffee.length};coffee.push(o);coffeeByZone[zi].push(o);
-        if(row%5===2&&k%6===3){const px=x+p0*sr*.5,pz=z+p1*sr*.5;if(inPoly(px,pz,P)&&dPoly(px,pz,P)>RW+.4&&!nearDev(px,pz,1))palm.push({x:px,z:pz,y:H(px,pz),s:.85+rnd()*.3,r:rnd()*6.28})}
       }}
   }
 
   const M=new THREE.Matrix4(),Q=new THREE.Quaternion(),S=new THREE.Vector3(),T=new THREE.Vector3(),E=new THREE.Euler(),C=new THREE.Color();
   const fill=(mesh,arr,colorFn)=>{arr.forEach((o,i)=>{E.set((rnd()-.5)*.08,o.r,(rnd()-.5)*.08);Q.setFromEuler(E);S.setScalar(o.s);T.set(o.x,o.y-.02,o.z);M.compose(T,Q,S);mesh.setMatrixAt(i,M);if(colorFn){colorFn(C,o);mesh.setColorAt(i,C)}});mesh.instanceMatrix.needsUpdate=true;if(mesh.instanceColor)mesh.instanceColor.needsUpdate=true;mesh.castShadow=true;mesh.receiveShadow=true;scene.add(mesh)};
-  coffeeMesh=new THREE.InstancedMesh(coffeeGeo(LOW?0:1),swayMat({},1/.85,.2,1,9),coffee.length);
-  fill(coffeeMesh,coffee,(c,o)=>{const v=.82+rnd()*.3;o.b=[v*(.95+rnd()*.12),v,v*(.9+rnd()*.15)];c.setRGB(o.b[0],o.b[1],o.b[2])});
-  palmMesh=new THREE.InstancedMesh(palmGeo(),swayMat({side:THREE.DoubleSide,roughness:.6},1/3.6,.45,.6,3),palm.length);
-  fill(palmMesh,palm,(c)=>{const v=.85+rnd()*.25;c.setRGB(v,v,v*.95)});
-  const tg=[treeGeo(LOW?0:1,1),treeGeo(LOW?0:1,5)];const tm=swayMat({roughness:.8},1/3,.25,.35,2.6);
-  const halves=[trees.filter((_,i)=>i%2===0),trees.filter((_,i)=>i%2===1)];
-  halves.forEach((arr,h)=>{const m=new THREE.InstancedMesh(tg[h],tm,arr.length);fill(m,arr,(c)=>{const t=rnd();c.setRGB(.75+t*.3,.78+t*.22,.62+rnd()*.25)});treeMeshes.push(m)});
-  // bóng tiếp xúc dưới gốc
-  const all=coffee.concat(palm.map(p=>({x:p.x,z:p.z,y:p.y,s:.5}))).concat(trees.map(t=>({x:t.x,z:t.z,y:t.y,s:t.s*2.6})));
-  const bg=new THREE.PlaneGeometry(1,1);bg.rotateX(-Math.PI/2);
-  blobMesh=new THREE.InstancedMesh(bg,new THREE.MeshBasicMaterial({map:blobTex(),transparent:true,depthWrite:false,opacity:.75,polygonOffset:true,polygonOffsetFactor:-2}),all.length);
-  all.forEach((o,i)=>{T.set(o.x,o.y+.03,o.z);S.set(o.s*.95,1,o.s*.95);Q.identity();M.compose(T,Q,S);blobMesh.setMatrixAt(i,M)});
-  blobMesh.renderOrder=1;scene.add(blobMesh);
-  STATS.coffee=coffee.length;STATS.palm=palm.length;STATS.tree=trees.length;
+  coffeeMesh=new THREE.InstancedMesh(coffeeGeo(LOW?0:1),swayMat({roughness:.5},1/.32,.12,1,14),coffee.length);
+  fill(coffeeMesh,coffee,(c,o)=>{const v=.62+rnd()*.2;o.b=[v*(.95+rnd()*.12),v,v*(.9+rnd()*.15)];c.setRGB(o.b[0],o.b[1],o.b[2])});
+  // bồn gốc: vòng đất xới sẫm màu quanh mỗi cây con
+  const bg=new THREE.CircleGeometry(.5,14);bg.rotateX(-Math.PI/2);
+  basinMesh=new THREE.InstancedMesh(bg,new THREE.MeshBasicMaterial({map:basinTex(),transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2}),coffee.length);
+  coffee.forEach((o,i)=>{T.set(o.x,o.y+.025,o.z);S.set(.34,1,.34);Q.identity();M.compose(T,Q,S);basinMesh.setMatrixAt(i,M)});
+  basinMesh.renderOrder=1;scene.add(basinMesh);
+  const sh=new THREE.PlaneGeometry(1,1);sh.rotateX(-Math.PI/2);
+  blobMesh=new THREE.InstancedMesh(sh,new THREE.MeshBasicMaterial({map:blobTex(),transparent:true,depthWrite:false,opacity:.55,polygonOffset:true,polygonOffsetFactor:-3}),coffee.length);
+  coffee.forEach((o,i)=>{T.set(o.x,o.y+.03,o.z);S.set(.3*o.s,1,.3*o.s);Q.identity();M.compose(T,Q,S);blobMesh.setMatrixAt(i,M)});
+  blobMesh.renderOrder=2;scene.add(blobMesh);
+  STATS.coffee=coffee.length;
 }
 const STATS={};
 
@@ -1909,8 +1883,8 @@ function renderZone(){
   const zi=SEL.z,el=$('#zinfo');let html;
   if(LM.on){el.innerHTML=lvZone(zi);updButtons();return}
   const devs=zoneDevs(zi);const dl=Object.keys(devs).filter(k=>devs[k]).map(k=>`<span><svg aria-hidden="true"><use href="#${KICON[k]}"/></svg>${devs[k]} ${({soil:'đất',water:'nước',weather:'thời tiết',cam:'camera',iot:'trạm IoT'})[k]}</span>`).join('');
-  if(zi<0){html=`<h3>Vườn cà phê Ia Ko</h3><p>Thôn Cây Xoài, xã Ia Ko, Chư Pưh, Gia Lai · 22 ha · 8 khu · cà phê xen cau, 2.200 gốc/ha</p><div class="devs">${dl}</div>`}
-  else if(zi<NZ){html=`<h3>${ZNAME[zi]}</h3><p>Cà phê xen cau · giống Thiện Trường</p>
+  if(zi<0){html=`<h3>Vườn cà phê Ia Ko</h3><p>Thôn Cây Xoài, xã Ia Ko, Chư Pưh, Gia Lai · 22 ha · 8 khu · cà phê Robusta ghép trồng 7/2026, khoảng 2.200 cây/ha</p><div class="devs">${dl}</div>`}
+  else if(zi<NZ){html=`<h3>${ZNAME[zi]}</h3><p>Cà phê Robusta ghép Thiện Trường · cây con, trồng 7/2026</p>
       <dl class="kv"><dt>Diện tích</dt><dd>${fmt(ZHA[zi],2)} ha</dd><dt>Số gốc ước tính</dt><dd>≈ ${fmtI(Math.round(ZHA[zi]*2200/50)*50)}</dd><dt>Lần tưới gần nhất</dt><dd id="zL">${ZS[zi].lastIrr||'Chưa tưới'}</dd></dl><div class="devs">${dl}</div>`}
   else if(zi===8){html=`<h3>Khu đất chưa trồng</h3><p>Đất đã cày, chưa xuống giống. Dải cây rừng chạy chéo giữa khu.</p><dl class="kv"><dt>Diện tích (ước tính theo sơ đồ)</dt><dd>≈ ${fmt(ZHA[8])} ha</dd></dl>`}
   else{html=`<h3>Khu nhà điều hành</h3><p>Nhà điều hành, trạm IoT trung tâm, trạm thời tiết và hồ chứa nước tưới.</p><div class="devs">${dl}</div>`}
@@ -2424,7 +2398,7 @@ async function boot(){
   if(!window.THREE||!initRenderer()){$('#nogl').style.display='grid';$('#loader').classList.add('done');return}
   P(10,'Đắp địa hình 22 ha…');await tick();buildBase();buildGround();
   P(30,'Dẫn suối, đào hồ chứa…');await tick();buildWater();
-  P(45,'Trồng cà phê xen cau…');await tick();placeVeg();
+  P(45,'Trồng cà phê cây con…');await tick();placeVeg();
   P(70,'Lắp 35 thiết bị…');await tick();buildDevices();buildLedGlows();buildLinks();
   P(85,'Nối mạng LoRa…');await tick();buildIrrigation();buildRain();buildSmoke();buildClouds();buildLeaves();buildFlies();buildZoneLines();
   pipCam=new THREE.PerspectiveCamera(58,1.6,.15,300);
