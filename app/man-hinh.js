@@ -266,7 +266,7 @@
     window.__vsPause = id !== 'saban';
     $$('#nav [data-s]').forEach(b => b.setAttribute('aria-current', b.dataset.s === id ? 'page' : 'false'));
     const s = $('#scr'); s.hidden = id === 'saban';
-    if (push) { const h = id === 'saban' ? ' ' : '#/' + id; if (location.hash !== h.trim()) history.pushState(null, '', h === ' ' ? location.pathname + location.search : h) }
+    if (push) { const h = id === 'saban' ? ' ' : '#/' + id; if (location.hash !== h.trim()) try { history.pushState(null, '', h === ' ' ? location.pathname + location.search : h) } catch (e) { } }
     if (id !== 'saban') { if (ch) { $('#scrIn').innerHTML = '<div class="ld"><i></i><i></i><i></i></div>'; s.scrollTop = 0 } render() }
     else if (ch && window.__fbRender) window.__fbRender();
   }
@@ -275,7 +275,7 @@
     VS.ready.then(() => {
       nav.innerHTML = SCREENS.filter(s => !s.staff || VS.isStaff()).map(s => `<a href="${s.id === 'saban' ? '#' : '#/' + s.id}" data-s="${s.id}" title="${s.name}" aria-current="${s.id === ST.scr ? 'page' : 'false'}"><svg aria-hidden="true"><use href="#${s.icon}"/></svg><span class="l">${s.name}</span><span class="s">${s.short}</span></a>`).join('');
       nav.addEventListener('click', e => { const a = e.target.closest('[data-s]'); if (!a) return; e.preventDefault(); go(a.dataset.s) });
-      const fromHash = () => go((location.hash.match(/^#\/(\w+)/) || [])[1] || 'saban', false);
+      const fromHash = () => go((location.hash.match(/^#\/?(\w+)/) || [])[1] || 'saban', false);
       addEventListener('popstate', fromHash); fromHash();
       setInterval(() => { if (ST.scr !== 'saban' && !document.hidden) render() }, 5 * 6e4);
     });
