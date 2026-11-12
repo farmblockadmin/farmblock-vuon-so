@@ -23,6 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app/man-hinh.css">
 <style>:root{
   --g800:#112615;--g600:#234D2B;--g500:#3A8047;--lime:#B5E383;--lime-2:#D3F0AE;--sky:#51ADCA;--cream:#F5E4A1;
   --warn:#FFB547;--bad:#FF6B5A;
@@ -798,6 +799,7 @@ body.dark .zinfo h3{color:#B5E383}
 <symbol id="a-probe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v6H9zM12 9v9l-1.5 3M12 18l1.5 3"/><path d="M4 15h3M17 15h3M5 18.5h2M17 18.5h2" opacity=".7"/></g></symbol>
 <symbol id="a-fire" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a6 6 0 0 0 6-6c0-3.5-2.5-5-3.5-8-1.5 1.5-2 3-2 4.5C11 10 10 8 10.5 5 7.5 7 6 10.5 6 15a6 6 0 0 0 6 6z"/><path d="M12 21a2.5 2.5 0 0 1-2.5-2.5c0-1.6 1.3-2.4 2.5-4 1.2 1.6 2.5 2.4 2.5 4A2.5 2.5 0 0 1 12 21z"/></g></symbol>
 <symbol id="a-spk" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></g></symbol>
+<symbol id="u-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/></g></symbol><symbol id="u-doc" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></g></symbol>
 <symbol id="u-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
 <symbol id="u-minus" viewBox="0 0 24 24"><path d="M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
 <symbol id="u-home" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.3-5.6"/><path d="M4 4v4.5h4.5"/></g></symbol>
@@ -826,11 +828,7 @@ body.dark .zinfo h3{color:#B5E383}
     <div class="modes" id="modes" role="group" aria-label="Chế độ dữ liệu" hidden><button data-m="live" aria-pressed="false">Trực tiếp</button><button data-m="sim" aria-pressed="true">Mô phỏng</button></div>
     <button class="thm" id="themeB" aria-label="Chế độ tối" aria-pressed="false"><svg aria-hidden="true"><use href="#u-moon"/></svg></button>
   </div>
-  <nav class="links" aria-label="Trang khác">
-    <a class="lk" href="https://farmblockadmin.github.io/farmblock-website/cong-nghe.html" data-nav="tech"><svg aria-hidden="true"><use href="#u-back"/></svg>Công nghệ</a>
-    <a class="lk hide-md" href="https://farmblockadmin.github.io/farmblock-website/bang-gia.html" data-nav="price">Bảng giá</a>
-    <a class="lk vm" aria-label="Xem vườn Mang Yang trực tuyến" href="https://vuonmau.farmblock.vn/ca-phe-mang-yang-1" target="_blank" rel="noopener"><span class="l">Xem vườn Mang Yang</span><svg aria-hidden="true"><use href="#u-ext"/></svg></a>
-  </nav>
+  <nav class="nav" id="nav" aria-label="Màn hình"></nav>
   <div class="stat" role="status">
     <span class="live" id="stL"><i></i><span id="stM">Mô phỏng</span></span><span class="sp"></span>
     <span><b id="clock" class="num">07:30</b></span><span class="sp"></span>
@@ -838,6 +836,7 @@ body.dark .zinfo h3{color:#B5E383}
     <span class="sim-only">Dữ liệu <b id="pk" class="num">0</b> gói</span><span class="live-only" id="stA"></span>
   </div>
 </header>
+<main class="scr" id="scr" hidden><div class="scrIn" id="scrIn"></div></main>
 
 <!-- PANEL TRÁI: phân khu + thao tác -->
 <aside class="pl left hud" data-box="left" aria-label="Khu vực">
@@ -970,6 +969,7 @@ body.dark .zinfo h3{color:#B5E383}
 <div class="rot" id="rot" role="alertdialog" aria-label="Xoay ngang điện thoại"><div class="rot-in"><div class="rot-ph" aria-hidden="true"><i></i></div><b>Xoay ngang điện thoại</b><p>Sa bàn 3D chỉ dùng ở màn hình ngang. Nếu máy không tự xoay, hãy tắt khoá xoay màn hình.</p><button id="rotB" hidden>Xoay giúp tôi</button></div></div>
 <div class="nogl" id="nogl"><p>Trình duyệt này chưa hỗ trợ WebGL nên không hiển thị được sa bàn 3D.<br>Hãy thử Chrome, Safari hoặc Edge bản mới.</p></div>
 
+<script src="app/du-lieu.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/utils/BufferGeometryUtils.js"></script>
@@ -2190,7 +2190,7 @@ function lvOnline(){const D=LM.data,now=Date.now();return D.nodes.filter(n=>now-
 function lvStatus(){
   const D=LM.data;if(!D)return;const age=(Date.now()-atMs(D.at))/6e4,stale=age>30||LM.fail>2;
   $('#stL').classList.toggle('stale',stale);
-  $('#stM').textContent=LM.fail>2?'Mất kết nối':stale?'Số liệu cũ':'Trực tiếp';$('#mTag').textContent=$('#stM').textContent;
+  $('#stM').textContent=LM.demo?'Dữ liệu mẫu':LM.fail>2?'Mất kết nối':stale?'Số liệu cũ':'Trực tiếp';const lb=$('#modes [data-m="live"]');if(lb)lb.textContent=LM.demo?'Dữ liệu mẫu':'Trực tiếp';$('#mTag').textContent=$('#stM').textContent;
   $('#stD').innerHTML=`<b>${lvOnline()}</b>/${D.nodes.length+1} điểm báo về`;
   $('#stA').innerHTML=`Đo lúc <b class="num">${hm(D.at)}</b> · ${ago(age)}`;
 }
@@ -2211,7 +2211,7 @@ function setMode(on){
   $('#logk').textContent=on?'Số liệu vừa về':'Nhật ký dữ liệu';
   $('.dc[data-k="cam"] b').textContent=on?String(DEV.filter(d=>d.live).length):'22';$('.dc[data-k="water"] b').textContent=on?'1':'2';
   setShow('cam',SHOW.cam,true);
-  if(on){lvApply(LM.data,true);lvMetric(LM.metric)}
+  if(on){lvApply(LM.data,true);lvMetric(LM.metric);lvStatus()}
   else{
     LM.spz=null;Object.keys(METRIC).forEach(k=>{const e=$('#ts-'+k);if(e)e.innerHTML=''});
     DEV.forEach(d=>{d.r=null;d.at=null;d.node=null;d.hist=[];setPin(d)});
@@ -2225,8 +2225,7 @@ let z0=null;
 async function lvPoll(){
   if(document.hidden)return;
   try{
-    const r=await fetch('live.json',{cache:'no-store'});if(!r.ok)throw 0;
-    const d=await r.json();if(!d.nodes)throw 0;LM.fail=0;
+    await VS.ready;const d=await VS.live();if(!d||!d.nodes)throw 0;LM.fail=0;LM.demo=!!d.demo;document.body.classList.toggle('demo',LM.demo);
     if(!LM.data){LM.data=d;$('#modes').hidden=false;if(!/[?&]sim/.test(location.search)&&PREF.mode!=='sim')setMode(true);if(!userMoved)goHome()}
     else if(LM.on&&(d.at!==LM.lastAt||d.received_at!==LM.data.received_at))lvApply(d,false);else LM.data=d;
   }catch(e){LM.fail++;if(!LM.data)clearInterval(LM.t)}
@@ -2373,7 +2372,7 @@ const ROT=matchMedia('(orientation:portrait) and (max-width:767px) and (pointer:
 const STILL=/[?&]still/.test(location.search);
 function frame(now){
   if(!STILL)requestAnimationFrame(frame);
-  if(ROT.matches){last=now;return}
+  if(ROT.matches||window.__vsPause){last=now;return}
   const dt=Math.min(.05,(now-last)/1000);last=now;
   U.uTime.value+=dt;
   updFly(dt);controls.update();
@@ -2417,7 +2416,9 @@ async function boot(){
   requestAnimationFrame(frame);
   lvInit();
 }
-window.__fbStats=STATS;window.__fbFly=(r,ph,th)=>flyTo(controls.target.clone(),r,ph,th,.05);
+window.__fbStats=STATS;
+Object.defineProperty(window,'__vsGeo',{get:()=>({zones:ZD.map((z,i)=>({id:z.id,poly:z.poly,lab:z.lab,ha:ZHA[i]})),cams:DEV.filter(d=>d.k==='cam').map(d=>({uv:d.uv,label:d.id.replace('CAM-','Camera '),zone:d.zone>=0&&d.zone<NZ?ZD[d.zone].id:(d.zone=zoneAt(...toW(d.uv)))>=0&&d.zone<NZ?ZD[d.zone].id:null,live:!!d.live}))})});
+window.__vsOpenDev=(k,i)=>{const d=DEV.filter(x=>x.k===k)[i];if(d)setTimeout(()=>openInsp(d.idx,true),80)};window.__fbFly=(r,ph,th)=>flyTo(controls.target.clone(),r,ph,th,.05);
 window.__fbRender=()=>{last=performance.now()-16;frame(performance.now())};
 window.__fbAdv=n=>{for(let i=0;i<n;i++){const dt=.05;U.uTime.value+=dt;updFly(dt);controls.update();simStep(dt);animScene(dt);applyLight(dt)}updHUD(1)};
 boot();
@@ -2493,5 +2494,6 @@ function updWorld(bg){
   if(cl){new ResizeObserver(fit).observe(cl);addEventListener('resize',fit);fit()}
 })();
 </script>
+<script src="app/man-hinh.js"></script>
 </body>
 </html>
