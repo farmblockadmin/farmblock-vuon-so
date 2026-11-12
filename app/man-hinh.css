@@ -17,9 +17,11 @@ body.dark{--cd:#262626;--bg2:#1B1B1B;--ink:#ECECEC;--ink2:#A8A8A8;--mut:#6E6E6E;
 .nav a svg{width:18px;height:18px;flex:none}
 .nav a:hover{background:var(--pn-2);color:var(--hi)}
 .nav a[aria-current="page"]{background:var(--lime);color:var(--g800)}
-.nav .s{display:none}
-@media (max-width:1600px){.nav .l{display:none}.nav .s{display:inline}.nav a{padding:0 13px}}
-@media (max-width:1360px) and (min-width:1024px){.nav a svg{display:none}.top .stat .sim-only:last-child,.top .stat .live-only:last-child,.top .stat .sp:nth-of-type(3){display:none}}
+.nav .l{display:none}
+@media (min-width:2100px){.nav .l{display:inline}.nav .s{display:none}}
+@media (max-width:1700px) and (min-width:1024px){.nav a{padding:0 13px}.top .stat{display:none}}
+@media (max-width:1480px) and (min-width:1024px){.nav a svg{display:none}.nav a{padding:0 12px}}
+@media (max-width:1120px) and (min-width:1024px){.nav a{padding:0 9px;font-size:14px}.crumb span{display:none}}
 @media (max-width:1023px){
   .nav{position:fixed;left:12px;right:12px;top:calc(var(--top) + 52px);z-index:19;margin:0;justify-content:flex-start;padding:4px;box-shadow:0 8px 24px -14px rgba(0,0,0,.4)}
   .nav a{min-height:40px;padding:0 12px;font-size:14px;gap:6px}.nav a svg{width:16px;height:16px}
@@ -186,3 +188,12 @@ body.scr-on .top .stat,body.scr-on .top .modes,body.scr-on .left,body.scr-on .ri
 }
 @media (max-width:480px){.fc24{grid-template-columns:repeat(4,1fr);row-gap:10px}.wk{gap:3px}.wk b{font-size:13px;padding:6px 2px}}
 .kts.four .kt:not(.yellow):not(.red):not(.device){border-left-color:var(--ln)}
+/* giai đoạn cây trên sa bàn */
+.stg{margin:10px 0 4px;padding:10px 12px;border-radius:12px;background:var(--pn-2)}
+.stg-r{display:flex;flex-direction:column;gap:1px;font-size:13.5px;color:var(--txt-2)}.stg-r b{color:var(--hi);font-weight:600}
+.stg-b{height:6px;border-radius:3px;background:var(--pn-3);margin:7px 0 6px;overflow:hidden}.stg-b i{display:block;height:100%;background:#3A8047;border-radius:3px}
+.stg small{font-size:12.5px;color:var(--txt-2);line-height:1.4;display:block}
+@media (max-width:1023px){.nav{top:calc(var(--top) + 58px)}}
+@media (max-width:1023px){.scr{padding-top:calc(var(--top) + 126px)}}
+@media (max-width:560px){.minis{grid-template-columns:1fr}}
+.mini header{flex-wrap:wrap}

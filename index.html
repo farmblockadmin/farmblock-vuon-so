@@ -1662,7 +1662,7 @@ function buildLedGlows(){LEDS.forEach(l=>{const c=l.k==='rec'?'#FF4A3A':l.k==='l
 /* ================= MÔ PHỎNG DỮ LIỆU ================= */
 const ENV={min:450,play:false,w:'clear',ws:3,wd:45,wsNow:3,T:19.5,RH:92,rain:0,lux:0,P:927.6,flash:0,nextFlash:3,smkE:0,pk:0,sync:0};
 const WX={
-  clear:{cl:1,rain:0,dT:0,rh:0,gray:0,fog:[120,440],clouds:3,dry:0},
+  clear:{cl:1,rain:0,dT:0,rh:0,gray:0,fog:[120,440],clouds:0,dry:0},
   cloud:{cl:.42,rain:0,dT:-2,rh:6,gray:.22,fog:[95,380],clouds:13,dry:0},
   rain:{cl:.2,rain:9,dT:-4.5,rh:14,gray:.48,fog:[55,250],clouds:16,dry:0},
   storm:{cl:.1,rain:36,dT:-5.5,rh:16,gray:.68,fog:[45,210],clouds:16,dry:0},
@@ -1883,7 +1883,7 @@ function renderZone(){
   const zi=SEL.z,el=$('#zinfo');let html;
   if(LM.on){el.innerHTML=lvZone(zi);updButtons();return}
   const devs=zoneDevs(zi);const dl=Object.keys(devs).filter(k=>devs[k]).map(k=>`<span><svg aria-hidden="true"><use href="#${KICON[k]}"/></svg>${devs[k]} ${({soil:'đất',water:'nước',weather:'thời tiết',cam:'camera',iot:'trạm IoT'})[k]}</span>`).join('');
-  if(zi<0){html=`<h3>Vườn cà phê Ia Ko</h3><p>Thôn Cây Xoài, xã Ia Ko, Chư Pưh, Gia Lai · 22 ha · 8 khu · cà phê Robusta ghép trồng 7/2026, khoảng 2.200 cây/ha</p><div class="devs">${dl}</div>`}
+  if(zi<0){html=`<h3>Vườn cà phê Ia Ko</h3><p>Thôn Cây Xoài, xã Ia Ko, Chư Pưh, Gia Lai · 22 ha · 8 khu · cà phê Robusta ghép trồng 7/2026, khoảng 2.200 cây/ha</p>${stageHTML()}<div class="devs">${dl}</div>`}
   else if(zi<NZ){html=`<h3>${ZNAME[zi]}</h3><p>Cà phê Robusta ghép Thiện Trường · cây con, trồng 7/2026</p>
       <dl class="kv"><dt>Diện tích</dt><dd>${fmt(ZHA[zi],2)} ha</dd><dt>Số gốc ước tính</dt><dd>≈ ${fmtI(Math.round(ZHA[zi]*2200/50)*50)}</dd><dt>Lần tưới gần nhất</dt><dd id="zL">${ZS[zi].lastIrr||'Chưa tưới'}</dd></dl><div class="devs">${dl}</div>`}
   else if(zi===8){html=`<h3>Khu đất chưa trồng</h3><p>Đất đã cày, chưa xuống giống. Dải cây rừng chạy chéo giữa khu.</p><dl class="kv"><dt>Diện tích (ước tính theo sơ đồ)</dt><dd>≈ ${fmt(ZHA[8])} ha</dd></dl>`}
@@ -2161,10 +2161,13 @@ function lvCenter(){
   const c=LM.data.center,k=LM.data.kpi;const pump=v=>v>0?fmt(v)+' m³/h':'Tắt';
   $('#ctr').innerHTML=[['EC nước tưới',fmtI(c.water_ec)+' µS/cm'],['Nhiệt độ nước',fmt(c.water_temp)+'°C'],['Bơm 1',pump(c.pump1_rate)],['Bơm 2',pump(c.pump2_rate)],['Tưới 7 ngày',fmt(k.irrigation_7d)+' m³'],['Mưa 7 ngày',fmt(k.rain_7d)+' mm'],['Hướng gió',fmtI(c.wind_direction)+'°'],['Ánh sáng',fmtI(c.light)+' lux'],['Áp suất',fmt(c.pressure,0)+' hPa']].map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join('');
 }
+// giai đoạn cây: trồng 7/2026, thời kỳ kiến thiết cơ bản (KTCB) 3 năm rồi thu bói
+function stageHTML(){const p=Date.parse('2026-07-01T00:00:00+07:00'),age=Math.max(0,(Date.now()-p)/(30.44*864e5)),yr=Math.min(3,Math.floor(age/12)+1);
+  return`<div class="stg"><div class="stg-r"><span>Giai đoạn</span><b>KTCB năm ${yr} · tháng thứ ${Math.floor(age)+1}</b></div><div class="stg-b"><i style="width:${Math.min(100,age/36*100).toFixed(1)}%"></i></div><small>Cây con, chưa cho quả. Thu bói sau 3 năm kiến thiết cơ bản.</small></div>`}
 function lvZone(zi){
   const D=LM.data;if(!D)return'';const k=D.kpi;
   const row=(a,b)=>`<dt>${a}</dt><dd>${b}</dd>`;
-  if(zi<0)return`<h3>Vườn cà phê Ia Ko</h3><p>22 ha · 8 khu · 9 điểm đo đất · 1 trạm trung tâm</p><dl class="kv">${row('Độ ẩm đất',fmt(k.moisture)+'%')}${row('Nhiệt độ đất',fmt(k.soil_temp)+'°C')}${row('pH đất (trung vị)',fmt(k.ph))}${row('EC đất',fmtI(k.ec)+' µS/cm')}</dl>`;
+  if(zi<0)return`<h3>Vườn cà phê Ia Ko</h3><p>22 ha · 8 khu · 9 điểm đo đất · 1 trạm trung tâm</p>${stageHTML()}<dl class="kv">${row('Độ ẩm đất',fmt(k.moisture)+'%')}${row('Nhiệt độ đất',fmt(k.soil_temp)+'°C')}${row('pH đất (trung vị)',fmt(k.ph))}${row('EC đất',fmtI(k.ec)+' µS/cm')}</dl>`;
   if(zi>=NZ)return zi===8?'<h3>Khu đất chưa trồng</h3><p>Không có điểm đo trong khu này.</p>':'<h3>Khu nhà điều hành</h3><p>Trạm trung tâm đo thời tiết và nước tưới nằm gần đây.</p>';
   const ns=zoneNodes(zi);if(!ns.length)return`<h3>${ZNAME[zi]}</h3><p>Khu này chưa có điểm đo được gán trên sơ đồ Dashboard.</p>`;
   return`<h3>${ZNAME[zi]}</h3><p>${ns.map(n=>ptName(n.id)).join(', ')} · đo lúc ${hm(ns[0].at)}</p><dl class="kv">${Object.keys(METRIC).map(m=>{const v=mean(ns.map(n=>n[m]));return row(METRIC[m].full,v==null?'–':fmt(v,METRIC[m].d)+METRIC[m].u)}).join('')}</dl>`;

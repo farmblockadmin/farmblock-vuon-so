@@ -268,12 +268,12 @@
     const s = $('#scr'); s.hidden = id === 'saban';
     if (push) { const h = id === 'saban' ? ' ' : '#/' + id; if (location.hash !== h.trim()) history.pushState(null, '', h === ' ' ? location.pathname + location.search : h) }
     if (id !== 'saban') { if (ch) { $('#scrIn').innerHTML = '<div class="ld"><i></i><i></i><i></i></div>'; s.scrollTop = 0 } render() }
-    else window.__fbRender && window.__fbRender();
+    else if (ch && window.__fbRender) window.__fbRender();
   }
   function navInit() {
     const nav = $('#nav'); if (!nav) return;
     VS.ready.then(() => {
-      nav.innerHTML = SCREENS.filter(s => !s.staff || VS.isStaff()).map(s => `<a href="${s.id === 'saban' ? '#' : '#/' + s.id}" data-s="${s.id}" aria-current="${s.id === ST.scr ? 'page' : 'false'}"><svg aria-hidden="true"><use href="#${s.icon}"/></svg><span class="l">${s.name}</span><span class="s">${s.short}</span></a>`).join('');
+      nav.innerHTML = SCREENS.filter(s => !s.staff || VS.isStaff()).map(s => `<a href="${s.id === 'saban' ? '#' : '#/' + s.id}" data-s="${s.id}" title="${s.name}" aria-current="${s.id === ST.scr ? 'page' : 'false'}"><svg aria-hidden="true"><use href="#${s.icon}"/></svg><span class="l">${s.name}</span><span class="s">${s.short}</span></a>`).join('');
       nav.addEventListener('click', e => { const a = e.target.closest('[data-s]'); if (!a) return; e.preventDefault(); go(a.dataset.s) });
       const fromHash = () => go((location.hash.match(/^#\/(\w+)/) || [])[1] || 'saban', false);
       addEventListener('popstate', fromHash); fromHash();

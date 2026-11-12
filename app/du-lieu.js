@@ -40,7 +40,7 @@
   const NODE_ZONE = ['C1', 'A', 'A', 'B1', 'B2', 'C4', 'C2', 'C3', 'C4'];
   const PLANTED = '2026-07-01';
   const STEP = 36e5; // một điểm mỗi giờ
-  function vnDate(ms) { const d = new Date(ms + 7 * 36e5); return d.toISOString().slice(0, 19).replace('T', ' ') }
+  function vnDate(ms) { const d = new Date(ms + 7 * 36e5); return d.toISOString().slice(0, 16).replace('T', ' ') }
   const day = ms => vnDate(ms).slice(0, 10);
   const hourOf = ms => new Date(ms + 7 * 36e5).getUTCHours() + new Date(ms + 7 * 36e5).getUTCMinutes() / 60;
   // mưa: vài trận chiều đầu tháng 11, rồi khô dần
@@ -63,7 +63,7 @@
     return Math.max(14, Math.min(55, m + (sm(ms / 36e5 / 5, 30 + i) - 0.5) * 1.2));
   }
   function soilT(i, ms) { const h = hourOf(ms); return 23 + 2.4 * Math.sin((h - 13) / 24 * 2 * Math.PI) + (H(i, 22) - 0.5) * 1.6 + (sm(ms / 864e5, 40 + i) - 0.5) * 1.2 }
-  function soilPH(i, ms) { return 5.15 + (H(i, 23) - 0.5) * 0.9 + (sm(ms / 864e5 / 2, 50 + i) - 0.5) * 0.12 }
+  function soilPH(i, ms) { return 5.95 + (H(i, 23) - 0.5) * 0.75 + (sm(ms / 864e5 / 2, 50 + i) - 0.5) * 0.12 }
   function soilEC(i, ms, mo) { return Math.round(160 + H(i, 24) * 260 + (mo - 30) * 4 + (sm(ms / 864e5, 60 + i) - 0.5) * 30) }
   const npk = (ec, i) => ({ nitrogen: Math.round(ec * (0.16 + H(i, 25) * 0.04)), phosphorus: Math.round(ec * (0.07 + H(i, 26) * 0.03)), potassium: Math.round(ec * (0.2 + H(i, 27) * 0.06)) });
   function node(i, ms) {
